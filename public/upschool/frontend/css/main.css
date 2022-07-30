@@ -1,0 +1,2074 @@
+* {
+    font-family: 'Lexend', sans-serif;
+    padding: 0;
+    margin: 0;
+    margin: 0;
+    /* font-family: 'Kumbh Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #242254;
+    background-color: #fff;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(28, 30, 39, 0); */
+}
+
+/* header section */
+/* navbar */
+body.offcanvas-active {
+    overflow: hidden;
+}
+
+.header {
+    background-color: #242254;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.navbar-mobile {
+    padding: 10px 20px;
+}
+
+.header-left {
+    width: 50%;
+    float: left;
+    min-height: 20px;
+}
+
+.logo-mobile {
+    max-width: 130px;
+    padding-top: 10px;
+}
+
+.navbar-toggler.btn-close {
+    /* background: #242254; */
+}
+
+/* .logo-mobile img {
+  width: 100%;
+  height: auto;
+} */
+
+.dropdown-menu {
+    padding: 0;
+    /*  box-shadow: 0 0px 4px 0px rgba(0, 0, 0, 0.2); */
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+.offcanvas-header {
+    display: none;
+}
+
+.screen-overlay {
+    width: 0%;
+    height: 100%;
+    z-index: 20%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    background-color: rgba(34, 34, 34, 0.6);
+    transition: opacity 0.2s linear, visibility 0.1s, width 1s ease-in;
+}
+
+.screen-overlay.show {
+    transition: opacity 0.5s ease, width 0s;
+    opacity: 1;
+    width: 100%;
+    visibility: visible;
+}
+
+.small-img {
+    display: none;
+}
+
+.nav-text {
+    padding: 13px 20px !important;
+    font-family: 'Nunito Sans', Sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    word-spacing: 1px;
+}
+
+.dropdown-menu .dropdown-item {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+}
+
+
+hr.hr-1 {
+    width: 1px;
+    height: 2rem !important;
+    margin: 0;
+    margin-right: 1rem;
+    background-color: #fff;
+    opacity: 0.5;
+}
+
+/* .dropdown-menu > li:first-child() {
+  border-top-left-radius: 6px !important;
+  border-top-right-radius: 6px !important;
+} */
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item.active {
+    background-color: #b81242;
+    color: #fff;
+}
+
+.control-search {
+    position: relative;
+    /* top: 6px; */
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+    font-size: 25px;
+    padding: 13px 20px;
+    color: #fff;
+}
+
+.login-link,
+.register-link {
+    text-decoration: none;
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.sign-in-text,
+.register-text {
+    color: #fff;
+}
+
+
+
+
+@media all and (max-width: 992px) {
+    .header {
+        background-color: #fff;
+        padding: 0px;
+    }
+
+    .offcanvas-header {
+        display: block;
+    }
+
+    .exceptional-dropdown-menu .show{
+        display: block !important;
+        margin: 0px -100px !important;
+    }
+
+    .dropdown-menu.show {
+        display: block;
+        /* margin: 0px -100px; */
+    }
+
+    .small-img {
+        display: block;
+    }
+
+    .dropdown-toggle.content-none::after {
+        content: none;
+    }
+
+    .nav-text {
+        padding: 12px 0 12px;
+        font-size: 1rem !important;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        color: #1c1e27 !important;
+    }
+    
+    .mobile-offcanvas {
+        visibility: hidden;
+        transform: translateX(-100%);
+        border-radius: 0;
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 1200;
+        width: 65%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        transition: visibility 0.2s ease-in-out, transform 0.2s ease-in-out;
+        background-color: #fff !important;
+    }
+
+    html:lang(ar) .mobile-offcanvas {
+        transform: translateX(100%);
+    }
+
+    .mobile-offcanvas.show {
+        visibility: visible;
+        transform: translateX(0);
+    }
+
+    .nav-cont {
+        display: block !important;
+        padding-right: auto !important;
+        padding-left: auto !important;
+    }
+
+    .dropdown-menu {
+        border: none;
+    }
+
+    .nav-item {
+        border-bottom: 1px solid #eaeaea;
+        width: 100%;
+    }
+    .navbar-brand img{
+        width: 100%;
+    }
+}
+
+/* home page banner video section */
+.banner-title {
+    width: 90%;
+    margin: 0 auto;
+    font-weight: 400;
+    letter-spacing: 2px;
+    line-height: 6.2rem !important;
+    top: 15%;
+    margin-top: 1rem;
+}
+
+.banner-over-text {
+    font-family: 'Nunito Sans', Sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+}
+
+.banner-bottom-img {
+    position: relative;
+    top: -8rem;
+    width: 60%;
+    margin: 0 auto;
+}
+
+
+/* six points */
+.icon i {
+    font-size: 50px;
+    margin-bottom: 20px;
+    color: #242254;
+}
+
+.six-points {
+    padding: 1rem 2.5rem
+}
+
+
+
+.title {
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.details {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+/* magic video section */
+
+#magic-video-section {
+    top: 8%;
+}
+
+#magic-video-title {
+    font-family: "Lexend", Sans-serif;
+    font-size: 49px;
+    font-weight: 800;
+    margin-bottom: 2rem;
+}
+
+#magic-video-title span {
+    color: #fdcf60;
+}
+
+.magic-video-details {
+    text-align: center;
+    color: #FFFFFF;
+    font-family: "Nunito Sans", Sans-serif;
+    font-size: 20px;
+    font-weight: 100;
+    line-height: 1.8em;
+    letter-spacing: 1.1px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+
+/* educational forever */
+#title {
+    color: #fdcf60;
+}
+
+.education-forever-title {
+    font-size: 52px;
+    font-weight: 900;
+}
+
+.entrepreneurship-section {
+    background-color: #242254;
+}
+
+.entrepreneurship-row {
+    padding: 4.5rem 0;
+}
+
+.entrepreneurship-title {
+    font-size: 47px;
+    font-weight: 800;
+    padding-right: 5rem;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.entrepreneurship-details {
+    padding-top: 1.5rem;
+    font-family: "Nunito Sans", Sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8em;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.img-position {
+    margin-top: -6rem;
+}
+
+
+/* people saying */
+
+.saying-title {
+    font-size: 45px;
+    font-weight: 900;
+}
+
+.swiper {
+    width: 80%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 16px;
+    background: #fff;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.person-img img {
+    border-radius: 50%;
+    border: 2px solid rgba(122, 122, 122, 0.341);
+    padding: .01rem;
+    height: 126px;
+    width: 126px;
+}
+
+.testimonial-text {
+    width: 70%;
+    line-height: 2rem;
+    font-weight: 300;
+    margin: 0 auto;
+}
+
+.name {
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #242254;
+}
+
+.designation {
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.pagination-gap {
+    margin-bottom: 12rem;
+}
+
+.swiper-button-next {
+    background-image: url(../images/home/chevron-right-solid.svg);
+    background-repeat: no-repeat;
+    background-size: 60% auto;
+    background-position: center;
+}
+
+.swiper-button-next::after {
+    display: none;
+}
+
+
+.swiper-button-prev {
+    background-image: url(../images/home/chevron-left-solid.svg);
+    background-repeat: no-repeat;
+    background-size: 60% auto;
+    background-position: center;
+}
+
+.swiper-button-prev::after {
+    display: none;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #000 !important;
+}
+
+
+.divider {
+    width: 98%;
+    height: 1px;
+    background: #e8e7ed;
+    margin: 0 auto;
+}
+
+
+
+/* / new footer design / */
+.footer-new {
+    position: relative;
+    background-color: #181739F0;
+}
+
+#footer-divider {
+    width: 10%;
+}
+
+.footer-title {
+    font-size: 47px;
+    font-weight: 600;
+}
+
+.footer-details {
+    font-size: 14px;
+    width: 65%;
+}
+
+.footer-link {
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.acknowladgement {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 3px;
+}
+
+.footer-bottom-details {
+    font-size: 14px;
+    margin-bottom: 3rem;
+    width: 75%;
+}
+
+.overlay-image {
+    position: absolute;
+    background: url("../images/home/indigenous-art.jpg") center/contain;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* / just to show you the text is still there! / */
+    opacity: 0.05;
+}
+
+.magic-background-video{
+    display: block;
+}
+.magic-background-img{
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    .px-10 {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .img-position {
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .px-10 {
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+    }
+
+    .form-control, form label {
+        font-size: 14px !important;
+    }
+
+    .widget-wrap {
+        height: 500px;
+    }
+
+    #responsive-banner-title h1{
+        font-size: 2.5rem;
+    }
+    #magic-video-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .magic-background-video{
+        display: none !important;
+    }
+    .magic-background-img{
+        display: block !important;
+    }
+
+    .banner-title{
+        line-height: 3rem !important;
+        width: 98% !important;
+    }
+
+    .banner-bottom-img{
+        height: 180px;
+        width: 90%;
+        top: -4rem;
+        margin: 0 auto;
+    }
+
+
+
+    .magic-video-details {
+        font-size: 16px;
+        line-height: 1.3em;
+        width: 95%;
+    }
+
+    .magic-video-details-italic {
+        font-size: 16px;
+        line-height: 1.5em;
+        letter-spacing: 1px;
+        width: 95%;
+    }
+
+    .education-forever-title {
+        font-size: 40px;
+        font-weight: 900;
+    }
+
+    .entrepreneurship-title {
+        font-size: 30px;
+        font-weight: 500;
+        padding-right: 2rem;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .entrepreneurship-details {
+        width: 100%;
+    }
+
+    .saying-title {
+        font-size: 32px !important;
+        font-weight: 700;
+    }
+
+    .footer-top-img img {
+        width: 243px;
+        height: 230px;
+    }
+
+    #footer-section-title {
+        font-size: 32px;
+    }
+
+    #footer-section-details {
+        font-size: 14px;
+        width: 98%;
+    }
+
+    #footer-middle-img img {
+        width: 138px;
+        height: 43px;
+    }
+
+    #footer-bottom {
+        font-size: 12px;
+        margin-bottom: 3rem;
+        width: 98%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .footer-logo {
+        padding-bottom: 1rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+    }
+}
+
+
+
+
+/*----------------------- Projects page -------------------*/
+.vert-center-text {
+    position: absolute;
+    top: 25%;
+    left: 0;
+    text-align: center;
+    width: 100%;
+}
+
+#project-video {
+    top: 25%;
+}
+
+.vert-center-text h1 {
+    color: white;
+    font-size: 5rem;
+    line-height: 1;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 900;
+}
+
+.vert-center-container {
+    position: relative;
+    background-image: linear-gradient(180deg, #223554C9 0%, #242254 100%);
+
+}
+
+video {
+    object-fit: fill;
+    width: 100%;
+    opacity: 0.5;
+}
+
+
+.title-details {
+    margin: 0 auto;
+    letter-spacing: 1px;
+    line-height: 2rem;
+    width: 60%;
+}
+
+.mojaic {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    background: white;
+    top: -0.37rem;
+}
+
+/* top projects */
+.top-project {
+    color: #242254;
+    font-weight: 900;
+    font-size: 38px;
+}
+
+.button {
+    background-color: #bbb;
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    font-family: 'Nunito Sans', sans-serif;
+    ;
+}
+
+.project-card {
+    border: 1px solid #52575d4d;
+    border-radius: .5rem;
+}
+
+.project-img {
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+
+.project-title {
+    color: #242254;
+    font-size: 20px;
+    line-height: 21px;
+}
+
+.project-details {
+    font-size: 14px;
+    font-weight: 200;
+}
+
+.price-title {
+    color: #b81242;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.price-divider {
+    width: 50px;
+    height: 2px;
+    background: #b81242;
+}
+
+.price {
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.information-section {
+    margin-top: 6rem;
+}
+
+.information-title {
+    color: #242254;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.information-divider {
+    width: 80px;
+    height: 2px;
+    background: #242254;
+}
+
+.girl-pencil-img img,
+.girl-pencil-details {
+    padding: 0 35px;
+    text-align: justify;
+}
+
+.girl-pencil-details {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.8em;
+}
+
+.girl-computer-img img {
+    padding: 35px;
+}
+
+/* Millions of children across */
+.millionsOfChild-section {
+    position: relative;
+    background-color: #181739F0;
+}
+
+
+
+.millionsOfChild-overlay-image {
+    position: absolute;
+    background: url("../images/project/projects-hero.jpg") center/contain;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.13;
+}
+
+.millionsOfChild-section {
+    margin-top: 7rem;
+}
+
+.millionsOfChild-section h1 {
+    color: white;
+    padding: 3rem 4rem 1.8rem 4rem;
+    font-size: 3.7rem;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0px;
+}
+
+.millionsOfChild-section p {
+    font-size: 26px;
+    line-height: 1;
+}
+
+.millionsOfChild-section-divider {
+    width: 60px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.35);
+    margin: 0 auto;
+}
+
+
+#given-kids-img {
+    padding-top: 2rem;
+}
+
+
+.gavin-building-img img {
+    height: 100%;
+}
+
+
+
+/* exprience */
+#experience-overlay-image {
+    background: url("../images/project/boys-playing.jpg") center/contain;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+@media screen and (max-width: 576px) {
+    .home-top-video{
+        height: 400px !important;
+    }
+    #responsive-banner-title{
+        top: 7% !important;
+    }
+    #responsive-banner-title img{
+        display: none;
+    }
+    #project-video h1 {
+        font-size: 25px;
+    }
+
+    .title-details {
+        width: 90%;
+    }
+
+    .top-project {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .information-title {
+        font-size: 30px;
+    }
+
+    #information-title {
+        padding: 0 35px;
+    }
+
+    #millionsOfChild-title {
+        font-size: 30px;
+    }
+
+    #millionsOfChild-details {
+        font-size: 20px;
+        width: 90%;
+    }
+
+    .gavin-building-img {
+        padding: 0 35px;
+        height: 100% !important;
+    }
+
+    .millionsOfChild-section h1 {
+        color: white;
+        font-size: 1.7rem;
+        line-height: 1;
+        font-weight: 500;
+        letter-spacing: 0px;
+    }
+
+    .millionsOfChild-section p {
+        font-size: 20px;
+    }
+
+    .millionsOfChild {
+        margin-top: 3rem;
+    }
+    .testimonial{
+        padding-left: 1rem !important;
+        
+    }
+    .bottom-testimonial{
+        justify-content: left !important;
+    }
+    .testimonial-one-section{
+        padding-right: 0 !important;
+    }
+    .count-number{
+        font-size: 45px !important;
+    }
+    .count-title{
+        font-size: 16px !important;
+    }
+}
+
+
+
+/* Course page */
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.top-bg {
+    background: linear-gradient(#292254, #B71242);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+/* .top-img img{
+  display: flex;
+  align-items: center;
+} */
+
+.button {
+    background-color: #bbb;
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    border: none;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.course-title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.course-details {
+    font-size: 16px;
+    font-weight: 300;
+
+}
+
+.top-title {
+    color: #fdcf60;
+}
+
+.banner-text {
+    padding-left: 6rem;
+}
+
+.top-details {
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.top-italic {
+    font-style: italic;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.magic-video-details-italic {
+    font-style: italic;
+    font-family: "Nunito Sans", Sans-serif;
+    font-size: 22px;
+    line-height: 1.8em;
+    letter-spacing: 1.1px;
+    margin-top: 1.5rem;
+    font-weight: 700;
+}
+
+@media screen and (max-width: 992px) {
+    .banner-text {
+        padding-left: 0rem;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .banner-img img {
+        width: 50%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Dear World */
+.top-banner-left-side{
+    font-family: 'Gaegu', cursive;
+    margin-top: 1rem;
+    font-size: 23px;
+    color: #242254;
+}
+#italic{
+    font-style: italic;
+}
+
+.top-banner-right-side{
+    padding: 3rem;
+}
+button{
+    font-family: "Nunito Sans", Sans-serif;
+    font-size: 17px;
+    letter-spacing: 0.5px;
+    color: #181739;
+}
+
+/* Goals section */
+.goal-focus{
+    font-family: "Lexend", Sans-serif;
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 1.2em;
+    color: #242254;
+    font-style: italic;
+    padding-top: 5rem;
+}
+
+/* .iframe-container{
+    position: relative;
+    width: 90%;
+    height: auto;
+} */
+
+.iframe-container iframe{
+    width: 90%;
+    height: 650px;
+}
+
+.goal-video-details{
+    color: #242254;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.8em;
+    width: 90%;
+    margin: 1rem auto 3rem auto;
+    text-align: center;
+}
+
+.goal-type-title{
+    font-family: "Kumbh Sans", sans-serif;
+    font-weight: 700;
+    color: #242254;
+    margin-top: 1rem;
+    
+}
+
+.goal-type-container{
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+.goal-type-container iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* FAQ's section */
+.faqs-container {
+    padding: 2rem 6rem;
+    background-color: #f8f8f8;
+  }
+
+  #faqs .accordion-button {
+    padding: 1rem 0;
+    background-color: #f8f8f8;
+  }
+
+  #faqs .accordion-button:not(.collapsed) {
+    background-color: #f8f8f8;
+  }
+
+  #faqs .accordion-body {
+    padding-left: 0;
+    background-color: #f8f8f8;
+    font-family: 'Kumbh Sans', Sans-serif;
+    color: inherit;
+    line-height: 1.8em;
+  }
+
+/* dear world message container */
+.dear-world-message-container {
+    margin-top: 8rem;
+    padding: 0 17rem;
+  }
+
+  .dear-world-message-form {
+    padding: 3rem;
+    background-color: #f8f8f8;
+    box-shadow: 0 0px 4px 0px rgba(0, 0, 0, 0.2);
+  }
+@media all and (max-width: 992px) {
+    /* dear world message container */
+    .dear-world-message-container {
+      padding: 0;
+    }
+
+    .dear-world-message-form {
+      padding: 1rem;
+    }
+    .iframe-container iframe{
+        width: 90%;
+        height: 500px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .iframe-container iframe{
+        width: 80%;
+        height: 350px;
+    }
+
+    .sm-ful{
+        width: 100% !important;
+    }
+
+    .goal-bottom-btn{
+        display: flex;
+        justify-content: center;
+        padding-bottom: 1rem;
+    }
+}
+
+
+/* Build a library */
+
+/* banner section */
+.banner-section {
+    background-color: #242254;
+}
+
+.yelloe-text-color {
+    color: #fdcf60;
+    ;
+}
+
+.free-program {
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.2;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.build-library {
+    font-size: 57px;
+    font-weight: 800;
+    line-height: 1.3em;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.banner-details {
+    font-size: 20px;
+    font-weight: normal;
+    text-transform: none;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 25px;
+    letter-spacing: 0px;
+}
+
+.underline-text {
+    font-family: "Nunito Sans", Sans-serif;
+    font-weight: 300;
+}
+
+.box-img {
+    position: relative;
+}
+
+.box-img div {
+    height: 150px;
+    width: 150px;
+    background-color: #b81242;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+
+/* counter section */
+.count-number {
+    color: #242254;
+    font-size: 69px;
+    line-height: 1;
+    font-family: "Arial", Sans-serif;
+}
+
+.count-title {
+    color: #242254;
+    font-family: "Nunito Sans", Sans-serif;
+    font-weight: 300;
+    line-height: 1.4em;
+    font-size: 20px;
+}
+
+.counter-section {
+    background-color: #fdcf60;
+}
+
+/* body title section */
+.heading-title {
+    font-family: 'Kumbh Sans', sans-serif;
+    color: #242254;
+    font-size: 75px;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 95px;
+    letter-spacing: -2px;
+}
+
+.heading-title-cover {
+    width: 53%;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+}
+
+.heading-title-cover p {
+    font-family: "Nunito Sans", Sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    text-transform: none;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 25px;
+    letter-spacing: 0px;
+}
+
+#heading-title-part-1 {
+    font-size: 20px;
+    font-weight: 300;
+    margin: 0;
+}
+
+.heading-title-part-2 {
+    color: #b81242;
+    font-family: "Nunito Sans", Sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 2rem 0 1.3rem 0;
+}
+
+
+
+.heading-btn a {
+    text-decoration: none;
+    font-family: "Nunito Sans", Sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    text-transform: capitalize;
+    letter-spacing: 0.2px;
+    background-color: #b81242;
+    padding: .5rem 1rem;
+    color: white;
+    border-radius: 2px;
+}
+
+
+
+/* Then style the iframe to fit in the container div with full height and width */
+.responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* back to top button */
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    outline: none;
+    background-color: #444444;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #444444;
+}
+
+
+#video-info {
+    background-image: none;
+}
+
+#video-info video {
+    width: 55%;
+    opacity: 1;
+    margin-bottom: 4rem;
+}
+
+/* Discription */
+
+.discription {
+
+    width: 55%;
+    margin: 0 auto;
+}
+
+.discription p {
+    color: #242254;
+    font-size: 38px;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 50px;
+    letter-spacing: -2px;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.discription-text {
+    color: #b81242;
+    font-family: "Nunito Sans", Sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.discription-1 {
+    width: 55%;
+    margin: 0 auto;
+}
+
+#video-above {
+    font-size: 18px;
+    font-weight: 300;
+}
+
+/* how it work section */
+.work-title {
+    font-size: 60px;
+    font-weight: bold;
+    margin-top: 5rem;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.steps-section {
+    width: 35%;
+    margin: 0 auto;
+}
+
+.steps-divider {
+    height: 1px;
+    width: 100%;
+    background: #000;
+    margin-bottom: 3.5rem;
+}
+
+.step-details {
+    columns: #242254;
+    font-family: "Nunito Sans", Sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    text-transform: none;
+    font-style: normal;
+    line-height: 25px;
+    margin-bottom: 3.5rem;
+}
+
+/* five parts */
+#five-parts-top-btn {
+    margin-bottom: 10rem;
+}
+
+.five-parts p {
+    font-size: 25px;
+    font-weight: bold;
+    text-transform: capitalize;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 1.2em;
+    letter-spacing: -0.7px;
+}
+
+.five-parts-details p {
+    color: #242254;
+    font-family: "Questrial", Sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    text-transform: none;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 22px;
+    letter-spacing: -0.6px;
+}
+
+/* points with video section */
+
+.pointwith-video-section {
+    padding: 0 7rem;
+}
+
+#myPintsVideo {
+    object-fit: none;
+    width: 100%;
+    opacity: 1;
+}
+
+.points-title {
+    font-family: "Poppins", Sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-style: normal;
+    text-decoration: none;
+    color: white;
+    line-height: 1.3em;
+    letter-spacing: 0px;
+    padding-left: 1.5rem;
+}
+
+.points {
+    margin: 6rem 0 0 4rem;
+}
+
+.points div {
+    margin-bottom: 5rem;
+}
+
+.icon-font {
+    font-size: 40px;
+}
+
+
+.principal-comments {
+    margin: 7rem 0;
+}
+
+.identity {
+    color: #242254;
+    font-family: "Nunito Sans", Sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    text-transform: none;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 25px;
+    letter-spacing: 0px;
+}
+
+
+
+/* resource section */
+.resource-text {
+    color: #242254;
+    font-size: 45px;
+    font-weight: bold;
+    line-height: 50px;
+    letter-spacing: -2px;
+}
+
+.click-img {
+    color: #242254;
+    font-family: "Nunito Sans", Sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: normal;
+    line-height: 25px;
+    letter-spacing: 0px;
+    font-style: italic;
+}
+
+.teacher-name {
+    font-family: "Nunito Sans", Sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    text-transform: none;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 25px;
+    letter-spacing: 0px;
+    font-style: italic;
+}
+
+/* sample program */
+.sample-divider {
+    height: 1px;
+    width: 250px;
+    background: #000;
+}
+
+.sample-text {
+    color: #242254;
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 38px;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 50px;
+    letter-spacing: -2px;
+    margin-bottom: 2rem;
+}
+
+.click-explain {
+    color: #242254;
+    font-family: "Nunito Sans", Sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    text-transform: none;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 25px;
+    letter-spacing: 0px;
+    margin-bottom: 2rem
+}
+
+#swiper-bottom {
+    margin-bottom: 5rem;
+}
+
+/* experienced school builders */
+
+/* some common question */
+
+.ask-question {
+    font-size: 38px;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 50px;
+    letter-spacing: -2px;
+    color: #242254;
+}
+
+.question-description {
+    color: #242254;
+    font-family: "Nunito Sans", Sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: normal;
+    line-height: 25px;
+    letter-spacing: 0px;
+}
+
+.accordion-body.build-a-library {
+    border-width: 1px;
+    font-family: "Nunito Sans", Sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    text-transform: none;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 1.2em;
+    letter-spacing: 0.1px;
+    padding: 0% 25% 5% 2%;
+    color: #000;
+}
+
+/* padding */
+.px-10 {
+    padding-left: 10rem;
+    padding-right: 10rem;
+}
+
+.px-20 {
+    padding-left: 20rem;
+    padding-right: 20rem;
+}
+
+.grid-container {
+    display: grid;
+    column-gap: 2rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.icon-box-wrapper {
+    text-align: left;
+    display: block;
+}
+
+.icon-box-icon {
+    margin: 40px 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.icon-style {
+    display: inline-block;
+    line-height: 1;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    fill: #ffffff;
+    color: #ffffff;
+    font-size: 43px;
+    padding: 13px;
+    border-radius: 0px 0px 0px 0px;
+}
+
+.icon-style i {
+    width: 1em;
+    height: 1em;
+    position: relative;
+    display: block;
+}
+
+.icon-box-content {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+}
+
+.icon-box-title {
+    margin: 0;
+    margin-bottom: 20px;
+    color: #242254;
+    font-size: 25px;
+    font-weight: bold;
+    text-transform: capitalize;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 1.2em;
+    letter-spacing: -0.7px;
+}
+
+.icon-box-description {
+    min-height: 0 !important;
+    margin: 0;
+    color: #242254;
+    font-size: 16px;
+    font-weight: 300;
+    text-transform: none;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 22px;
+    letter-spacing: -0.6px;
+}
+
+.widget-wrap {
+    background-image: url(https://v9p02y041n1.c.updraftclone.com/wp-content/uploads/2022/04/7736bf08-c9f4-413d-bd1f-2999c0264109.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.questions-image {
+    width: 80%;
+    margin-top: 5rem;
+}
+
+form label {
+    padding: 0.5rem 0;
+}
+
+/* accordion */
+.accordion-button {
+    color: #242254;
+    padding: 2rem 0;
+    font-family: 'Nunito Sans', Sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 1.1em;
+    letter-spacing: 0px;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #242254;
+    background-color: #fff;
+    box-shadow: none;
+}
+
+.accordion-body {
+    border-width: 1px;
+    color: #b81242;
+    font-family: 'Nunito Sans', Sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    text-transform: none;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 1.2em;
+    letter-spacing: 0.1px;
+    /* padding: 0% 25% 5% 2%; */
+}
+
+
+/* Apply section */
+.apply-img {
+    background-image: url(../images/build-a-library/pencil.jpg);
+    background-repeat: no-repeat;
+    height: 800px;
+    background-position: center center;
+}
+
+.apply-section {
+    background-color: #fdcf60;
+}
+
+.apply-section h1 {
+    color: #242254;
+    font-size: 60px;
+    font-weight: bold;
+    text-transform: capitalize;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 62px;
+    letter-spacing: -2px;
+    margin-top: 4rem;
+    margin-left: 4rem;
+}
+
+.apply-section p {
+    color: #242254;
+    margin-top: 3rem;
+    margin-left: 4rem;
+}
+
+.apply-box {
+    background-color: #242254;
+    height: 42%;
+    width: 60%;
+    margin: 5rem auto;
+    border: 1px solid #242254;
+    border-radius: 8px;
+
+}
+
+.apply-box h1 {
+    margin: 2rem 0 0 0;
+
+}
+
+.apply-box p {
+    margin: 1rem 0 0 0;
+    font-size: 1.6em;
+    font-weight: 400;
+}
+
+#join-text {
+    font-size: 1.2em;
+    font-weight: 200;
+    padding: 0 2em;
+}
+
+#question-text {
+    font-size: 1em;
+    font-weight: 200;
+    margin-top: 2em;
+}
+
+.start-btn {
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    background-color: #fdcf60;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+/* Build a library responsive */
+
+@media screen and (max-width: 576px) {
+
+    .box-img div {
+        height: 50px;
+        width: 50px;
+    }
+
+    .first-count {
+        padding-top: 3rem;
+    }
+
+    #video-info video {
+        width: 100%;
+        opacity: 1;
+        margin-bottom: 4rem;
+        height: 300px;
+    }
+
+    .heading-title {
+        font-size: 40px;
+        line-height: 2.5rem;
+    }
+
+    .heading-title-cover {
+        width: 95%;
+    }
+
+    .discription {
+        width: 95%;
+        font-size: 30px;
+    }
+
+    .discription-1 {
+        width: 95%;
+    }
+
+    .work-title {
+        font-size: 40px;
+        margin-top: 1rem;
+    }
+
+    .steps-section {
+        width: 80%;
+        margin-bottom: 1.5rem;
+    }
+
+    .step-details {
+        margin-bottom: 1.5rem;
+    }
+
+    .pointwith-video-section {
+        padding: 0;
+    }
+
+    .points-title {
+        font-size: 20px;
+        line-height: 1em;
+        padding-left: 1rem;
+    }
+
+    .points div {
+        margin-bottom: 2rem;
+    }
+
+    .apply-section h1 {
+        font-size: 40px;
+        margin-top: 1.5rem;
+        margin-left: 2rem;
+    }
+
+    .apply-section p {
+        color: #242254;
+        margin-top: .5rem;
+        margin-left: 2rem;
+    }
+
+    .apply-box {
+        background-color: #242254;
+        height: 60%;
+        width: 90%;
+        margin: 1rem auto;
+        border: 1px solid #242254;
+        border-radius: 8px;
+        padding: 2rem 0 5rem 0;
+
+    }
+
+    .apply-box h1 {
+        margin: 1rem 0 0 0;
+
+    }
+
+    .apply-box p {
+        margin: 1rem 0 0 0;
+        font-size: 1em;
+        font-weight: 400;
+    }
+
+    
+
+}
+
+
+
+/* Write a books */
+
+/* banner section */
+#book-banner-details,
+#book-banner-text {
+    padding-right: 8rem;
+}
+
+.timer {
+    font-size: 54px;
+    color: #fec503;
+    line-height: 1;
+    margin-bottom: 2px;
+    padding-top: 1rem;
+}
+
+#informatic-video {
+    width: 100%;
+}
+
+.video-top-text {
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #242254;
+}
+
+.download-document {
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: #242254;
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    color: #FFFFFF;
+}
+
+#write-book-work-title,
+.video-lession-title {
+    color: #242254;
+    font-size: 40px;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 50px;
+    letter-spacing: -2px;
+}
+
+#write-book-work-details {
+    color: #292254;
+    margin: 0 auto;
+}
+
+.course-work p {
+    color: #242254;
+    font-family: "Nunito Sans", Sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: none;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 25px;
+    letter-spacing: 0px;
+}
+
+
+/* explanation section */
+.explanation-title {
+    font-family: 'Kumbh Sans', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.explanation-text {
+    width: 30%;
+    margin: 0 auto;
+}
+
+#video-info div .small-size {
+    width: 500px;
+    opacity: 1;
+}
+
+.five-parts-title {
+    color: #b81242;
+    font-family: "Caveat", Sans-serif;
+    font-size: 45px;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 50px;
+    letter-spacing: -2px;
+}
+
+.icon-style {
+    display: inline-block;
+    line-height: 1;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    fill: #ffffff;
+    color: #ffffff;
+    font-size: 43px;
+    padding: 13px;
+    border-radius: 0px 0px 0px 0px;
+    color: #b81242;
+    font-size: 50px
+}
+
+.widget-container {
+    width: 60%;
+    margin: 0 auto;
+}
+
+/* simple video lession section */
+.video-lession-title {
+    background-color: #F4F4F4 !important;
+}
+
+/* form section */
+.form-heading-title {
+    padding: 1rem 0;
+    color: #242254;
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 50px;
+    letter-spacing: -2px;
+    text-align: start !important;
+}
+
+.heading-title-details {
+    color: #242254;
+    font-family: "Lexend", Sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    text-transform: none;
+}
+
+.btn-register, .btn-submit {
+    padding: 0.8rem 2rem;
+    font-size: 14px;
+    background: #242254;
+    color: #fff;
+    font-family: nunito sans !important;
+    font-weight: 300 !important;
+    letter-spacing: 0px !important;
+    line-height: 15px;
+    position: relative;
+    display: inline-block;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    -ms-transition: all 0.35s;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+input,
+select {
+    box-shadow: 0 0px 4px 0px rgba(0, 0, 0, 0.2);
+    border: none;
+}
+
+@media screen and (max-width: 576px) {
+    .download-document {
+        font-size: 12px;
+        align-items: center;
+    }
+
+    .btn-downlodPlanning a {
+        display: flex;
+        justify-content: center;
+    }
+
+    .explanation-text {
+        width: 95%;
+    }
+
+    #video-info .small-size {
+        width: 150px;
+        height: 150px;
+    }
+
+    .pointwith-video-section {
+        padding: 0;
+    }
+
+    .widget-container {
+        width: 95%;
+        margin: 0 auto;
+    }
+}
