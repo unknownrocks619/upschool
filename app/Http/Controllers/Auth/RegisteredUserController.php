@@ -90,8 +90,8 @@ class RegisteredUserController extends Controller
                 if ($canva) {
                     $canva->save();
                 }
+                (Notification::send($user, new RegistrationNotification($user)));
             });
-            (Notification::send($user, new RegistrationNotification($user)));
         } catch (\Throwable $th) {
             //throw $th;
             dd($th->getMessage());

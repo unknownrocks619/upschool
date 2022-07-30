@@ -49,6 +49,7 @@ class ResetPasswordLinkNotification extends Notification
 
         return (new MailMessage)
             ->subject("Password Reset Request, Upschool.co")
+            ->from("Upschool.co")
             ->markdown('frontend.mail.user.ResetPasswordMail', compact('user', 'token'));
         // return (new MailMessage)
         //     ->line('The introduction to the notification.')
