@@ -102,7 +102,7 @@
                                 </div>
                             </div>
                         </div>
-                        @if( ! auth()->user()->verify_email->verified)
+                        @if( ! isset(auth()->user()->verify_email) || ! auth()->user()->verify_email->verified)
                         <div class="row mt-3 alert alert-danger">
                             <div class="col-md-12">
                                 Your account is not verified. Please verify your account for uninterrupted service.
