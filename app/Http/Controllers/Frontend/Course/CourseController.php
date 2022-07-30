@@ -20,6 +20,7 @@ class CourseController extends Controller
 
     public function watch()
     {
+        dd("This featured is disabled by admin.");
         return view('frontend.courses.watch');
     }
 }
