@@ -21,6 +21,6 @@ Route::get('/sms', [Sms::class, "volunteer_sms"]);
 // });
 
 
-require __DIR__ . "/frontend/web.php";
 require __DIR__ . "/admin/web.php";
 require __DIR__ . '/auth.php';
+require __DIR__ . "/frontend/web.php";

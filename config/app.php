@@ -206,7 +206,7 @@ return [
         /**
          * Custom Build
          */
-        \Validation\Captcha\CaptchaServiceProvider::class,
+        // \Validation\Captcha\CaptchaServiceProvider::class,
         \Upload\Media\UploadServiceProvider::class
 
     ],
