@@ -8,13 +8,6 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/register/verification/', [UserController::class, "verfiyEmail"])->name('user.registration.verification');
 
 /**
- * Public Group
- */
-Route::name('frontend.')->group(function () {
-    Route::get("/", [HomeController::class, "index"])->name("home");
-    // Route::get("/{slug}", [HomeController::class, "detail"])->name('view');
-});
-/**
  * Auth Group
  */
 Route::name('frontend.')->middleware(["auth"])->group(function () {
@@ -94,4 +87,12 @@ Route::name('frontend.')->group(function () {
             Route::get("reset/verify/{token}", 'verifyResetLink')->name('verify_reset');
             Route::post("reset/verify/{user}", 'updatePassword')->name('reset.confirm');
         });
+});
+
+/**
+ * Public Group
+ */
+Route::name('frontend.')->group(function () {
+    Route::get("/", [HomeController::class, "index"])->name("home");
+    Route::get("/{slug}", [HomeController::class, "detail"])->name('view');
 });

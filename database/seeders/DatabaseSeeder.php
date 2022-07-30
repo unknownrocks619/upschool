@@ -120,12 +120,12 @@ class DatabaseSeeder extends Seeder
             "created_at" => Carbon::now(),
             "updated_at" => Carbon::now()
         ]);
-        WebSetting::factory()->create([
-            "name" => "logo",
-            "value" => "logo.png",
-            "created_at" => Carbon::now(),
-            "updated_at" => Carbon::now()
-        ]);
+        // WebSetting::factory()->create([
+        //     "name" => "logo",
+        //     "value" => "logo.png",
+        //     "created_at" => Carbon::now(),
+        //     "updated_at" => Carbon::now()
+        // ]);
         WebSetting::factory()->create([
             "name" => "loading_bar",
             "value" => true,

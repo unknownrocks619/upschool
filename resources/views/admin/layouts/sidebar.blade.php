@@ -26,12 +26,12 @@
                             <span class="link-title">Website</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="pages/apps/chat.html" class="nav-link">
                             <i class="link-icon" data-feather="message-square"></i>
                             <span class="link-title">Interaction</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item nav-category">Components</li>
                     <li class="nav-item">
                         <a class="nav-link {{ active_route(['admin.web.category.index']) }}" href="{{ route('admin.web.category.index')  }}">
@@ -71,16 +71,10 @@
                         <div class="collapse" id="forms">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="pages/forms/basic-elements.html" class="nav-link">Basic Elements</a>
+                                    <a href="#" onclick="alert('core feature disabled. Access using wordpress')" class="nav-link">List</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/forms/advanced-elements.html" class="nav-link">Advanced Elements</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/forms/editors.html" class="nav-link">Editors</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/forms/wizard.html" class="nav-link">Wizard</a>
+                                    <a href="#" onclick="alert('Core feature disabled. Access using wordpress')" class="nav-link">Add new Post</a>
                                 </li>
                             </ul>
                         </div>
@@ -94,22 +88,10 @@
                         <div class="collapse" id="charts">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="pages/charts/apex.html" class="nav-link">Apex</a>
+                                    <a href="#" onclick="alert('Module Not available')" class="nav-link">List</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/charts/chartjs.html" class="nav-link">ChartJs</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/flot.html" class="nav-link">Flot</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/morrisjs.html" class="nav-link">Morris</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/peity.html" class="nav-link">Peity</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/sparkline.html" class="nav-link">Sparkline</a>
+                                    <a href="#" onclick="alert('Module not available')" class="nav-link">Add new Blog</a>
                                 </li>
                             </ul>
                         </div>
@@ -131,7 +113,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#icons" role="button" aria-expanded="false" aria-controls="icons">
                             <i class="link-icon" data-feather="smile"></i>
                             <span class="link-title">Projects</span>
@@ -150,7 +132,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </li>
+                    </li> -->
                     <li class="nav-item nav-category">Plugins</li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.org.org.index') }}">
@@ -175,17 +157,17 @@
                                 <li class="nav-item">
                                     <a href="{{ route('admin.chapter.chapter.index') }}" class="nav-link {{ active_route(['admin.chapter.chapter.index'])  }}">Chapters</a>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a href="pages/general/profile.html" class="nav-link">Lession</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="pages/general/pricing.html" class="nav-link">Resources</a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </li>
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" role="button" aria-expanded="false" aria-controls="general-pages">
                             <i class="link-icon" data-feather="book"></i>
                             <span class="link-title">Lessions</span>
@@ -213,8 +195,8 @@
                                 </li>
                             </ul>
                         </div>
-                    </li>
-                    <li class="nav-item">
+                    </li> -->
+                    <!-- <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" role="button" aria-expanded="false" aria-controls="general-pages">
                             <i class="link-icon" data-feather="book"></i>
                             <span class="link-title">Resources</span>
@@ -242,7 +224,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </li>
+                    </li> -->
 
                     <li class="nav-item nav-category">Users</li>
                     <li class="nav-item">
