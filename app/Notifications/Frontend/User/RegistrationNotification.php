@@ -63,7 +63,7 @@ class RegistrationNotification extends Notification
         }
         return (new MailMessage)
             ->subject("Verify Your Email")
-            ->from("Upschool.co")
+            ->from("noreply@upschool.co")
             ->markdown("frontend.mail.user.registration", compact('verificationUrl', 'first_name'));
     }
 
