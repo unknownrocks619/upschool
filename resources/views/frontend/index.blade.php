@@ -2,6 +2,9 @@
 
 
 @section('content')
+<h3>
+    WP Integration Failed. Unable to load data.
+</h3>
 @endsection
 
 @push("custom_scripts")

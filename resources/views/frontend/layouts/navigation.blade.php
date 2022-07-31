@@ -7,7 +7,7 @@
             <div class="container p-0">
                 <div class="header-left">
                     <div>
-                        <a href="{{-- route('frontend.home') --}}">
+                        <a href="{{ route('frontend.home') }}">
                             <img src="{{ asset('frontend/images/global/logo.png') }}" alt="{{ settings('website_name') }}" height="30" />
                         </a>
                     </div>
@@ -41,7 +41,7 @@
         <nav id="navbar_main" class="mobile-offcanvas navbar navbar-expand-lg navbar-light p-0">
             <div class="d-flex" style="width: 100%">
                 <div class="nav-cont d-lg-flex" style="width: 100%">
-                    <a class="navbar-text d-none d-lg-block" href="{{-- route('frontend.home') --}}">
+                    <a class="navbar-text d-none d-lg-block" href="{{ route('frontend.home') }}">
                         <img src="{{ asset(settings('logo')) }}" class="py-2" height="60" />
                     </a>
                     <div class="d-flex align-items-center justify-content-between" style="background-color: #f1f2f6">
