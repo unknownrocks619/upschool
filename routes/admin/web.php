@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Course\LessionController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\Organisation\OrganisationController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\Post\PostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\User\UserController as Users;
 use App\Http\Controllers\Admin\WebSettingController;
@@ -171,6 +172,10 @@ Route::prefix("upschool/admin")
                 Route::resource("chapter.lession", LessionController::class);
             });
 
+        /**
+         * Users
+         */
+
         Route::prefix("users")
             ->name("users.")
             ->controller(Users::class)
@@ -180,5 +185,20 @@ Route::prefix("upschool/admin")
                 Route::get('/canva/status/{canva}', "canvaUserStatus")->name("canva.status");
                 Route::patch("/ban/{user}", "banUser")->name("user.ban");
                 Route::resource("user", Users::class);
+            });
+
+        /**
+         * Post
+         */
+        Route::prefix("posts")
+            ->name('posts.')
+            ->controller(PostController::class)
+            ->group(function () {
+                Route::get("/widgets/{post}", "widgetView")->name('widgets');
+                Route::get("/widgets/modal/{post}", "widgetAdd")->name('widgets.create');
+                Route::post("/widgets/{post}", "widgetStore")->name('widgets.store');
+                Route::delete("/widgets/remove/{post}/{widget}", "widgetDestroy")->name('widgets.destroy');
+                Route::post("/remove/media/{post}", "removeMedia")->name("destroy_media");
+                Route::resource("post", PostController::class);
             });
     });

@@ -10,7 +10,7 @@ Pages
 @endsection
 
 @section("content")
-<x-layout heading="New Page">
+<x-layout heading="Widget Resource">
     <div class="card">
         <div class="card-body">
             <a class="btn btn-secondary mb-3" href="{{ route('admin.page.page.create') }}">

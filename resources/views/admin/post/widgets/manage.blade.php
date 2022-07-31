@@ -1,7 +1,7 @@
 @extends("themes.admin.master")
 
 @section("title")
-:: Pages ::{{ $page->page_name }} :: Widget Manager
+:: Pages ::{{ $post->title }} :: Widget Manager
 @endsection
 
 @section("plugins_css")
@@ -13,10 +13,10 @@
 <x-layout heading="Widget Resource">
     <div class="card">
         <div class="card-body">
-            <a data-bs-toggle='modal' data-bs-target="#add_widget" class="btn btn-secondary mb-3 add_widget" href="{{ route('admin.page.add_widget',$page->id) }}">
+            <a data-bs-toggle='modal' data-bs-target="#add_widget" class="btn btn-secondary mb-3 add_widget" href="{{ route('admin.posts.widgets.create',$post->id) }}">
                 <x-plus>Add More Widget</x-plus>
             </a>
-            <a class="btn btn-danger mb-3" href="{{ route('admin.page.page.index') }}">
+            <a class="btn btn-danger mb-3" href="{{ route('admin.posts.post.index') }}">
                 <x-arrow-left>Go Back</x-arrow-left>
             </a>
             <table class="table-bordered table">
@@ -31,7 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($page->widget as $widget)
+                    @foreach ($post->widgets as $widget)
                     <tr>
                         <td>{{ $widget->widget_name }}</td>
                         <td>{{ __("widget".$widget->widget_type) }}</td>
@@ -39,7 +39,7 @@
 
                         </td>
                         <td>
-                            <form action="{{ route('admin.page.destroy_widget',[$page->id,$widget->id]) }}" method="post" style="display:inline">
+                            <form onsubmit="return confirm('Are you sure? This action cannot be undone')" action="{{ route('admin.posts.widgets.destroy',[$post->id,$widget->id]) }}" method="post" style="display:inline">
                                 @csrf
                                 @method("DELETE")
                                 <button class="btn btn-outline-danger btn-xs" type="submit">

@@ -71,7 +71,7 @@
                         <div class="collapse" id="forms">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="#" onclick="alert('core feature disabled. Access using wordpress')" class="nav-link">List</a>
+                                    <a href="{{ route('admin.posts.post.index') }}" class="nav-link">List</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" onclick="alert('Core feature disabled. Access using wordpress')" class="nav-link">Add new Post</a>
