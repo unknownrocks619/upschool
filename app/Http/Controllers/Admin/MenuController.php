@@ -72,12 +72,12 @@ class MenuController extends Controller
     public function update(MenuUpdateRequest $request, Menu $menu)
     {
         $menu->menu_name = $request->menu_name;
-        if ($menu->isDirty("menu_name")) {
-            $menu->slug = ($request->slug) ? strtolower($request->slug) : Str::slug($request->menu_name, "-");
-        }
+        $menu->slug = ($request->slug) ? Str::slug($request->slug, "-") : Str::slug($request->menu_name, "-");
+        // if ($menu->isDirty("menu_name")) {
+        // }
 
         $menu->description = $request->menu_description;
-        $menu->parent_id = (!$request->parent_name) ? null : $request->parent_id;
+        $menu->parent_id = (!$request->parent_menu) ? null : $request->parent_menu;
         $menu->menu_position = $request->menu_position;
         $menu->active = $request->active_status;
         $menu->display_type = $request->display_type;
@@ -154,5 +154,32 @@ class MenuController extends Controller
 
         session()->flash('success', "Module Attached to menu");
         return redirect()->route('admin.menu.menu.index');
+    }
+
+    public function manageModule(Menu $menu)
+    {
+        // load by type.
+        $category = ($menu->menu_type == "category") ? $menu->load('categories') : null;
+        $courses = ($menu->menu_type == "course") ? $menu->load('courses') : null;
+        $pages = ($menu->menu_type == "page") ? $menu->load("pages") : null;
+        $posts = ($menu->menu_type == "post") ? $menu->load("posts") : null;
+
+        return view("admin.menu.manage", compact("menu", "category", "courses", "pages", 'posts'));
+    }
+
+    public function moduleDeatch(Request $request, Menu $menu, $deatch_id)
+    {
+        $relationship = $request->type;
+        try {
+            $menu->$relationship()->detach($deatch_id);
+        } catch (\Throwable $th) {
+            //throw $th;
+            dd($th->getMessage());
+            session()->flash("error", "Unable to unlink module.");
+            return back();
+        }
+
+        session()->flash("success", "Module Removed from menu.");
+        return back();
     }
 }

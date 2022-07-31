@@ -47,4 +47,9 @@ class Menu extends Model
     {
         return $this->morphedByMany(OrganisationProject::class, "menuable");
     }
+
+    public function posts()
+    {
+        return $this->morphedByMany(Post::class, "menuable");
+    }
 }

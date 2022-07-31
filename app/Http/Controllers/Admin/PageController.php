@@ -31,7 +31,7 @@ class PageController extends Controller
     {
         $page = new Page;
         $page->page_name = $request->page_name;
-        $page->slug = Str::slug($request->page_name);
+        $page->slug = Str::slug($request->page_name, "-");
         $page->excerpt = $request->short_description;
         $page->description = $request->page_description;
         $page->page_type = $request->page_type;
@@ -64,8 +64,8 @@ class PageController extends Controller
     public function update(PageStoreRequest $request, Page $page)
     {
         $page->page_name = $request->page_name;
+        $page->slug = ($request->slug) ? strtolower($request->slug) : Str::slug($request->page_name, "-");
         if ($page->isDirty("page_name")) {
-            $page->slug = ($request->slug) ? strtolower($request->slug) : Str::slug($request->page_name);
         }
         $page->excerpt = ($request->short_description) ? $request->short_description : $page->short_description;
         $page->description = $request->page_description;

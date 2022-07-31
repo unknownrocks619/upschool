@@ -62,7 +62,7 @@
                             </a>
                         </td>
                         <td>
-                            <a href="" class="btn btn-primary btn-xs">Manage Module</a>
+                            <a href="{{ route('admin.menu.manage_module',$menu->id) }}" class="btn btn-primary btn-xs">Manage Module</a>
                             <a class="px-0 mx-0 btn btn-xs btn-outline-info" href="{{ route('admin.menu.menu.edit',$menu->id) }}">
                                 <x-pencil>
                                 </x-pencil>
@@ -116,7 +116,7 @@
                             </a>
                         </td>
                         <td>
-                            <a href="" class="btn btn-primary btn-xs">Manage Module</a>
+                            <a href="{{ route('admin.menu.manage_module',$child_menu->id) }}" class="btn btn-primary btn-xs">Manage Module</a>
                             <a class="px-0 mx-0 btn btn-xs btn-outline-info" href="{{ route('admin.menu.menu.edit',$child_menu->id) }}">
                                 <x-pencil>
                                 </x-pencil>

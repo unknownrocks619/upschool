@@ -35,9 +35,9 @@ Route::prefix("upschool/admin")
                 Route::post('/reoder', "reOrder")->name('reorder');
                 Route::PUT('/reoder-single/{menu}', "reOrderSingle")->name('reorder_position');
                 Route::get('module-link/{menu}', "modulesOptions")->name('link_module_options');
-                // Route::get('module-link/{menu}', "modules")->name('link_module');
+                Route::get('module-link/manage/{menu}', "manageModule")->name('manage_module');
                 Route::post('module-link/{menu}', 'moduleAttach')->name('attach_module');
-                Route::post('module-unlink/{menu}/{deatch_id}', 'moduleDeatch')->name('deatch_module');
+                Route::delete('module-unlink/{menu}/{deatch_id}', 'moduleDeatch')->name('deatch_module');
                 Route::resource('menu', MenuController::class);
             });
 

@@ -24,8 +24,8 @@ class HomeController extends Controller
         $menu = Menu::where('slug', $slug)->first();
         $category = ($menu->menu_type == "category") ? $menu->load('categories') : null;
         $courses = ($menu->menu_type == "course") ? $menu->load('courses') : null;
-        $pages = ($menu->menu_type == "pages") ? $menu->load("pages") : null;
-
-        return view('frontend.detail');
+        $pages = ($menu->menu_type == "page") ? $menu->load("pages") : null;
+        $posts = ($menu->menu_type == "post") ? $menu->load("posts") : null;
+        return view('frontend.detail', compact("menu", "category", "courses", "pages", "posts"));
     }
 }

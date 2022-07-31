@@ -7,7 +7,7 @@
     <ul class="dropdown-menu">
         @foreach ( $menu->children as $child_menu)
         <li>
-            <a class="dropdown-item nav-text" href="{{-- menu_href($child_menu->menu_type,$child_menu->slug) --}}">
+            <a class="dropdown-item nav-text" href="{{ route('frontend.view',$child_menu->slug) }}">
                 {{ $child_menu->menu_name }}
             </a>
         </li>

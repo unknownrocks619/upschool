@@ -39,7 +39,7 @@
             </div class="d-flex">
             <div class="d-flex p-0">
                 @foreach (menus()->where("menu_position","footer_menu") as $menu)
-                <a class='text-white mb-0 @if( ! $loop->last) pe-3 @endif footer-link' href="">
+                <a class='text-white mb-0 @if( ! $loop->last) pe-3 @endif footer-link' href="{{ route('frontend.view',$menu->slug) }}">
                     {{ $menu->menu_name }}
                 </a>
                 @endforeach
