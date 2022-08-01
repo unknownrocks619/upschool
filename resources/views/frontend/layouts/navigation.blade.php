@@ -8,7 +8,7 @@
                 <div class="header-left">
                     <div>
                         <a href="{{ route('frontend.home') }}">
-                            <img src="{{ asset('frontend/images/global/logo.png') }}" alt="{{ settings('website_name') }}" height="30" />
+                            <img src="{{ asset(settings('logo')) }}" alt="{{ settings('website_name') }}" height="30" />
                         </a>
                     </div>
                 </div>

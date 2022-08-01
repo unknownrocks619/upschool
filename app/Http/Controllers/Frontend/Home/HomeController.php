@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\Home;
 
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,7 +13,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('frontend.index');
+        $page = Page::with(["widget"])->where('page_type', 'home')->first();
+        return view('frontend.index', compact("page"));
     }
 
     public function list()

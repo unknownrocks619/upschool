@@ -1,13 +1,17 @@
 @extends("themes.frontend.master")
-
+<?php
+$widgets = $page->widget;
+?>
 
 @section('content')
-<h3>
-    WP Integration Failed. Unable to load data.
+@include ("frontend.widgets.home",compact("widgets"))
+
+<h3>WP Integration Failed. Unable to load data.
 </h3>
 @endsection
 
 @push("custom_scripts")
+<script src="https://cdn.plyr.io/3.7.2/plyr.js"></script>
 <!-- Swiper JS -->
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <!-- Swiper JS -->
