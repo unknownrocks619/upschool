@@ -57,11 +57,14 @@ class PageController extends Controller
             session()->flash("error", "Unable to create page.");
             return back()->withInput();
         }
-
+        // dd("")
         session()->flash('success', "Page Created.");
         return back();
     }
-
+    public function edit(Page $page)
+    {
+        return view("admin.page.edit", compact("page"));
+    }
     public function update(PageStoreRequest $request, Page $page)
     {
         $page->page_name = $request->page_name;
@@ -134,6 +137,26 @@ class PageController extends Controller
         }
         session()->flash("success", "Widget Removed.");
 
+        return back();
+    }
+
+    public function destroy(Page $page)
+    {
+
+        try {
+            //code..
+            DB::transaction(function () use ($page) {
+                $page->widget()->detach();
+                $page->menus()->detach();
+                $page->delete();
+            });
+        } catch (\Throwable $th) {
+            //throw $th;
+            session()->flash("error", "Unable to delete Page.");
+            return back();
+        }
+
+        session()->flash("success", "Page Deleted.");
         return back();
     }
 }

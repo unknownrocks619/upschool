@@ -26,7 +26,7 @@ class PageStoreRequest extends FormRequest
         return [
             //
             "page_name" => "required|unique:pages,page_name",
-            "page_description" => "required",
+            // "page_description" => "nullable",
             "page_type" => "required|in:terms,standard,gallery,about-us,contact-us,team,project-single,course,video,home",
             "display_option" => "required|in:public,admin,parent,auth,student,org",
             "featured_image" => "nullable|mimes:png,jpg,jpeg,gif",

@@ -46,7 +46,7 @@ Pages
                             <a href="{{ route('admin.page.add_widget',[$page->id]) }}" data-bs-toggle='modal' data-bs-target='#add_widget' class="add_widget">Add Widget</a>
                         </td>
                         <td>
-                            <a href="" class="btn btn-outline-primary btn-xs">
+                            <a href="{{ route('admin.page.page.edit',$page->id) }}" class="btn btn-outline-primary btn-xs">
                                 <x-pencil>
                                     Edit
                                 </x-pencil>
