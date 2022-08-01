@@ -53,6 +53,7 @@ class PageController extends Controller
             $page->save();
         } catch (\Throwable $th) {
             //throw $th;
+            dd($th->getMessage());
             session()->flash("error", "Unable to create page.");
             return back()->withInput();
         }
