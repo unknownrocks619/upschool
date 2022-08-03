@@ -320,6 +320,7 @@ class OrganisationController extends Controller
         $project->slug = Str::slug($request->title);
         $project->description = $request->description;
         $project->genre = $request->genre;
+        $project->country = $request->country;
         $project->organisations_id = $organisation->id;
 
         $images = [];
@@ -369,6 +370,7 @@ class OrganisationController extends Controller
         $project->slug = $request->slug;
         $project->description = $request->description;
         $project->genre = $request->genre;
+        $project->country = $request->country;
         $images = (array) $project->images;
         if ($request->hasFile("banner_image")) {
             $images["banner"] = $this->upload("banner_image");

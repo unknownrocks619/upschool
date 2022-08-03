@@ -73,6 +73,29 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="country">Select Country</label>
+                                <select name="country" id="country" class="form-control">
+                                    <?php
+                                    $countries = \App\Models\Country::get();
+                                    foreach ($countries as $country) {
+                                        echo "<option value='{$country->name}' ";
+                                        if (old('country',$project->country) == $country->name) {
+                                            echo " selected ";
+                                        }
+                                        echo ">";
+                                        echo $country->name;
+                                        echo "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row mt-5">
                         <div class="col-md-6">
                             <div class="form-group">
