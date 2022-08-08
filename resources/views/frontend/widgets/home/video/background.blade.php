@@ -44,10 +44,14 @@
         <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
     </video> -->
-    <div class="vert-center-text" id="responsive-banner-title">
+    <div class="vert-center-text" @if(isset($module->featured)) id="responsive-banner-title" @else style="top:6%;display:block ruby" @endif>
+        @if(isset ($module->featured) )
         <img src="{{ asset(settings('logo')) }}" class="img-fluid" alt="" />
         <h1 class="banner-title"><strong>{{ $module->title }}</strong></h1>
-        <p class="text-white mt-2 banner-over-text">…. by providing them with the skills, inspiration & support to solve real-world problems that have impact. </p>
+        @endif
+        <div class="text-white @if(isset($module->featured)) mt-2  @else w-75 @endif banner-over-text text-center">
+            {!! $module->content !!}
+        </div>
     </div>
 </div>
 @endforeach

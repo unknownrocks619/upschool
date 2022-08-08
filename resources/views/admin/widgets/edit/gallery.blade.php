@@ -49,6 +49,10 @@ Edit :: {{ $widget->widget_name }}
                                 <option value="grid" @if(old('layout',$widget->layouts->layout)=="grid" ) selected @endif>Grid</option>
                                 <option value="column" @if(old('layout',$widget->layouts->layout)=="column" ) selected @endif>Column</option>
                                 <option value="single" @if(old('layout',$widget->layouts->layout)=="single" ) selected @endif>Single</option>
+                                <option value="mac_slider_gallery" @if(old('layout',$widget->layouts->layout)=="mac_slider_gallery" ) selected @endif>Slider - Mac Book</option>
+                                <option value="news_paper_slider_gallery" @if(old('layout',$widget->layouts->layout)=="news_paper_slider_gallery" ) selected @endif>Slider - Boxed Slider</option>
+                                <option value="full_width_slider_gallery" @if(old('layout',$widget->layouts->layout)=="full_width_slider_gallery" ) selected @endif>Slider - Full Width</option>
+                                <option value="banner_cube_gallery" @if(old('layout',$widget->layouts->layout)=="banner_cube_gallery" ) selected @endif>Slider - Cubic Display</option>
                             </select>
                         </div>
                     </div>

@@ -47,6 +47,9 @@ class WidgetController extends Controller
         $widget->widget_name = $request->widget_name;
         $widget->slug = Str::slug($request->widget_name);
         $widget->widget_type = $request->widget_type;
+        if ($request->background_color) {
+            $widget->settings = ["theme_color" => $request->background_color];
+        }
         $fields = [];
         $this->set_upload_path("website/widgets");
         $this->set_access("file");
