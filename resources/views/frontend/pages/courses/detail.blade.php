@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="col-lg-5 col-sm-12 top-img p-0 banner-img">
-            @if($course->images && $course->images->banner_featured_image)
+            @if($course->images && isset($course->images->banner_featured_image))
             <img src="{{ asset($course->images->banner_featured_image->image->path) }}" class='img-fluid' alt=''>";
             @else
             <img src="{{ asset('upschool/frontend/images/course/rocket-hero.png') }}" class='img-fluid' alt=''>";
@@ -36,7 +36,7 @@
         </div>
         <div class="col-md-4" style="position:relative;top:-75px">
             <div class="card">
-                @if($course->images && $course->images->intro_image )
+                @if($course->images && isset( $course->images->intro_image ))
                 <img src="{{ asset ($course->images->intro_image->image->path) }}" class="img-fluid" />
 
                 <div class="card-header p-0 m-0">
