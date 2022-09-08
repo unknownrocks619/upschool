@@ -177,7 +177,7 @@
                                 Image
                             </td>
                             <td>
-                                {{ ($course->images && $course->images->banner_background) ? "Banner Background" : "Not Defined" }}
+                                {{ ($course->images && isset($course->images->banner_background)) ? "Banner Background" : "Not Defined" }}
                             </td>
                         </tr>
                         <tr>
@@ -188,7 +188,7 @@
                                 Image
                             </td>
                             <td>
-                                {{ ($course->images && $course->images->banner_featured_image) ? "Banner Image" : "Not Defined" }}
+                                {{ ($course->images && isset($course->images->banner_featured_image)) ? "Banner Image" : "Not Defined" }}
                             </td>
                         </tr>
                         <tr>
@@ -199,7 +199,7 @@
                                 Image
                             </td>
                             <td>
-                                {{ ($course->images && $course->images->intro_image) ? "Course Intro Image" : "Not Defined" }}
+                                {{ ($course->images && isset($course->images->intro_image)) ? "Course Intro Image" : "Not Defined" }}
                             </td>
                         </tr>
                         <tr>
@@ -210,7 +210,7 @@
                                 Video
                             </td>
                             <td>
-                                {{ ($course->videos && $course->videos->video_intro) ? "Course Video Intro" : "Not Defined" }}
+                                {{ ($course->videos && isset($course->videos->video_intro)) ? "Course Video Intro" : "Not Defined" }}
                             </td>
                         </tr>
                         <tr>
