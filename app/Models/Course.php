@@ -16,6 +16,7 @@ class Course extends Model
         "file_resource" => "object"
     ];
 
+
     public function chapters()
     {
         return $this->belongsToMany(Chapter::class, 'chapter_course')->as("course_pivot");

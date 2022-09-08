@@ -166,6 +166,12 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ active_route(['admin.users.books.list']) }}" href="{{ route('admin.users.books.list')   }}">
+                            <i class="link-icon" data-feather="book"></i>
+                            <span class="link-title">Uploaded Books</span>
+                        </a>
+                    </li>
 
                     <!-- <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" role="button" aria-expanded="false" aria-controls="general-pages">

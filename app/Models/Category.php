@@ -11,4 +11,9 @@ class Category extends Model
 {
     use HasFactory, SoftDeletes;
     use \Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
+
+    public function products()
+    {
+        return $this->morphedByMany(Product::class, "categoryables");
+    }
 }

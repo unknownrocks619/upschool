@@ -18,4 +18,9 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    #CORS 
+    Header set Access-Control-Allow-Origin "*" 
+Header set Access-Control-Allow-Headers "Range" 
+Header set Access-Control-Expose-Headers: "Accept-Ranges, Content-Encoding, Content-Length, Content-Range"
 </IfModule>

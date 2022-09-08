@@ -12,6 +12,7 @@
         "laravel/framework": "^9.11",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
+        "smalot/pdfparser": "^2.2",
         "staudenmeir/laravel-adjacency-list": "^1.11"
     },
     "require-dev": {

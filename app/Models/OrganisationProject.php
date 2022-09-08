@@ -13,4 +13,9 @@ class OrganisationProject extends Model
         "images" => "object",
         "videos" => "object"
     ];
+
+    public function organisation()
+    {
+        return $this->belongsTo(Organisation::class, "organisations_id");
+    }
 }

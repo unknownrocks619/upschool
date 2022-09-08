@@ -38,7 +38,7 @@ class MenuController extends Controller
         $menu = new Menu;
 
         $menu->menu_name = $request->menu_name;
-        $menu->slug = ($request->slug) ? Str::slug($request->slug, "-") : $request->slug;
+        $menu->slug = ($request->slug) ? Str::slug($request->slug, "-") : Str::slug($request->menu_name, "-");
         $menu->description = $request->menu_description;
         $menu->menu_type = $request->menu_type;
         $menu->parent_id = (!$request->parent_menu) ? null : $request->parent_menu;

@@ -26,7 +26,7 @@ class CategoryStoreRequest extends FormRequest
         return [
             //
             "category_name" => "required",
-            "category_type" => "required|in:general,gallery,lms,video",
+            "category_type" => "required|in:general,gallery,lms,video,book_upload_category",
             "parent_id" => "nullable||exists:categories,id",
             "description" => "nullable"
         ];

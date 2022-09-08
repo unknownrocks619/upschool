@@ -3,6 +3,8 @@
 use App\Http\Controllers\Frontend\Course\CourseController;
 use App\Http\Controllers\Frontend\Home\HomeController;
 use App\Http\Controllers\Frontend\Management\ManagementController;
+use App\Http\Controllers\Frontend\User\BookController;
+use App\Http\Controllers\Frontend\User\BookUploadController;
 use App\Http\Controllers\Frontend\User\UserController;
 use Illuminate\Support\Facades\Route;
 // Route::get('/register/verification/', [UserController::class, "verfiyEmail"])->name('user.registration.verification');
@@ -27,6 +29,20 @@ Route::name('frontend.')->middleware(["auth"])->group(function () {
             Route::get("password", [UserController::class, "password"])->name('password');
             Route::post("/profile", [UserController::class, "updateProfile"])->name('profile.update');
             Route::post('password', [UserController::class, "changePassword"])->name('password.update');
+            /**
+             * Upload Book
+             */
+            Route::prefix("book")
+                ->name('books.')
+                ->group(function () {
+                    Route::post("upload/store", [BookUploadController::class, "StoreUpload"])->name("store-book-upload");
+                    Route::get("/books", [BookUploadController::class, "index"])->name("book.list");
+                    Route::get("/books/meta/{book}", [BookUploadController::class, "createUploadMetaInformation"])->name("book.meta");
+                    Route::post("/books/meta/{book}", [BookUploadController::class, "storeUploadMetaInformation"])->name("book.meta.store");
+                    Route::get("/books/category/{book}", [BookUploadController::class, "createBookCategory"])->name("book.category");
+                    Route::post("/books/category/{book}", [BookUploadController::class, "storeBookCategory"])->name("book.category.store");
+                    Route::delete("/destroy/books/{book}", [BookUploadController::class, "destroy"])->name("book.destroy");
+                });
         });
 
     /**
@@ -56,6 +72,8 @@ Route::name('frontend.')->middleware(["auth"])->group(function () {
         ->group(function () {
             Route::get("/", "index")->name('index');
             Route::get("/{course?}", "watch")->name('watch');
+            Route::post('/course/enroll/{course?}', "enroll")->name('enroll');
+            Route::post("/watch/lession/{course}/{lession}", "lession")->name('lession');
         });
 });
 
@@ -94,5 +112,6 @@ Route::name('frontend.')->group(function () {
  */
 Route::name('frontend.')->group(function () {
     Route::get("/", [HomeController::class, "index"])->name("home");
-    Route::get("/{slug}", [HomeController::class, "detail"])->name('view');
+    Route::get("/book/{slug}", [BookController::class, "show"])->name("book.show");
+    Route::get("/{slug}/{model?}", [HomeController::class, "detail"])->name('view');
 });

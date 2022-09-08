@@ -50,6 +50,7 @@ Edit Category :: {{ $category->categor_name }}
                                 <option value="gallery" @if(old('category_type',$category->category_type)=="gallery" ) selected @endif>Gallery</option>
                                 <option value="lms" @if(old('category_type',$category->category_type)=="lms" ) selected @endif>LMS</option>
                                 <option value="video" @if(old('category_type',$category->category_type)=="video" ) selected @endif>Video</option>
+                                <option value="book_upload_category" @if(old('category_type',$category->category_type)=="book_upload_category" ) selected @endif>Book Upload Category</option>
                             </select>
                         </div>
                     </div>

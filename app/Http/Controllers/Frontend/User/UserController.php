@@ -108,6 +108,7 @@ class UserController extends Controller
         session()->flash("success", "An email with reset link has been sent to your email.");
         return back();
     }
+    
     public function verifyResetLink(Request $request, $token)
     {
         $verifyToken = ResetPassword::where('token', $token)->firstorFail();

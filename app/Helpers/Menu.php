@@ -19,3 +19,10 @@ if (!function_exists("menus")) {
         return $menus->sortBy("sort_by");
     }
 }
+
+
+if (!function_exists("menu_by_type")) {
+    function menu_by_type($menu_type)
+    {
+    }
+}

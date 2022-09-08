@@ -28,7 +28,7 @@ class CategoryUpdateRequest extends FormRequest
             "category_name" => "required",
             "slug" => "required|unique:categories,slug," . $this->category->id,
             "description" => "nullable",
-            "category_type" => "required|in:general,gallery,lms,video",
+            "category_type" => "required|in:general,gallery,lms,video,book_upload_category",
             "parent_id" => "nullable|exists:categories,id"
         ];
     }

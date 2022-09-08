@@ -68,6 +68,9 @@
                                         <option value="project" @if(old('menu_type')=="project" ) selected @endif>Project</option>
                                         <option value="library" @if(old('menu_type')=="library" ) selected @endif>Libary</option>
                                         <option value="charity" @if(old('menu_type')=="charity" ) selected @endif>Charity</option>
+                                        <option value="book-upload" @if(old('menu_type')=="book-upload" ) selected @endif>Book Upload</option>
+                                        <option value="book-upload-form" @if(old('menu_type')=="book-upload-form" ) selected @endif>Book Upload Form</option>
+                                        <option value="book-list" @if(old('menu_type')=="book-list" ) selected @endif>Book List</option>
                                     </select>
                                 </div>
                             </div>

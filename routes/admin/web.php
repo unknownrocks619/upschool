@@ -4,10 +4,12 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\Course\ChapterController;
 use App\Http\Controllers\Admin\Course\CourseController;
 use App\Http\Controllers\Admin\Course\LessionController;
+use App\Http\Controllers\Admin\Ecommerce\ProductController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\Organisation\OrganisationController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\Post\PostController;
+use App\Http\Controllers\Admin\User\BookUploadController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\User\UserController as Users;
 use App\Http\Controllers\Admin\WebSettingController;
@@ -185,6 +187,15 @@ Route::prefix("upschool/admin")
                 Route::get('/canva/status/{canva}', "canvaUserStatus")->name("canva.status");
                 Route::patch("/ban/{user}", "banUser")->name("user.ban");
                 Route::resource("user", Users::class);
+
+                Route::prefix('books')
+                    ->name("books.")
+                    ->controller(BookUploadController::class)
+                    ->group(function () {
+
+                        Route::get("list", "index")->name('list');
+                        Route::get("show/{book}", "show")->name('show');
+                    });
             });
 
         /**
@@ -200,5 +211,26 @@ Route::prefix("upschool/admin")
                 Route::delete("/widgets/remove/{post}/{widget}", "widgetDestroy")->name('widgets.destroy');
                 Route::post("/remove/media/{post}", "removeMedia")->name("destroy_media");
                 Route::resource("post", PostController::class);
+            });
+
+        /**
+         * E-commerce
+         */
+
+        Route::prefix("commerce")
+            ->name('commerce.')
+            ->controller(ProductController::class)
+            ->group(function () {
+                Route::get("/product/list", "index")->name("product.list");
+                Route::get("/product/edit/{product}", "edit")->name("product.edit");
+                Route::get("/product/meta/{product}", "createProductMeta")->name("product.meta.create");
+                Route::get("/product/media/{product}", "createProductMedia")->name("product.media.create");
+                Route::get("/book/transaction/{product}", "productTransaction")->name("book.transaction.index");
+                Route::get("/book/transfer/{book}", "createBookProduct")->name("book.convert.create");
+                Route::post("/book/transfer/{book}", "storeBookProduct")->name("book.convert.store");
+                Route::post("/product/meta/{product}", "storeProductMeta")->name("product.meta.store");
+                Route::post("/product/media/{product}", "storeProductMedia")->name("product.media.store");
+                Route::delete("/product/media/delete/{product}/{index}", "destroyProductMedia")->name("product.media.delete");
+                Route::put("/product/edit/{product}", "updateProduct")->name("product.update");
             });
     });

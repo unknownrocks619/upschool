@@ -16,19 +16,24 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string("product_name");
-            $table->string("sku")->unique();
+            $table->string("sku")->unique()->comment("Auto Generate");
+            $table->integer("author_id")->index()->nullable();
+            $table->integer("project_id")->index()->nullable();
             $table->string("slug");
-            $table->string("short_description");
-            $table->string("full_description");
-            $table->string("price");
-            $table->string("tax");
-            $table->string('total_price');
-            $table->string("");
-            $table->longText("meta_data");
+            $table->longText("short_description");
+            $table->longText("full_description");
+            $table->string("type")->default("Digital")->comment("Options: digital, physical, service, all, digital_physical");
+            $table->string("price")->nullable();
+            $table->string("tax")->nullable();
+            $table->string('total_price')->nullable();
+            $table->longText("shipping")->nullable();
+            $table->longText("images")->nullable();
+            $table->longText("featurd_image")->nullable();
+            $table->longText("meta")->nullable();
             $table->longText("status")->default("active")->comment("available options: active, pending, inactive, blocked");
-            $table->loginText('stock')->nullable()->comment("")
+            $table->longText('stock')->nullable()->comment("");
             $table->timestamps();
-            $table->softDeletes()
+            $table->softDeletes();
         });
     }
 

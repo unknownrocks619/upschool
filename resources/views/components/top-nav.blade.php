@@ -1,6 +1,6 @@
 @foreach(menus()->where("menu_position","top") as $menu)
 <li class="nav-item @if($menu->children->count()) dropdown @endif">
-    <a class="nav-link @if( $menu->children->count()) dropdown-toggle @endif text-white nav-text" {{ $attributes }} href="{{-- menu_href($menu->menu_type,$menu->slug) --}}">
+    <a class="nav-link @if( $menu->children->count()) dropdown-toggle @endif text-white nav-text" {{ $attributes }} href="{{ route('frontend.view',$menu->slug) }}">
         {{ $menu->menu_name }}
     </a>
     @if( $menu->children->count())

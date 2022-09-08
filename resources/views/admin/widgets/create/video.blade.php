@@ -24,6 +24,17 @@
                 </select>
             </div>
         </div>
+        <div class="col-md-6 mt-3">
+            <div class="form-group">
+                <label for="featured_video" class="label-control">
+                    Featured
+                </label>
+                <select name="featured_video" id="featured_video" class="form-control">
+                    <option value="yes" @if(old('featured')=="yes" ) selected @endif>Yes</option>
+                    <option value="no" @if(old('featured') !="yes" ) selected @endif>No</option>
+                </select>
+            </div>
+        </div>
 
         <div class="col-md-6 mt-3">
             <div class="form-group">

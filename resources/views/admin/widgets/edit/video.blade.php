@@ -51,6 +51,17 @@ Edit :: {{ $widget->widget_name }}
                             </select>
                         </div>
                     </div>
+                    <div class="col-md-6 mt-3">
+                        <div class="form-group">
+                            <label for="featured_video" class="label-control">
+                                Featured
+                            </label>
+                            <select name="featured_video" id="featured_video" class="form-control">
+                                <option value="yes" @if(old('featured', (isset($widget->settings->featured) && $widget->settings->featured == true) ? "yes" : "no") =="yes" ) selected @endif>Yes</option>
+                                <option value="no" @if(old('featured') !="yes" ) selected @endif>No</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 @foreach ($widget->fields as $field)
                 <div class="row @if($loop->iteration > 1) mt-4 bg-light py-4 @endif">

@@ -47,9 +47,15 @@ class WidgetController extends Controller
         $widget->widget_name = $request->widget_name;
         $widget->slug = Str::slug($request->widget_name);
         $widget->widget_type = $request->widget_type;
+        $settings = [];
         if ($request->background_color) {
-            $widget->settings = ["theme_color" => $request->background_color];
+            $settings = ["theme_color" => $request->background_color];
         }
+
+        if ($request->featured_video == "yes") {
+            $settings["featured"] = ($request->featured_video == "yes") ? true : false;
+        }
+        $widget->settings = $settings;
         $fields = [];
         $this->set_upload_path("website/widgets");
         $this->set_access("file");
@@ -74,6 +80,10 @@ class WidgetController extends Controller
 
                 $innerArray["video"] = $this->video_parts($request->video_link[$key]);
             }
+
+            // if ($request->featured_video && $request->featured_video == "yes") {
+            //     $innerArray["featured"]  = true;
+            // }
 
             $fields[] = $innerArray;
         }
@@ -135,7 +145,14 @@ class WidgetController extends Controller
         }
 
         $widget->fields = $fields;
-
+        $settings = array($widget->settings);
+        if ($request->background_color) {
+            $settings["them_color"] = $request->background_color;
+        }
+        if ($request->featured_video == "yes") {
+            $settings["featured"] = ($request->featured_video == "yes") ? true : false;
+        }
+        $widget->settings = $settings;
         try {
             $widget->save();
         } catch (\Throwable $th) {

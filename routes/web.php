@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\Course\CourseController;
 use App\Http\Controllers\Frontend\User\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Sms;
@@ -14,13 +15,12 @@ use App\Http\Controllers\Sms;
 |
 */
 
-Route::get('/sms', [Sms::class, "volunteer_sms"]);
+// Route::get('/sms', [Sms::class, "dikshit_form"]);
 
 // Route::name('frontend.')->group(function () {
 //     Route::get("/", fn () => view("welcome"));
 // });
-
-
+Route::get("/course/{course:alias_title}", [CourseController::class, "show"])->name("course.show");
 require __DIR__ . "/admin/web.php";
 require __DIR__ . '/auth.php';
 require __DIR__ . "/frontend/web.php";

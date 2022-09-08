@@ -43,7 +43,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         "date_of_birth" => "encrypted",
-        "avatar" => "object"
+        "avatar" => "object",
     ];
 
     public function verify_email()

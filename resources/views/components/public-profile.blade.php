@@ -72,6 +72,12 @@
                  </a>
              </li>
              <li>
+                 <a class="sidebar-item d-flex justify-content-between align-items-center" href="{{ route('frontend.auth_user.books.book.list') }}">
+                     My Books
+                     <span class="fas fa-file"></span>
+                 </a>
+             </li>
+             <li>
                  <form action="{{ route('logout') }}" method="post">
                      @csrf
                      <button type="submit" class="d-flex justify-content-between align-items-center btn btn-danger w-100 text-center">
