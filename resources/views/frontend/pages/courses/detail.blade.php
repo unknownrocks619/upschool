@@ -38,13 +38,14 @@
             <div class="card">
                 @if($course->images && isset( $course->images->intro_image ))
                 <img src="{{ asset ($course->images->intro_image->image->path) }}" class="img-fluid" />
-
+                @else
+                <img src="https://upschool.co/wp-content/uploads/elementor/thumbs/2-3-pry7w01olj1k39rs7btrt5f7dug5g8bmxwr9mf1214.png" class="img-fluid" />
+                @endif
                 <div class="card-header p-0 m-0">
                     <h4 class="text-center">Navigate the Plathform</h4>
                     <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/701160845?h=e0b2b751ad" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
                     <script src="https://player.vimeo.com/api/player.js"></script>
                 </div>
-                @endif
 
                 <div class="card-body">
 
