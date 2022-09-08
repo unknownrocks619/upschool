@@ -44,7 +44,7 @@
         <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
     </video> -->
-    <div class="vert-center-text" @if(isset($widget->settings->featured)) id="responsive-banner-title" @else style="top:6%;display:block ruby" @endif>
+    <div class="vert-center-text" @if(isset($widget->settings->featured)) id="responsive-banner-title" @else style="top:6%;display:flex;align-items:center;justify-content:center"@endif>
         @if(isset ($widget->settings->featured) )
         <img src="{{ asset(settings('logo')) }}" class="img-fluid" alt="" />
         <h1 class="banner-title"><strong>{{ $module->title }}</strong></h1>
