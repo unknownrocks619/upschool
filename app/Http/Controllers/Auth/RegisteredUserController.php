@@ -9,6 +9,7 @@ use App\Models\Role;
 use App\Models\User;
 use App\Notifications\Frontend\User\RegistrationNotification;
 use App\Providers\RouteServiceProvider;
+use App\Rules\GoogleCaptcha;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,6 +53,8 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'terms' => ["accepted"],
+            "recaptcha_token" => ["required", new GoogleCaptcha()]
+
         ]);
         $user = new User;
         $user->first_name = $request->first_name;
@@ -94,7 +97,8 @@ class RegisteredUserController extends Controller
             });
         } catch (\Throwable $th) {
             //throw $th;
-            dd($th->getMessage());
+            session()->flash("error", "Unable to register your account at the moment. Please try again later.");
+            return back()->withInput();
         }
 
         // $user = User::create([

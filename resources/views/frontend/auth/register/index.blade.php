@@ -23,12 +23,12 @@
 
 @section("content")
 <form method="POST" action="{{ route('register') }}">
-<div class="container-fluid mb-11 mt-2" style="background: #f4f4f4">
-    <div class="row mx-0 px-0" style="background: #f4f4f4">
-        <!-- Row -->
-        <div class="col-md-3 d-none d-md-block mx-0 px-0">
-            <img src="https://upschool.co/wp-content/uploads/2022/04/7736bf08-c9f4-413d-bd1f-2999c0264109.jpg" style="border-top-right-radius:20px;border-bottom-right-radius: 20px;height:100%" class="text-left img-fluid" />
-        </div>
+    <div class="container-fluid mb-11 mt-2" style="background: #f4f4f4">
+        <div class="row mx-0 px-0" style="background: #f4f4f4">
+            <!-- Row -->
+            <div class="col-md-3 d-none d-md-block mx-0 px-0">
+                <img src="https://upschool.co/wp-content/uploads/2022/04/7736bf08-c9f4-413d-bd1f-2999c0264109.jpg" style="border-top-right-radius:20px;border-bottom-right-radius: 20px;height:100%" class="text-left img-fluid" />
+            </div>
             <div class="col-md-5 mt-4 pl-0 ml-0" style="padding-left:0px !important;">
                 <h3 class="fw-bold" style="padding-left:20px !important">
                     Create Your Upschool Account
@@ -98,7 +98,7 @@
                                     Password
                                     <sup class="text-danger">*</sup>
                                 </label>
-                                <input type="password" name="password" value="" id="password" class="form-control @error('password') border border-danger @enderror" />
+                                <input required type="password" name="password" value="" id="password" class="form-control @error('password') border border-danger @enderror" />
                             </div>
                         </div>
 
@@ -108,7 +108,7 @@
                                     Confirm Password
                                     <sup class="text-danger">*</sup>
                                 </label>
-                                <input type="password" value="{{ old('password_confirmation') }}" name="password_confirmation" class="form-control @error('password_confirmation') border border-danger @enderror" id="confirm_password" />
+                                <input required type="password" value="{{ old('password_confirmation') }}" name="password_confirmation" class="form-control @error('password_confirmation') border border-danger @enderror" id="confirm_password" />
                             </div>
                         </div>
                     </div>
@@ -148,11 +148,11 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row mt-4">
-                        <div class="col-md-1">
-                            <input type="checkbox" name="personal_detail" id="personal_detail" />
+                    <div class="row mt-4 canva-term">
+                        <div class="col-md-1 mt-1 pt-2">
+                            <input type="checkbox" required name="personal_detail" id="personal_detail" />
                         </div>
-                        <div class="col-md-11">
+                        <div class="col-md-11 mt-0 pt-0">
                             <label for="personal_detail">
                                 I acknowledge and accept that my personal details (name,
                                 email) may be visible to Upschool users registered with Canva.
@@ -160,9 +160,9 @@
                         </div>
 
                     </div>
-                    <div class="row mt-2">
-                        <div class="col-md-1">
-                            <input type="checkbox" value="1" name="canva_free" id="canva_free" />
+                    <div class="row mt-2 canva-term">
+                        <div class="col-md-1 mt-1 pt-2">
+                            <input type="checkbox" required value="1" name="canva_free" id="canva_free" />
                         </div>
                         <div class="col-md-11">
                             <label for="canva_free">
@@ -173,7 +173,7 @@
 
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-1">
+                        <div class="col-md-1 mt-1 pt-2">
                             <input type="checkbox" value='1' name="terms" id="terms" />
                         </div>
                         <div class="col-md-11">
@@ -202,7 +202,22 @@
 @push("custom_scripts")
 
 <script src="https://www.google.com/recaptcha/api.js?render={{ config('captcha.google.site_key') }}"></script>
-<script>
+<script type="text/javascript">
+    $("#canva").change(function(event) {
+        console.log($(this).val());
+        if ($(this).val() == "no") {
+            $(".canva-term").fadeOut("medium", function() {
+                $(this).find("input").attr("required", false)
+            });
+        } else {
+            if ($(this).val() == "yes") {
+                $('.canva-term').fadeIn('fast', function() {
+                    $(this).find("input").attr("required", true)
+                });
+            }
+        }
+    })
+
     grecaptcha.ready(function() {
         document.getElementById('registerForm').addEventListener("submit", function(event) {
             // $("#pre-submission").fadeOut("fast", function() {
@@ -220,6 +235,4 @@
         });
     });
 </script>
-</script>
-
 @endpush

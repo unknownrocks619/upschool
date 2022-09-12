@@ -14,7 +14,35 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&family=Lexend:wght@100;200;300;400;500;600;700;800;900&family=Nunito+Sans:wght@200;400;600;800;900&family=Playfair+Display:wght@600&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;1,100&display=swap" rel="stylesheet">
-    <!-- Link Swiper's CSS -->
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500&family=Nunito:wght@200&display=swap" rel="stylesheet">
+    <style>
+        p {
+            font-family: 'Nunito', sans-serif !important;
+        }
+
+        .title {
+            color: #242154 !important;
+            font-family: 'Lexend', sans-serif !important;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            color: #242154 !important;
+            font-family: 'Lexend', sans-serif !important;
+
+        }
+
+        .banner-title {
+            font-family: 'Lexend', sans-serif !important;
+            color: #fff !important
+        }
+    </style> <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <!-- font icon -->
     <script src="https://kit.fontawesome.com/2f1f0451bd.js" crossorigin="anonymous"></script>
