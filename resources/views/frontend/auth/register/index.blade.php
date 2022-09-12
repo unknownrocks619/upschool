@@ -30,7 +30,7 @@
                 <img src="https://upschool.co/wp-content/uploads/2022/04/7736bf08-c9f4-413d-bd1f-2999c0264109.jpg" style="border-top-right-radius:20px;border-bottom-right-radius: 20px;height:100%" class="text-left img-fluid" />
             </div>
             <div class="col-md-5 mt-4 pl-0 ml-0" style="padding-left:0px !important;">
-                <h3 class="fw-bold" style="padding-left:20px !important">
+                <h3 class="fw-bold mb-3" style="padding-left:20px !important">
                     Create Your Upschool Account
                 </h3>
                 <div class="bg-white pt-3" style="padding-left: 20px !important;padding-right:20px !important;height:100%">
