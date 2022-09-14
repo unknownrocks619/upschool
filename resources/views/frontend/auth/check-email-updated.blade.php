@@ -174,7 +174,7 @@
 </style>
 @endpush
 @section("content")
-<div class="container-fluid mb-11 mt-8">
+<div class="container border-start mb-11 mt-8">
     <div class="row">
         <div class="col-md-8 mx-auto mb-5">
             <div class="row">

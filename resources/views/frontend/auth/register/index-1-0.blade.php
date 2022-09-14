@@ -547,7 +547,10 @@
                     $("div.first").find(".current-image").removeClass('d-none')
                     $("div.second").find(".information-circle-disabled").addClass('active-circle')
                     $("div.second").find(".current-image").addClass('d-none')
+                    $("div.second").find(".information-disabled").addClass('active-text')
                     $("div.third").find(".information-circle-disabled").removeClass('active-circle')
+                    $("div.third").find(".information-disabled").removeClass('active-text')
+
                     $(".progress-bar").css("width", "50%")
                     $(".percent-complete").text("50%")
                     $(".step-count").text("2")
@@ -557,7 +560,7 @@
                 if (currentButton.data('step') == 2) {
                     $('.step-two-row').fadeIn("fast").removeClass("d-none");
                     $("div.third").find(".information-circle-disabled").addClass('active-circle')
-
+                    $("div.third").find(".information-disabled").addClass('active-text')
                     $("div.second").find(".current-image").removeClass('d-none')
 
                     $(".progress-bar").css("width", "75%")
@@ -573,6 +576,7 @@
 
                     $("div.second").find(".information-circle-disabled").removeClass('active-circle')
                     $("div.second").find(".current-image").addClass('d-none')
+                    $("div.second").find(".information-disabled").removeClass('active-text');
                     $(".progress-bar").css("width", "10%")
                     $(".percent-complete").text("100%")
                     $(".step-count").text("1")
