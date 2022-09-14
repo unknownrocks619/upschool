@@ -25,6 +25,7 @@ class UserController extends Controller
     use FileUpload;
     public function checkEmailMessage()
     {
+        return view('frontend.auth.check-email-updated');
         return view("frontend.auth.check-email");
     }
 
@@ -108,7 +109,7 @@ class UserController extends Controller
         session()->flash("success", "An email with reset link has been sent to your email.");
         return back();
     }
-    
+
     public function verifyResetLink(Request $request, $token)
     {
         $verifyToken = ResetPassword::where('token', $token)->firstorFail();

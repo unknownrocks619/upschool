@@ -30,7 +30,10 @@ class RegisteredUserController extends Controller
     public function create()
     {
         $countries  = Country::get();
-        return view('frontend.auth.register.index', compact('countries'));
+        if (!request()->step || request()->step == 1) {
+            return view("frontend.auth.register.index-1-0", compact("countries"));
+        }
+        // return view('frontend.auth.register.index', compact('countries'));
     }
 
     /**
@@ -43,8 +46,11 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        return redirect()->route('frontend.user.registration.verification.message');
+
         $request->validate([
-            'first_name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:50'],
+            'last_name' => ["nullable", 'string', 'max:50'],
             'country' => ['required', 'string', 'max:30'],
             "canva" => ["required", "in:yes,no"],
             "personal_detail" => ["required_if:canva,yes"],
@@ -67,16 +73,16 @@ class RegisteredUserController extends Controller
         $user->gender = "male";
         $user->email = $request->email;
 
-        // $user = [
-        //     "first_name" => $request->first_name,
-        //     "last_name" => $request->last_name,
-        //     "country" => Country::find($request->country)->name,
-        //     "role" => Role::where('slug', Str::replace('-', '_', $request->role))->first()->id,
-        //     "source" => "signup",
-        //     "username" => Str::random(8),
-        //     "password" => Hash::make($request->password),
-        //     "gender" => "male"
-        // ];
+        $user = [
+            "first_name" => $request->first_name,
+            "last_name" => $request->last_name,
+            "country" => Country::find($request->country)->name,
+            "role" => Role::where('slug', Str::replace('-', '_', $request->role))->first()->id,
+            "source" => "signup",
+            "username" => Str::random(8),
+            "password" => Hash::make($request->password),
+            "gender" => "male"
+        ];
 
         $canva = null;
         if ($request->canva == "yes") {
@@ -111,5 +117,20 @@ class RegisteredUserController extends Controller
 
         return redirect()->route('frontend.user.registration.verification.message');
         // return redirect(RouteServiceProvider::HOME);
+    }
+
+    public function facebookCreate()
+    {
+    }
+    public function facebookCallback()
+    {
+    }
+
+    public function googleCreate()
+    {
+    }
+
+    public function googleCallback()
+    {
     }
 }

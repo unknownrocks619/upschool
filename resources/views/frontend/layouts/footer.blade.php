@@ -1,5 +1,5 @@
 <div class="footer-new">
-    <div class="d-flex justify-content-center mt-2 footer-top-img">
+    <div class="d-flex justify-content-center mt-0 footer-top-img">
         <img src="{{ asset('upschool/frontend/images/home/upschool-14.png') }}" alt="" class="img-fluid" height="auto" width="30%" />
     </div>
     <p class="text-center text-white pb-0 footer-title" id="footer-section-title">
