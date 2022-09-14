@@ -176,7 +176,7 @@
 
 @section("content")
 <form method="POST" action="{{ route('register') }}">
-    <div class="container-fluid mb-11 mx-auto px-0">
+    <div class="container border-start mb-11 mx-auto px-0">
         <div class="row px-0 mx-auto">
             <!-- Row -->
             <div class="col-md-8 pl-0 ml-0 mx-auto step-parent pb-5" style="padding-left:0px !important;">
@@ -502,7 +502,7 @@
                     </div>
                 </div>
 
-                <div class="row signup-progress-bar ps-3">
+                <div class="row signup-progress-bar ps-3 mb-5 pb-5">
                     <div class="col-md-12 steps p-0 m-0">
                         <p class="p-0 m-0 text-left"><span class="step-count">1</span> to 3 Steps</p>
                     </div>
@@ -516,7 +516,7 @@
 
                     </div>
 
-                    <div class="col-md-12 already-exists ps-0" style="color: #fff;margin-top: 30px;font-weight:400">
+                    <div class="col-md-12 already-exists ps-0 mb-5" style="color: #fff;margin-top: 30px;font-weight:400">
                         <p>Already have an Account ? <a href="#" class="text-white" style="text-decoration: none; font-weight:700;font-family:'Inter' !important">Login in Here</a></p>
                     </div>
                 </div>
