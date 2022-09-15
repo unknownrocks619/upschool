@@ -3,6 +3,8 @@
 namespace App\Observers\Admin;
 
 use App\Models\User;
+use App\Notifications\Frontend\User\RegistrationNotification;
+use Illuminate\Support\Facades\Notification;
 
 class UserObserver
 {
@@ -15,6 +17,7 @@ class UserObserver
     public function created(User $user)
     {
         //
+        (Notification::send($user, new RegistrationNotification($user)));
     }
 
     /**

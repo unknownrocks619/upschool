@@ -175,7 +175,8 @@
 @endpush
 
 @section("content")
-<form method="POST" action="{{ route('register') }}">
+<form method="POST" id="registerForm" action="{{ route('register') }}">
+
     <div class="container border-start mb-11 mx-auto px-0">
         <div class="row px-0 mx-auto">
             <!-- Row -->
@@ -230,6 +231,9 @@
                                             <sup class="text-danger">*</sup>
                                         </label>
                                         <input required type="email" value="{{ old('email') }}" name="email" placeholder="name@example.com" class="py-4 rounded-3 form-control @error('email') border border-danger @enderror" id="email" />
+                                        @error('email')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -240,9 +244,14 @@
                                             Password
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <input required placeholder="Password" type="password" name="password" value="" id="password" class="py-4 rounded-3 form-control @error('password') border border-danger @enderror" />
+                                        <input required value="{{ old('password') }}" placeholder="Password" type="password" name="password" id="password" class="py-4 rounded-3 form-control @error('password') border border-danger @enderror" />
+                                        @error('password')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
+                                @google_captcha()
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="confirm_password" class="mb-2">
@@ -250,6 +259,9 @@
                                             <sup class="text-danger">*</sup>
                                         </label>
                                         <input required placeholder="Confirm Password" type="password" value="{{ old('password_confirmation') }}" name="password_confirmation" class="py-4 rounded-3 form-control @error('password_confirmation') border border-danger @enderror" id="confirm_password" />
+                                        @error('password_confirmation')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -315,7 +327,7 @@
                                         <label for="email" class="mb-2">Your Date of Birth
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <input required="true" type="date" name="date_of_birth" id="date_of_birth" class="form-control py-4 rounded-3 @error('date_of_birth') border border-danger @enderror" />
+                                        <input required="true" type="date" value="{{ old('date_of_birth') }}" name="date_of_birth" id="date_of_birth" class="form-control py-4 rounded-3 @error('date_of_birth') border border-danger @enderror" />
                                         @error("date_of_birth")
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -382,7 +394,7 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-1 mt-3">
-                                                <input type="checkbox" required value="1" name="personal_detail" id="personal_detail" style="width:30px; height:30px;" />
+                                                <input type="checkbox" @if(old('canva')=="yes" && old('personal_detail')) checked @endif required value="1" name="personal_detail" id="personal_detail" style="width:30px; height:30px;" />
                                                 <span></span>
 
                                             </div>
@@ -404,7 +416,7 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-1 mt-3">
-                                                <input type="checkbox" required value="1" name="canva_free" id="canva_free" style="width:30px; height:30px;" />
+                                                <input @if(old('canva')=="yes" && old('canva_free')) checked @endif type="checkbox" required value="1" name="canva_free" id="canva_free" style="width:30px; height:30px;" />
                                                 <span></span>
 
                                             </div>
@@ -426,7 +438,7 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-1 mt-1">
-                                                <input type="checkbox" required value="1" name="terms" id="terms" style="width:30px; height:30px;" />
+                                                <input type="checkbox" @if(old('terms')) checked @endif required value="1" name="terms" id="terms" style="width:30px; height:30px;" />
                                                 <span></span>
 
                                             </div>
@@ -529,7 +541,7 @@
 @endsection
 
 @push("custom_scripts")
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?render={{ config('captcha.google.site_key') }}"></script>
 
 <script type="text/javascript">
     $("button.step-back").click(function(event) {

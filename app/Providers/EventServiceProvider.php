@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Models\Category;
 use App\Models\Menu;
+use App\Models\User;
 use App\Models\WebSetting;
 use App\Observers\Admin\CategoryObserver;
 use App\Observers\Admin\MenuObserver;
+use App\Observers\Admin\UserObserver;
 use App\Observers\Admin\WebsiteObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -35,6 +37,7 @@ class EventServiceProvider extends ServiceProvider
         //
         WebSetting::observe(WebsiteObserver::class);
         Category::observe(CategoryObserver::class);
+        User::observe(UserObserver::class);
     }
 
     /**

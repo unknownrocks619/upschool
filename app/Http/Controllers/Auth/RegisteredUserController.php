@@ -46,8 +46,6 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect()->route('frontend.user.registration.verification.message');
-
         $request->validate([
             'first_name' => ['required', 'string', 'max:50'],
             'last_name' => ["nullable", 'string', 'max:50'],
@@ -59,6 +57,7 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'terms' => ["accepted"],
+            "date_of_birth" => ["required", "date", "date_format:Y-m-d"],
             "recaptcha_token" => ["required", new GoogleCaptcha()]
 
         ]);
@@ -72,17 +71,18 @@ class RegisteredUserController extends Controller
         $user->password = Hash::make($request->password);
         $user->gender = "male";
         $user->email = $request->email;
+        $user->date_of_birth = $request->date_of_birth;
 
-        $user = [
-            "first_name" => $request->first_name,
-            "last_name" => $request->last_name,
-            "country" => Country::find($request->country)->name,
-            "role" => Role::where('slug', Str::replace('-', '_', $request->role))->first()->id,
-            "source" => "signup",
-            "username" => Str::random(8),
-            "password" => Hash::make($request->password),
-            "gender" => "male"
-        ];
+        // $user = [
+        //     "first_name" => $request->first_name,
+        //     "last_name" => $request->last_name,
+        //     "country" => Country::find($request->country)->name,
+        //     "role" => Role::where('slug', Str::replace('-', '_', $request->role))->first()->id,
+        //     "source" => "signup",
+        //     "username" => Str::random(8),
+        //     "password" => Hash::make($request->password),
+        //     "gender" => "male"
+        // ];
 
         $canva = null;
         if ($request->canva == "yes") {
@@ -99,7 +99,6 @@ class RegisteredUserController extends Controller
                 if ($canva) {
                     $canva->save();
                 }
-                (Notification::send($user, new RegistrationNotification($user)));
             });
         } catch (\Throwable $th) {
             //throw $th;
