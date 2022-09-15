@@ -32,9 +32,9 @@ return [
     ],
 
     'facebook' => [
-        'client_id' => env('FACEBOOK_CLIENT_ID'),
-        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
-        'redirect' => env('FACEBOOK_REDIRECT_URI')
+        'client_id' => "645419480207455",
+        'client_secret' => "f67c1527bcdbc38556100f90482e5323",
+        'redirect' => config("app.url") . "/register/callback/facebook"
     ],
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),

@@ -175,37 +175,51 @@
 @endpush
 
 @section("content")
-<form method="POST" id="registerForm" action="{{ route('register') }}">
 
-    <div class="container border-start mb-11 mx-auto px-0">
-        <div class="row px-0 mx-auto">
-            <!-- Row -->
-            <div class="col-md-8 pl-0 ml-0 mx-auto step-parent pb-5" style="padding-left:0px !important;">
-                <!-- Step Zero -->
+<div class="container border-start mb-11 mx-auto px-0">
+    <div class="row px-0 mx-auto">
+        <!-- Row -->
+        <div class="col-md-8 pl-0 ml-0 mx-auto step-parent pb-5" style="padding-left:0px !important;">
+            <!-- Step Zero -->
 
+            <div class="row ">
+                <div class="col-md-12">
+                    <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
+                        <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;">Create Your Upschool Account </h4>
+                        <p>
+                            You are a few clicks away from creating your account.
+                        </p>
+                        <div class="row mb-3 me-5">
+                            <div class="col-md-6 mt-4 col-sm-12 col-xs-12 col-lg-6 ">
+                                <form action="" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-secondary px-4 py-4 social-login w-100">
+                                        <img src="{{ asset('images/3.png') }}" style="width:25px; height: 25px;position:relative;top: -4px; left:-14px;" />
+                                        Continue With Google
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col-md-6 mt-4 col-lg-6 col-sm-12 col-xs-12">
+                                <form action="{{ route('facebook-register') }}" method="post">
+                                    @csrf
+                                    <button formaction="{{ route('facebook-register') }}" type="submit" class="btn btn-outline-secondary px-4 py-4 w-100  social-login">
+                                        <img src="{{ asset('images/4.png') }}" style="width:25px; height: 25px;position:relative;top: -4px; left:-14px;" /> Continue with Facebook
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row me-5">
+                            <div class="col-md-12 my-5 ms-1">
+                                <div class="border-bottom"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form method="POST" id="registerForm" action="{{ route('register') }}">
                 <div class="row step-zero-row main">
                     <div class="col-md-12">
                         <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
-                            <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;">Create Your Upschool Account </h4>
-                            <p>
-                                You are a few clicks away from creating your account.
-                            </p>
-                            <div class="row mb-3 me-5">
-                                <div class="col-md-6 mt-4 col-sm-12 col-xs-12 col-lg-6 ">
-                                    <button type="submit" class="btn btn-outline-secondary px-4 py-4 social-login w-100">
-                                        <img src="{{ asset('images/3.png') }}" style="width:25px; height: 25px;position:relative;top: -4px; left:-14px;" />
-                                        Continue With Google</button>
-                                </div>
-                                <div class="col-md-6 mt-4 col-lg-6 col-sm-12 col-xs-12">
-                                    <button type="submit" class="btn btn-outline-secondary px-4 py-4 w-100  social-login">
-                                        <img src="{{ asset('images/4.png') }}" style="width:25px; height: 25px;position:relative;top: -4px; left:-14px;" /> Continue with Facebook </button>
-                                </div>
-                            </div>
-                            <div class="row me-5">
-                                <div class="col-md-12 my-5 ms-1">
-                                    <div class="border-bottom"></div>
-                                </div>
-                            </div>
                             <x-alert></x-alert>
                             @csrf
                             <div class="row me-5">
@@ -276,7 +290,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Step One -->
                 <div class="row step-one-row d-none main">
                     <div class="col-md-12">
@@ -473,71 +486,71 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-
-            <div class="col-md-4 d-none d-md-block mx-auto px-0 ps-5" style="background-color: #242254 !important;align-items:center">
-                <div class="row first">
-                    <div class="col-md-8">
-                        <div class="information-circle-disabled active-circle" data-step='1' style="display:flex;justify-content:center;align-items:center">
-                            <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
-                        </div>
-                        <div class="information-disabled active-text">
-                            Account Information
-                        </div>
-                        <div class="information-line-disabled active-line">
-                        </div>
-                    </div>
-                </div>
-                <div class="row second">
-                    <div class="col-md-4 ">
-                        <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
-                            <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
-                        </div>
-                        <div class="information-disabled">
-                            About
-                        </div>
-                        <div class="information-line-disabled">
-
-                        </div>
-                    </div>
-                </div>
-                <div class="row third">
-                    <div class="col-md-8 ">
-                        <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
-                            <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
-                        </div>
-                        <div class="information-disabled">
-                            Your Canva Account
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row signup-progress-bar ps-3 mb-5 pb-5">
-                    <div class="col-md-12 steps p-0 m-0">
-                        <p class="p-0 m-0 text-left"><span class="step-count">1</span> to 3 Steps</p>
-                    </div>
-                    <div class="progress-title col-md-12">
-                        <h5><span class="percent-complete">100%</span> to Complete</h5>
-                    </div>
-                    <div class="col-md-12 bar mt-2 ps-0">
-                        <div class="progress w-75" style="background-color: #B4C8E8;">
-                            <div class="progress-bar" style="width: 5%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-12 already-exists ps-0 mb-5" style="color: #fff;margin-top: 30px;font-weight:400">
-                        <p>Already have an Account ? <a href="#" class="text-white" style="text-decoration: none; font-weight:700;font-family:'Inter' !important">Login in Here</a></p>
-                    </div>
-                </div>
-            </div>
-
-
+            </form>
         </div>
+
+
+
+        <div class="col-md-4 d-none d-md-block mx-auto px-0 ps-5" style="background-color: #242254 !important;align-items:center">
+            <div class="row first">
+                <div class="col-md-8">
+                    <div class="information-circle-disabled active-circle" data-step='1' style="display:flex;justify-content:center;align-items:center">
+                        <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
+                    </div>
+                    <div class="information-disabled active-text">
+                        Account Information
+                    </div>
+                    <div class="information-line-disabled active-line">
+                    </div>
+                </div>
+            </div>
+            <div class="row second">
+                <div class="col-md-4 ">
+                    <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
+                        <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
+                    </div>
+                    <div class="information-disabled">
+                        About
+                    </div>
+                    <div class="information-line-disabled">
+
+                    </div>
+                </div>
+            </div>
+            <div class="row third">
+                <div class="col-md-8 ">
+                    <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
+                        <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
+                    </div>
+                    <div class="information-disabled">
+                        Your Canva Account
+                    </div>
+                </div>
+            </div>
+
+            <div class="row signup-progress-bar ps-3 mb-5 pb-5">
+                <div class="col-md-12 steps p-0 m-0">
+                    <p class="p-0 m-0 text-left"><span class="step-count">1</span> to 3 Steps</p>
+                </div>
+                <div class="progress-title col-md-12">
+                    <h5><span class="percent-complete">100%</span> to Complete</h5>
+                </div>
+                <div class="col-md-12 bar mt-2 ps-0">
+                    <div class="progress w-75" style="background-color: #B4C8E8;">
+                        <div class="progress-bar" style="width: 5%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-12 already-exists ps-0 mb-5" style="color: #fff;margin-top: 30px;font-weight:400">
+                    <p>Already have an Account ? <a href="#" class="text-white" style="text-decoration: none; font-weight:700;font-family:'Inter' !important">Login in Here</a></p>
+                </div>
+            </div>
+        </div>
+
+
     </div>
-</form>
+</div>
 @endsection
 
 @push("custom_scripts")

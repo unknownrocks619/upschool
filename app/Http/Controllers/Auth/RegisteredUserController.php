@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
 
 class RegisteredUserController extends Controller
 {
@@ -120,9 +121,12 @@ class RegisteredUserController extends Controller
 
     public function facebookCreate()
     {
+        return Socialite::driver('facebook')->redirect();
     }
     public function facebookCallback()
     {
+        $fb_user = Socialite::driver("facebook")->user();
+        dd($fb_user);
     }
 
     public function googleCreate()
