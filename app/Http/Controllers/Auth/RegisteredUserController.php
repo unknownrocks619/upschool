@@ -144,35 +144,40 @@ class RegisteredUserController extends Controller
     }
     public function facebookCallback()
     {
-        $countries  = Country::cursor();
-        $seperate_name = explode(" ", "Binod Giri");
-        $first_name = $seperate_name[0];
-        $last_name = $seperate_name[1];
+        // $countries  = Country::cursor();
+        // $seperate_name = explode(" ", "Binod Giri");
+        // $first_name = $seperate_name[0];
+        // $last_name = $seperate_name[1];
         $password  = Str::random();
-        $user_detail = [
-            "first_name" => $first_name,
-            "last_name" => $last_name,
-            "email" => "unknown_rocks619@yahoo.com",
-            "uid" => 5809757625703755,
-            "password" => $password,
-            "password_confirmation" => $password
-        ];
-        session()->put("source", 'facebook');
-        session()->put("user_detail", $user_detail);
-        return view("frontend.auth.social.facebook", compact("countries", "user_detail"));
+        // $user_detail = [
+        //     "first_name" => $first_name,
+        //     "last_name" => $last_name,
+        //     "email" => "unknown_rocks619@yahoo.com",
+        //     "uid" => 5809757625703755,
+        //     "password" => $password,
+        //     "password_confirmation" => $password
+        // ];
+        // session()->put("source", 'facebook');
+        // session()->put("user_detail", $user_detail);
+        // return view("frontend.auth.social.facebook", compact("countries", "user_detail"));
         $fb_user = Socialite::driver("facebook")->user();
         // check if this email is already used or not .
         $db_user = User::where('source', 'facebook')->where('source_id', $fb_user->id)->where('status', 'active')->first();
         if (!$db_user) {
+            $countries  = Country::cursor();
             $seperate_name = explode(" ", $fb_user->name);
             $first_name = $seperate_name[0];
             $last_name = $seperate_name[1];
             $user_detail = [
                 "first_name" => $first_name,
                 "last_name" => $last_name,
-                "email" => $fb_user->email,
-                "uid" => $fb_user->id
+                "email" => "unknown_rocks619@yahoo.com",
+                "uid" => 5809757625703755,
+                "password" => $password,
+                "password_confirmation" => $password
             ];
+
+            return view("frontend.auth.social.facebook", compact("countries", "user_detail"));
         }
 
         Auth::login($db_user);

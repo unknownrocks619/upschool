@@ -271,61 +271,7 @@
 
 
 
-        <div class="col-md-4 d-none d-md-block mx-auto px-0 ps-5" style="background-color: #242254 !important;align-items:center">
-            <div class="row first">
-                <div class="col-md-8">
-                    <div class="information-circle-disabled active-circle" data-step='1' style="display:flex;justify-content:center;align-items:center">
-                        <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
-                    </div>
-                    <div class="information-disabled active-text">
-                        Account Information
-                    </div>
-                    <div class="information-line-disabled active-line">
-                    </div>
-                </div>
-            </div>
-            <div class="row second">
-                <div class="col-md-4 ">
-                    <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
-                        <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
-                    </div>
-                    <div class="information-disabled">
-                        About
-                    </div>
-                    <div class="information-line-disabled">
-
-                    </div>
-                </div>
-            </div>
-            <div class="row third">
-                <div class="col-md-8 ">
-                    <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
-                        <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
-                    </div>
-                    <div class="information-disabled">
-                        Your Canva Account
-                    </div>
-                </div>
-            </div>
-
-            <div class="row signup-progress-bar ps-3 mb-5 pb-5">
-                <div class="col-md-12 steps p-0 m-0">
-                    <p class="p-0 m-0 text-left"><span class="step-count">1</span> to 3 Steps</p>
-                </div>
-                <div class="progress-title col-md-12">
-                    <h5><span class="percent-complete">100%</span> to Complete</h5>
-                </div>
-                <div class="col-md-12 bar mt-2 ps-0">
-                    <div class="progress w-75" style="background-color: #B4C8E8;">
-                        <div class="progress-bar" style="width: 5%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-
-                </div>
-
-                <div class="col-md-12 already-exists ps-0 mb-5" style="color: #fff;margin-top: 30px;font-weight:400">
-                    <p>Already have an Account ? <a href="#" class="text-white" style="text-decoration: none; font-weight:700;font-family:'Inter' !important">Login in Here</a></p>
-                </div>
-            </div>
+        <div class="col-md-4 d-none d-md-block mx-auto px-0 ps-5" style="background-color: #242254 !important;align-items:center;background-image:url({{ asset('images/upschool-fly.png') }});background-repeat:no-repeat;background-size:contain">
         </div>
 
 
