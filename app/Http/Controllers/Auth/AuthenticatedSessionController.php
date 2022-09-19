@@ -17,8 +17,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        return view("frontend.auth.login");
-        // return view('auth.login');
+        return view('frontend.auth.login-update');
+        // return view("frontend.auth.login");
     }
 
     /**
@@ -35,7 +35,7 @@ class AuthenticatedSessionController extends Controller
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
-    
+
     /**
      * Destroy an authenticated session.
      *

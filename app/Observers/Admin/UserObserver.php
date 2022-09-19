@@ -17,7 +17,9 @@ class UserObserver
     public function created(User $user)
     {
         //
-        (Notification::send($user, new RegistrationNotification($user)));
+        if ($user->source == "email") {
+            (Notification::send($user, new RegistrationNotification($user)));
+        }
     }
 
     /**

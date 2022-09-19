@@ -59,7 +59,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'terms' => ["accepted"],
             "date_of_birth" => ["required", "date", "date_format:Y-m-d"],
-            "recaptcha_token" => ["required", new GoogleCaptcha()]
+            // "recaptcha_token" => ["required", new GoogleCaptcha()]
 
         ]);
         $user = new User;
@@ -75,7 +75,6 @@ class RegisteredUserController extends Controller
 
         if (session()->has('source')) {
             $user->source = session()->get('source');
-            session()->forget('source');
         }
         if (session()->has('user_detail')) {
 
@@ -83,12 +82,12 @@ class RegisteredUserController extends Controller
             $user->last_name = session()->get("user_detail")["last_name"];
             $user->email = session()->get("user_detail")["email"];
             $user->password = Hash::make(Str::random("8"));
-            $user->external_source_id = session()->get('user_detail_id')["uid"];
+            $user->source_id = session()->get('user_detail')["uid"];
 
             if (isset(session()->get('user_detail')["avatar"])) {
                 $user->avatar = ["original_filename" => session()->get('user_detail')["avatar"], "path" => session()->get('user_detail')["avatar"]];
             }
-            session()->forget("user_detail");
+            $user->status = "active";
         } else {
             $user->password = Hash::make($request->password);
         }
@@ -104,7 +103,6 @@ class RegisteredUserController extends Controller
         //     "password" => Hash::make($request->password),
         //     "gender" => "male"
         // ];
-
         $canva = null;
         if ($request->canva == "yes") {
             $canva = new Canva;
@@ -126,7 +124,6 @@ class RegisteredUserController extends Controller
             session()->flash("error", "Unable to register your account at the moment. Please try again later.");
             return back()->withInput();
         }
-
         // $user = User::create([
         //     'name' => $request->name,
         //     'email' => $request->email,
@@ -134,7 +131,6 @@ class RegisteredUserController extends Controller
         // ]);
         // event(new Registered($user));
         // Auth::login($user);
-
         if ($user->source  != "signup") {
             return redirect()->route('frontend.user.registration.verification.message.facebook');
         }
@@ -180,7 +176,7 @@ class RegisteredUserController extends Controller
         }
 
         Auth::login($db_user);
-        redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::HOME);
     }
 
     public function googleCreate()
@@ -193,7 +189,6 @@ class RegisteredUserController extends Controller
         $g_user = Socialite::driver("google")->user();
         $db_user = User::where('source', 'google')->where('source_id', $g_user->user["id"])->where('status', 'active')->first();
         $password  = Str::random();
-
         if (!$db_user) {
             $user_detail = [
                 "first_name" => $g_user->user["given_name"],
@@ -204,10 +199,13 @@ class RegisteredUserController extends Controller
                 "avatar" => $g_user->user["picture"],
                 "password_confirmation" => $password
             ];
-            session()->put("source", 'facebook');
+            session()->put("source", 'google');
             session()->put("user_detail", $user_detail);
             return redirect()->route('google-register-signup-contd');
         }
+
+        Auth::login($db_user);
+        return redirect(RouteServiceProvider::HOME);
     }
 
     public function googleForm()
