@@ -54,7 +54,7 @@ class RegisteredUserController extends Controller
             "canva" => ["required", "in:yes,no"],
             "personal_detail" => ["required_if:canva,yes"],
             "canva_free" => ["required_if:canva,yes"],
-            'role' => ['required', 'string', 'max:30', Rule::in(["student_above", "student_below", "parent", "teacher"])],
+            'role' => ['required', 'string', 'max:30', Rule::in(['student-above', 'student-below', 'parent', 'teacher'])],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'terms' => ["accepted"],
@@ -132,6 +132,7 @@ class RegisteredUserController extends Controller
         // event(new Registered($user));
         // Auth::login($user);
         if ($user->source  != "signup") {
+            session()->forget(["source", "user_detail"]);
             return redirect()->route('frontend.user.registration.verification.message.facebook');
         }
         return redirect()->route('frontend.user.registration.verification.message');
@@ -179,8 +180,7 @@ class RegisteredUserController extends Controller
 
             return view("frontend.auth.social.facebook", compact("countries", "user_detail"));
         }
-
-        Auth::login($db_user);
+        Auth::login($db_user, true);
         return redirect(RouteServiceProvider::HOME);
     }
 
@@ -209,7 +209,7 @@ class RegisteredUserController extends Controller
             return redirect()->route('google-register-signup-contd');
         }
 
-        Auth::login($db_user);
+        Auth::login($db_user, true);
         return redirect(RouteServiceProvider::HOME);
     }
 
