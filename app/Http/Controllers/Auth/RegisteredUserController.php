@@ -163,7 +163,7 @@ class RegisteredUserController extends Controller
         // check if this email is already used or not .
         $db_user = User::where('source', 'facebook')->where('source_id', $fb_user->id)->where('status', 'active')->first();
         if (!$db_user) {
-            $countries  = Country::cursor();
+            // $countries  = Country::cursor();
             $seperate_name = explode(" ", $fb_user->name);
             $first_name = $seperate_name[0];
             $last_name = $seperate_name[1];
@@ -178,7 +178,9 @@ class RegisteredUserController extends Controller
 
             session()->put("source", 'facebook');
             session()->put("user_detail", $user_detail);
-            return view("frontend.auth.social.facebook", compact("countries", "user_detail"));
+            return redirect()->route('google-register-signup-contd');
+
+            // return view("frontend.auth.social.facebook", compact("countries", "user_detail"));
         }
         Auth::login($db_user, true);
         return redirect(RouteServiceProvider::HOME);

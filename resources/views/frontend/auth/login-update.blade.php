@@ -267,8 +267,17 @@
                 </div>
 
             </form>
-        </div>
 
+            <div class="row mt-5 ms-3">
+                <div class="col-md-8 mt-3 ps-5 ms-2">
+                    <p style="color:#03014C">
+                        Don’t have an Upschool account? <a href="{{ route('register') }}" class="text-danger">Sign up</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+gi
 
 
         <div class="col-md-4 d-none d-md-block mx-auto px-0 ps-5" style="background-color: #242254 !important;align-items:center;background-image:url({{ asset('images/upschool-fly.png') }});background-repeat:no-repeat;background-size:contain">
