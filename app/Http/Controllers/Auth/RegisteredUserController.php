@@ -62,6 +62,7 @@ class RegisteredUserController extends Controller
             // "recaptcha_token" => ["required", new GoogleCaptcha()]
 
         ]);
+        dd(Str::replace("-", '_', $request->role));
         $user = new User;
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
