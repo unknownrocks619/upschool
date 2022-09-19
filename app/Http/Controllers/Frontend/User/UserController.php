@@ -23,6 +23,11 @@ class UserController extends Controller
 {
     //
     use FileUpload;
+
+    public function checkSocialLoginMessage()
+    {
+        return view('frontend.auth.register-message');
+    }
     public function checkEmailMessage()
     {
         return view('frontend.auth.check-email-updated');

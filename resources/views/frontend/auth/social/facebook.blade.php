@@ -189,116 +189,27 @@
                         <p>
                             You are a few clicks away from creating your account.
                         </p>
-                        <div class="row mb-3 me-5">
-                            <div class="col-md-6 mt-4 col-sm-12 col-xs-12 col-lg-6 ">
-                                <form action="{{ route('google-register') }}" method="post">
-                                    @csrf
-                                    <button formaction="{{ route('google-register') }}" type="submit" class="btn btn-outline-secondary px-4 py-4 social-login w-100">
-                                        <img src="{{ asset('images/3.png') }}" style="width:25px; height: 25px;position:relative;top: -4px; left:-14px;" />
-                                        Continue With Google
-                                    </button>
-                                </form>
-                            </div>
-                            <div class="col-md-6 mt-4 col-lg-6 col-sm-12 col-xs-12">
-                                <form action="{{ route('facebook-register') }}" method="post">
-                                    @csrf
-                                    <button formaction="{{ route('facebook-register') }}" type="submit" class="btn btn-outline-secondary px-4 py-4 w-100  social-login">
-                                        <img src="{{ asset('images/4.png') }}" style="width:25px; height: 25px;position:relative;top: -4px; left:-14px;" /> Continue with Facebook
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
+
                         <div class="row me-5">
                             <div class="col-md-12 my-5 ms-1">
-                                <div class="border-bottom"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <form method="POST" id="registerForm" action="{{ route('register') }}">
-                <div class="row step-zero-row main">
-                    <div class="col-md-12">
-                        <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
-                            <x-alert></x-alert>
-                            @csrf
-                            <div class="row me-5">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="first_name" class="mb-2">First Name
-                                            <sup class="text-danger">*</sup>
-                                        </label>
-                                        <input value="{{ old('first_name') }}" type="text" name="first_name" class="py-4 form-control rounded-3 @error('first_name') border border-danger @enderror" id="first_name" placeholder="Your First Name" required />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="last_name" class="mb-2">Last Name </label>
-                                        <input type="text" value="{{ old('last_name') }}" name="last_name" class="py-4 rounded-3 form-control @error('last_name') border border-danger @enderror" id="last_name" placeholder="Your Last Name" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mt-4 me-5">
-                                <div class="col-md-12 mt-3">
-                                    <div class="form-group">
-                                        <label for="email" class="mb-2">Email address
-                                            <sup class="text-danger">*</sup>
-                                        </label>
-                                        <input required type="email" value="{{ old('email') }}" name="email" placeholder="name@example.com" class="py-4 rounded-3 form-control @error('email') border border-danger @enderror" id="email" />
-                                        @error('email')
-                                        <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mt-4 me-5">
-                                <div class="col-md-6">
-                                    <div class="form-group ">
-                                        <label for="password" class="mb-2">
-                                            Password
-                                            <sup class="text-danger">*</sup>
-                                        </label>
-                                        <input required value="{{ old('password') }}" placeholder="Password" type="password" name="password" id="password" class="py-4 rounded-3 form-control @error('password') border border-danger @enderror" />
-                                        @error('password')
-                                        <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                @google_captcha()
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="confirm_password" class="mb-2">
-                                            Confirm Password
-                                            <sup class="text-danger">*</sup>
-                                        </label>
-                                        <input required placeholder="Confirm Password" type="password" value="{{ old('password_confirmation') }}" name="password_confirmation" class="py-4 rounded-3 form-control @error('password_confirmation') border border-danger @enderror" id="confirm_password" />
-                                        @error('password_confirmation')
-                                        <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mt-4 text-right me-5">
-                                <div class="col-md-12 text-right d-flex justify-content-end">
-                                    <button class="btn btn-primary next py-3 px-5 step-back" data-step="1">
-                                        Next
-                                        <i class="fas fa-arrow-right"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @csrf
+                @google_captcha()
+                <?php
+                foreach ($user_detail as $userKey => $userValue) {
+                    echo "<input type='hidden' name='{$userKey}' value='{$userValue}' />";
+                }
+                ?>
                 <!-- Step One -->
-                <div class="row step-one-row d-none main">
+                <div class="row step-one-row  main">
                     <div class="col-md-12">
-                        <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
-                            <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;">Create Your Upschool Account </h4>
-                            <p>
-                                You are a few clicks away from creating your account.
-                            </p>
-
+                        <x-alert></x-alert>
+                        <div class="bg-white pt-2 ps-5 dynamic-padding" style="height:100%">
                             <div class="row me-5">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -495,7 +406,7 @@
             <div class="row first">
                 <div class="col-md-8">
                     <div class="information-circle-disabled active-circle" data-step='1' style="display:flex;justify-content:center;align-items:center">
-                        <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
+                        <img src="{{ asset('images/1.png') }}" class="current-image " style="width:25px; height: 25px;" />
                     </div>
                     <div class="information-disabled active-text">
                         Account Information
@@ -506,13 +417,13 @@
             </div>
             <div class="row second">
                 <div class="col-md-4 ">
-                    <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
+                    <div class="information-circle-disabled active-circle" data-step='1' style="display:flex;justify-content:center;align-items:center">
                         <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
                     </div>
-                    <div class="information-disabled">
+                    <div class="information-disabled active-text">
                         About
                     </div>
-                    <div class="information-line-disabled">
+                    <div class="information-line-disabled active-line">
 
                     </div>
                 </div>

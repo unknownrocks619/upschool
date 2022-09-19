@@ -68,11 +68,31 @@ class RegisteredUserController extends Controller
         $user->country = Country::find($request->country)->name;
         $user->role = Role::where('slug', Str::replace("-", '_', $request->role))->first()->id;
         $user->source = "signup";
-        $user->username = Str::random(8);
-        $user->password = Hash::make($request->password);
+
         $user->gender = "male";
         $user->email = $request->email;
         $user->date_of_birth = $request->date_of_birth;
+
+        if (session()->has('source')) {
+            $user->source = session()->get('source');
+            session()->forget('source');
+        }
+        if (session()->has('user_detail')) {
+
+            $user->first_name = session()->get("user_detail")["first_name"];
+            $user->last_name = session()->get("user_detail")["last_name"];
+            $user->email = session()->get("user_detail")["email"];
+            $user->password = Hash::make(Str::random("8"));
+            $user->external_source_id = session()->get('user_detail_id')["uid"];
+
+            if (isset(session()->get('user_detail')["avatar"])) {
+                $user->avatar = ["original_filename" => session()->get('user_detail')["avatar"], "path" => session()->get('user_detail')["avatar"]];
+            }
+            session()->forget("user_detail");
+        } else {
+            $user->password = Hash::make($request->password);
+        }
+        $user->username = Str::random(8);
 
         // $user = [
         //     "first_name" => $request->first_name,
@@ -115,6 +135,9 @@ class RegisteredUserController extends Controller
         // event(new Registered($user));
         // Auth::login($user);
 
+        if ($user->source  != "signup") {
+            return redirect()->route('frontend.user.registration.verification.message.facebook');
+        }
         return redirect()->route('frontend.user.registration.verification.message');
         // return redirect(RouteServiceProvider::HOME);
     }
@@ -125,15 +148,72 @@ class RegisteredUserController extends Controller
     }
     public function facebookCallback()
     {
+        $countries  = Country::cursor();
+        $seperate_name = explode(" ", "Binod Giri");
+        $first_name = $seperate_name[0];
+        $last_name = $seperate_name[1];
+        $password  = Str::random();
+        $user_detail = [
+            "first_name" => $first_name,
+            "last_name" => $last_name,
+            "email" => "unknown_rocks619@yahoo.com",
+            "uid" => 5809757625703755,
+            "password" => $password,
+            "password_confirmation" => $password
+        ];
+        session()->put("source", 'facebook');
+        session()->put("user_detail", $user_detail);
+        return view("frontend.auth.social.facebook", compact("countries", "user_detail"));
         $fb_user = Socialite::driver("facebook")->user();
-        dd($fb_user);
+        // check if this email is already used or not .
+        $db_user = User::where('source', 'facebook')->where('source_id', $fb_user->id)->where('status', 'active')->first();
+        if (!$db_user) {
+            $seperate_name = explode(" ", $fb_user->name);
+            $first_name = $seperate_name[0];
+            $last_name = $seperate_name[1];
+            $user_detail = [
+                "first_name" => $first_name,
+                "last_name" => $last_name,
+                "email" => $fb_user->email,
+                "uid" => $fb_user->id
+            ];
+        }
+
+        Auth::login($db_user);
+        redirect(RouteServiceProvider::HOME);
     }
 
     public function googleCreate()
     {
+        return Socialite::driver('google')->redirect();
     }
 
     public function googleCallback()
     {
+        $g_user = Socialite::driver("google")->user();
+        $db_user = User::where('source', 'google')->where('source_id', $g_user->user["id"])->where('status', 'active')->first();
+        $password  = Str::random();
+
+        if (!$db_user) {
+            $user_detail = [
+                "first_name" => $g_user->user["given_name"],
+                "last_name" => $g_user->user["family_name"],
+                "email" => $g_user->user["email"],
+                "uid" => $g_user->user["id"],
+                "password" => $password,
+                "avatar" => $g_user->user["picture"],
+                "password_confirmation" => $password
+            ];
+            session()->put("source", 'facebook');
+            session()->put("user_detail", $user_detail);
+            return redirect()->route('google-register-signup-contd');
+        }
+    }
+
+    public function googleForm()
+    {
+        $countries  = Country::cursor();
+        $user_detail = session()->get("user_detail");
+        return view("frontend.auth.social.facebook", compact("countries", "user_detail"));
     }
 }

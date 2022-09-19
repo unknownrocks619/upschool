@@ -94,6 +94,7 @@ Route::name('frontend.')->group(function () {
             Route::get("register/resend", "resendVerificationCreate")->name('registration.resend');
             Route::get("register/forgot", "forgot")->name('registration.forgot');
             Route::get('/register/success', 'checkEmailMessage')->name('registration.verification.message');
+            Route::get('/register/success/social', 'checkSocialLoginMessage')->name('registration.verification.message.facebook');
             Route::post("register/resend", "resendVerificationSend")->name('registration.resend-link');
             Route::post("register/forgot", "forgotSend")->name('registration.forgot.send');
             Route::post("register/forgot", "forgotConfirmationVerify")->name('registration.forgot.verify');

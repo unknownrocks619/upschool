@@ -38,6 +38,13 @@ Route::middleware('guest')->group(function () {
 
     Route::get('register/callback/facebook', [RegisteredUserController::class, "facebookCallback"])
         ->name('facebook-register-callback');
+
+    Route::post('register/google', [RegisteredUserController::class, "googleCreate"])->name('google-register');
+
+    Route::get('register/callback/google', [RegisteredUserController::class, "googleCallback"])
+        ->name('google-register-callback');
+    Route::get('register/google/signup/contd', [RegisteredUserController::class, "googleForm"])
+        ->name('google-register-signup-contd');
 });
 
 Route::middleware('auth')->group(function () {

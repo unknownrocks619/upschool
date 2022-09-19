@@ -45,26 +45,31 @@ class RegistrationNotification extends Notification
      */
     public function toMail($notifiable)
     {
+
         // $user = $this->user;
         $random_key = Str::random(16);
         $verify = new EmailVerify;
         $verify->user_id = $this->user->id;
         $verify->signature = $random_key;
-        $verify->verified = false;
+        $verify->verified = ($this->user->source == "signup") ? false : true;
 
         $verificationUrl = URL::temporarySignedRoute('frontend.user.registration.verification', now()->addHour(), ["uuid" => $random_key]);
         $first_name = $this->user->first_name;
         try {
             $verify->save();
+            session()->forget(["user_detail", "source"]);
         } catch (\Throwable $th) {
             //throw $th;
             throw new Exception("Unable to process at the moment. Please try again after few minute.");
             return;
         }
-        return (new MailMessage)
-            ->subject("Verify Your Email")
-            ->from("noreply@upschool.co")
-            ->markdown("frontend.mail.user.registration", compact('verificationUrl', 'first_name'));
+
+        if ($this->user->source != "signup") {
+            return (new MailMessage)
+                ->subject("Verify Your Email")
+                ->from("noreply@upschool.co")
+                ->markdown("frontend.mail.user.registration", compact('verificationUrl', 'first_name'));
+        }
     }
 
     /**

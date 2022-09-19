@@ -37,9 +37,9 @@ return [
         'redirect' => config("app.url") . "/register/callback/facebook"
     ],
     'google' => [
-        'client_id' => env('GOOGLE_CLIENT_ID'),
-        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => env('GOOGLE_REDIRECT_URI')
+        'client_id' => "7731429162-th2kgvghancmr9gn3vnknleskfd8c5mb.apps.googleusercontent.com",
+        'client_secret' => "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",
+        'redirect' => config("app.url") . "/register/callback/google"
     ],
 
 ];
