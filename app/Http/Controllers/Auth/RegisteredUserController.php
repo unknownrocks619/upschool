@@ -158,8 +158,6 @@ class RegisteredUserController extends Controller
         //     "password" => $password,
         //     "password_confirmation" => $password
         // ];
-        // session()->put("source", 'facebook');
-        // session()->put("user_detail", $user_detail);
         // return view("frontend.auth.social.facebook", compact("countries", "user_detail"));
         $fb_user = Socialite::driver("facebook")->user();
         // check if this email is already used or not .
@@ -178,6 +176,8 @@ class RegisteredUserController extends Controller
                 "password_confirmation" => $password
             ];
 
+            session()->put("source", 'facebook');
+            session()->put("user_detail", $user_detail);
             return view("frontend.auth.social.facebook", compact("countries", "user_detail"));
         }
         Auth::login($db_user, true);
