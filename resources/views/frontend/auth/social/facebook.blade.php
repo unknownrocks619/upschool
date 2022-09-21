@@ -155,7 +155,7 @@
     }
 
     .signup-progress-bar {
-        margin-top: 175px;
+        margin-top: 50px;
         text-align: left;
 
     }
@@ -216,7 +216,7 @@
                                         <label for="country" class="mb-2">Select Your Country
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <select name="country" class="form-control form-select py-4 rounded-3 @error('country') border border-danger @enderror" id="country">
+                                        <select name="country" class="form-control form-select py-3 rounded-3 @error('country') border border-danger @enderror" id="country">
                                             @foreach ($countries as $country)
                                             <option value="{{ $country->id }}">{{ $country->name }}</option>
                                             @endforeach
@@ -233,7 +233,7 @@
                                         <label for="email" class="mb-2">What Describes You?
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <select name="role" id="role" class="py-4 rounded-3 form-control form-select @error('role') border border-danger @enderror">
+                                        <select name="role" id="role" class="3 rounded-3 form-control form-select @error('role') border border-danger @enderror">
                                             <option value="parent" @if(old('role')=='parent' ) selected @endif>Parent of Student</option>
                                             <option value="student-above" @if(old('role')=='student-above' ) selected @endif>Student Above 18</option>
                                             <option value="student-below" @if(old('role')=='student-below' ) selected @endif>Student Below 18</option>
@@ -251,7 +251,7 @@
                                         <label for="email" class="mb-2">Your Date of Birth
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <input required="true" type="date" value="{{ old('date_of_birth') }}" name="date_of_birth" id="date_of_birth" class="form-control py-4 rounded-3 @error('date_of_birth') border border-danger @enderror" />
+                                        <input required="true" type="date" value="{{ old('date_of_birth') }}" name="date_of_birth" id="date_of_birth" class="form-control py-3 rounded-3 @error('date_of_birth') border border-danger @enderror" />
                                         @error("date_of_birth")
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -260,10 +260,7 @@
                             </div>
                             <div class="row mt-4 pt-4 text-right me-5">
                                 <div class="col text-start pt-3">
-                                    <button data-step="0" class="step-back btn btn-link mt-2 pt-1" style="color:#242254;font-weight:600;font-size:21px;line-height:25.42px;font-family:'Inter'">
-                                        <i class=" fas fa-arrow-left"></i>
-                                        Go back
-                                    </button>
+
                                 </div>
                                 <div class="col mt-3 text-right d-flex justify-content-end">
                                     <button class="btn btn-primary next py-3 px-5 step-back" data-step="2">
@@ -305,7 +302,7 @@
                                         <label for="first_name" class="mb-2">Would you like us to register you for a FREE Canva Pro Account?
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <select name="canva" id="canva" autocomplete="off" class="py-4 rounded-3 form-control form-select @error('canva') border bordered-danger @enderror">
+                                        <select name="canva" id="canva" autocomplete="off" class="py-3 rounded-3 form-control form-select @error('canva') border bordered-danger @enderror">
                                             <option value="yes" @if(old('canva') !='no' ) selected @endif>Yes</option>
                                             <option value="no" @if(old('canva')=='no' ) selected @endif>No</option>
                                         </select>
@@ -402,7 +399,7 @@
 
 
 
-        <div class="col-md-4 d-none d-md-block mx-auto px-0 ps-5" style="background-color: #242254 !important;align-items:center">
+        <div class="col-md-4 d-none d-md-block mx-auto px-0 ps-5" style="background-color: #242254 !important;align-items:center;background:url({{ asset('images/background.png') }});background-size:cover;">
             <div class="row first">
                 <div class="col-md-8">
                     <div class="information-circle-disabled active-circle" data-step='1' style="display:flex;justify-content:center;align-items:center">
@@ -416,7 +413,7 @@
                 </div>
             </div>
             <div class="row second">
-                <div class="col-md-4 ">
+                <div class="col-md-8 ">
                     <div class="information-circle-disabled active-circle" data-step='1' style="display:flex;justify-content:center;align-items:center">
                         <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
                     </div>

@@ -166,7 +166,7 @@ class RegisteredUserController extends Controller
             // $countries  = Country::cursor();
             $seperate_name = explode(" ", $fb_user->name);
             $first_name = $seperate_name[0];
-            $last_name = $seperate_name[1];
+            $last_name = isset($seperate_name[1]) ? $seperate_name[1] : "Not available";
             $user_detail = [
                 "first_name" => $first_name,
                 "last_name" => $last_name,
@@ -199,7 +199,7 @@ class RegisteredUserController extends Controller
         if (!$db_user) {
             $user_detail = [
                 "first_name" => $g_user->user["given_name"],
-                "last_name" => $g_user->user["family_name"],
+                "last_name" => isset($g_user->user["family_name"]) ? $g_user->user["family_name"] : "not available",
                 "email" => $g_user->user["email"],
                 "uid" => $g_user->user["id"],
                 "password" => $password,

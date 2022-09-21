@@ -109,7 +109,7 @@
     .done {}
 
     .first {
-        margin-top: 20px;
+        margin-top: 5px;
     }
 
     .information-disabled {
@@ -155,7 +155,7 @@
     }
 
     .signup-progress-bar {
-        margin-top: 175px;
+        margin-top: 50px;
         text-align: left;
 
     }
@@ -179,38 +179,38 @@
 <div class="container border-start mb-11 mx-auto px-0">
     <div class="row px-0 mx-auto">
         <!-- Row -->
-        <div class="col-md-8 pl-0 ml-0 mx-auto step-parent pb-5" style="padding-left:0px !important;">
+        <div class="col-md-8 pl-0 ml-0 mx-auto step-parent" style="padding-left:0px !important;">
             <!-- Step Zero -->
 
             <div class="row ">
                 <div class="col-md-12">
-                    <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
-                        <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;">Create Your Upschool Account </h4>
-                        <p>
-                            You are a few clicks away from creating your account.
-                        </p>
-                        <div class="row mb-3 me-5">
-                            <div class="col-md-6 mt-4 col-sm-12 col-xs-12 col-lg-6 ">
+                    <div class="bg-white pt-2 ps-5 dynamic-padding" style="height:100%">
+                        <div class="row me-5 social-login-row">
+                            <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;">Create Your Upschool Account </h4>
+                            <p>
+                                You are a few clicks away from creating your account.
+                            </p>
+                            <div class="col-md-6 mt-2 col-sm-12 col-xs-12 col-lg-6 ">
                                 <form action="{{ route('google-register') }}" method="post">
                                     @csrf
-                                    <button formaction="{{ route('google-register') }}" type="submit" class="btn btn-outline-secondary px-4 py-4 social-login w-100">
+                                    <button formaction="{{ route('google-register') }}" type="submit" class="btn btn-outline-secondary px-4 py-3 social-login w-100">
                                         <img src="{{ asset('images/3.png') }}" style="width:25px; height: 25px;position:relative;top: -4px; left:-14px;" />
                                         Continue With Google
                                     </button>
                                 </form>
                             </div>
-                            <div class="col-md-6 mt-4 col-lg-6 col-sm-12 col-xs-12">
+                            <div class="col-md-6 mt-2 col-lg-6 col-sm-12 col-xs-12">
                                 <form action="{{ route('facebook-register') }}" method="post">
                                     @csrf
-                                    <button formaction="{{ route('facebook-register') }}" type="submit" class="btn btn-outline-secondary px-4 py-4 w-100  social-login">
+                                    <button formaction="{{ route('facebook-register') }}" type="submit" class="btn btn-outline-secondary px-4 py-3 w-100  social-login">
                                         <img src="{{ asset('images/4.png') }}" style="width:25px; height: 25px;position:relative;top: -4px; left:-14px;" /> Continue with Facebook
                                     </button>
                                 </form>
                             </div>
-                        </div>
-                        <div class="row me-5">
-                            <div class="col-md-12 my-5 ms-1">
-                                <div class="border-bottom"></div>
+                            <div class="row me-5">
+                                <div class="col-md-12 mb-3 mt-4 ms-1">
+                                    <div class="border-bottom"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -219,7 +219,7 @@
             <form method="POST" id="registerForm" action="{{ route('register') }}">
                 <div class="row step-zero-row main">
                     <div class="col-md-12">
-                        <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
+                        <div class="bg-white ps-5 dynamic-padding" style="height:100%">
                             <x-alert></x-alert>
                             @csrf
                             <div class="row me-5">
@@ -228,23 +228,23 @@
                                         <label for="first_name" class="mb-2">First Name
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <input value="{{ old('first_name') }}" type="text" name="first_name" class="py-4 form-control rounded-3 @error('first_name') border border-danger @enderror" id="first_name" placeholder="Your First Name" required />
+                                        <input value="{{ old('first_name') }}" type="text" name="first_name" class="py-3 form-control rounded-3 @error('first_name') border border-danger @enderror" id="first_name" placeholder="Your First Name" required />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="last_name" class="mb-2">Last Name </label>
-                                        <input type="text" value="{{ old('last_name') }}" name="last_name" class="py-4 rounded-3 form-control @error('last_name') border border-danger @enderror" id="last_name" placeholder="Your Last Name" />
+                                        <input type="text" value="{{ old('last_name') }}" name="last_name" class="py-3 rounded-3 form-control @error('last_name') border border-danger @enderror" id="last_name" placeholder="Your Last Name" />
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mt-4 me-5">
-                                <div class="col-md-12 mt-3">
+                            <div class="row mt-2 me-5">
+                                <div class="col-md-12 mt-1">
                                     <div class="form-group">
                                         <label for="email" class="mb-2">Email address
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <input required type="email" value="{{ old('email') }}" name="email" placeholder="name@example.com" class="py-4 rounded-3 form-control @error('email') border border-danger @enderror" id="email" />
+                                        <input required type="email" value="{{ old('email') }}" name="email" placeholder="name@example.com" class="py-3 rounded-3 form-control @error('email') border border-danger @enderror" id="email" />
                                         @error('email')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -258,7 +258,7 @@
                                             Password
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <input required value="{{ old('password') }}" placeholder="Password" type="password" name="password" id="password" class="py-4 rounded-3 form-control @error('password') border border-danger @enderror" />
+                                        <input required value="{{ old('password') }}" placeholder="Password" type="password" name="password" id="password" class="py-3 rounded-3 form-control @error('password') border border-danger @enderror" />
                                         @error('password')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -272,7 +272,7 @@
                                             Confirm Password
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <input required placeholder="Confirm Password" type="password" value="{{ old('password_confirmation') }}" name="password_confirmation" class="py-4 rounded-3 form-control @error('password_confirmation') border border-danger @enderror" id="confirm_password" />
+                                        <input required placeholder="Confirm Password" type="password" value="{{ old('password_confirmation') }}" name="password_confirmation" class="py-3 rounded-3 form-control @error('password_confirmation') border border-danger @enderror" id="confirm_password" />
                                         @error('password_confirmation')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -305,7 +305,7 @@
                                         <label for="country" class="mb-2">Select Your Country
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <select name="country" class="form-control form-select py-4 rounded-3 @error('country') border border-danger @enderror" id="country">
+                                        <select name="country" class="form-control form-select py-3 rounded-3 @error('country') border border-danger @enderror" id="country">
                                             @foreach ($countries as $country)
                                             <option value="{{ $country->id }}">{{ $country->name }}</option>
                                             @endforeach
@@ -322,7 +322,7 @@
                                         <label for="email" class="mb-2">What Describes You?
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <select name="role" id="role" class="py-4 rounded-3 form-control form-select @error('role') border border-danger @enderror">
+                                        <select name="role" id="role" class="py-3 rounded-3 form-control form-select @error('role') border border-danger @enderror">
                                             <option value="parent" @if(old('role')=='parent' ) selected @endif>Parent of Student</option>
                                             <option value="student-above" @if(old('role')=='student-above' ) selected @endif>Student Above 18</option>
                                             <option value="student-below" @if(old('role')=='student-under' ) selected @endif>Student Below 18</option>
@@ -340,7 +340,7 @@
                                         <label for="email" class="mb-2">Your Date of Birth
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <input required="true" type="date" value="{{ old('date_of_birth') }}" name="date_of_birth" id="date_of_birth" class="form-control py-4 rounded-3 @error('date_of_birth') border border-danger @enderror" />
+                                        <input required="true" type="date" value="{{ old('date_of_birth') }}" name="date_of_birth" id="date_of_birth" class="form-control py-3 rounded-3 @error('date_of_birth') border border-danger @enderror" />
                                         @error("date_of_birth")
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -394,7 +394,7 @@
                                         <label for="first_name" class="mb-2">Would you like us to register you for a FREE Canva Pro Account?
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <select name="canva" id="canva" autocomplete="off" class="py-4 rounded-3 form-control form-select @error('canva') border bordered-danger @enderror">
+                                        <select name="canva" id="canva" autocomplete="off" class="py-3 rounded-3 form-control form-select @error('canva') border bordered-danger @enderror">
                                             <option value="yes" @if(old('canva') !='no' ) selected @endif>Yes</option>
                                             <option value="no" @if(old('canva')=='no' ) selected @endif>No</option>
                                         </select>
@@ -491,9 +491,9 @@
 
 
 
-        <div class="col-md-4 d-none d-md-block mx-auto" style="background-color: #242254 !important;align-items:center;background:url({{ asset('images/background.png') }});background-size:contain;">
-            <div class="row mx-auto mt-5">
-                <div class="col-md-12 text-center mt-3">
+        <div class="col-md-4 d-none d-md-block mx-auto" style="background-color: #242254 !important;align-items:center;background:url({{ asset('images/background.png') }});background-size:cover;">
+            <div class="row mx-auto">
+                <div class="col-md-12 text-center mt-2">
                     <img src="{{ asset('images/upschool-banner.png') }}" alt="" class="w-75">
                 </div>
             </div>
@@ -511,7 +511,7 @@
                     </div>
                 </div>
                 <div class="row second">
-                    <div class="col-md-4 ">
+                    <div class="col-md-8 ">
                         <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
                             <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
                         </div>
@@ -582,6 +582,7 @@
                     $(".progress-bar").css("width", "50%")
                     $(".percent-complete").text("50%")
                     $(".step-count").text("2")
+                    $(".social-login-row").fadeOut();
 
                 }
 
@@ -594,6 +595,7 @@
                     $(".progress-bar").css("width", "75%")
                     $(".percent-complete").text("75%")
                     $(".step-count").text("3")
+                    $(".social-login-row").fadeOut();
 
 
                 }
@@ -608,6 +610,7 @@
                     $(".progress-bar").css("width", "10%")
                     $(".percent-complete").text("100%")
                     $(".step-count").text("1")
+                    $(".social-login-row").fadeIn();
 
                 }
             }).addClass("d-none")
