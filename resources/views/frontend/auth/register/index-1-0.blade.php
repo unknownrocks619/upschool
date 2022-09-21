@@ -544,7 +544,7 @@
                             <div class="progress-bar" style="width: 5%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
-                    <div class="col-md-12 already-exists ps-0 mb-5" style="color: #fff;margin-top: 30px;font-weight:400">
+                    <div class="col-md-12 already-exists ps-0 mb-5" style="color: #fff;margin-top: 10px;font-weight:400">
                         <p>Already have an Account ? <a href="{{ route('login') }}" class="text-white" style="text-decoration: none; font-weight:700;font-family:'Inter' !important">Login Here</a></p>
                     </div>
                 </div>

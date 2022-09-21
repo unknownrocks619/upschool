@@ -109,7 +109,7 @@
     .done {}
 
     .first {
-        margin-top: 75px;
+        margin-top: 5px;
     }
 
     .information-disabled {
@@ -155,7 +155,7 @@
     }
 
     .signup-progress-bar {
-        margin-top: 50px;
+        margin-top: 20px;
         text-align: left;
 
     }
@@ -179,19 +179,22 @@
 <div class="container border-start mb-11 mx-auto px-0">
     <div class="row px-0 mx-auto">
         <!-- Row -->
-        <div class="col-md-8 pl-0 ml-0 mx-auto step-parent pb-5" style="padding-left:0px !important;">
+        <div class="col-md-8 pl-0 ml-0 mx-auto step-parent " style="padding-left:0px !important;">
             <!-- Step Zero -->
 
             <div class="row ">
+                <div class="register-title pt-3 ps-5 ms-2 dynamic-padding">
+                    <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;">Create Your Upschool Account </h4>
+                    <p>
+                        You are a few clicks away from creating your account.
+                    </p>
+
+                </div>
                 <div class="col-md-12">
                     <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
-                        <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;">Create Your Upschool Account </h4>
-                        <p>
-                            You are a few clicks away from creating your account.
-                        </p>
 
                         <div class="row me-5">
-                            <div class="col-md-12 my-5 ms-1">
+                            <div class="col-md-12 my-1 ms-1">
                             </div>
                         </div>
                     </div>
@@ -228,12 +231,12 @@
                                 </div>
                             </div>
                             <div class="row mt-4 me-5">
-                                <div class="col-md-12 mt-3">
+                                <div class="col-md-12 mt-2">
                                     <div class="form-group">
                                         <label for="email" class="mb-2">What Describes You?
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <select name="role" id="role" class="3 rounded-3 form-control form-select @error('role') border border-danger @enderror">
+                                        <select name="role" id="role" class="py-3 rounded-3 form-control form-select @error('role') border border-danger @enderror">
                                             <option value="parent" @if(old('role')=='parent' ) selected @endif>Parent of Student</option>
                                             <option value="student-above" @if(old('role')=='student-above' ) selected @endif>Student Above 18</option>
                                             <option value="student-below" @if(old('role')=='student-below' ) selected @endif>Student Below 18</option>
@@ -245,7 +248,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mt-4 me-5">
+                            <div class="row mt-2 me-5">
                                 <div class="col-md-12 mt-3">
                                     <div class="form-group">
                                         <label for="email" class="mb-2">Your Date of Birth
@@ -258,8 +261,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mt-4 pt-4 text-right me-5">
-                                <div class="col text-start pt-3">
+                            <div class="row mt-2 pt-2 text-right me-5">
+                                <div class="col text-start pt-2">
 
                                 </div>
                                 <div class="col mt-3 text-right d-flex justify-content-end">
@@ -399,59 +402,62 @@
 
 
 
-        <div class="col-md-4 d-none d-md-block mx-auto px-0 ps-5" style="background-color: #242254 !important;align-items:center;background:url({{ asset('images/background.png') }});background-size:cover;">
-            <div class="row first">
-                <div class="col-md-8">
-                    <div class="information-circle-disabled active-circle" data-step='1' style="display:flex;justify-content:center;align-items:center">
-                        <img src="{{ asset('images/1.png') }}" class="current-image " style="width:25px; height: 25px;" />
-                    </div>
-                    <div class="information-disabled active-text">
-                        Account Information
-                    </div>
-                    <div class="information-line-disabled active-line">
-                    </div>
+        <div class="col-md-4 d-none d-md-block mx-auto" style="background-color: #242254 !important;align-items:center;background:url({{ asset('images/background.png') }});background-size:cover;">
+            <div class="row mx-auto">
+                <div class="col-md-12 text-center mt-2">
+                    <img src="{{ asset('images/upschool-banner.png') }}" alt="" class="w-75">
                 </div>
             </div>
-            <div class="row second">
-                <div class="col-md-8 ">
-                    <div class="information-circle-disabled active-circle" data-step='1' style="display:flex;justify-content:center;align-items:center">
-                        <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
-                    </div>
-                    <div class="information-disabled active-text">
-                        About You
-                    </div>
-                    <div class="information-line-disabled active-line">
-
-                    </div>
-                </div>
-            </div>
-            <div class="row third">
-                <div class="col-md-8 ">
-                    <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
-                        <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
-                    </div>
-                    <div class="information-disabled">
-                        Your Canva Account
+            <div class=" px-0 ps-5">
+                <div class="row first">
+                    <div class="col-md-8">
+                        <div class="information-circle-disabled active-circle" data-step='1' style="display:flex;justify-content:center;align-items:center">
+                            <img src="{{ asset('images/1.png') }}" class="current-image " style="width:25px; height: 25px;" />
+                        </div>
+                        <div class="information-disabled active-text">
+                            Account Information
+                        </div>
+                        <div class="information-line-disabled active-line">
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="row signup-progress-bar ps-3 mb-5 pb-5">
-                <div class="col-md-12 steps p-0 m-0">
-                    <p class="p-0 m-0 text-left"><span class="step-count">1</span> to 3 Steps</p>
-                </div>
-                <div class="progress-title col-md-12">
-                    <h5><span class="percent-complete">100%</span> to Complete</h5>
-                </div>
-                <div class="col-md-12 bar mt-2 ps-0">
-                    <div class="progress w-75" style="background-color: #B4C8E8;">
-                        <div class="progress-bar" style="width: 5%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="row second">
+                    <div class="col-md-8 ">
+                        <div class="information-circle-disabled active-circle" data-step='1' style="display:flex;justify-content:center;align-items:center">
+                            <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
+                        </div>
+                        <div class="information-disabled active-text">
+                            About You
+                        </div>
+                        <div class="information-line-disabled active-line">
+                        </div>
                     </div>
-
                 </div>
-
-                <div class="col-md-12 already-exists ps-0 mb-5" style="color: #fff;margin-top: 30px;font-weight:400">
-                    <p>Already have an Account ? <a href="#" class="text-white" style="text-decoration: none; font-weight:700;font-family:'Inter' !important">Login Here</a></p>
+                <div class="row third">
+                    <div class="col-md-8 ">
+                        <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
+                            <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
+                        </div>
+                        <div class="information-disabled">
+                            Your Canva Account
+                        </div>
+                    </div>
+                </div>
+                <div class="row signup-progress-bar ps-3 mb-2 pb-5">
+                    <div class="col-md-12 steps p-0 m-0">
+                        <p class="p-0 m-0 text-left"><span class="step-count">1</span> to 3 Steps</p>
+                    </div>
+                    <div class="progress-title col-md-12">
+                        <h5><span class="percent-complete">100%</span> to Complete</h5>
+                    </div>
+                    <div class="col-md-12 bar mt-2 ps-0">
+                        <div class="progress w-75" style="background-color: #B4C8E8;">
+                            <div class="progress-bar" style="width: 5%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 already-exists ps-0 mb-5" style="color: #fff;margin-top: 10px;font-weight:400">
+                        <p>Already have an Account ? <a href="#" class="text-white" style="text-decoration: none; font-weight:700;font-family:'Inter' !important">Login Here</a></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -487,6 +493,7 @@
                     $(".progress-bar").css("width", "50%")
                     $(".percent-complete").text("50%")
                     $(".step-count").text("2")
+                    $(".register-title").fadeIn();
 
                 }
 
@@ -499,6 +506,7 @@
                     $(".progress-bar").css("width", "75%")
                     $(".percent-complete").text("75%")
                     $(".step-count").text("3")
+                    $(".register-title").fadeOut()
 
 
                 }
