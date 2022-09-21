@@ -213,7 +213,7 @@
                             <div class="row me-5">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="country" class="mb-2">Your Country
+                                        <label for="country" class="mb-2">Select Your Country
                                             <sup class="text-danger">*</sup>
                                         </label>
                                         <select name="country" class="form-control form-select py-4 rounded-3 @error('country') border border-danger @enderror" id="country">
@@ -230,7 +230,7 @@
                             <div class="row mt-4 me-5">
                                 <div class="col-md-12 mt-3">
                                     <div class="form-group">
-                                        <label for="email" class="mb-2">What Describes you?
+                                        <label for="email" class="mb-2">What Describes You?
                                             <sup class="text-danger">*</sup>
                                         </label>
                                         <select name="role" id="role" class="py-4 rounded-3 form-control form-select @error('role') border border-danger @enderror">
@@ -421,7 +421,7 @@
                         <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
                     </div>
                     <div class="information-disabled active-text">
-                        About
+                        About You
                     </div>
                     <div class="information-line-disabled active-line">
 
@@ -454,7 +454,7 @@
                 </div>
 
                 <div class="col-md-12 already-exists ps-0 mb-5" style="color: #fff;margin-top: 30px;font-weight:400">
-                    <p>Already have an Account ? <a href="#" class="text-white" style="text-decoration: none; font-weight:700;font-family:'Inter' !important">Login in Here</a></p>
+                    <p>Already have an Account ? <a href="#" class="text-white" style="text-decoration: none; font-weight:700;font-family:'Inter' !important">Login Here</a></p>
                 </div>
             </div>
         </div>
