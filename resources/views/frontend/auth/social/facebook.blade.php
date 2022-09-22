@@ -445,10 +445,10 @@
                 </div>
                 <div class="row signup-progress-bar ps-3 mb-2 pb-5">
                     <div class="col-md-12 steps p-0 m-0">
-                        <p class="p-0 m-0 text-left"><span class="step-count">1</span> to 3 Steps</p>
+                        <p class="p-0 m-0 text-left"><span class="step-count">2</span> to 3 Steps</p>
                     </div>
                     <div class="progress-title col-md-12">
-                        <h5><span class="percent-complete">50%</span> to Complete</h5>
+                        <h5><span class="percent-complete">67%</span> to Complete</h5>
                     </div>
                     <div class="col-md-12 bar mt-2 ps-0">
                         <div class="progress w-75" style="background-color: #B4C8E8;">
@@ -490,8 +490,8 @@
                     $("div.third").find(".information-circle-disabled").removeClass('active-circle')
                     $("div.third").find(".information-disabled").removeClass('active-text')
 
-                    $(".progress-bar").css("width", "50%")
-                    $(".percent-complete").text("50%")
+                    $(".progress-bar").css("width", "33%")
+                    $(".percent-complete").text("67%")
                     $(".step-count").text("2")
                     $(".register-title").fadeIn();
 
@@ -503,8 +503,8 @@
                     $("div.third").find(".information-disabled").addClass('active-text')
                     $("div.second").find(".current-image").removeClass('d-none')
 
-                    $(".progress-bar").css("width", "75%")
-                    $(".percent-complete").text("75%")
+                    $(".progress-bar").css("width", "67%")
+                    $(".percent-complete").text("33%")
                     $(".step-count").text("3")
                     $(".register-title").fadeOut()
 
@@ -518,7 +518,7 @@
                     $("div.second").find(".information-circle-disabled").removeClass('active-circle')
                     $("div.second").find(".current-image").addClass('d-none')
                     $("div.second").find(".information-disabled").removeClass('active-text');
-                    $(".progress-bar").css("width", "10%")
+                    $(".progress-bar").css("width", "1%")
                     $(".percent-complete").text("100%")
                     $(".step-count").text("1")
 
