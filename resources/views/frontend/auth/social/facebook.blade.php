@@ -448,7 +448,7 @@
                         <p class="p-0 m-0 text-left"><span class="step-count">1</span> to 3 Steps</p>
                     </div>
                     <div class="progress-title col-md-12">
-                        <h5><span class="percent-complete">100%</span> to Complete</h5>
+                        <h5><span class="percent-complete">50%</span> to Complete</h5>
                     </div>
                     <div class="col-md-12 bar mt-2 ps-0">
                         <div class="progress w-75" style="background-color: #B4C8E8;">
