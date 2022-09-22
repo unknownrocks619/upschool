@@ -583,8 +583,8 @@
                     $("div.third").find(".information-circle-disabled").removeClass('active-circle')
                     $("div.third").find(".information-disabled").removeClass('active-text')
 
-                    $(".progress-bar").css("width", "50%")
-                    $(".percent-complete").text("50%")
+                    $(".progress-bar").css("width", "33%")
+                    $(".percent-complete").text("67%")
                     $(".step-count").text("2")
                     $(".social-login-row").fadeOut();
 
@@ -596,8 +596,8 @@
                     $("div.third").find(".information-disabled").addClass('active-text')
                     $("div.second").find(".current-image").removeClass('d-none')
 
-                    $(".progress-bar").css("width", "75%")
-                    $(".percent-complete").text("75%")
+                    $(".progress-bar").css("width", "67%")
+                    $(".percent-complete").text("33%")
                     $(".step-count").text("3")
                     $(".social-login-row").fadeOut();
 
@@ -611,7 +611,7 @@
                     $("div.second").find(".information-circle-disabled").removeClass('active-circle')
                     $("div.second").find(".current-image").addClass('d-none')
                     $("div.second").find(".information-disabled").removeClass('active-text');
-                    $(".progress-bar").css("width", "10%")
+                    $(".progress-bar").css("width", "1%")
                     $(".percent-complete").text("100%")
                     $(".step-count").text("1")
                     $(".social-login-row").fadeIn();
