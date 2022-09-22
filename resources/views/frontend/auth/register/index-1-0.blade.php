@@ -19,6 +19,10 @@
         color: #03014C !important
     }
 
+    .social-login:hover {
+        background: #CFCFCF !important;
+    }
+
     label {
         font-family: 'Inter';
         font-weight: 400;
@@ -184,7 +188,7 @@
 
             <div class="row ">
                 <div class="col-md-12">
-                    <div class="bg-white pt-2 ps-5 dynamic-padding" style="height:100%">
+                    <div class="bg-white pt-5 pb-3 ps-5 dynamic-padding" style="height:100%">
                         <div class="row me-5 social-login-row">
                             <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;">Create Your Upschool Account </h4>
                             <p>
