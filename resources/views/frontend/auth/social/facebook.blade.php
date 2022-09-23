@@ -414,8 +414,8 @@
                     <img src="{{ asset('images/upschool-banner.png') }}" alt="" class="w-75">
                 </div>
             </div>
-            <div class=" px-0 ps-5">
-                <div class="row first mt-4 ms-2">
+            <div class=" px-0 ps-5 ms-2">
+                <div class="row first mt-4 ">
                     <div class="col-md-8">
                         <div class="information-circle-disabled active-circle" data-step='1' style="display:flex;justify-content:center;align-items:center">
                             <img src="{{ asset('images/1.png') }}" class="current-image " style="width:25px; height: 25px;" />
@@ -449,7 +449,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row signup-progress-bar ps-3 mb-2 pb-5">
+                <div class="row signup-progress-bar ps-3 mb-2 pb-5 mt-3">
                     <div class="col-md-12 steps p-0 m-0">
                         <p class="p-0 m-0 text-left"><span class="step-count">2</span> to 3 Steps</p>
                     </div>
