@@ -449,8 +449,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row signup-progress-bar ps-3 mb-2 pb-5 mt-3">
-                    <div class="col-md-12 steps p-0 m-0">
+                <div class="row signup-progress-bar ps-3 mb-2 pb-5">
+                    <div class="col-md-12 steps p-0 m-0 mt-4">
                         <p class="p-0 m-0 text-left"><span class="step-count">2</span> to 3 Steps</p>
                     </div>
                     <div class="progress-title col-md-12">
