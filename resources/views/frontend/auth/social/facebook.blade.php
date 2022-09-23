@@ -389,7 +389,7 @@
                             </div>
                             <div class="row mt-4 pt-4 text-right me-5">
                                 <div class="col text-start pt-3">
-                                    <button class="step-back btn bnt-link mt-2 pt-1" data-step="1" style="color:#242254;font-weight:600;font-size:21px;line-height:25.42px;font-family:'Inter'">
+                                    <button class="step-back btn bnt-link mt-2 pt-1" data-step="1" style="color:#242254;font-weight:600;font-size:18px;line-height:25.42px;font-family:'Inter'">
                                         <i class=" fas fa-arrow-left"></i>
                                         Go back
                                     </button>
