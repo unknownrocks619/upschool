@@ -47,6 +47,12 @@
         color: #fff;
     }
 
+    .next:hover {
+        background: #242254 !important;
+        color: #fff !important;
+
+    }
+
     /* .active-bar {
         background: #fff;
         min-height: 40px;
@@ -188,7 +194,7 @@
 
             <div class="row ">
                 <div class="col-md-12">
-                    <div class="bg-white pt-5 pb-3 ps-5 dynamic-padding" style="height:100%">
+                    <div class="bg-white pt-5 mt-3 pb-3 ps-5 dynamic-padding" style="height:100%">
                         <div class="row me-5 social-login-row">
                             <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;">Create Your Upschool Account </h4>
                             <p>

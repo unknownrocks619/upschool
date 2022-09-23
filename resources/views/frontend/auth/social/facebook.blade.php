@@ -43,6 +43,12 @@
         color: #fff;
     }
 
+    .next:hover {
+        background: #242254 !important;
+        color: #fff !important;
+
+    }
+
     /* .active-bar {
         background: #fff;
         min-height: 40px;
@@ -183,7 +189,7 @@
             <!-- Step Zero -->
 
             <div class="row ">
-                <div class="register-title pt-3 ps-5 ms-2 dynamic-padding">
+                <div class="register-title pt-5 mt-2 ps-5 ms-2 dynamic-padding">
                     <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;">Create Your Upschool Account </h4>
                     <p>
                         You are a few clicks away from creating your account.
