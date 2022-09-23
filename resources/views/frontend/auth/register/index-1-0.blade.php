@@ -487,7 +487,7 @@
                                         Go back
                                     </button>
                                 </div>
-                                <div class="col mt-3 text-right d-flex justify-content-end">
+                                <div class="col mt-3 text-right d-flex justify-content-end mb-5">
                                     <button type="submit" class="btn btn-primary next py-3 px-5" data-step="2">
                                         Register
                                     </button>
@@ -503,12 +503,12 @@
 
         <div class="col-md-4 d-none d-md-block mx-auto" style="background-color: #242254 !important;align-items:center;background:url({{ asset('images/background.png') }});background-size:cover;">
             <div class="row mx-auto">
-                <div class="col-md-12 text-center mt-2">
+                <div class="col-md-12 text-center mt-3">
                     <img src="{{ asset('images/upschool-banner.png') }}" alt="" class="w-75">
                 </div>
             </div>
             <div class=" px-0 ps-5">
-                <div class="row first">
+                <div class="row first mt-4 ms-2">
                     <div class="col-md-8">
                         <div class="information-circle-disabled active-circle" data-step='1' style="display:flex;justify-content:center;align-items:center">
                             <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
