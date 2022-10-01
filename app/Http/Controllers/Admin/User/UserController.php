@@ -26,7 +26,7 @@ class UserController extends Controller
 
     public function wp_index()
     {
-        $users = WpUser::get();
+        $users = WpUser::cursor();
         return view('admin.users.wp-index', compact('users'));
     }
 
