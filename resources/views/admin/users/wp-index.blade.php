@@ -24,7 +24,6 @@
                                     <th>
                                         Role
                                     </th>
-                                    <th>Create At</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -55,15 +54,14 @@
                                         <?php
                                         if (isset($wp_level[$user->meta->wp_capabilities])) {
                                             echo ucwords(\Str::replace("-", " ", $wp_level[$user->meta->wp_capabilities]));
+                                        } else {
+                                            $explode = explode('"', $user->meta->wp_capabilities);
+                                            if (isset($explode[1])) {
+                                                echo ucwords($explode[1]);
+                                            } else {
+                                                echo " - ";
+                                            }
                                         }
-                                        // else {
-                                        //     $explode = explode('"', $user->meta->wp_capabilities);
-                                        //     if (isset($explode[1])) {
-                                        //         echo ucwords($explode[1]);
-                                        //     } else {
-                                        //         echo " - ";
-                                        //     }
-                                        // }
                                         ?>
                                     </td>
                                 </tr>
@@ -71,6 +69,10 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+
+                <div class="card-footer">
+                    {{ $users->links() }}
                 </div>
             </div>
         </div>
