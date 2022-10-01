@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Canva;
+use App\Models\Corcel\WpUser;
 use App\Models\Country;
 use App\Models\Role;
 use App\Models\User;
 use App\Notifications\Frontend\User\RegistrationNotification;
 use App\Providers\RouteServiceProvider;
 use App\Rules\GoogleCaptcha;
+use Corcel\Services\PasswordService;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,13 +64,35 @@ class RegisteredUserController extends Controller
             // "recaptcha_token" => ["required", new GoogleCaptcha()]
 
         ]);
+
+        $wp_level = [
+            "student-above" => "{s:15:'student-over-18';b:1;}",
+            "parent" => "{s:18:'parents-of-student';b:1;}",
+            "student-below" => "{s:16:'student-under-18';b:1;}",
+            "teacher" => "{s:14:'school-teacher';b:1;}"
+        ];
+        $wp_user = new WpUser;
+        $password_hash = new PasswordService;
+        $wp_user->user_login = Str::random(8);
+        $wp_user->user_pass = $password_hash->makeHash("password");
+        $wp_user->user_nicename = $request->first_name;
+        $wp_user->user_email = $request->email;
+
+        $user_meta = [
+            "nickname" => Str::lower($request->first_name),
+            "first_name" => Str::ucfirst($request->first_name),
+            "last_name" => $request->last_name,
+            "wp_capabilities" => "a:1:" . $wp_level[$request->role],
+            "wp_user_level" => 7,
+        ];
+
+
         $user = new User;
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->country = Country::find($request->country)->name;
         $user->role = Role::where('slug', Str::replace("-", '_', $request->role))->first()->id;
         $user->source = "signup";
-
         $user->gender = "male";
         $user->email = $request->email;
         $user->date_of_birth = $request->date_of_birth;
@@ -93,16 +117,6 @@ class RegisteredUserController extends Controller
         }
         $user->username = Str::random(8);
 
-        // $user = [
-        //     "first_name" => $request->first_name,
-        //     "last_name" => $request->last_name,
-        //     "country" => Country::find($request->country)->name,
-        //     "role" => Role::where('slug', Str::replace('-', '_', $request->role))->first()->id,
-        //     "source" => "signup",
-        //     "username" => Str::random(8),
-        //     "password" => Hash::make($request->password),
-        //     "gender" => "male"
-        // ];
         $canva = null;
         if ($request->canva == "yes") {
             $canva = new Canva;
@@ -112,12 +126,15 @@ class RegisteredUserController extends Controller
 
         try {
             //code...
-            DB::transaction(function () use ($request, $user, $canva) {
+            DB::transaction(function () use ($request, $user, $canva, $wp_user, $user_meta) {
                 $user->save();
 
                 if ($canva) {
                     $canva->save();
                 }
+                $user_meta["wp_source"] = $user->source;
+                $wp_user->save();
+                $wp_user->saveMeta($user_meta);
             });
         } catch (\Throwable $th) {
             //throw $th;

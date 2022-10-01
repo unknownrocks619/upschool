@@ -8,6 +8,7 @@
         "php": "^8.0.2",
         "barryvdh/laravel-elfinder": "^0.5.1",
         "guzzlehttp/guzzle": "^7.2",
+        "jgrossi/corcel": "^6.0",
         "laravel/breeze": "^1.11",
         "laravel/framework": "^9.11",
         "laravel/sanctum": "^2.14.1",
