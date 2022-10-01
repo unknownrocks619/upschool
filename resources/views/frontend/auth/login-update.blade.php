@@ -277,8 +277,6 @@
             </div>
 
         </div>
-gi
-
 
         <div class="col-md-4 d-none d-md-block mx-auto px-0 ps-5" style="background-color: #242254 !important;align-items:center;background-image:url({{ asset('images/upschool-fly.png') }});background-repeat:no-repeat;background-size:contain">
         </div>

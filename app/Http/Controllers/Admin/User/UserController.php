@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\User\UserDestroyRequest;
 use App\Http\Requests\Admin\User\UserUnlinkRelationshipRequest;
 use App\Http\Requests\Admin\User\UserUpdateRequset;
 use App\Models\Canva;
+use App\Models\Corcel\WpUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,6 +22,12 @@ class UserController extends Controller
     {
         $users = User::withCount(["organisations", "courses"])->with(["organisations", "courses", "user_role"])->get();
         return view('admin.users.index', compact('users'));
+    }
+
+    public function wp_index()
+    {
+        $users = WpUser::get();
+        return view('admin.users.wp-index', compact('users'));
     }
 
     public function edit(User $user)

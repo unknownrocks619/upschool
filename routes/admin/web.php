@@ -186,6 +186,7 @@ Route::prefix("upschool/admin")
                 Route::get('/canva/list', "canvaUser")->name("canva.list");
                 Route::get('/canva/status/{canva}', "canvaUserStatus")->name("canva.status");
                 Route::patch("/ban/{user}", "banUser")->name("user.ban");
+                Route::get("/wp-index", 'wp_index')->name('user.wp');
                 Route::resource("user", Users::class);
 
                 Route::prefix('books')

@@ -240,6 +240,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.users.user.wp') }}">
+                            <i class="link-icon" data-feather="unlock"></i>
+                            <span class="link-title">Wordpress Users</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.users.canva.list') }}">
                             <i class="link-icon" data-feather="clipboard"></i>
                             <span class="link-title">Canva Signup</span>
