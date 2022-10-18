@@ -9,4 +9,5 @@ use Corcel\Model\User as CorcelUserModel;
 class WpUser extends CorcelUserModel
 {
     use HasFactory;
+    protected $connection = "wp_compactibility";
 }
