@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix("upschool/admin")
     ->name('admin.')
-    // ->middleware()
+    // ->middleware('auth')
     ->group(function () {
 
 

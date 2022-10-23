@@ -181,6 +181,25 @@ Website Settings
                             </div>
                         </div>
                     </div>
+                    <div class="mb-3">
+                        <label for="google_login" class="form-label">Google Login</label>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="google_login" value="on" id="google_login_on" @if(settings()->where('name','google_login')->first()->value) checked @endif>
+                                    <label class="form-check-label" for="login_on">
+                                        On
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="google_login" value="off" id="google_login_off" @if( ! settings()->where('name','google_login')->first()->value) checked @endif>
+                                    <label class="form-check-label" for="google_login_off">
+                                        Off
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </x-form>
             </div>
         </div>
@@ -196,4 +215,3 @@ Website Settings
 </x-layout>
 
 @endsection
-

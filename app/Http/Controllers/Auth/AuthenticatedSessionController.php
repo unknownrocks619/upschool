@@ -17,6 +17,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
+        return redirect()->to("https://upschool.co/not-found");
         return view('frontend.auth.login-update');
         // return view("frontend.auth.login");
     }

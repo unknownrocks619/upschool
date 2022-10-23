@@ -38,6 +38,7 @@ class WebSettingController extends Controller
         $settings->where('name', 'login')->first()->value = ($request->login == "on") ? true : (($request->login == "off") ? false : $settings->where('name', 'login')->first()->value);
         $settings->where('name', 'signup')->first()->value = ($request->signup == "on") ? true : (($request->signup == "off") ? false : $settings->where('name', 'signup')->first()->value);
         $settings->where('name', 'facebook_login')->first()->value = ($request->facebook_login == "on") ? true : (($request->facebook_login == "off") ? false : $settings->where('name', 'facebook_login')->first()->value);
+        $settings->where('name', 'google_login')->first()->value = ($request->google_login == "on") ? true : (($request->google_login == "off") ? false : $settings->where('name', 'google_login')->first()->value);
         $settings->where('name', 'pre_registration')->first()->value = ($request->pre_registration == "on") ? true : (($request->pre_registration == "off") ? false : $settings->where('name', 'pre_registration')->first()->value);
         $settings->where('name', 'loading_bar')->first()->value = ($request->loading  == "on") ? true : false;
         $settings->where('name', 'website_name')->first()->value = ($request->website_name) ? $request->website_name : $settings->where('name', "website_name")->first()->value;
@@ -79,6 +80,11 @@ class WebSettingController extends Controller
         if ($settings->where('name', 'facebook_login')->first()->isDirty()) {
             $settings->where('name', 'facebook_login')->first()->save();
         }
+
+        if ($settings->where('name', 'google_login')->first()->isDirty()) {
+            $settings->where('name', 'google_login')->first()->save();
+        }
+
         if ($settings->where('name', 'login')->first()->isDirty()) {
             $settings->where('name', 'login')->first()->save();
         }

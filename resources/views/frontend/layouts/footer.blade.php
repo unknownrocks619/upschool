@@ -2,11 +2,11 @@
     <div class="d-flex justify-content-center mt-0 footer-top-img">
         <img src="{{ asset('upschool/frontend/images/home/upschool-14.png') }}" alt="" class="img-fluid" height="auto" width="30%" />
     </div>
-    <p class="text-center text-white pb-0 footer-title" id="footer-section-title">
+    <p class="text-center text-white pb-0 footer-title" id="footer-section-title" style="font-family: 'Lexend' !important;">
         Change Making Communities
     </p>
-    <p class="text-white text-center container footer-details" id="footer-section-details">
-        Underpinning everything we do at Upschool is a deep desire to empower
+    <p style="font-family: 'Nunito Sans' !important;line-height:1.8em;font-weight:300" class="text-white text-center container footer-details" id="footer-section-details">
+        Underpinning everything we do at <a href="https://upschool.co" style="color:rebeccapurple !important">Upschool</a> is a deep desire to empower
         students to find their voice, refine and develop their message and
         teach them how to collaborate with each other so that they can create
         the change they want to see in the world.
@@ -15,10 +15,11 @@
     <div class="d-flex justify-content-center mt-4" id="footer-middle-img">
         <img src="{{ asset('upschool/frontend/images/home/indigenous.jpg') }}" alt="" height="auto" width="17%" />
     </div>
-    <p class="text-center text-white mt-2 mb-4 acknowladgement">
+    <br />
+    <p class="text-center text-white mt-2 mb-4 acknowladgement" style="font-family: 'Lexend', Sans-serif !important;">
         Acknowledgement of Country
     </p>
-    <p class="details text-white container text-center footer-bottom-details" id="footer-bottom">
+    <p class="details text-white container text-center footer-bottom-details" id="footer-bottom" style="font-family: 'Nunito Sans', Sans-serif !important;font-size:12px">
         Upschool would like to acknowledge that we live, work, learn and play
         on the lands of the Aboriginal and Torres Strait Islander people’s –
         who are the oldest continuing culture in human history and the

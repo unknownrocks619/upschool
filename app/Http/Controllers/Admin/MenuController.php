@@ -51,6 +51,18 @@ class MenuController extends Controller
         $menu->meta_keyword = $request->meta_keyword;
         $menu->meta_description = $request->meta_description;
 
+        if ($request->external_link) {
+            $link = [];
+            $link["external_url"] = $request->external_link;
+
+            if ($request->target) {
+                $link["target"] = $request->target;
+            } else {
+                $link["target"] = "_self";
+            }
+
+            $menu->external_links = $link;
+        }
         if ($request->hasFile("featured_image")) {
             $this->set_access("file");
             $this->set_upload_path("website/menu");
@@ -85,6 +97,19 @@ class MenuController extends Controller
         $menu->meta_keyword = $request->meta_keyword;
         $menu->meta_description = $request->meta_description;
 
+        $link = (array) $menu->external_links;
+
+        if ($request->external_link) {
+            $link = [];
+            $link["external_url"] = $request->external_link;
+
+            if ($request->target) {
+                $link["target"] = $request->target;
+            } else {
+                $link["target"] = "_self";
+            }
+        }
+        $menu->external_links = $link;
         if ($request->hasFile("featured_image")) {
             $this->set_access("file");
             $this->set_upload_path("website/menu");

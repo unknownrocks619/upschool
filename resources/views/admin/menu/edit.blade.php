@@ -97,6 +97,17 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row my-2 bg-light border ">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <strong>
+                                        External Link
+                                    </strong>
+                                    <input type="url" name="external_link" value="@if($menu->external_links) {{ $menu->external_url }} @endif" id="external_link" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- sidebar -->
                     <div class="col-md-4">

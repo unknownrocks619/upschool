@@ -217,6 +217,12 @@ class DatabaseSeeder extends Seeder
             "updated_at" => Carbon::now()
         ]);
         WebSetting::factory()->create([
+            "name" => "google_login",
+            "value" => false,
+            "created_at" => Carbon::now(),
+            "updated_at" => Carbon::now()
+        ]);
+        WebSetting::factory()->create([
             "name" => "pre_registration",
             "value" => false,
             "created_at" => Carbon::now(),

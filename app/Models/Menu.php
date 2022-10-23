@@ -12,7 +12,8 @@ class Menu extends Model
     use HasFactory, HasRecursiveRelationships, SoftDeletes;
 
     protected $casts = [
-        "menu_featured_image" => "object"
+        "menu_featured_image" => "object",
+        "external_links" => "object"
     ];
 
     public function getParentKeyName()

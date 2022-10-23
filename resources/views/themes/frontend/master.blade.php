@@ -59,24 +59,59 @@
     <!-- navbar -->
     @include("frontend.layouts.navigation")
     <!-- navbar -->
-
     <main>
         {{-- back to top button --}}
         <x-back-to-top />
         {{-- back to top button --}}
-
         @yield('content')
-
         <!-- footer section -->
         @include('frontend.layouts.footer')
         <!-- footer section -->
     </main>
-
     <!-- bootsrtap script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <!-- bootsrtap script -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        /* navbar toggle */
+        $(document).ready(function() {
+            // jQuery code
 
+            $('[data-trigger]').on('click', function(e) {
+                e.preventDefault()
+                e.stopPropagation()
+                var offcanvas_id = $(this).attr('data-trigger')
+                $(offcanvas_id).toggleClass('show')
+                $('body').toggleClass('offcanvas-active')
+                $('.screen-overlay').toggleClass('show')
+            })
+
+            // Close menu when pressing ESC
+            $(document).on('keydown', function(event) {
+                if (event.keyCode === 27) {
+                    $('.mobile-offcanvas').removeClass('show')
+                    $('body').removeClass('overlay-active')
+                }
+            })
+
+            $('.btn-close, .screen-overlay').click(function(e) {
+                $('.screen-overlay').removeClass('show')
+                $('.mobile-offcanvas').removeClass('show')
+                $('body').removeClass('offcanvas-active')
+            })
+        });
+        /* navbar toggle */
+        $(document).ready(function() {
+            $("button#sideBtn").click(function() {
+                $("#sidebar").addClass("slide_right");
+                $("p.hint").addClass("highlight");
+            });
+            $("a.closeSidebar").click(function() {
+                $("#sidebar").removeClass("slide_right");
+                $("p.hint").removeClass("highlight");
+            });
+        });
+    </script>
     @stack('custom_scripts')
 </body>
 

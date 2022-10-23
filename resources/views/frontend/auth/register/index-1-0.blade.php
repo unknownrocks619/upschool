@@ -27,7 +27,7 @@
         font-family: 'Inter';
         font-weight: 400;
         line-height: 23px;
-        font-size: 19px;
+        /* font-size: 19px; */
     }
 
     .dynamic-padding {
@@ -200,6 +200,7 @@
                             <p>
                                 You are a few clicks away from creating your account.
                             </p>
+                            @if(settings('google_login'))
                             <div class="col-md-6 mt-2 col-sm-12 col-xs-12 col-lg-6 ">
                                 <form action="{{ route('google-register') }}" method="post">
                                     @csrf
@@ -209,6 +210,8 @@
                                     </button>
                                 </form>
                             </div>
+                            @endif
+                            @if(settings('facebook_login'))
                             <div class="col-md-6 mt-2 col-lg-6 col-sm-12 col-xs-12">
                                 <form action="{{ route('facebook-register') }}" method="post">
                                     @csrf
@@ -217,6 +220,7 @@
                                     </button>
                                 </form>
                             </div>
+                            @endif
                             <div class="row me-5">
                                 <div class="col-md-12 mb-3 mt-4 ms-1">
                                     <div class="border-bottom"></div>
@@ -289,9 +293,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mt-4 text-right me-5">
+                            <div class="row mb-2 mt-4 text-right me-5">
                                 <div class="col-md-12 text-right d-flex justify-content-end">
-                                    <button class="btn btn-primary next py-3 px-5 step-back" data-step="1">
+                                    <button class="btn next py-3 px-5 step-back" data-step="1">
                                         Next
                                         <i class="fas fa-arrow-right"></i>
                                     </button>
@@ -315,7 +319,7 @@
                                         <label for="country" class="mb-2">Select Your Country
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <select name="country" class="form-control form-select py-3 rounded-3 @error('country') border border-danger @enderror" id="country">
+                                        <select name="country" class="form-control form-select py-3 rounded-3 @error('country') border border-danger @enderror" id="country" style="font-family:'Inter'">
                                             @foreach ($countries as $country)
                                             <option value="{{ $country->id }}">{{ $country->name }}</option>
                                             @endforeach
@@ -332,7 +336,7 @@
                                         <label for="email" class="mb-2">What Describes You?
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <select name="role" id="role" class="py-3 rounded-3 form-control form-select @error('role') border border-danger @enderror">
+                                        <select name="role" id="role" class="py-3 rounded-3 form-control form-select @error('role') border border-danger @enderror" style="font-family:'Inter'">
                                             <option value="parent" @if(old('role')=='parent' ) selected @endif>Parent of Student</option>
                                             <option value="student-above" @if(old('role')=='student-above' ) selected @endif>Student Above 18</option>
                                             <option value="student-below" @if(old('role')=='student-under' ) selected @endif>Student Below 18</option>
@@ -401,7 +405,7 @@
                             <div class="row me-5 mt-3">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="first_name" class="mb-2">Would you like us to register you for a FREE Canva Pro Account?
+                                        <label for="canva" class="mb-2">Would you like us to register you for a FREE Canva Pro Account?
                                             <sup class="text-danger">*</sup>
                                         </label>
                                         <select name="canva" id="canva" autocomplete="off" class="py-3 rounded-3 form-control form-select @error('canva') border bordered-danger @enderror">

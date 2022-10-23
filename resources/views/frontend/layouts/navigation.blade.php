@@ -7,7 +7,7 @@
             <div class="container p-0">
                 <div class="header-left">
                     <div>
-                        <a href="{{ route('frontend.home') }}">
+                        <a href="https://upschool.co{{-- route('frontend.home') --}}">
                             <img src="{{ asset(settings('logo')) }}" alt="{{ settings('website_name') }}" height="30" />
                         </a>
                     </div>
@@ -36,7 +36,7 @@
             </div>
         </nav>
 
-        <!-- d-lg-none -->
+        <!-- d-lg-none {Mobile}-->
 
         <nav id="navbar_main" class="mobile-offcanvas navbar navbar-expand-lg navbar-light p-0">
             <div class="d-flex" style="width: 100%">
@@ -74,7 +74,7 @@
                 <a href="{{ route('login') }}" class="login-link"><span class="sign-in-text">Sign in</span></a>
                 @endif
                 @if(settings('signup'))
-                /
+
                 <a href="{{ route('register') }}" class="register-link">
                     <span class="register-text">Register</span>
                 </a>
