@@ -53,7 +53,7 @@
                         <button class="navbar-toggler btn-close pe-5"></button>
                         <!-- <h5 class="py-2 mx-auto text-white d-inline mx-auto">Navbar</h5> -->
                     </div>
-                    <ul class="navbar-nav align-items-center">
+                    <ul class="navbar-nav align-items-center" style="flex-wrap: wrap;">
                         <x-top-nav />
                     </ul>
                 </div>
@@ -75,7 +75,7 @@
                 @endif
                 @if(settings('signup'))
 
-                <a href="{{ route('register') }}" class="register-link">
+                <a href="{{ route('register') }}" class="register-link ms-2">
                     <span class="register-text">Register</span>
                 </a>
                 @endif

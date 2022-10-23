@@ -16,8 +16,8 @@ if ($menu->external_links) {
         @foreach ( $menu->children as $child_menu)
         <?php
         $child_link = "#";
-        if ($menu->external_links) {
-            $child_link = $menu->external_links->external_url;
+        if ($child_menu->external_links) {
+            $child_link = $child_menu->external_links->external_url;
         } else {
             $child_link = route('frontend.view', $menu->slug);
         }

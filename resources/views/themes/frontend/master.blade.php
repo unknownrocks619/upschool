@@ -42,6 +42,10 @@
             font-family: 'Lexend', sans-serif !important;
             color: #fff !important
         }
+
+        .nav-text {
+            padding: 13px 19px !important;
+        }
     </style> <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <!-- font icon -->

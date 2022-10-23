@@ -500,9 +500,6 @@
                 </div>
             </form>
         </div>
-
-
-
         <div class="col-md-4 d-none d-md-block mx-auto" style="background-color: #242254 !important;align-items:center;background:url({{ asset('images/background.png') }});background-size:cover;">
             <div class="row mx-auto">
                 <div class="col-md-12 text-center mt-5 pt-1">
