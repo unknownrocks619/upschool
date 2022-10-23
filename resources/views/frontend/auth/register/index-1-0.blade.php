@@ -116,8 +116,6 @@
         margin-top: 15px;
     }
 
-    .done {}
-
     .first {
         margin-top: 5px;
     }
