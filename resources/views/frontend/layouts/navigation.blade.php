@@ -20,7 +20,7 @@
 
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item nav-text" href="#">Sign In</a>
+                                    <a class="dropdown-item nav-text" href="https://upschool.co/signin">Sign In</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item nav-text" href="#">Register</a>
@@ -41,7 +41,7 @@
         <nav id="navbar_main" class="mobile-offcanvas navbar navbar-expand-lg navbar-light p-0">
             <div class="d-flex" style="width: 100%">
                 <div class="nav-cont d-lg-flex" style="width: 100%">
-                    <a class="navbar-text d-none d-lg-block" href="{{ route('frontend.home') }}">
+                    <a class="navbar-text d-none d-lg-block" href="http://upschool.co{{-- route('frontend.home') --}}">
                         <img src="{{ asset(settings('logo')) }}" class="py-2" height="60" />
                     </a>
                     <div class="d-flex align-items-center justify-content-between" style="background-color: #f1f2f6">
@@ -62,16 +62,16 @@
     </div>
     @guest
     @if(settings("login") || settings("signup"))
-    <div class="col-6 col-md-3">
+    <div class="col-6 col-md-3 mt-3">
         <div class="d-flex align-items-center justify-content-end me-5">
-            <a href="#" class="control-search"><i class="fas fa-search"></i></a>
-            <hr class="hr-1" />
+            <!-- <a href="#" class="control-search"><i class="fas fa-search"></i></a> -->
+            <!-- <hr class="hr-1" /> -->
             <div class="login-register text-white">
                 @if(settings("login"))
                 <span class="box-icon">
-                    <i class="icon fas fa-user" aria-hidden="true"></i>
+                    <i class="icon fas fa-user" aria-hidden="false" style="font-size:13px"></i>
                 </span>
-                <a href="{{ route('login') }}" class="login-link"><span class="sign-in-text">Sign in</span></a>
+                <a href="{{ route('login') }}" class="login-link"><span class="sign-in-text">Sign In</span></a>
                 @endif
                 @if(settings('signup'))
 
