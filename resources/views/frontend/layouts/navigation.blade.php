@@ -86,9 +86,9 @@
     @endguest
     @auth
     <div class="col-6 col-md-3">
-        <div class="d-flex align-items-center justify-content-end me-5">
-            <a href="#" class="control-search"><i class="fas fa-search"></i></a>
-            <hr class="hr-1" />
+        <div class="d-flex align-items-center justify-content-end me-5 mt-3">
+            <!-- <a href="#" class="control-search"><i class="fas fa-search"></i></a> -->
+            <!-- <hr class="hr-1" /> -->
             <div class="login-register text-white">
                 <form style="display:inline" method="post" action="{{ route('logout') }}">
                     @csrf
@@ -97,13 +97,11 @@
                             <!-- <i class="fa-solid fa-arrow-right-from-bracket"></i> -->
                             <i class="icon fas fa-wrench"></i>
                         </span>
-
                         <span class="sign-in-text">Logout</span>
                     </button>
                 </form>
             </div>
         </div>
     </div>
-
     @endauth
 </header>
