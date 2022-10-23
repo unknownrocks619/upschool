@@ -319,7 +319,7 @@
                                         </label>
                                         <select name="country" class="form-control form-select py-3 rounded-3 @error('country') border border-danger @enderror" id="country" style="font-family:'Inter'">
                                             @foreach ($countries as $country)
-                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                            <option value="{{ $country->id }}" @if($country->id == 13) selected @endif>{{ $country->name }}</option>
                                             @endforeach
                                         </select>
                                         @error("country")
