@@ -69,7 +69,7 @@
             <div class="login-register text-white">
                 @if(settings("login"))
                 <span class="box-icon">
-                    <i class="icon fas fa-user" aria-hidden="false" style="font-size:13px"></i>
+                    <i class="icon fas fa-user" style="font-size:13px"></i>
                 </span>
                 <a href="{{ route('login') }}" class="login-link"><span class="sign-in-text">Sign In</span></a>
                 @endif
