@@ -2,7 +2,7 @@
     <!-- <div class=" d-flex justify-content-center align-items-center">
       <img src="{{ asset('frontend/images/global/logo.png') }}" width="150px" />
     </div> -->
-    <div class="col-6 col-md-9">
+    <div class="col-6 col-md-10">
         <nav class="navbar-mobile navbar d-lg-none fixed-top navbar-expand-lg navbar-light">
             <div class="container p-0">
                 <div class="header-left">
@@ -53,7 +53,7 @@
                         <button class="navbar-toggler btn-close pe-5"></button>
                         <!-- <h5 class="py-2 mx-auto text-white d-inline mx-auto">Navbar</h5> -->
                     </div>
-                    <ul class="navbar-nav align-items-center" style="flex-wrap: wrap;">
+                    <ul class="navbar-nav align-items-center" style="flex-wrap: wrap;margin-left:10px;">
                         <x-top-nav />
                     </ul>
                 </div>
@@ -62,7 +62,7 @@
     </div>
     @guest
     @if(settings("login") || settings("signup"))
-    <div class="col-6 col-md-3 mt-3">
+    <div class="col-6 col-md-2 mt-3">
         <div class="d-flex align-items-center justify-content-end me-5">
             <!-- <a href="#" class="control-search"><i class="fas fa-search"></i></a> -->
             <!-- <hr class="hr-1" /> -->
