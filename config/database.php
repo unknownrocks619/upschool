@@ -72,7 +72,7 @@ return [
             // 'password' => "",
             'database' => "upschool_1647135191",
             'username' => "upschool_1647135191",
-            'password' => "Wt*,Pi+h7BnBcbpL#MC8fJNEU}BK2hbW",
+            'password' => "P@ssw0rd123",
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
