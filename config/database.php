@@ -65,7 +65,7 @@ return [
         'wp_compactibility' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => '159.89.48.114', //env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             // 'database' => "class_wordpress",
             // 'username' => "root",
