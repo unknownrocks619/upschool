@@ -26,7 +26,7 @@ class UserController extends Controller
 
     public function wp_index()
     {
-        $users = WpUser::paginate(20);
+        $users = WpUser::paginate(5);
         return view('admin.users.wp-index', compact('users'));
     }
 
