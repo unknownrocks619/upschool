@@ -66,7 +66,7 @@ return [
             'driver' => 'mysql',
             // 'url' => env('DATABASE_URL'),
             'url' => "php-dbv2.acc23xhh31-ypj68gw0o3l2.p.temp-site.link",
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => "159.89.48.114", //env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             // 'database' => "class_wordpress",
             // 'username' => "root",
