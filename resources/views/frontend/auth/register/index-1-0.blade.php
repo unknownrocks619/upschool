@@ -554,7 +554,7 @@
                         </div>
                     </div>
                     <div class="col-md-12 already-exists ps-0 mb-5" style="color: #fff;margin-top: 10px;font-weight:400">
-                        <p>Already have an Account ? <a href="{{ route('login') }}" class="text-white" style="text-decoration: none; font-weight:700;font-family:'Inter' !important">Login Here</a></p>
+                        <p>Already have an Account ? <a href="https://upschool.co/dashboard" class="text-white" style="text-decoration: none; font-weight:700;font-family:'Inter' !important">Login Here</a></p>
                     </div>
                 </div>
             </div>

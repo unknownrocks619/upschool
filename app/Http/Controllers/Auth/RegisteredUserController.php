@@ -229,7 +229,8 @@ class RegisteredUserController extends Controller
         }
 
         Auth::login($db_user, true);
-        return redirect(RouteServiceProvider::HOME);
+        
+        // return redirect(RouteServiceProvider::HOME);
     }
 
     public function googleForm()

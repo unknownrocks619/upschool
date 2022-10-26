@@ -71,7 +71,7 @@
                 <span class="box-icon">
                     <i class="icon fas fa-user" style="font-size:13px"></i>
                 </span>
-                <a href="{{ route('login') }}" class="login-link"><span class="sign-in-text">Sign In</span></a>
+                <a href="https://upschool.co/dashboard" class="login-link"><span class="sign-in-text">Sign In</span></a>
                 @endif
                 @if(settings('signup'))
 
