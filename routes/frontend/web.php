@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Frontend\Course\CourseController;
 use App\Http\Controllers\Frontend\Home\HomeController;
 use App\Http\Controllers\Frontend\Management\ManagementController;
@@ -112,7 +113,8 @@ Route::name('frontend.')->group(function () {
  * Public Group
  */
 Route::name('frontend.')->group(function () {
-    Route::get("/", [HomeController::class, "index"])->name("home");
+    Route::get("/", [RegisteredUserController::class, 'create'])->name("home");
+    // Route::get("/", [HomeController::class, "index"])->name("home");
     Route::get("/book/{slug}", [BookController::class, "show"])->name("book.show");
     Route::get("/{slug}/{model?}", [HomeController::class, "detail"])->name('view');
 });
