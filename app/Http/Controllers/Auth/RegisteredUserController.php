@@ -206,7 +206,7 @@ class RegisteredUserController extends Controller
         $encrypt = ($wp_user_detai->ID);
         $csrf = csrf_token();
         // die();
-        return redirect()->to("https://wordpressmu-755205-2769239.cloudwaysapps.com/?_ref=r_app&_ref_id=" . $encrypt . "&_token=" . $csrf);
+        return redirect()->to("https://upschool.co/?_ref=r_app&_ref_id=" . $encrypt . "&_token=" . $csrf);
         // Auth::login($db_user, true);
 
         return redirect(RouteServiceProvider::HOME);
@@ -236,6 +236,13 @@ class RegisteredUserController extends Controller
             session()->put("user_detail", $user_detail);
             return redirect()->route('google-register-signup-contd');
         }
+        // we know for fact this is okay for facebook as well. so.
+        $wp_user_detai = WpUser::where('user_email', $g_user->user["email"])->first();
+        // dd($wp_user_detai);
+        $encrypt = ($wp_user_detai->ID);
+        $csrf = csrf_token();
+        // die();
+        return redirect()->to("https://upschool.co/?_ref=r_app&_ref_id=" . $encrypt . "&_token=" . $csrf);
 
         Auth::login($db_user, true);
 
