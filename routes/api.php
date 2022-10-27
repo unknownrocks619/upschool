@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post("/user/login/detail", function () {
     // return response(["success" => true]);
-    session()->regenerate();
+    session()->regenerateToken();
     $wp_user = WpUser::where('id', request()->_ref_id)->first();
     if (!$wp_user) {
         response(["success" => false, "data" => [], "message" => "Record doesn't exists."], 403);
