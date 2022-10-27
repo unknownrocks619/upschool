@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post("/user/", function ($info) {
-    return response(request());
+Route::post("/user/", function () {
+    return response(request()->all());
     // $wp_user = WpUser::where('id', $info)->first();
     // if (!$wp_user) {
     //     response(["success" => false, "data" => [], "message" => "Record doesn't exists."], 403);
