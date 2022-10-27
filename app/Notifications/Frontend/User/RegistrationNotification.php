@@ -64,7 +64,7 @@ class RegistrationNotification extends Notification
             return;
         }
 
-        if ($this->user->source != "signup") {
+        if ($this->user->source == "signup") {
             return (new MailMessage)
                 ->subject("Verify Your Email")
                 ->from("noreply@upschool.co")

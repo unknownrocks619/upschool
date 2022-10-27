@@ -61,7 +61,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'terms' => ["accepted"],
             "date_of_birth" => ["required", "date", "date_format:Y-m-d"],
-            // "recaptcha_token" => ["required", new GoogleCaptcha()]
+            "recaptcha_token" => ["required", new GoogleCaptcha()]
 
         ]);
 
