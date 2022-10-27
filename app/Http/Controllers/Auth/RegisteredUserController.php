@@ -178,6 +178,9 @@ class RegisteredUserController extends Controller
         // ];
         // return view("frontend.auth.social.facebook", compact("countries", "user_detail"));
         $fb_user = Socialite::driver("facebook")->user();
+
+        dd($fb_user);
+
         // check if this email is already used or not .
         $db_user = User::where('source', 'facebook')->where('source_id', $fb_user->id)->where('status', 'active')->first();
         if (!$db_user) {
@@ -200,7 +203,10 @@ class RegisteredUserController extends Controller
 
             // return view("frontend.auth.social.facebook", compact("countries", "user_detail"));
         }
-        Auth::login($db_user, true);
+        // we know for fact this is okay for facebook as well. so.
+        $wp_user_detai = WpUser::where('email')
+        // Auth::login($db_user, true);
+        
         return redirect(RouteServiceProvider::HOME);
     }
 
