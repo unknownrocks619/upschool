@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/user/login/detail", function () {
+Route::post("/user/login/detail", function () {
     return "hello";
     // return response(["success" => true]);
     return response(request()->all());
