@@ -211,7 +211,7 @@ class RegisteredUserController extends Controller
         $wp_user_detai = WpUser::where('user_email', $g_user->user["email"])->first();
 
         $password  = Str::random();
-        if (!$db_user && $wp_user_detai) {
+        if (!$db_user && !$wp_user_detai) {
             $user_detail = [
                 "first_name" => $g_user->user["given_name"],
                 "last_name" => isset($g_user->user["family_name"]) ? $g_user->user["family_name"] : "not available",
