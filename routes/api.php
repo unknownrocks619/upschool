@@ -15,13 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/user/{info}", function ($info) {
-
-    $wp_user = WpUser::where('id', decrypt($info))->first();
-    if (!$wp_user) {
-        response(["success" => false, "data" => [], "message" => "Record doesn't exists."], 403);
-    }
-    return response(["success" => true, "data" => ["uuid" => 1, "username" => "something"]]);
+Route::post("/user/", function ($info) {
+    return response(request());
+    // $wp_user = WpUser::where('id', $info)->first();
+    // if (!$wp_user) {
+    //     response(["success" => false, "data" => [], "message" => "Record doesn't exists."], 403);
+    // }
+    // return response(["success" => true, "data" => ["uuid" => 1, "username" => "something"]]);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
