@@ -205,7 +205,7 @@ class RegisteredUserController extends Controller
         // dd($wp_user_detai);
         $encrypt = encrypt($wp_user_detai->ID);
         // die();
-`        return redirect()->to("https://wordpressmu-755205-2769239.cloudwaysapps.com/?_ref=r_app&_ref_id=" . $encrypt);
+        return redirect()->to("https://wordpressmu-755205-2769239.cloudwaysapps.com/?_ref=r_app&_ref_id=" . $encrypt);
         // Auth::login($db_user, true);
 
         return redirect(RouteServiceProvider::HOME);
