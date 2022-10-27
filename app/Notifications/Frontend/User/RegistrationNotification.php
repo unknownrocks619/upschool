@@ -64,12 +64,12 @@ class RegistrationNotification extends Notification
             return;
         }
 
-        if ($this->user->source == "signup") {
-            return (new MailMessage)
-                ->subject("Verify Your Email")
-                ->from("noreply@upschool.co")
-                ->markdown("frontend.mail.user.registration", compact('verificationUrl', 'first_name'));
-        }
+        // if ($this->user->source == "signup") {
+        return (new MailMessage)
+            ->subject("Verify Your Email")
+            ->from("noreply@upschool.co")
+            ->markdown("frontend.mail.user.registration", compact('verificationUrl', 'first_name'));
+        // }
     }
 
     /**
