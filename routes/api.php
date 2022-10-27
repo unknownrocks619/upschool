@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Corcel\WpUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/user/{info}", function () {
+Route::get("/user/{info}", function ($info) {
+
+    $wp_user = WpUser::where('id', decrypt($info))->first();
+    if (!$wp_user) {
+        response(["success" => false, "data" => [], "message" => "Record doesn't exists."], 403);
+    }
     return response(["success" => true, "data" => ["uuid" => 1, "username" => "something"]]);
 });
 

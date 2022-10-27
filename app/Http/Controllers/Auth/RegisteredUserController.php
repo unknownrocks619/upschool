@@ -150,6 +150,7 @@ class RegisteredUserController extends Controller
         // Auth::login($user);
         if ($user->source  != "signup") {
             session()->forget(["source", "user_detail"]);
+            return redirect()->route('https://wordpressmu-755205-2769239.cloudwaysapps.com/', ["_ref" => 'r_app', "_ref_id" => encrypt($wp_user->id)]);
             return redirect()->route('frontend.user.registration.verification.message.facebook');
         }
         return redirect()->route('frontend.user.registration.verification.message');
@@ -229,7 +230,7 @@ class RegisteredUserController extends Controller
         }
 
         Auth::login($db_user, true);
-        
+
         // return redirect(RouteServiceProvider::HOME);
     }
 
