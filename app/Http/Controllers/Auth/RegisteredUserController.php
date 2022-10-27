@@ -209,8 +209,7 @@ class RegisteredUserController extends Controller
         $g_user = Socialite::driver("google")->user();
         $db_user = User::where('source', 'google')->where('source_id', $g_user->user["id"])->where('status', 'active')->first();
         $wp_user_detai = WpUser::where('user_email', $g_user->user["email"])->first();
-        $encrypt = ($wp_user_detai->ID);
-        $csrf = csrf_token();
+
         $password  = Str::random();
         if (!$db_user && $wp_user_detai) {
             $user_detail = [
