@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post("/user/login/detail", function () {
-    return "hello";
     // return response(["success" => true]);
     return response(request()->all());
     // $wp_user = WpUser::where('id', $info)->first();
