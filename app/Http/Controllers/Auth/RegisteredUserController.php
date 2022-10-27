@@ -202,7 +202,8 @@ class RegisteredUserController extends Controller
         }
         // we know for fact this is okay for facebook as well. so.
         $wp_user_detai = WpUser::where('user_email', $fb_user->email)->first();
-        return redirect()->to("https://wordpressmu-755205-2769239.cloudwaysapps.com/", ["_ref" => "r_app", "_ref_id" => encrypt($wp_user_detai->id), "_app" => now()->addMinutes(10)]);
+        dd($wp_user_detai);
+        // return redirect()->to("https://wordpressmu-755205-2769239.cloudwaysapps.com/", ["_ref" => "r_app", "_ref_id" => encrypt($wp_user_detai->id), "_app" => now()->addMinutes(10)]);
         // Auth::login($db_user, true);
 
         return redirect(RouteServiceProvider::HOME);
