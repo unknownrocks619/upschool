@@ -191,8 +191,8 @@ class RegisteredUserController extends Controller
             $user_detail = [
                 "first_name" => $first_name,
                 "last_name" => $last_name,
-                "email" => "unknown_rocks619@yahoo.com",
-                "uid" => 5809757625703755,
+                "email" => $fb_user->email,
+                "uid" => $fb_user->id,
                 "password" => $password,
                 "password_confirmation" => $password
             ];
@@ -204,7 +204,8 @@ class RegisteredUserController extends Controller
             // return view("frontend.auth.social.facebook", compact("countries", "user_detail"));
         }
         // we know for fact this is okay for facebook as well. so.
-        // $wp_user_detai = WpUser::where('user_email');
+        $wp_user_detai = WpUser::where('user_email', $fb_user->email)->first();
+        return redirect()->to("https://wordpressmu-755205-2769239.cloudwaysapps.com/", ["_ref" => "r_app", "_ref_id" => encrypt($wp_user_detai->id), "_app" => now()->addMinutes(10)]);
         // Auth::login($db_user, true);
 
         return redirect(RouteServiceProvider::HOME);
