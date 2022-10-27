@@ -129,11 +129,11 @@ class RegisteredUserController extends Controller
         try {
             //code...
             DB::transaction(function () use ($request, $user, $canva, $wp_user, $user_meta) {
-                $user->save();
+                // $user->save();
 
-                if ($canva) {
-                    $canva->save();
-                }
+                // if ($canva) {
+                //     $canva->save();
+                // }
                 $user_meta["wp_source"] = $user->source;
                 $wp_user->save();
                 $wp_user->saveMeta($user_meta);
@@ -154,7 +154,6 @@ class RegisteredUserController extends Controller
             session()->forget(["source", "user_detail"]);
             $encrypt = ($wp_user->ID);
             $csrf = csrf_token();
-            dd($wp_user->ID);
             // die();
             return redirect()->to("https://upschool.co/?_ref=r_app&_ref_id=" . $encrypt . "&_token=" . $csrf);
             return redirect()->route('frontend.user.registration.verification.message.facebook');
