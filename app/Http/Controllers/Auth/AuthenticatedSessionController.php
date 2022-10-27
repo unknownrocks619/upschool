@@ -17,7 +17,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        return redirect()->to("https://upschool.co/not-found");
+        // return redirect()->to("https://upschool.co/not-found");
         return view('frontend.auth.login-update');
         // return view("frontend.auth.login");
     }
@@ -30,6 +30,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+        // dd($request->all());
         $request->authenticate();
 
         $request->session()->regenerate();
