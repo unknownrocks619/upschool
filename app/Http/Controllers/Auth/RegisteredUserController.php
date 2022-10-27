@@ -77,6 +77,7 @@ class RegisteredUserController extends Controller
         $wp_user->user_pass = $password_hash->makeHash("password");
         $wp_user->user_nicename = $request->first_name;
         $wp_user->user_email = $request->email;
+        $wp_user->display_name = $request->first_name . " " . $request->last_name;
 
         $user_meta = [
             "nickname" => Str::lower($request->first_name),
@@ -84,6 +85,7 @@ class RegisteredUserController extends Controller
             "last_name" => $request->last_name,
             "wp_capabilities" => "a:1:" . $wp_level[$request->role],
             "wp_user_level" => 7,
+
         ];
 
 
