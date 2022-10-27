@@ -204,9 +204,9 @@ class RegisteredUserController extends Controller
             // return view("frontend.auth.social.facebook", compact("countries", "user_detail"));
         }
         // we know for fact this is okay for facebook as well. so.
-        $wp_user_detai = WpUser::where('email')
+        // $wp_user_detai = WpUser::where('user_email');
         // Auth::login($db_user, true);
-        
+
         return redirect(RouteServiceProvider::HOME);
     }
 
