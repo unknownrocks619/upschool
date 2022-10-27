@@ -74,7 +74,7 @@ class RegisteredUserController extends Controller
         $wp_user = new WpUser;
         $password_hash = new PasswordService;
         $wp_user->user_login = Str::random(8);
-        $wp_user->user_pass = $password_hash->makeHash("password");
+        $wp_user->user_pass = $password_hash->makeHash($request->password);
         $wp_user->user_nicename = $request->first_name;
         $wp_user->user_email = $request->email;
         $wp_user->display_name = $request->first_name . " " . $request->last_name;
@@ -109,6 +109,7 @@ class RegisteredUserController extends Controller
             $user->email = session()->get("user_detail")["email"];
             $user->password = Hash::make(Str::random("8"));
             $user->source_id = session()->get('user_detail')["uid"];
+            $wp_user->user_pass = $password_hash->makeHash(Str::random(12));
 
             if (isset(session()->get('user_detail')["avatar"])) {
                 $user->avatar = ["original_filename" => session()->get('user_detail')["avatar"], "path" => session()->get('user_detail')["avatar"]];
