@@ -160,24 +160,14 @@ class RegisteredUserController extends Controller
     }
     public function facebookCallback()
     {
-        // $countries  = Country::cursor();
-        // $seperate_name = explode(" ", "Binod Giri");
-        // $first_name = $seperate_name[0];
-        // $last_name = $seperate_name[1];
         $password  = Str::random();
-        // $user_detail = [
-        //     "first_name" => $first_name,
-        //     "last_name" => $last_name,
-        //     "email" => "unknown_rocks619@yahoo.com",
-        //     "uid" => 5809757625703755,
-        //     "password" => $password,
-        //     "password_confirmation" => $password
-        // ];
-        // return view("frontend.auth.social.facebook", compact("countries", "user_detail"));
         $fb_user = Socialite::driver("facebook")->user();
+
         // check if this email is already used or not .
-        $db_user = User::where('source', 'facebook')->where('source_id', $fb_user->id)->where('status', 'active')->first();
-        if (!$db_user) {
+        $db_user = User::where('email', $fb_user->email)->first();
+        $wp_user_detai = WpUser::where('user_email', $fb_user->email)->first();
+
+        if (!$db_user && !$wp_user_detai) {
             // $countries  = Country::cursor();
             $seperate_name = explode(" ", $fb_user->name);
             $first_name = $seperate_name[0];
@@ -197,15 +187,14 @@ class RegisteredUserController extends Controller
 
             // return view("frontend.auth.social.facebook", compact("countries", "user_detail"));
         }
-        // we know for fact this is okay for facebook as well. so.
-        $wp_user_detai = WpUser::where('user_email', $fb_user->email)->first();
-        // dd($wp_user_detai);
-        $encrypt = ($wp_user_detai->ID);
-        $csrf = csrf_token();
-        // die();
-        return redirect()->to("https://upschool.co/?_ref=r_app&_ref_id=" . $encrypt . "&_token=" . $csrf);
-        // Auth::login($db_user, true);
 
+        if ($wp_user_detai) {
+            $encrypt = ($wp_user_detai->ID);
+            $csrf = csrf_token();
+            return redirect()->to("https://upschool.co/?_ref=r_app&_ref_id=" . $encrypt . "&_token=" . $csrf);
+        }
+        session()->flash("error", "Unable to provide service to your account.");
+        return redirect()->route('register');
         return redirect(RouteServiceProvider::HOME);
     }
 
@@ -218,8 +207,11 @@ class RegisteredUserController extends Controller
     {
         $g_user = Socialite::driver("google")->user();
         $db_user = User::where('source', 'google')->where('source_id', $g_user->user["id"])->where('status', 'active')->first();
+        $wp_user_detai = WpUser::where('user_email', $g_user->user["email"])->first();
+        $encrypt = ($wp_user_detai->ID);
+        $csrf = csrf_token();
         $password  = Str::random();
-        if (!$db_user) {
+        if (!$db_user && $wp_user_detai) {
             $user_detail = [
                 "first_name" => $g_user->user["given_name"],
                 "last_name" => isset($g_user->user["family_name"]) ? $g_user->user["family_name"] : "not available",
@@ -233,15 +225,19 @@ class RegisteredUserController extends Controller
             session()->put("user_detail", $user_detail);
             return redirect()->route('google-register-signup-contd');
         }
-        // we know for fact this is okay for facebook as well. so.
-        $wp_user_detai = WpUser::where('user_email', $g_user->user["email"])->first();
-        // dd($wp_user_detai);
-        $encrypt = ($wp_user_detai->ID);
-        $csrf = csrf_token();
-        // die();
-        return redirect()->to("https://upschool.co/?_ref=r_app&_ref_id=" . $encrypt . "&_token=" . $csrf);
 
-        Auth::login($db_user, true);
+        if ($wp_user_detai) {
+            $encrypt = ($wp_user_detai->ID);
+            $csrf = csrf_token();
+            return redirect()->to("https://upschool.co/?_ref=r_app&_ref_id=" . $encrypt . "&_token=" . $csrf);
+        }
+
+        session()->flash("error", "Unable to provide service to your account.");
+        return redirect()->route('register');
+        // die();
+        // return redirect()->to("https://upschool.co/?_ref=r_app&_ref_id=" . $encrypt . "&_token=" . $csrf);
+
+        // Auth::login($db_user, true);
 
         // return redirect(RouteServiceProvider::HOME);
     }
