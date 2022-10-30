@@ -7,7 +7,7 @@
                 Your account is already verified.
             </h5>
             <p>
-                <a href="{{ route('login') }}">Login</a> | <a href="{{ route('register') }}">Register</a>
+                <a href="https://upschool.co/dashboard">Login</a> | <a href="{{ route('register') }}">Register</a>
             </p>
         </div>
     </div>
