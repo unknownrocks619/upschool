@@ -51,11 +51,13 @@ class UserController extends Controller
         } catch (\Throwable $th) {
             //throw $th;
             session()->flash('error', "Unable to verify. Please try again.");
-            return redirect()->route('login');
+            return redirect()->to('https://upschool.co');
+            // return redirect()->route('login');
         }
 
         session()->flash('success', "Congratulation ! Your email address has been verified. Please login to access your dashboard.");
-        return redirect()->route('login');
+        return redirect()->to("https://upschool.co");
+        // return redirect()->route('login');
     }
 
     public function resendVerificationSend(Request $request)
@@ -109,7 +111,8 @@ class UserController extends Controller
             Notification::send($user, new ResetPasswordLinkNotification($user, $reset_password->token));
         } catch (\Throwable $th) {
             //throw $th;
-            dd($th->getMessage());
+            // dd($th->getMessage());
+
         }
         session()->flash("success", "An email with reset link has been sent to your email.");
         return back();
