@@ -18,7 +18,7 @@
             </p>
             <p class="mb-0 font-size-sm text-center">
                 Explore Upschool
-                <a href="{{ route('frontend.home') }}" class='text-underline'>Home</a>
+                <a href="https://upschool.co" class='text-underline'>Home</a>
             </p>
         </div>
     </div>
