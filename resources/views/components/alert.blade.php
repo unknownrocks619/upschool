@@ -2,7 +2,7 @@
 <div class="alert alert-danger alert-dismissible mb-2" role="alert">
     @foreach ($errors->all() as $error)
     <div class='d-flex align-items-center'>
-        <i class="icon fas fa-exclamation"></i>
+        <i class="icon fas fa-exclamation"></i> &nbsp;
         <span>{{ $error }}</span>
     </div>
     @endforeach
@@ -12,8 +12,8 @@
 @if(Session::has('info'))
 <div class="alert alert-info alert-dismissible mb-2" role="alert">
     <div class='d-flex align-items-center'>
-        <i class="icon fas fa-exclamation"></i>
-        <span>{{ Session::get('info') }}</span>
+        <i class="icon fas fa-exclamation"></i> &nbsp;
+        <span> {{ Session::get('info') }}</span>
     </div>
 </div>
 
@@ -22,8 +22,8 @@
 @if(Session::has('warning'))
 <div class="alert alert-warning alert-dismissible mb-2" role="alert">
     <div class='d-flex align-items-center'>
-        <i class="icon fas fa-exclamation"></i>
-        <span>{{ Session::get('warning') }}</span>
+        <i class="icon fas fa-exclamation"></i> &nbsp;
+        <span> {{ Session::get('warning') }}</span>
     </div>
 </div>
 

@@ -6,7 +6,8 @@
     @foreach ($errors->all() as $error)
     <div class='d-flex align-items-center'>
         <!-- <i class="bx bx-error"></i> -->
-        <span>{{ $error }}</span>
+        <i class="icon fas fa-exclamation"></i> &nbsp;
+        <span> {{ $error }}</span>
     </div>
     @endforeach
 </div>
@@ -15,7 +16,7 @@
 @if(Session::has('info'))
 <div class="alert alert-info alert-dismissible mb-2" role="alert">
     <div class='d-flex align-items-center'>
-        <i class="icon fas fa-exclamation"></i>
+        <i class="icon fas fa-exclamation"></i> &nbsp;
         <span>{{ Session::get('info') }}</span>
     </div>
 </div>
