@@ -1,3 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-danger ps-5 w-100" style="background: #b81242 !important;">
+    <div class="collapse navbar-collapse ms-5 w-100" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto w-100">
+            <li class="nav-item">
+                <a class="nav-link text-white" href="https://upschool.co/partnerships/" style="font-weight: bold;font-size:15px;">
+                    Become a Partner
+                </a>
+            </li>
+            <li class="nav-item dropdown ps-4">
+                <a style="font-weight: bold;font-size:16px;" class="nav-link dropdown-toggle  text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Products
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="z-index:9999">
+                    <a class="dropdown-item py-2" href="https://upschool.co/impact-films/">Impacts Films </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item py-2" href="https://upschool.co/impact-projects/">Impact Projects</a>
+                </div>
+            </li>
+            <li class="nav-item  text-white px-4">
+                <a class="nav-link  text-white" style="font-weight: bold;font-size:15px;" href="https://upschool.co/request-a-tour/">Request a Tour</a>
+            </li>
+            <li class="nav-item px-2">
+                <a class="nav-link  text-white" style="font-weight: bold;font-size:15px;" href="https://upschool.co/bulk-enrolment/">Bulk Enrolment</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 <header class="header row sticky-top">
     <!-- <div class=" d-flex justify-content-center align-items-center">
       <img src="{{ asset('frontend/images/global/logo.png') }}" width="150px" />
