@@ -1,11 +1,8 @@
 @if( $errors->any())
 <div class="alert alert-danger alert-dismissible mb-2" role="alert">
-    <button type="button" class="close text-info" data-dismiss="alert" aria-label="close">
-        x
-    </button>
     @foreach ($errors->all() as $error)
     <div class='d-flex align-items-center'>
-        <!-- <i class="bx bx-error"></i> -->
+        <i class="icon fas fa-exclamation"></i>
         <span>{{ $error }}</span>
     </div>
     @endforeach
@@ -14,11 +11,8 @@
 
 @if(Session::has('info'))
 <div class="alert alert-info alert-dismissible mb-2" role="alert">
-    <button type="button" class="close text-info" data-dismiss="alert" aria-label="close">
-        x
-    </button>
     <div class='d-flex align-items-center'>
-        <i class="bx bx-check"></i>
+        <i class="icon fas fa-exclamation"></i>
         <span>{{ Session::get('info') }}</span>
     </div>
 </div>
@@ -27,11 +21,8 @@
 
 @if(Session::has('warning'))
 <div class="alert alert-warning alert-dismissible mb-2" role="alert">
-    <button type="button" class="close text-info" data-dismiss="alert" aria-label="close">
-        x
-    </button>
     <div class='d-flex align-items-center'>
-        <i class="bx bx-check"></i>
+        <i class="icon fas fa-exclamation"></i>
         <span>{{ Session::get('warning') }}</span>
     </div>
 </div>
