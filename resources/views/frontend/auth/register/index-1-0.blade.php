@@ -349,10 +349,10 @@
                             <div class="row mt-4 me-5">
                                 <div class="col-md-12 mt-3">
                                     <div class="form-group">
-                                        <label for="email" class="mb-2">Your Date of Birth
+                                        <label for="date_of_birth" class="mb-2">Your Date of Birth
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <input required="true" type="date" value="{{ old('date_of_birth') }}" name="date_of_birth" id="date_of_birth" class="form-control py-3 rounded-3 @error('date_of_birth') border border-danger @enderror" />
+                                        <input required="true" type="date" min="1920-01-01" max="2022-12-31" value="{{ old('date_of_birth') }}" name="date_of_birth" id="date_of_birth" class="form-control py-3 rounded-3 @error('date_of_birth') border border-danger @enderror" />
                                         @error("date_of_birth")
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
