@@ -15,10 +15,6 @@ use App\Http\Controllers\Sms;
 |
 */
 
-Route::get("/test", function () {
-    return abort(403);
-});
-
 // Route::get('/sms', [Sms::class, "dikshit_form"]);
 
 // Route::name('frontend.')->group(function () {
