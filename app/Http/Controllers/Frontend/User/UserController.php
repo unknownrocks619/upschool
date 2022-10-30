@@ -37,7 +37,7 @@ class UserController extends Controller
     public function verifyEmail(Request $request)
     {
         if (!$request->hasValidSignature()) {
-            abort(402);
+            abort(403);
         }
 
         $user = EmailVerify::where('signature', $request->uuid)->firstOrFail();
