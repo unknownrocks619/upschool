@@ -162,7 +162,8 @@ class UserController extends Controller
 
 
         session()->flash('success', "Password Changed. Login with your new password");
-        return redirect()->route('login');
+        return redirect()->to("http://upschool.co/dashboard");
+        // return redirect()->route('login');
     }
 
     public function profile()
@@ -237,6 +238,7 @@ class UserController extends Controller
 
         session()->flash('success', "Password has been changed. Please re-login with new password.");
         auth()->logout();
+        return redirect()->route('https://upschool.co/dashboard');
         return redirect()->route('login');
     }
 }

@@ -42,7 +42,7 @@
             </p>
             <p class="mb-0 font-size-sm text-center">
                 Signin with different account?
-                <a href="{{ route('login') }}" class='text-underline'>Sign in</a>
+                <a href="https://upschool.co/dashboard" class='text-underline'>Sign in</a>
             </p>
 
             @else
@@ -54,11 +54,11 @@
             </p>
             <p class="mb-0 font-size-sm text-center">
                 Look Around
-                <a href="{{ route('frontend.home') }}" class='text-underline'>Home</a>
+                <a href="http://upschool.co" class='text-underline'>Home</a>
             </p>
             <p class="mb-0 font-size-sm text-center">
                 Signin with different account?
-                <a href="{{ route('login') }}" class='text-underline'>Sign in</a>
+                <a href="https://upschool.co/dashboard" class='text-underline'>Sign in</a>
             </p>
             @endif
         </div>
