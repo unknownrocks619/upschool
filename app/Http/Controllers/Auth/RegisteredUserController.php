@@ -66,10 +66,10 @@ class RegisteredUserController extends Controller
         ]);
 
         $wp_level = [
-            "student-above" => "{s:15:'student-over-18';b:1;}",
-            "parent" => "{s:18:'parents-of-student';b:1;}",
-            "student-below" => "{s:16:'student-under-18';b:1;}",
-            "teacher" => "{s:14:'school-teacher';b:1;}"
+            "student-above" => "{s:15:\"student-over-18\";b:1;}",
+            "parent" => "{s:18:\"parents-of-student\";b:1;}",
+            "student-below" => "{s:16:\"student-under-18\";b:1;}",
+            "teacher" => "{s:14:\"school-teacher\";b:1;}"
         ];
         $wp_user = new WpUser;
         $password_hash = new PasswordService;
@@ -84,7 +84,7 @@ class RegisteredUserController extends Controller
             "first_name" => Str::ucfirst($request->first_name),
             "last_name" => $request->last_name,
             "wp_capabilities" => "a:1:" . $wp_level[$request->role],
-            "wp_user_level" => 7,
+            "wp_user_level" => 0,
 
         ];
 
