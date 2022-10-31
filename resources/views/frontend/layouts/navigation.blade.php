@@ -1,6 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-danger ps-5 w-100" style="background: #b81242 !important;">
+<style>
+    nav>div>div>ul>li>a.dropdown-toggle::after {
+        display: none !important;
+    }
+</style>
+
+<nav class="d-none d-lg-block navbar navbar-expand-lg navbar-light bg-danger ps-5 w-100" style="background: #b81242 !important;">
     <div class="collapse navbar-collapse ms-5 w-100" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto w-100">
+        <ul class="navbar-nav mr-auto w-100" id="topNav">
             <li class="nav-item">
                 <a class="nav-link text-white" href="https://upschool.co/partnerships/" style="font-weight: bold;font-size:15px;">
                     Become a Partner
@@ -41,7 +47,7 @@
                 </div>
                 <div class="d-flex align-items-center">
                     <div>
-                        <li class="nav-item dropdown" style="list-style: none">
+                        <li class="nav-item dropdown" style="list-style: none;border-bottom:none">
                             <a class="nav-link dropdown-toggle text-white nav-text content-none" href="#" data-bs-toggle="dropdown"><i class="fas fa-user-circle" style="font-size: 1.5rem"></i>
                             </a>
 

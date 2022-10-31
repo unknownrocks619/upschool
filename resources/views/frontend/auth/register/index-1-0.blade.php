@@ -219,11 +219,14 @@
                                 </form>
                             </div>
                             @endif
+
+                            @if( settings("google_login") || settings("facebook_login") )
                             <div class="row me-5">
                                 <div class="col-md-12 mb-3 mt-4 ms-1">
                                     <div class="border-bottom"></div>
                                 </div>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>

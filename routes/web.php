@@ -21,6 +21,6 @@ use App\Http\Controllers\Sms;
 //     Route::get("/", fn () => view("welcome"));
 // });
 Route::get("/course/{course:alias_title}", [CourseController::class, "show"])->name("course.show");
-// require __DIR__ . "/admin/web.php";
+require __DIR__ . "/admin/web.php";
 require __DIR__ . '/auth.php';
 require __DIR__ . "/frontend/web.php";

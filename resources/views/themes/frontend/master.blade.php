@@ -77,6 +77,17 @@
     <!-- bootsrtap script -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        function toggleFunc(x) {
+            let even = 'block';
+            let odd = 'none';
+            let elements = $(x).parent("li").find("ul.dropdown-menu")
+            console.log(elements);
+            Array.prototype.forEach.call(elements, function(element) {
+
+                element.style.display === even ? element.style.display = odd : element.style.display = even
+            });
+            $(x).parent("li").find("span.caret").toggleClass("fa-minus fa-plus");
+        }
         /* navbar toggle */
         $(document).ready(function() {
             // jQuery code
@@ -89,6 +100,7 @@
                 $('body').toggleClass('offcanvas-active')
                 $('.screen-overlay').toggleClass('show')
             })
+
 
             // Close menu when pressing ESC
             $(document).on('keydown', function(event) {
