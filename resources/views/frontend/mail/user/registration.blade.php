@@ -75,13 +75,13 @@
                             <table role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px" width="100%" cellspacing="0" cellpadding="0">
                               <tr>
                                 <td style="padding:0;Margin:0" align="left">
-                                  <h1 style="margin:0px;line-height:32px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif" helvetica neue><strong>Congratulations and Welcome, ' . {{ $first_name }} . '!</strong><br></h1>
+                                  <h1 style="margin:0px;line-height:32px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif" helvetica neue><strong>Congratulations and Welcome, ' {{ $first_name }} '!</strong><br></h1>
                                 </td>
                               </tr>
                               <tr>
                                 <td style="padding:0;Margin:0;padding-top:20px" align="left">
                                   <p style="font-family:arial, 'helvetica neue', helvetica, sans-serif">We are excited to say that you have been successfully registered for account on our platform: Upschool.co!</p>
-                                  <p style="font-family:arial, 'helvetica neue', helvetica, sans-serif">Before you start using your account, we require you to set your password. Please click the link below:</p><a href="{{ $verificationUrl }}" style="font-family:arial, 'helvetica neue', helvetica, sans-serif">[Click Here To Verify Your Email]</a>
+                                  <p style="font-family:arial, 'helvetica neue', helvetica, sans-serif">Before you start using your account, we require you to set your password. Please click the link below:</p><a href="{{ $verificationUrl }}" style="font-family:arial, 'helvetica neue', helvetica, sans-serif">[Click Here To Verify Your Email]</a><br />
                                   <p style="font-family:arial, 'helvetica neue', helvetica, sans-serif">We are excited to have you in our learning community!</p>
                                   <p style="font-family:arial, 'helvetica neue', helvetica, sans-serif"><b>Lastly, can you help?</b></p>
                                   <p style="font-family:arial, 'helvetica neue', helvetica, sans-serif">Our mission is to provide purposeful education to everyone, everywhere, for a better tomorrow. We would appreciate it if you could tell your friends, family, colleagues and community about our free courses, resources and content. There is something useful on our platform for everybody. Please share the following link to your network so that they can all learn about, and benefit from, participation in Upschool.<br></p>

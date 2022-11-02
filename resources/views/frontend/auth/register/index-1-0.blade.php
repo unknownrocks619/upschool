@@ -1,7 +1,7 @@
 @extends("themes.frontend.master")
 
 @section("page_title")
-::Register
+| Register
 @endsection
 
 @push("custom_css")
