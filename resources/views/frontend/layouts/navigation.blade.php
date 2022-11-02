@@ -31,7 +31,7 @@
         </ul>
     </div>
 </nav>
-<header class="header row sticky-top">
+<header class="header row">
     <!-- <div class=" d-flex justify-content-center align-items-center">
       <img src="{{ asset('frontend/images/global/logo.png') }}" width="150px" />
     </div> -->
