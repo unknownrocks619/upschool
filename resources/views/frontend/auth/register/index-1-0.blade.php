@@ -664,4 +664,10 @@
         });
     });
 </script>
+
+<style type="text/css">
+    .grecaptcha-badge {
+        display: none !important;
+    }
+</style>
 @endpush
