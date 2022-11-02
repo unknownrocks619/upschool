@@ -1,6 +1,12 @@
 <div class="footer-new">
+    <div style="background: url(https://upschool.co/wp-content/uploads/2022/03/indigenous-art-1536x470-1.jpg);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.05;
+    background-size: cover;"></div>
     <div class="d-flex justify-content-center mt-0 footer-top-img">
-        <img src="{{ asset('upschool/frontend/images/home/upschool-14.png') }}" alt="" class="img-fluid" height="auto" width="30%" />
+        <img src="{{ asset('upschool/frontend/images/home/upschool-14.png') }}" alt="" class="img-fluid" height="auto" width="30%" srcset="https://upschool.co/wp-content/uploads/2022/03/upschool-14-1536x1452-1-600x600.png 600w, https://upschool.co/wp-content/uploads/2022/03/upschool-14-1536x1452-1-300x300.png 300w, https://upschool.co/wp-content/uploads/2022/03/upschool-14-1536x1452-1-180x180.png 180w, https://upschool.co/wp-content/uploads/2022/03/upschool-14-1536x1452-1-400x400.png 400w" sizes="(max-width: 600px) 100vw, 600px" />
     </div>
     <p class="text-center text-white pb-0 footer-title" id="footer-section-title" style="font-family: 'Lexend' !important;">
         Change Making Communities
@@ -40,7 +46,13 @@
             </div class="d-flex">
             <div class="d-flex p-0">
                 @foreach (menus()->where("menu_position","footer_menu") as $menu)
-                <a class='text-white mb-0 @if( ! $loop->last) pe-3 @endif footer-link' href="{{ route('frontend.view',$menu->slug) }}">
+                <?php
+                $href = "#";
+                if ($menu->external_links) {
+                    $href = $menu->external_links->external_url;
+                }
+                ?>
+                <a class='text-white mb-0 @if( ! $loop->last) pe-3 @endif footer-link' href="{{ $href }}{-- route('frontend.view',$menu->slug) --}}">
                     {{ $menu->menu_name }}
                 </a>
                 @endforeach
