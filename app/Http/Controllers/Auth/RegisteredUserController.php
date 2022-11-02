@@ -57,14 +57,13 @@ class RegisteredUserController extends Controller
             "personal_detail" => ["required_if:canva,yes"],
             "canva_free" => ["required_if:canva,yes"],
             'role' => ['required', 'string', 'max:30', Rule::in(['student-above', 'student-below', 'parent', 'teacher'])],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'unique:App\Models\Corcel\WpUser,user_email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'terms' => ["accepted"],
             "date_of_birth" => ["required", "date", "date_format:Y-m-d"],
             "recaptcha_token" => ["required", new GoogleCaptcha()]
 
         ]);
-
         $wp_level = [
             "student-above" => "{s:15:\"student-over-18\";b:1;}",
             "parent" => "{s:18:\"parents-of-student\";b:1;}",
