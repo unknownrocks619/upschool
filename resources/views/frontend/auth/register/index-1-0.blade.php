@@ -506,7 +506,7 @@
         <div class="col-md-4 d-none d-md-block mx-auto" style="background-color: #242254 !important;align-items:center;background:url({{ asset('images/background.png') }});background-size:cover;">
             <div class="row mx-auto">
                 <div class="col-md-12 text-center mt-5 pt-1">
-                    <img src="{{ asset('images/upschool-banner.png') }}" alt="" class="w-75">
+                    <img src="{{ asset('logo.png') }}" alt="" class="w-75">
                 </div>
             </div>
             <div class=" px-0 ps-5  ms-2">
