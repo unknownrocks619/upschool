@@ -390,7 +390,7 @@
                                 </div>
                                 <div class="col-md-10">
                                     <p style="font-size:19px;color:#242254" class="mt-4 pt-4">
-                                        As part of your Upschool account, we are pleased to inform you that you can get a FREE Canva Pro Account for Education. This has been made possible through a collaboration between Canva and Upschool who, together, want to enable you to share your voice with the world.
+                                        Thanks to a collaboration between Upschool and Canva, registered Upschool users can receive a FREE Canva for Education account! This means you can create incredible graphic designs, images, books, and a range of other creative products using Canva's premium design package at no cost.
                                     </p>
 
                                 </div>
@@ -399,14 +399,14 @@
                             <div class="row">
                                 <div class="col-md-10">
                                     <h3 class="" style="color: #242254 !important;font-weight:700;line-height:22.99px;font-size:19px;">
-                                        We use Canva in many of our courses - so we recommend you get your pro account today.
+                                        Canva is an essential tool used in many of Upschool’s courses, and we highly recommend you register.
                                     </h3>
                                 </div>
                             </div>
                             <div class="row me-5 mt-3">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="canva" class="mb-2">Would you like us to register you for a FREE Canva Pro Account?
+                                        <label for="canva" class="mb-2">Would you like to register for a FREE Canva for Education account?
                                             <sup class="text-danger">*</sup>
                                         </label>
                                         <select name="canva" id="canva" autocomplete="off" class="py-3 rounded-3 form-control form-select @error('canva') border bordered-danger @enderror">
@@ -427,7 +427,7 @@
 
                                             </div>
                                             <div class="col-md-10">
-                                                <label for="personal_detail" class="mb-2">I acknowledge and accept that my personal details (name, email) may be visible to Upschool users registered with Canva.
+                                                <label for="personal_detail" class="mb-2">I acknowledge and accept that my name and email address may be visible to Upschool users registered with Canva.
                                                     <sup class="text-danger">*</sup>
                                                 </label>
 
