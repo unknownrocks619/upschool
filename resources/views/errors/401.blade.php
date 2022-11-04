@@ -198,7 +198,7 @@
 
             <div class="row mx-auto text-center mt-5 pt-5">
                 <div class="col-md-6 text-center mx-auto">
-                    <button style="background: #242254" class="btn btn-primary ms-3 py-3 w-100 clickable" data-href='http://upschool.co'>Go To Home</button>
+                    <button style="background: #242254" class="btn btn-primary ms-3 py-3 w-100 clickable" data-href='http://upschool.co/dashboard'>Sign In</button>
                 </div>
             </div>
         </div>

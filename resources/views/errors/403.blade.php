@@ -154,6 +154,10 @@
         line-height: 17px;
     }
 
+    .steps:hover {
+        background: #242254 !important;
+    }
+
     .signup-progress-bar {
         margin-top: 175px;
         text-align: left;
@@ -203,7 +207,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="email" class="mb-2 fs-5" style="color: #03014C !important;font-weight:700;line-height:42px;">Please provide your email to re-send your verification link.
-                                            <sup class="text-danger">*</sup>
+                                            <!-- <sup class="text-danger">*</sup> -->
                                         </label>
                                         <input value="{{ old('email') }}" type="text" name="email" class="py-4 form-control rounded-3 @error('email') border border-danger @enderror" id="email" placeholder="youremail@email.com" required />
                                         @error("email")
@@ -216,23 +220,24 @@
                             <div class="row mt-4 text-right me-5">
                                 <div class="col-md-12 text-right d-flex justify-content-end">
                                     <button class="w-100 btn btn-primary next py-3 px-5 step-back" type="submit">
-                                        Send Verification Link
+                                        Re-Send Verification Link
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                <div class="row step-zero-row main mt-4">
+                    <div class="col-md-12">
+                        <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
+                            <p style="color:#03014C">
+                                Don’t have an Upschool account? <a href="{{ route('register') }}" class="text-danger" style="color:#242254 !important">Sign up</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </form>
 
-            <div class="row mt-5 ms-3">
-                <div class="col-md-8 mt-3 ps-5 ms-2">
-                    <p style="color:#03014C">
-                        Don’t have an Upschool account? <a href="{{ route('register') }}" class="text-danger" style="color:#242254 !important">Sign up</a>
-                    </p>
-                </div>
-            </div>
 
         </div>
 
