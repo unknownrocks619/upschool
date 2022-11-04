@@ -176,7 +176,7 @@
 
 @section("content")
 
-<div class="container border-start mb-11 mx-auto px-0">
+<div class="container border-start mb-11 mx-auto px-0" style="min-height:100vh">
     <div class="row px-0 mx-auto">
         <!-- Row -->
         <div class="col-md-8 pl-0 ml-0 mx-auto step-parent pb-5" style="padding-left:0px !important;">
@@ -185,8 +185,9 @@
             <div class="row ">
                 <div class="col-md-12">
                     <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
-                        <h4 class="mb-0 text-danger" style="font-weight:700;line-height:42px;">
-                            Oops ! Your Link has expired. </h4>
+                        <h4 class="mb-0 text-danger" style="line-height:42px;color:#D61A5F !important">
+                            Oops ! Your Link has expired.
+                        </h4>
 
                     </div>
                 </div>
@@ -228,15 +229,15 @@
             <div class="row mt-5 ms-3">
                 <div class="col-md-8 mt-3 ps-5 ms-2">
                     <p style="color:#03014C">
-                        Don’t have an Upschool account? <a href="{{ route('register') }}" class="text-danger">Sign up</a>
+                        Don’t have an Upschool account? <a href="{{ route('register') }}" class="text-danger" style="color:#242254 !important">Sign up</a>
                     </p>
                 </div>
             </div>
 
         </div>
 
-        <div class="col-md-4 d-none d-md-block mx-auto px-0 ps-5" style="background-color: #242254 !important;align-items:center;background-image:url({{ asset('images/upschool-fly.png') }});background-repeat:no-repeat;background-size:contain">
-        </div>
+        <!-- <div class="col-md-4 d-none d-md-block mx-auto px-0 ps-5" style="background-color: #242254 !important;align-items:center;background-image:url({{-- asset('images/upschool-fly.png') --}});background-repeat:no-repeat;background-size:contain">
+        </div> -->
 
 
     </div>
