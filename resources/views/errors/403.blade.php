@@ -176,10 +176,10 @@
 
 @section("content")
 
-<div class="container border-start mb-11 mx-auto px-0" style="min-height:100vh">
+<div class="container mb-11 d-flex justify-content-center mx-auto px-0" style="min-height:100vh;align-items:center">
     <div class="row px-0 mx-auto">
         <!-- Row -->
-        <div class="col-md-8 pl-0 ml-0 mx-auto step-parent pb-5" style="padding-left:0px !important;">
+        <div class="col-md-12 pl-0 ml-0 mx-auto step-parent pb-5" style="padding-left:0px !important;">
             <!-- Step Zero -->
 
             <div class="row ">
