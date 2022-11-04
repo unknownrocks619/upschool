@@ -340,7 +340,7 @@
                                         <select name="role" id="role" class="py-3 rounded-3 form-control form-select @error('role') border border-danger @enderror" style="font-family:'Inter'">
                                             <option value="parent" @if(old('role')=='parent' ) selected @endif>Parent of Student</option>
                                             <option value="student-above" @if(old('role')=='student-above' ) selected @endif>Student Above 18</option>
-                                            <option value="student-below" @if(old('role')=='student-under' || ! old('role') ) selected @endif>Student Below 18</option>
+                                            <option value="student-below" @if(old('role')=='student-under' || ! old('role') ) selected @endif>Student Under 18</option>
                                             <option value="teacher" @if(old('role')=='teacher' ) selected @endif>School Teacher</option>
                                         </select>
                                         @error("role")
@@ -546,7 +546,7 @@
                 </div>
                 <div class="row signup-progress-bar ps-3 mb-5 pb-5">
                     <div class="col-md-12 steps p-0 m-0 mt-5">
-                        <p class="p-0 m-0 text-left"><span class="step-count">1</span> to 3 Steps</p>
+                        <p class="p-0 m-0 text-left"><span class="step-count">1</span> of 3 Steps</p>
                     </div>
                     <div class="progress-title col-md-12">
                         <h5><span class="percent-complete">100%</span> to Complete</h5>
