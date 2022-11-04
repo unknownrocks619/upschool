@@ -339,8 +339,8 @@
                                         </label>
                                         <select name="role" id="role" class="py-3 rounded-3 form-control form-select @error('role') border border-danger @enderror" style="font-family:'Inter'">
                                             <option value="parent" @if(old('role')=='parent' ) selected @endif>Parent of Student</option>
-                                            <option value="student-above" @if(old('role')=='student-above' || !old('role')) selected @endif>Student Above 18</option>
-                                            <option value="student-below" @if(old('role')=='student-under' ) selected @endif>Student Below 18</option>
+                                            <option value="student-above" @if(old('role')=='student-above' ) selected @endif>Student Above 18</option>
+                                            <option value="student-below" @if(old('role')=='student-under' || ! old('role') ) selected @endif>Student Below 18</option>
                                             <option value="teacher" @if(old('role')=='teacher' ) selected @endif>School Teacher</option>
                                         </select>
                                         @error("role")
