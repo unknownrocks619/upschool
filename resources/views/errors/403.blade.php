@@ -1,7 +1,7 @@
 @extends("themes.frontend.master")
 
 @section("page_title")
-::Register
+- Email Verification
 @endsection
 
 @push("custom_css")
