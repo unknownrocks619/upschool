@@ -577,8 +577,12 @@
         let currentButton = $(this);
         // query select for all input field for currently selected 
         const inputs = [...$(currentButton).closest(".main").find("input")];
-        const allValid = inputs.every(input => input.reportValidity());
-
+        if (!$(this).hasClass('next')) {
+            var allValid = true;
+            console.log("don't check");
+        } else {
+            var allValid = inputs.every(input => input.reportValidity());
+        }
         if (allValid) {
             $(currentButton).closest(".main").fadeOut('fast', function() {
                 if (currentButton.data('step') == 1) {
@@ -628,7 +632,6 @@
             }).addClass("d-none")
 
         }
-
 
     })
 
