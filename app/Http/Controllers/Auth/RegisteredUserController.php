@@ -247,4 +247,11 @@ class RegisteredUserController extends Controller
         $user_detail = session()->get("user_detail");
         return view("frontend.auth.social.facebook", compact("countries", "user_detail"));
     }
+
+    public function emailCheck(Request $request)
+    {
+        $request->validate([
+            "email" => "required|email|unique:users|unique:App\Models\Corcel\WpUser,user_email"
+        ]);
+    }
 }

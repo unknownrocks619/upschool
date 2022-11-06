@@ -635,6 +635,75 @@
 
     })
 
+    $("input[type='email']").focusout(function(event) {
+        var inputEmail = $(this);
+
+        if ($("#email_error")) {
+            $("#email_error").remove();
+        }
+        const validateEmail = () => {
+            return String($(this).val())
+                .toLowerCase()
+                .match(
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                );
+        };
+        if (!validateEmail()) {
+            $(inputEmail).addClass("border border-danger");
+        } else {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                beforeSend: function() {
+                    $(inputEmail).attr("disabled", true);
+                    $processing = "<div class='text-info' id='email_processing_text'>validating email...</div>"
+                    $(inputEmail).parent('div').append($processing);
+                },
+                complete: function() {
+                    $(inputEmail).removeAttr("disabled");
+                    $("#email_processing_text").remove();
+                },
+                method: "POST",
+                data: "email=" + $(inputEmail).val(),
+                url: "{{ route('email_verify') }}",
+                success: function(response) {
+                    if ($(inputEmail).hasClass("border border-danger")) {
+                        $(inputEmail).removeClass("border border-danger");
+                        $(inputEmail).addClass('border border-success');
+                    }
+                },
+                error: function(response, status) {
+                    parseResponse = JSON.parse(response.responseText);
+                    if (response.status == 422) {
+                        let s_response_text = parseResponse.errors.email[0];
+                        $text = `<div id='email_error' class='text-danger'>${s_response_text}</div>`;
+                        $(inputEmail).parent("div").append($text);
+                    }
+                },
+                statusCode: {
+                    422: function(response) {
+                        console.log(response);
+                        if (!$(inputEmail).hasClass("border border-danger")) {
+                            $(inputEmail).addClass("border border-danger");
+                        }
+                    }
+                }
+            })
+        }
+
+    })
+
+    $("#confirm_password").focusout(function() {
+        if ($("#passwordText")) {
+            $("#passwordText").remove();
+        }
+        var password = $("#password");
+        if ($(password).val() !== $(this).val()) {
+            $(this).parent('div').append("<p id='passwordText' class='text-danger'>Confirm Password doesn't match</p>");
+        }
+    })
+
     $("#canva").change(function(event) {
         console.log($(this).val());
         if ($(this).val() == "no") {
