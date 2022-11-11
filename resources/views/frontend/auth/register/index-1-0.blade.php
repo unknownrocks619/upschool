@@ -655,7 +655,7 @@
                 beforeSend: function() {
                     $("form#registerForm").find('button').prop('disabled', true);
                     $(inputEmail).attr("disabled", true);
-                    $processing = "<div class='text-info' id='email_processing_text'>validating email...</div>"
+                    $processing = "<div style='font-family:Inter !important;color:#6076D1 !important' class='text-info' id='email_processing_text'>validating email...</div>"
                     $(inputEmail).parent('div').append($processing);
                 },
                 complete: function() {

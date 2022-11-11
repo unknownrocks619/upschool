@@ -36,7 +36,7 @@
       <img src="{{ asset('frontend/images/global/logo.png') }}" width="150px" />
     </div> -->
     <div class="col-6 col-md-10">
-        <nav class="navbar-mobile navbar d-lg-none fixed-top navbar-expand-lg navbar-light">
+        <nav class="navbar-mobile navbar d-lg-none navbar-expand-lg navbar-light">
             <div class="container p-0">
                 <div class="header-left">
                     <div>
