@@ -85,7 +85,6 @@ class RegisteredUserController extends Controller
 
         ];
 
-
         $user = new User;
         $user->first_name = $request->post('first_name');
         $user->last_name = $request->post('last_name');

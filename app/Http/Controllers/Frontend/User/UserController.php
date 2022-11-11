@@ -40,13 +40,17 @@ class UserController extends Controller
             abort(403);
         }
 
-        $user = EmailVerify::where('signature', $request->uuid)->firstOrFail();
+        $email_verification = EmailVerify::where('signature', $request->uuid)->firstOrFail();
 
-        if ($user->verified) {
+        if ($email_verification->verified) {
             abort(401);
         }
-        $user->verified = true;
+        $email_verification->verified = true;
+        $user = $email_verification->user;
+        $user->status = 'active';
+        $user->email_verified_at = \Carbon\Carbon::now();
         try {
+            $email_verification->save();
             $user->save();
         } catch (\Throwable $th) {
             //throw $th;
@@ -104,7 +108,6 @@ class UserController extends Controller
         $reset_password->token = encrypt(Str::random(12));
         $reset_password->created_at = Carbon::now()->format("Y-m-d H:i:s");
         $reset_password->user_id = $user->id;
-
         try {
             $reset_password->save();
             // send email with reset password
