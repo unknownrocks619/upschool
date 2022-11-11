@@ -134,6 +134,12 @@ class UserController extends Controller
         }
 
         $user = $verifyToken->user;
+        $user->status = 'active';
+        $user->email_verified_at = Carbon::now();
+        if (!$user->save()) {
+            session()->flash("warning", "Unable to verify your token.");
+            return redirect()->route('login');
+        }
         return view("frontend.auth.reset.reset-password", compact("user"));
     }
 

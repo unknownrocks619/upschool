@@ -579,7 +579,6 @@
         const inputs = [...$(currentButton).closest(".main").find("input")];
         if (!$(this).hasClass('next')) {
             var allValid = true;
-            console.log("don't check");
         } else {
             var allValid = inputs.every(input => input.reportValidity());
         }
@@ -627,7 +626,6 @@
                     $(".percent-complete").text("100%")
                     $(".step-count").text("1")
                     $(".social-login-row").fadeIn();
-
                 }
             }).addClass("d-none")
 
@@ -637,7 +635,6 @@
 
     $("input[type='email']").focusout(function(event) {
         var inputEmail = $(this);
-
         if ($("#email_error")) {
             $("#email_error").remove();
         }
@@ -656,6 +653,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 beforeSend: function() {
+                    $("form#registerForm").find('button').prop('disabled', true);
                     $(inputEmail).attr("disabled", true);
                     $processing = "<div class='text-info' id='email_processing_text'>validating email...</div>"
                     $(inputEmail).parent('div').append($processing);
@@ -668,6 +666,9 @@
                 data: "email=" + $(inputEmail).val(),
                 url: "{{ route('email_verify') }}",
                 success: function(response) {
+                    if ($("#password").val() === $("#confirm_password").val()) {
+                        $("form#registerForm").find('button').prop('disabled', false);
+                    }
                     if ($(inputEmail).hasClass("border border-danger")) {
                         $(inputEmail).removeClass("border border-danger");
                         $(inputEmail).addClass('border border-success');
@@ -699,8 +700,12 @@
             $("#passwordText").remove();
         }
         var password = $("#password");
-        if ($(password).val() !== $(this).val()) {
+        if ($(password).val() !== $(this).val() || $(this).val() == "") {
+            $("form#registerForm").find('button').prop('disabled', true);
             $(this).parent('div').append("<p id='passwordText' class='text-danger'>Confirm Password doesn't match</p>");
+        } else if ($("input[type='email']").hasClass('border-success')) {
+            $("form#registerForm").find('button').prop('disabled', false);
+
         }
     })
 
@@ -721,10 +726,7 @@
 
     grecaptcha.ready(function() {
         document.getElementById('registerForm').addEventListener("submit", function(event) {
-            // $("#pre-submission").fadeOut("fast", function() {
-            //     $("#spinner").fadeIn();
-            // })
-            $("#register :input").prop('disabled', true);
+            $("#register :input, button").prop('disabled', true);
             event.preventDefault();
             grecaptcha.execute("{{ config('captcha.google.site_key') }}", {
                     action: 'register'

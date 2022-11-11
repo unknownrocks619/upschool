@@ -36,7 +36,6 @@ class RegisteredUserController extends Controller
         if (!request()->step || request()->step == 1) {
             return view("frontend.auth.register.index-1-0", compact("countries"));
         }
-        // return view('frontend.auth.register.index', compact('countries'));
     }
 
     /**
@@ -62,7 +61,6 @@ class RegisteredUserController extends Controller
             'terms' => ["accepted"],
             "date_of_birth" => ["required", "date", "date_format:Y-m-d"],
             "recaptcha_token" => ["required", new GoogleCaptcha()]
-
         ]);
         $wp_level = [
             "student-above" => "{s:15:\"student-over-18\";b:1;}",
@@ -74,29 +72,29 @@ class RegisteredUserController extends Controller
         $password_hash = new PasswordService;
         $wp_user->user_login = Str::random(8);
         $wp_user->user_pass = $password_hash->makeHash($request->password);
-        $wp_user->user_nicename = $request->first_name;
-        $wp_user->user_email = $request->email;
-        $wp_user->display_name = $request->first_name . " " . $request->last_name;
+        $wp_user->user_nicename = $request->post('first_name');
+        $wp_user->user_email = $request->post('email');
+        $wp_user->display_name = $request->post('first_name') . " " . $request->post('last_name');
 
         $user_meta = [
-            "nickname" => Str::lower($request->first_name),
-            "first_name" => Str::ucfirst($request->first_name),
-            "last_name" => $request->last_name,
-            "wp_capabilities" => "a:1:" . $wp_level[$request->role],
+            "nickname" => Str::lower($request->post('first_name')),
+            "first_name" => Str::ucfirst($request->post('first_name')),
+            "last_name" => $request->post('last_name'),
+            "wp_capabilities" => "a:1:" . $wp_level[$request->post('role')],
             "wp_user_level" => 0,
 
         ];
 
 
         $user = new User;
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->country = Country::find($request->country)->name;
-        $user->role = Role::where('slug', Str::replace("-", '_', $request->role))->first()->id;
+        $user->first_name = $request->post('first_name');
+        $user->last_name = $request->post('last_name');
+        $user->country = Country::find($request->post('country'))->name;
+        $user->role = Role::where('slug', Str::replace("-", '_', $request->post('role')))->first()->id;
         $user->source = "signup";
         $user->gender = "male";
-        $user->email = $request->email;
-        $user->date_of_birth = $request->date_of_birth;
+        $user->email = $request->post('email');
+        $user->date_of_birth = $request->post('date_of_birth');
 
         if (session()->has('source')) {
             $user->source = session()->get('source');
@@ -115,15 +113,15 @@ class RegisteredUserController extends Controller
             }
             $user->status = "active";
         } else {
-            $user->password = Hash::make($request->password);
+            $user->password = Hash::make($request->post('password'));
         }
         $user->username = Str::random(8);
 
         $canva = null;
-        if ($request->canva == "yes") {
+        if ($request->post('canva') == "yes") {
             $canva = new Canva;
             $canva->email = $user->email;
-            $canva->full_name = $request->first_name . (($request->middle_name) ? $request->middle_name . " " : " ") . $request->last_name;
+            $canva->full_name = $request->post('first_name') . (($request->post('middle_name')) ? $request->middle_name . " " : " ") . $request->last_name;
         }
 
         try {
@@ -143,6 +141,7 @@ class RegisteredUserController extends Controller
             session()->flash("error", "Unable to register your account at the moment. Please try again later.");
             return back()->withInput();
         }
+
         if ($user->source  != "signup") {
             session()->forget(["source", "user_detail"]);
             $encrypt = ($wp_user->ID);
@@ -230,15 +229,8 @@ class RegisteredUserController extends Controller
             $csrf = csrf_token();
             return redirect()->to("https://upschool.co/?_ref=r_app&_ref_id=" . $encrypt . "&_token=" . $csrf);
         }
-
         session()->flash("error", "Unable to provide service to your account.");
         return redirect()->route('register');
-        // die();
-        // return redirect()->to("https://upschool.co/?_ref=r_app&_ref_id=" . $encrypt . "&_token=" . $csrf);
-
-        // Auth::login($db_user, true);
-
-        // return redirect(RouteServiceProvider::HOME);
     }
 
     public function googleForm()
