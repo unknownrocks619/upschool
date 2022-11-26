@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\API\AuthRecord;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,9 +32,19 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+
+        $auth_record = new AuthRecord();
+        $auth_record->token = \Illuminate\Support\Str::uuid();
+        $auth_record->user_id = auth()->id();
+
+        $auth_record->save();
+
         $encrypt = (auth()->id());
         $csrf = csrf_token();
-        return redirect()->to("https://app.upschool.co/?_ref=l_app&_ref_id=" . $encrypt . "&_token=" . $csrf);
+
+
+
+        return redirect()->to("https://app.upschool.co/?_ref=l_app&_ref_id=" . $auth_record->token);
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

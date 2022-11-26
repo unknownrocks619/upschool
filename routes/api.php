@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\API\AuthRecord;
 use App\Models\Corcel\WpUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,10 +20,9 @@ Route::prefix('/user/login')->group(function () {
 
     Route::post('auth/session', function () {
 
-        if (!auth()->check() || auth()->id() != request()->post('_ref_id')) {
-            return response(["success" => false, "data" => [], "message" => "Record doesn't exists."], 403);
-        }
-        $wp_user = WpUser::where('user_email', auth()->user()->email)
+        $check_auth_record = AuthRecord::where('token', request()->_ref_id)->firstOrFail();
+
+        $wp_user = WpUser::where('user_email', $check_auth_record->user->email)
             ->latest()
             ->first();
 
