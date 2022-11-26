@@ -139,7 +139,6 @@ class LoginRequest extends FormRequest
 
         if (array_key_exists($last_strip, $wp_level)) {
             $role = Role::where('slug', $wp_level[$last_strip])->first();
-            dd($wp_level, $role);
             $users_record['role'] = $role->id;
         }
 
