@@ -280,7 +280,6 @@
             <div class="row mt-5 ms-3">
                 <div class="col-md-8 mt-3 ps-5 ms-2">
                     <p style="color:#03014C">
-                        {{ env('SESSION_DOMAIN') }}
                         Don’t have an Upschool account? <a href="{{ route('register') }}" class="text-danger">Sign up</a>
                     </p>
                 </div>
