@@ -650,7 +650,7 @@
         } else {
             $.ajax({
                 headers: {
-                    'X-CSRF-TOKEN': "{{ request()->session()->token() }}"
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 beforeSend: function() {
                     $("form#registerForm").find('button').prop('disabled', true);
@@ -663,7 +663,7 @@
                     $("#email_processing_text").remove();
                 },
                 method: "POST",
-                data: "email=" + $(inputEmail).val(),
+                data: "email=" + $(inputEmail).val() + "&_token=" + $('meta[name="csrf-token"]').attr('content'),
                 url: "{{ route('email_verify') }}",
                 success: function(response) {
                     if ($("#password").val() === $("#confirm_password").val()) {
