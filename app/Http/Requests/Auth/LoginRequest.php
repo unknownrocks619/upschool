@@ -57,7 +57,7 @@ class LoginRequest extends FormRequest
         $validate = $this->only('email', 'password');
         $validate["status"] = 'active';
         if (!Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
-            
+
             $wp_user = $this->WPAutheticate();
             if (!$wp_user) {
 
@@ -139,6 +139,7 @@ class LoginRequest extends FormRequest
 
         if (array_key_exists($last_strip, $wp_level)) {
             $role = Role::where('slug', $wp_level[$last_strip])->first();
+            dd($wp_level, $role);
             $users_record['role'] = $role->id;
         }
 
