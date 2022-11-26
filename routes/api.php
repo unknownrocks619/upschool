@@ -21,16 +21,17 @@ Route::prefix('/user/login')->group(function () {
     Route::post('auth/session', function () {
 
         $check_auth_record = AuthRecord::where('token', request()->_ref_id)->firstOrFail();
+        $user = $check_auth_record->users;
 
-        $wp_user = WpUser::where('user_email', $check_auth_record->users->email)
+        $wp_user = WpUser::where('user_email', $user->email)
             ->latest()
             ->first();
 
         if (!$wp_user) {
             response(["success" => false, "data" => [], "message" => "Record doesn't exists."], 403);
         }
-
-        return response(["success" => true, "data" => ["uuid" => $wp_user->ID, "username" => $check_auth_record->users->username]]);
+        $check_auth_record->delete();
+        return response(["success" => true, "data" => ["uuid" => $wp_user->ID, "username" => $user->username]]);
     });
 });
 
