@@ -20,9 +20,8 @@ Route::prefix('/user/login')->group(function () {
     Route::post('auth/session', function () {
 
         if (!auth()->check() || auth()->id() != request()->post('_ref_id')) {
-            response(["success" => false, "data" => [], "message" => "Record doesn't exists."], 403);
+            return response(["success" => false, "data" => [], "message" => "Record doesn't exists."], 403);
         }
-
         $wp_user = WpUser::where('user_email', auth()->user()->email)
             ->latest()
             ->first();
