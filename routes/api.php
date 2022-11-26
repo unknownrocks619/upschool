@@ -15,6 +15,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::prefix('/user/login')->group(function () {
+
+    Route::post('auth/session', function () {
+
+        if (!auth()->check() || auth()->id() != request()->post('_ref_id')) {
+            response(["success" => false, "data" => [], "message" => "Record doesn't exists."], 403);
+        }
+
+        $wp_user = WpUser::where('user_email', auth()->user()->email)
+            ->latest()
+            ->first();
+
+        if (!$wp_user) {
+            response(["success" => false, "data" => [], "message" => "Record doesn't exists."], 403);
+        }
+
+        return response(["success" => true, "data" => ["uuid" => $wp_user->ID, "username" => auth()->user()->username]]);
+    });
+});
+
 Route::post("/user/login/detail", function () {
     // return response(["success" => true]);
     session()->regenerate(true);
@@ -25,6 +45,8 @@ Route::post("/user/login/detail", function () {
     }
     return response(["success" => true, "data" => ["uuid" => $wp_user->ID, "username" => "something"]]);
 });
+
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

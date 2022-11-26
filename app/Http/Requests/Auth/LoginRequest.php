@@ -2,10 +2,17 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\Corcel\WpUser;
+use App\Models\Country;
+use App\Models\Role;
+use App\Models\User;
 use App\Rules\GoogleCaptcha;
+use Carbon\Carbon;
+use Corcel\Laravel\Auth\AuthUserProvider;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -32,7 +39,7 @@ class LoginRequest extends FormRequest
         return [
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
-            "recaptcha_token" => ["required", new GoogleCaptcha()]
+            // "recaptcha_token" => ["required", new GoogleCaptcha()]
         ];
     }
 
@@ -50,14 +57,105 @@ class LoginRequest extends FormRequest
         $validate = $this->only('email', 'password');
         $validate["status"] = 'active';
         if (!Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
-            RateLimiter::hit($this->throttleKey());
+            
+            $wp_user = $this->WPAutheticate();
+            if (!$wp_user) {
 
-            throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
-            ]);
+                RateLimiter::hit(request()->ip());
+
+                throw ValidationException::withMessages([
+                    'email' => trans('auth.failed'),
+                ]);
+            }
+
+            $registerUser = new User();
+            foreach ($this->WPMeta($wp_user) as $attribute => $value) {
+                $registerUser->$attribute = $value;
+            }
+
+            $registerUser->password = Hash::make($this->post('password'));
+            $registerUser->saveQuietly();
+
+            (Auth::attempt($this->only(['email', 'password'])));
+        }
+        RateLimiter::clear(request()->ip());
+    }
+
+    /**
+     * WP-Login
+     */
+
+    public function WPAutheticate()
+    {
+        $userProvider = new AuthUserProvider;
+        $user = $userProvider->retrieveByCredentials(request()->only('email'));
+        if (!is_null($user)  && $userProvider->validateCredentials($user, request()->only('password'))) {
+            return $user;
+        }
+        return false;
+    }
+
+
+    public function WPMeta($user)
+    {
+
+        $users_record = [
+            "first_name" => '',
+            "middle_name"  => '',
+            "last_name" => '',
+            'source' => 'WP_IMPORT',
+            'username' => '',
+            'status' => 'active',
+            'avatar' => '',
+            'email' => $user->user_email,
+            'email_verified_at' => \Carbon\Carbon::now(),
+            'created_at' => $user->user_registered,
+            'updated_at' => $user->user_registered,
+        ];
+
+        $wp_level = [
+            "student-over-18" => "student_above",
+            "parents-of-student" => "parent",
+            "student-under-18" => "student_below",
+            "school-teacher" => "teacher"
+        ];
+
+        $first_name = $user->meta()->where('meta_key', 'first_name')->first();
+
+        if ($first_name) {
+            $users_record['first_name'] = $first_name->meta_value;
+        }
+        $last_name = $user->meta()->where('meta_key', 'last_name')->first();
+
+        if ($last_name) {
+            $users_record['last_name'] = $last_name->meta_value;
         }
 
-        RateLimiter::clear($this->throttleKey());
+        $users_record['username'] = ($user->user_login) ? $user->user_login : Str::random(8);
+
+        $wp_capabilities = $user->meta()->where('meta_key', 'wp_capabilities')->first();
+        $first_strip = preg_replace_array('/(\w\:\w\:\{\w\:\d+\:\")/', [''], $wp_capabilities->meta_value);
+        $last_strip = preg_replace_array('/\"\;\w\:\w\;\}$/', [''], $first_strip);
+
+        if (array_key_exists($last_strip, $wp_level)) {
+            $role = Role::where('slug', $wp_level[$last_strip])->first();
+            $users_record['role'] = $role->id;
+        }
+
+        $country = $user->meta()->where('meta_key', 'billing_country')->first();
+
+        if ($country) {
+            $db_country = Country::where('code', $country->meta_value)->first();
+
+
+            if ($db_country) {
+                $users_record['country'] = $db_country->name;
+            } else {
+                $users_record['country'] = $country;
+            }
+        }
+
+        return $users_record;
     }
 
     /**
@@ -69,13 +167,13 @@ class LoginRequest extends FormRequest
      */
     public function ensureIsNotRateLimited()
     {
-        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (!RateLimiter::tooManyAttempts(request()->ip(), 3)) {
             return;
         }
 
         event(new Lockout($this));
 
-        $seconds = RateLimiter::availableIn($this->throttleKey());
+        $seconds = RateLimiter::availableIn(request()->ip());
 
         throw ValidationException::withMessages([
             'email' => trans('auth.throttle', [

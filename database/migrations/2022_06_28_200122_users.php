@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string("username")->nullable()->index();
             $table->foreignId("role")->constrained("roles", "id");
             $table->string("status")->default('hold')->comment("Available Options: Hold: for unverified account, suspend: To disable user login for shorten period of time, review: Account waiting for review by authorized party, reject: Reject this account");
-            $table->string('email')->nullable()->index();
+            $table->string('email')->nullable()->unique()->index();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

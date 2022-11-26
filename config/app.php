@@ -207,7 +207,9 @@ return [
          * Custom Build
          */
         // \Validation\Captcha\CaptchaServiceProvider::class,
-        \Upload\Media\UploadServiceProvider::class
+        \Upload\Media\UploadServiceProvider::class,
+        Corcel\Laravel\CorcelServiceProvider::class,
+
 
     ],
 

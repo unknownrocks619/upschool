@@ -165,6 +165,14 @@
         font-family: "Inter";
     }
 
+    .btn-primary:disabled {
+        background-color: #666578 !important;
+    }
+
+    .btn-primary:hover {
+        background: #242254 !important;
+    }
+
     @media only screen and (max-width: 600px) {
         .dynamic-padding {
             padding-left: 10px !important;
@@ -181,7 +189,10 @@
         <!-- Row -->
         <div class="col-md-8 pl-0 ml-0 mx-auto step-parent pb-5" style="padding-left:0px !important;">
             <!-- Step Zero -->
-
+            <?php
+            $rateLimit = Illuminate\Support\Facades\RateLimiter::tooManyAttempts(request()->ip(), 3);
+            ?>
+            @if ( ! $rateLimit )
             <div class="row ">
                 <div class="col-md-12">
                     <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
@@ -210,7 +221,7 @@
                     </div>
                 </div>
             </div>
-            <form method="POST" id="registerForm" action="{{ route('register') }}">
+            <form method="POST" id="loginForm" action="{{ route('login') }}">
                 <div class="row step-zero-row main">
                     <div class="col-md-12">
                         <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
@@ -257,7 +268,7 @@
                             </div>
                             <div class="row mt-4 text-right me-5">
                                 <div class="col-md-12 text-right d-flex justify-content-end">
-                                    <button class="w-100 btn btn-primary next py-3 px-5 step-back" data-step="1">
+                                    <button class="w-100 btn btn-primary next py-3 px-5 login-button" type="submit">
                                         Login to Continue
                                     </button>
                                 </div>
@@ -265,9 +276,7 @@
                         </div>
                     </div>
                 </div>
-
             </form>
-
             <div class="row mt-5 ms-3">
                 <div class="col-md-8 mt-3 ps-5 ms-2">
                     <p style="color:#03014C">
@@ -275,7 +284,17 @@
                     </p>
                 </div>
             </div>
-
+            @else
+            <div class="row" style="min-height: 100vh;">
+                <div class="col-md-12">
+                    <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
+                        <div class="alert alert-danger">
+                            Too many invalid attempt, Please try again after few minute.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
         </div>
 
         <div class="col-md-4 d-none d-md-block mx-auto px-0 ps-5" style="background-color: #242254 !important;align-items:center;background-image:url({{ asset('images/upschool-fly.png') }});background-repeat:no-repeat;background-size:contain">
@@ -290,91 +309,18 @@
 <script src="https://www.google.com/recaptcha/api.js?render={{ config('captcha.google.site_key') }}"></script>
 
 <script type="text/javascript">
-    $("button.step-back").click(function(event) {
-        event.preventDefault();
-        let currentButton = $(this);
-        // query select for all input field for currently selected 
-        const inputs = [...$(currentButton).closest(".main").find("input")];
-        const allValid = inputs.every(input => input.reportValidity());
-
-        if (allValid) {
-            $(currentButton).closest(".main").fadeOut('fast', function() {
-                if (currentButton.data('step') == 1) {
-                    $('.step-one-row').fadeIn('fast').removeClass("d-none");
-                    $("div.first").find(".information-circle-disabled").addClass('active-circle')
-                    $("div.first").find(".current-image").removeClass('d-none')
-                    $("div.second").find(".information-circle-disabled").addClass('active-circle')
-                    $("div.second").find(".current-image").addClass('d-none')
-                    $("div.second").find(".information-disabled").addClass('active-text')
-                    $("div.third").find(".information-circle-disabled").removeClass('active-circle')
-                    $("div.third").find(".information-disabled").removeClass('active-text')
-
-                    $(".progress-bar").css("width", "50%")
-                    $(".percent-complete").text("50%")
-                    $(".step-count").text("2")
-
-                }
-
-                if (currentButton.data('step') == 2) {
-                    $('.step-two-row').fadeIn("fast").removeClass("d-none");
-                    $("div.third").find(".information-circle-disabled").addClass('active-circle')
-                    $("div.third").find(".information-disabled").addClass('active-text')
-                    $("div.second").find(".current-image").removeClass('d-none')
-
-                    $(".progress-bar").css("width", "75%")
-                    $(".percent-complete").text("75%")
-                    $(".step-count").text("3")
-
-
-                }
-                if (currentButton.data('step') == 0) {
-                    $(".step-zero-row").fadeIn('fast').removeClass("d-none");
-                    $("div.first").find(".information-circle-disabled").addClass('active-circle')
-                    $("div.first").find(".current-image").addClass('d-none')
-
-                    $("div.second").find(".information-circle-disabled").removeClass('active-circle')
-                    $("div.second").find(".current-image").addClass('d-none')
-                    $("div.second").find(".information-disabled").removeClass('active-text');
-                    $(".progress-bar").css("width", "10%")
-                    $(".percent-complete").text("100%")
-                    $(".step-count").text("1")
-
-                }
-            }).addClass("d-none")
-
-        }
-
-
-    })
-
-    $("#canva").change(function(event) {
-        console.log($(this).val());
-        if ($(this).val() == "no") {
-            $(".canva-term").fadeOut("medium", function() {
-                $(this).find("input").attr("required", false)
-            });
-        } else {
-            if ($(this).val() == "yes") {
-                $('.canva-term').fadeIn('fast', function() {
-                    $(this).find("input").attr("required", true)
-                });
-            }
-        }
-    })
-
     grecaptcha.ready(function() {
-        document.getElementById('registerForm').addEventListener("submit", function(event) {
-            // $("#pre-submission").fadeOut("fast", function() {
-            //     $("#spinner").fadeIn();
-            // })
-            $("#register :input").prop('disabled', true);
+        document.getElementById('loginForm').addEventListener("submit", function(event) {
+            $(this).find('button').text('Please wait...');
+            $(this).find('input').prop('readonly', true);
+            $(this).find('button').prop('disabled', true);
             event.preventDefault();
             grecaptcha.execute("{{ config('captcha.google.site_key') }}", {
-                    action: 'register'
+                    action: 'login'
                 })
                 .then(function(token) {
                     document.getElementById("recaptcha_token").value = token;
-                    document.getElementById('registerForm').submit();
+                    document.getElementById('loginForm').submit();
                 });
         });
     });

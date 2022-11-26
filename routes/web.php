@@ -16,6 +16,7 @@ use App\Http\Controllers\Sms;
 */
 
 // Route::get('/sms', [Sms::class, "dikshit_form"]);
+Route::get('/zoom/meeting-detail', [Sms::class, "zoom_meeting_detail"]);
 
 // Route::name('frontend.')->group(function () {
 //     Route::get("/", fn () => view("welcome"));

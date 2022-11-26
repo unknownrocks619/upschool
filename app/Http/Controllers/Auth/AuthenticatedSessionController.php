@@ -17,9 +17,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        // return redirect()->to("https://upschool.co/not-found");
         return view('frontend.auth.login-update');
-        // return view("frontend.auth.login");
     }
 
     /**
@@ -33,6 +31,9 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        $encrypt = (auth()->id());
+        $csrf = csrf_token();
+        return redirect()->to("https://upschool.co/?_ref=l_app&_ref_id=" . $encrypt . "&_token=" . $csrf);
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
