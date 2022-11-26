@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
         $encrypt = (auth()->id());
         $csrf = csrf_token();
-        return redirect()->to("https://upschool.co/?_ref=l_app&_ref_id=" . $encrypt . "&_token=" . $csrf);
+        return redirect()->to("https://app.upschool.co/?_ref=l_app&_ref_id=" . $encrypt . "&_token=" . $csrf);
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
