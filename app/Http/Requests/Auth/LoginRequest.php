@@ -52,6 +52,7 @@ class LoginRequest extends FormRequest
      */
     public function authenticate()
     {
+        dd('hello world');
         $this->ensureIsNotRateLimited();
 
         $validate = $this->only('email', 'password');

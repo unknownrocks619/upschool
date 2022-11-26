@@ -94,7 +94,6 @@ class WidgetController extends Controller
             $widget->save();
         } catch (\Throwable $th) {
             //throw $th;
-            dd($th->getMessage());
             session()->flash('error', "Unable to create widget. " . $th->getMessage());
             return back()->withInput();
         }
@@ -157,7 +156,7 @@ class WidgetController extends Controller
             $widget->save();
         } catch (\Throwable $th) {
             //throw $th;
-            dd($th->getMessage());
+            
             return back()->withInput();
         }
 

@@ -75,7 +75,7 @@ class UserController extends Controller
             });
         } catch (\Throwable $th) {
             //throw $th;
-            dd($th->getMessage());
+            
             session()->flash('error', "Error: " . $th->getMessage());
             return back();
         }

@@ -119,7 +119,7 @@ class CourseController extends Controller
             }
         }
         $current_permission->$update = ((array)$current_permission->$update) ? $current_permission->$update : null;
-        // dd((array) $current_permission->$update);
+        
         $course->course_access = $current_permission;
 
         try {
@@ -163,7 +163,7 @@ class CourseController extends Controller
         if ($request->resource_type == "video") {
             $source = (Str::contains($request->video_url, "youtube", true)) ? "youtube" : "vimeo";
             $this->set_source($source);
-            // dd($source);
+            
             $resource_category = $request->resource_category_video;
 
             $current_videos = (array) $course->videos;

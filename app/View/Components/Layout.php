@@ -29,7 +29,7 @@ class Layout extends Component
      */
     public function render()
     {
-        // dd("hello");
+        
         return view('components.admin.base');
     }
 }

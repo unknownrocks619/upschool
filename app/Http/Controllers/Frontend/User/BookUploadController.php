@@ -51,7 +51,7 @@ class BookUploadController extends Controller
             $upload->save();
         } catch (\Throwable $th) {
             //throw $th;
-            dd($th->getMessage());
+            
             return response(["status", "error"], 422);
         }
         return response(["status" => "success", "url" => route('frontend.auth_user.books.book.meta', $upload->id)], 200);

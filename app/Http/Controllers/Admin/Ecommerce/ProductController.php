@@ -65,7 +65,7 @@ class ProductController extends Controller
                 $product->categories()->sync($request->categories);
             });
         } catch (\Throwable $th) {
-            dd($th->getMessage());
+            
             session()->flash('error', "Unable to convert book. Error: " . $th->getMessage());
             return back()->withInput();
         }
@@ -144,11 +144,11 @@ class ProductController extends Controller
     public function storeProductMedia(StoreProductMediaRequest $request, Product $product)
     {
         $images = $product->images;
-        // dd($images);
+        
         $this->set_access("file");
         $this->set_upload_path($this->uploadPath);
         $images[] = $this->upload("media");
-        // dd($images);
+        
         $product->images = $images;
         try {
             $product->save();

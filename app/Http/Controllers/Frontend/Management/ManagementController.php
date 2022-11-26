@@ -84,7 +84,7 @@ class ManagementController extends Controller
             $user->organisation_student->delete();
         } catch (\Throwable $th) {
             //throw $th;
-            dd($th->getMessage());
+            
             session()->flash('error', "Oops ! Something went wrong.");
 
             return back();

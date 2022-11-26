@@ -114,7 +114,7 @@ class UserController extends Controller
             Notification::send($user, new ResetPasswordLinkNotification($user, $reset_password->token));
         } catch (\Throwable $th) {
             //throw $th;
-            // dd($th->getMessage());
+            
 
         }
         session()->flash("success", "An email with reset link has been sent to your email.");
@@ -212,7 +212,7 @@ class UserController extends Controller
             }
         } catch (\Throwable $th) {
             //throw $th;
-            dd($th->getMessage());
+            
             session()->flash('error', "Unable to update profile.");
             return back();
         }

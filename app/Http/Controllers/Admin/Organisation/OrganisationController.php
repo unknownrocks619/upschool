@@ -35,7 +35,7 @@ class OrganisationController extends Controller
 
     public function store(OrganisationStoreRequest $request)
     {
-        // dd($request->all());
+        
         $organisation = new Organisation;
         $organisation->name = $request->organisation_name;
         $organisation->slug = Str::slug($request->organisation_name);
@@ -349,7 +349,7 @@ class OrganisationController extends Controller
             $project->save();
         } catch (\Throwable $th) {
             //throw $th;
-            dd($th->getMessage());
+
             session()->flash('error', "Error: " . $th->getMessage());
             return back()->withInput();
         }
@@ -411,7 +411,7 @@ class OrganisationController extends Controller
             $project->delete();
         } catch (\Throwable $th) {
             //throw $th;
-            dd($th->getMessage());
+            
             session()->flash("error", "Error: " . $th->getMessage());
             return back();
         }

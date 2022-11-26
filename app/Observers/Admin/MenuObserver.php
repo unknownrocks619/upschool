@@ -78,7 +78,7 @@ class MenuObserver
         }
 
         $reorderMenuList = $reorderMenu->get();
-        dd($reorderMenuList);
+        
         foreach ($reorderMenuList as $orderMenu) {
             if ($menu->getOriginal("sort_by") < $menu->sort_by) {
                 $orderMenu->sort_by--;

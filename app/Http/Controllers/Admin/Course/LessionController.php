@@ -148,7 +148,7 @@ class LessionController extends Controller
 
     public function storeResource(Request $request)
     {
-        // dd($request->all());
+        
         $resource = new Resource;
         $resource->source = "lession";
         $resource->source_id = $request->lession_name;
@@ -225,7 +225,7 @@ class LessionController extends Controller
             $resource->delete();
         } catch (\Throwable $th) {
             //throw $th;
-            dd($th->getMessage());
+            
             session()->flash('error', "Error: " . $th->getMessage());
             return back();
         }

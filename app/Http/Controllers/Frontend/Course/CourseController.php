@@ -58,7 +58,7 @@ class CourseController extends Controller
         $course = $course->load(["chapters" => function ($query) {
             return $query->with(["lession"]);
         }]);
-        // dd("This featured is disabled by admin.");
+        
         return view('frontend.courses.watch', compact("course"));
     }
 

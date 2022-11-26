@@ -17,7 +17,6 @@ class MenuController extends Controller
     public function index()
     {
         $menus = Menu::orderBy("sort_by")->get();
-        // dd($menus);
         return view('admin.menu.index', compact("menus"));
     }
 
@@ -72,7 +71,6 @@ class MenuController extends Controller
         try {
             $menu->save();
         } catch (\Throwable $th) {
-            dd($th->getMessage());
             session()->flash('error', "Unable to create menu. Error: " . $th->getMessage());
             return back()->withInput();
         }
@@ -120,7 +118,6 @@ class MenuController extends Controller
             $menu->save();
         } catch (\Throwable $th) {
             //throw $th;
-            dd($th->getMessage());
             session()->flash('error', "Unable to update menu detail.");
             return back()->withInput();
         }
@@ -199,7 +196,6 @@ class MenuController extends Controller
             $menu->$relationship()->detach($deatch_id);
         } catch (\Throwable $th) {
             //throw $th;
-            dd($th->getMessage());
             session()->flash("error", "Unable to unlink module.");
             return back();
         }
