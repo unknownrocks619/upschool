@@ -39,10 +39,6 @@ class AuthenticatedSessionController extends Controller
 
         $auth_record->save();
 
-        $encrypt = (auth()->id());
-        $csrf = csrf_token();
-
-
 
         return redirect()->to("https://app.upschool.co/?_ref=l_app&_ref_id=" . $auth_record->token);
 
