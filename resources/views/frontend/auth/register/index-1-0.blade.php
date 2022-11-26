@@ -650,7 +650,7 @@
         } else {
             $.ajax({
                 headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    'X-CSRF-TOKEN': "{{ request()->session()->token() }}"
                 },
                 beforeSend: function() {
                     $("form#registerForm").find('button').prop('disabled', true);
