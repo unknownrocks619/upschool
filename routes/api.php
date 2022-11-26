@@ -22,7 +22,7 @@ Route::prefix('/user/login')->group(function () {
 
         $check_auth_record = AuthRecord::where('token', request()->_ref_id)->firstOrFail();
 
-        $wp_user = WpUser::where('user_email', $check_auth_record->user->email)
+        $wp_user = WpUser::where('user_email', $check_auth_record->users->email)
             ->latest()
             ->first();
 
