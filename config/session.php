@@ -128,7 +128,7 @@ return [
 
     'cookie' => env(
         'SESSION_COOKIE',
-        Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
+        Str::slug(env('APP_NAME', 'laravel'), '_') . '_session'
     ),
 
     /*
@@ -142,7 +142,7 @@ return [
     |
     */
 
-    'path' => '/',
+    'path' => (env('APP_ENV') == 'local' || env('APP_ENV') == 'development') ? 'dev_path' : '/',
 
     /*
     |--------------------------------------------------------------------------
@@ -181,7 +181,7 @@ return [
     |
     */
 
-    'http_only' => true,
+    'http_only' => false,
 
     /*
     |--------------------------------------------------------------------------
