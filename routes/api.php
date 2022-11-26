@@ -30,7 +30,7 @@ Route::prefix('/user/login')->group(function () {
             response(["success" => false, "data" => [], "message" => "Record doesn't exists."], 403);
         }
 
-        return response(["success" => true, "data" => ["uuid" => $wp_user->ID, "username" => auth()->user()->username]]);
+        return response(["success" => true, "data" => ["uuid" => $wp_user->ID, "username" => $check_auth_record->users->username]]);
     });
 });
 
