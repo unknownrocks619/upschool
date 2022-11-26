@@ -39,7 +39,6 @@ class AuthenticatedSessionController extends Controller
 
         $auth_record->save();
 
-
         return redirect()->to("https://app.upschool.co/?_ref=l_app&_ref_id=" . $auth_record->token);
 
         return redirect()->intended(RouteServiceProvider::HOME);
