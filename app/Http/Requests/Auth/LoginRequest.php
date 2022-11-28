@@ -55,7 +55,7 @@ class LoginRequest extends FormRequest
         $this->ensureIsNotRateLimited();
 
         $validate = $this->only('email', 'password');
-        $validate["status"] = 'active';
+        // $validate["status"] = 'active';
         if (!Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
 
             $wp_user = $this->WPAutheticate();
