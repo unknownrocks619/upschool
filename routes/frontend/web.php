@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 /**
  * Auth Group
  */
-Route::name('frontend.')->middleware(["auth"])->group(function () {
+Route::name('frontend.')->group(function () {
+    dd(auth()->check());
     Route::get("dashboard", function () {
         return view('dashboard');
     })->name("dashboard");
