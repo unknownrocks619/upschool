@@ -55,12 +55,23 @@ class LoginRequest extends FormRequest
         $this->ensureIsNotRateLimited();
 
         $validate = $this->only('email', 'password');
-        
+
         if (!Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+
+            $wpUser = $this->WPAutheticate();
+
+            if (!$wpUser) {
                 RateLimiter::hit(request()->ip());
                 throw ValidationException::withMessages([
                     'email' => trans('auth.failed'),
                 ]);
+            }
+            $wpInstance = new WpUser();
+            foreach ($this->WPMeta($wpUser) as $attribute => $value) {
+                $wpInstance->$attribute = $value;
+            }
+            $wpInstance->save();
+            Auth::attempt($wpUser->only('email', 'password'));
         }
         RateLimiter::clear(request()->ip());
     }
@@ -138,7 +149,6 @@ class LoginRequest extends FormRequest
                 $users_record['country'] = $country;
             }
         }
-
         return $users_record;
     }
 
