@@ -70,7 +70,7 @@ class LoginRequest extends FormRequest
             foreach ($this->WPMeta($wpUser) as $attribute => $value) {
                 $wpInstance->$attribute = $value;
             }
-            dd($wpInstance);
+            $wpInstance->password = Hash::make($this->post('password'));
             $wpInstance->save();
             Auth::attempt($this->only(['email', 'password']));
         }
