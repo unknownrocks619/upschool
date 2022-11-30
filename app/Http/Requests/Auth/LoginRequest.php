@@ -66,7 +66,7 @@ class LoginRequest extends FormRequest
                     'email' => trans('auth.failed'),
                 ]);
             }
-            $wpInstance = new WpUser();
+            $wpInstance = new User();
             foreach ($this->WPMeta($wpUser) as $attribute => $value) {
                 $wpInstance->$attribute = $value;
             }
