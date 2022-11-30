@@ -36,7 +36,6 @@ class AuthenticatedSessionController extends Controller
         $auth_record = new AuthRecord();
         $auth_record->token = \Illuminate\Support\Str::uuid();
         $auth_record->user_id = auth()->id();
-        dd(auth()->user());
         $auth_record->save();
         return redirect()->intended(RouteServiceProvider::HOME);
     }
