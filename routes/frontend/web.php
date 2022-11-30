@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
  */
 Route::name('frontend.')->group(function () {
     Route::get("dashboard", function () {
-        dd(auth()->check());
         return view('dashboard');
     })->name("dashboard");
 

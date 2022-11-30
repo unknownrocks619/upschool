@@ -55,28 +55,12 @@ class LoginRequest extends FormRequest
         $this->ensureIsNotRateLimited();
 
         $validate = $this->only('email', 'password');
-        // $validate["status"] = 'active';
+        
         if (!Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
-
-            $wp_user = $this->WPAutheticate();
-            if (!$wp_user) {
-
                 RateLimiter::hit(request()->ip());
-
                 throw ValidationException::withMessages([
                     'email' => trans('auth.failed'),
                 ]);
-            }
-
-            $registerUser = new User();
-            foreach ($this->WPMeta($wp_user) as $attribute => $value) {
-                $registerUser->$attribute = $value;
-            }
-
-            $registerUser->password = Hash::make($this->post('password'));
-            $registerUser->saveQuietly();
-
-            (Auth::attempt($this->only(['email', 'password'])));
         }
         RateLimiter::clear(request()->ip());
     }
