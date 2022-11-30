@@ -39,8 +39,7 @@ class HomeController extends Controller
             return view("frontend.pages.projects.index", compact("menu", "orgs", "projects"));
         }
 
-        if ($menu->menu_type == "charity"){
-            
+        if ($menu->menu_type == "charity") {
         }
 
 

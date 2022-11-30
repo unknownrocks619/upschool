@@ -113,9 +113,9 @@ Route::name('frontend.')->group(function () {
  * Public Group
  */
 Route::name('frontend.')->group(function () {
-    Route::get("/", [RegisteredUserController::class, 'create'])->name("home");
-    Route::get("/", [RegisteredUserController::class, 'create'])->name("view");
-    // Route::get("/", [HomeController::class, "index"])->name("home");
-    // Route::get("/book/{slug}", [BookController::class, "show"])->name("book.show");
-    // Route::get("/{slug}/{model?}", [HomeController::class, "detail"])->name('view');
+    // Route::get("/", [RegisteredUserController::class, 'create'])->name("home");
+    // Route::get("/", [RegisteredUserController::class, 'create'])->name("view");
+    Route::get("/", [HomeController::class, "index"])->name("home");
+    Route::get("/book/{slug}", [BookController::class, "show"])->name("book.show");
+    Route::get("/{slug}/{model?}", [HomeController::class, "detail"])->name('view');
 });
