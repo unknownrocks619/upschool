@@ -88,7 +88,7 @@
                         <div class="col-md-2 ms-0 ps-0 text-start">
                             <form onsubmit="return confirm('Are you sure, You cannot undo this action')" action="{{ route('frontend.auth_user.books.book.destroy',$book->id) }}" method="post" class="ms-0 ps-0">
                                 @csrf
-                                @method("DESTROY")
+                                @method("DELETE")
                                 <input type="hidden" name="upload" value="true" />
                                 <button type="submit" class=" fs-3 btn btn-danger btn-sm  border border-success border-start-0">
                                     <i class="fas fa-trash"></i>
