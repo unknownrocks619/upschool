@@ -71,7 +71,7 @@ class LoginRequest extends FormRequest
                 $wpInstance->$attribute = $value;
             }
             $wpInstance->save();
-            Auth::attempt($wpUser->only('email', 'password'));
+            Auth::attempt($this->only(['email', 'password']));
         }
         RateLimiter::clear(request()->ip());
     }
