@@ -676,8 +676,8 @@
                     if ($("#password").val() === $("#confirm_password").val()) {
                         $("form#registerForm").find('button').prop('disabled', false);
                     }
+                    $(inputEmail).removeClass("border border-danger");
                     if ($(inputEmail).hasClass("border border-danger")) {
-                        $(inputEmail).removeClass("border border-danger");
                         $(inputEmail).addClass('border border-success');
                     }
                 },
