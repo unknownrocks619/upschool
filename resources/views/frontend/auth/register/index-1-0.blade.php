@@ -633,8 +633,15 @@
 
     })
 
+    var lastEmail = "";
+
     $("input[type='email']").focusout(function(event) {
         var inputEmail = $(this);
+
+        if (lastEmail == $(this).val()) {
+            return;
+        }
+        lastEmail = $(this).val();
         if ($("#email_error")) {
             $("#email_error").remove();
         }
@@ -703,7 +710,7 @@
         if ($(password).val() !== $(this).val() || $(this).val() == "") {
             $("form#registerForm").find('button').prop('disabled', true);
             $(this).parent('div').append("<p id='passwordText' class='text-danger'>Confirm Password doesn't match</p>");
-        } else if ($("input[type='email']").hasClass('border-success')) {
+        } else if ($("input[type='email']").hasClass('border-danger')) {
             $("form#registerForm").find('button').prop('disabled', false);
 
         }
