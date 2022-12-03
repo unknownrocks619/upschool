@@ -632,9 +632,15 @@
         }
 
     })
-
+    var lastEmail = ""
     $("input[type='email']").focusout(function(event) {
+
         var inputEmail = $(this);
+        console.log('Last Email: ', lastEmail);
+        if (lastEmail == inputEmail) {
+            return;
+        }
+        lastEmail = inputEmail;
         if ($("#email_error")) {
             $("#email_error").remove();
         }
@@ -669,9 +675,9 @@
                     if ($("#password").val() === $("#confirm_password").val()) {
                         $("form#registerForm").find('button').prop('disabled', false);
                     }
-                    if ($(inputEmail).hasClass("border border-danger")) {
-                        $(inputEmail).removeClass("border border-danger");
-                        $(inputEmail).addClass('border border-success');
+                    if ($(inputEmail).hasClass("border-danger")) {
+                        $(inputEmail).removeClass("border-danger");
+                        $(inputEmail).addClass('border-success');
                     }
                 },
                 error: function(response, status) {
@@ -703,7 +709,7 @@
         if ($(password).val() !== $(this).val() || $(this).val() == "") {
             $("form#registerForm").find('button').prop('disabled', true);
             $(this).parent('div').append("<p id='passwordText' class='text-danger'>Confirm Password doesn't match</p>");
-        } else if ($("input[type='email']").hasClass('border-success')) {
+        } else if (!$("input[type='email']").hasClass('border-danger')) {
             $("form#registerForm").find('button').prop('disabled', false);
 
         }
