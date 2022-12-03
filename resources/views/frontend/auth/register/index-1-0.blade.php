@@ -639,6 +639,9 @@
         var inputEmail = $(this);
 
         if (lastEmail == $(this).val()) {
+            if ($("#password").val() === $("#confirm_password").val()) {
+                $("form#registerForm").find('button').prop('disabled', false);
+            }
             return;
         }
         lastEmail = $(this).val();
@@ -710,8 +713,10 @@
         if ($(password).val() !== $(this).val() || $(this).val() == "") {
             $("form#registerForm").find('button').prop('disabled', true);
             $(this).parent('div').append("<p id='passwordText' class='text-danger'>Confirm Password doesn't match</p>");
-        } else if ($("input[type='email']").hasClass('border-danger')) {
+        } else if (!$("input[type='email']").hasClass('border-danger')) {
             $("form#registerForm").find('button').prop('disabled', false);
+        } else {
+            $("form#registerForm").find('button').prop('disabled', true);
 
         }
     })

@@ -242,7 +242,7 @@ class RegisteredUserController extends Controller
     public function emailCheck(Request $request)
     {
         $request->validate([
-            "email" => "required|email|unique:users|unique:App\Models\Corcel\WpUser,user_email"
+            "email" => "required|email|unique:users"
         ]);
     }
 }
