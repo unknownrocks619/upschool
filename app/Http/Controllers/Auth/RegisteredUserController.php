@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
     {
         $countries  = Country::get();
         if (!request()->step || request()->step == 1) {
-            return view("frontend.auth.register.index-1-0", compact("countries"));
+            return view("frontend.auth.register.index-update", compact('countries'));
         }
     }
 

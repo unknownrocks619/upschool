@@ -1,5 +1,6 @@
 @extends("themes.frontend.master")
 
+
 @section("page_title")
 | Register
 @endsection

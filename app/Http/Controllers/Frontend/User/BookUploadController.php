@@ -11,11 +11,15 @@ use App\Http\Requests\Frontend\User\BookUploadStoreRequest;
 use App\Http\Requests\Frontend\User\BookUploadStoreStepThreeRequest;
 use App\Http\Requests\Frontend\User\BookUploadStoreStepTwoRequest;
 use App\Models\Category;
+use App\Models\OrganisationProject;
 use App\Models\UserBookUpload;
 use Illuminate\Http\Request;
 use Upload\Media\Traits\FileUpload;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Contracts\Cache\Store;
+use App\Traits\PdfToText;
 
 class BookUploadController extends Controller
 {
@@ -30,13 +34,37 @@ class BookUploadController extends Controller
         return $this->uploadCreate($book);
     }
 
-    public function uploadCreate(int $book = null)
+    public function uploadCreate($tab = "book-upload", int $book = null, $instances = [])
     {
         if ($book) {
             $book = UserBookUpload::find($book);
         }
-        return view("frontend.user.upload.upload", compact('book'));
+        $tab = $tab ?? "book-upload";
+        return view("frontend.user.upload.ui.upload", compact('book', 'tab'));
     }
+
+    public function uploadEdit(UserBookUpload $book, $tab = 'upload-progress-bar')
+    {
+        $instances = [];
+        $tab = $tab ?? "upload-progress-bar";
+
+        if ($tab == "upload-progress-bar") {
+
+            $pdfParser = new \Smalot\PdfParser\Parser();
+            $pdf = $pdfParser->parseFile($book->book->path);
+            $instances['book']['totalPage'] = $pdf->getDetails()['Pages'];
+            if ($instances['book']['totalPage'] > 2) {
+                $instances['book']['secondPageEmpty'] = trim(preg_replace('~[\r\n\t]+~', '', $pdf->getPages()[1]->getText()));
+            }
+            $instances['book']['paperCutMargin'] = true;
+            $instances['book']['paperA4'] = true;
+        }
+
+        $projects = OrganisationProject::with(["organisation"])->latest()->get();
+        $categories = Category::where('category_type', "book_upload_category")->get();
+        return view("frontend.user.upload.ui.upload", compact('book', 'categories', 'projects', 'tab', 'book'));
+    }
+
 
     public function StoreUpload(BookUploadStoreRequest $request)
     {
@@ -46,15 +74,16 @@ class BookUploadController extends Controller
 
         $upload->user_id = auth()->id();
         $upload->book = $this->upload("file");
+        $bookInformation = [];
 
         try {
             $upload->save();
         } catch (\Throwable $th) {
             //throw $th;
-            
+
             return response(["status", "error"], 422);
         }
-        return response(["status" => "success", "url" => route('frontend.auth_user.books.book.meta', $upload->id)], 200);
+        return response(["status" => "success", "url" => route('frontend.book.edit.upload', [$upload->id, 'upload-progress-bar'])], 200);
     }
 
     public function createUploadMetaInformation(BookUploadCreateStepTwoRequest $request, UserBookUpload $book)
@@ -152,5 +181,23 @@ class BookUploadController extends Controller
 
         session()->flash("success", "Book information has been removed");
         return back();
+    }
+
+
+    public function countPageInBookUpload($pdfFile)
+    {
+        $pdftext = Storage::get($pdfFile);
+        $num = preg_match_all("/\/Page\W/", $pdftext, $dummy);
+        return $num;
+    }
+
+    protected function  IsPageHeaderOrFooter($stream_data)
+    {
+        if (preg_match('#/Type \s* /Pagination \s* /Subtype \s*/((Header)|(Footer))#ix', $stream_data))
+            return (true);
+        else if (preg_match('#/Attached \s* \[ .*? /((Top)|(Bottom)) [^]]#ix', $stream_data))
+            return (true);
+        else
+            return (false);
     }
 }

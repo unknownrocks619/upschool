@@ -43,3 +43,23 @@ if (!function_exists("active_route")) {
         return (in_array(Route::currentRouteName(), $route_name)) ? $return : null;
     }
 }
+
+/**
+ * Format bytes to kb, mb, gb, tb
+ *
+ * @param  integer $size
+ * @param  integer $precision
+ * @return integer
+ */
+function formatBytes($size, $precision = 2)
+{
+    if ($size > 0) {
+        $size = (int) $size;
+        $base = log($size) / log(1024);
+        $suffixes = array(' bytes', ' KB', ' MB', ' GB', ' TB');
+
+        return round(pow(1024, $base - floor($base)), $precision) . $suffixes[floor($base)];
+    } else {
+        return $size;
+    }
+}
