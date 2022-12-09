@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Frontend\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\User\BookUploadAddProjectRequest;
 use App\Http\Requests\Frontend\User\BookUploadCompleteRequest;
 use App\Http\Requests\Frontend\User\BookUploadCreateStepThreeRequest;
 use App\Http\Requests\Frontend\User\BookUploadCreateStepTwoRequest;
 use App\Http\Requests\Frontend\User\BookUploadDestroyRequest;
+use App\Http\Requests\Frontend\User\BookUploadStatusRequest;
 use App\Http\Requests\Frontend\User\BookUploadStoreRequest;
 use App\Http\Requests\Frontend\User\BookUploadStoreStepThreeRequest;
 use App\Http\Requests\Frontend\User\BookUploadStoreStepTwoRequest;
@@ -40,7 +42,11 @@ class BookUploadController extends Controller
             $book = UserBookUpload::find($book);
         }
         $tab = $tab ?? "book-upload";
-        return view("frontend.user.upload.ui.upload", compact('book', 'tab'));
+        $instances['percentage'] = "100% to Complete";
+        $instances['step'] = 0;
+        $instances['progressBar'] = "20%";
+        $instances['active'] = true;
+        return view("frontend.user.upload.ui.upload", compact('book', 'tab', 'instances'));
     }
 
     public function uploadEdit(UserBookUpload $book, $tab = 'upload-progress-bar')
@@ -53,16 +59,61 @@ class BookUploadController extends Controller
             $pdfParser = new \Smalot\PdfParser\Parser();
             $pdf = $pdfParser->parseFile($book->book->path);
             $instances['book']['totalPage'] = $pdf->getDetails()['Pages'];
+            $instances['book']['secondPageEmpty'] = false;
             if ($instances['book']['totalPage'] > 2) {
-                $instances['book']['secondPageEmpty'] = trim(preg_replace('~[\r\n\t]+~', '', $pdf->getPages()[1]->getText()));
+                $instances['book']['secondPageEmpty'] = empty(trim(preg_replace('~[\r\n\t]+~', '', $pdf->getPages()[1]->getText()))) ?? false;
             }
             $instances['book']['paperCutMargin'] = true;
             $instances['book']['paperA4'] = true;
+            $instances['percentage'] = "100%";
+            $instances['step'] = 1;
+            $instances['progressBar'] = "5%";
+            $instances['active'] = true;
         }
+
+        if ($tab == "about-book") {
+            $instances['percentage'] = "80%";
+            $instances['step'] = 2;
+            $instances['progressBar'] = "20%";
+            $instances['active'] = true;
+        }
+
+        if ($tab == "category") {
+            $instances['percentage'] = "60%";
+            $instances['step'] = 3;
+            $instances['progressBar'] = "40%";
+            $instances['active'] = true;
+        }
+
+        if ($tab == "project") {
+            $instances['percentage'] = "40%";
+            $instances['step'] = 4;
+            $instances['progressBar'] = "60%";
+            $instances['active'] = true;
+        }
+
+        if ($tab == "overview") {
+            $instances['percentage'] = "80%";
+            $instances['step'] = 5;
+            $instances['progressBar'] = "80%";
+            $instances['active'] = true;
+        }
+
+        if ($tab == "thank-you") {
+            $instances['percentage'] = "0%";
+            $instances['step'] = 6;
+            $instances['progressBar'] = "100%";
+            $instances['active'] = true;
+        }
+
 
         $projects = OrganisationProject::with(["organisation"])->latest()->get();
         $categories = Category::where('category_type', "book_upload_category")->get();
-        return view("frontend.user.upload.ui.upload", compact('book', 'categories', 'projects', 'tab', 'book'));
+        if (request()->get('partial')) {
+            return view('frontend.user.upload.ui.' . $tab, compact('book', 'tab', 'instances', 'projects', 'categories'));
+        }
+
+        return view("frontend.user.upload.ui.upload", compact('book', 'categories', 'projects', 'tab', 'book', 'instances'));
     }
 
 
@@ -96,8 +147,12 @@ class BookUploadController extends Controller
     {
         // now let's update other information
         $book->project_id = $request->project;
+        if ($request->post('project')) {
+            $book->project_id;
+        }
         $book->full_description = $request->book_description;
-        $book->canva_link = $request->canva_link;
+        $book->canva_link = $request->canva_book;
+        $book->parent_email = $request->post('parent_email');
         $book->school = $request->college;
         $book->book_title = $request->book_title;
         $user = auth()->user();
@@ -147,7 +202,7 @@ class BookUploadController extends Controller
             return view('frontend.user.upload.category-not-allowed', compact("book"));
         }
         $book->categories = $request->cat_id;
-        $book->status = "pending";
+        $book->status = "draft";
         try {
             $book->save();
         } catch (\Throwable $th) {
@@ -159,6 +214,18 @@ class BookUploadController extends Controller
         return view('frontend.user.upload.preview', compact("book"));
 
         // session()->flash("success","Thank-you ! Your book was successfully uploaded.")
+    }
+
+    public function storeBookProject(BookUploadAddProjectRequest $request, UserBookUpload $book)
+    {
+        $book->project_id = $request->post('project');
+        $book->save();
+    }
+
+    public function updateBookStatus(BookUploadStatusRequest $request, UserBookUpload $book)
+    {
+        $book->status = 'pending';
+        $book->save();
     }
 
     public function index()
@@ -179,25 +246,11 @@ class BookUploadController extends Controller
             return back();
         }
 
+        if ($request->get('source') && $request->get('source') == 'upload') {
+            return redirect()->route('frontend.book.upload');
+        }
+
         session()->flash("success", "Book information has been removed");
         return back();
-    }
-
-
-    public function countPageInBookUpload($pdfFile)
-    {
-        $pdftext = Storage::get($pdfFile);
-        $num = preg_match_all("/\/Page\W/", $pdftext, $dummy);
-        return $num;
-    }
-
-    protected function  IsPageHeaderOrFooter($stream_data)
-    {
-        if (preg_match('#/Type \s* /Pagination \s* /Subtype \s*/((Header)|(Footer))#ix', $stream_data))
-            return (true);
-        else if (preg_match('#/Attached \s* \[ .*? /((Top)|(Bottom)) [^]]#ix', $stream_data))
-            return (true);
-        else
-            return (false);
     }
 }

@@ -14,14 +14,13 @@
              </div>
          </div>
 
-
          <div class="row dynamic-padding pe-5">
              <div class="col-md-12">
                  <div class="card border-0" style="border-radius: 24px;">
                      <div class="card-header border-0 bg-white text-center px-5 py-3">
-                         <button class="btn btn-danger w-100 py-3 border border-dark" style="background:#D61A5F;border-radius: 50px;font-family:'Inter';font-size:20px;box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+                         <a href='https://upschool.co/wp-content/uploads/2022/08/Authors-Checklist.png' data-lightbox="Book Upload Checklist" class="btn btn-danger w-100 py-3 border border-dark" style="background:#D61A5F;border-radius: 50px;font-family:'Inter';font-size:20px;box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
                              View Book Upload Checklist
-                         </button>
+                         </a>
                      </div>
                      <div class="card-body bg-light rounded-0">
                          <div class="row">
@@ -59,6 +58,8 @@
              </div>
          </div>
 
-
      </div>
  </div>
+ <x-modal modal='bookCheckList'>
+     <img src="https://upschool.co/wp-content/uploads/2022/08/Authors-Checklist.png" alt="Book Upload checklist" class="w-50">
+ </x-modal>

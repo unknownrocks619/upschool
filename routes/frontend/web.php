@@ -42,6 +42,8 @@ Route::name('frontend.')->group(function () {
                     Route::post("/books/meta/{book}", [BookUploadController::class, "storeUploadMetaInformation"])->name("book.meta.store");
                     Route::get("/books/category/{book}", [BookUploadController::class, "createBookCategory"])->name("book.category");
                     Route::post("/books/category/{book}", [BookUploadController::class, "storeBookCategory"])->name("book.category.store");
+                    Route::post("/books/project/{book}", [BookUploadController::class, "storeBookProject"])->name("book.project.store");
+                    Route::post("/books/upload/{book}", [BookUploadController::class, "updateBookStatus"])->name("book.upload.store");
                     Route::delete("/destroy/books/{book}", [BookUploadController::class, "destroy"])->name("book.destroy");
                 });
         });
@@ -117,6 +119,7 @@ Route::name('frontend.')->group(function () {
     // Route::get("/", [RegisteredUserController::class, 'create'])->name("view");
     Route::get("/", [HomeController::class, "index"])->name("home");
     Route::get("/book/{slug}", [BookController::class, "show"])->name("book.show");
+    Route::get("/book/upload/book/{tab?}", [BookUploadController::class, "uploadCreate"])->name("book.upload");
     Route::get("/book/upload/{book}/{tab?}", [BookUploadController::class, "uploadEdit"])->name("book.edit.upload");
     Route::get("/{slug}/{model?}", [HomeController::class, "detail"])->name('view');
 });

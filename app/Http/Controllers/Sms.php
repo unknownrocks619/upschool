@@ -295,4 +295,38 @@ class Sms
         }
         dd(json_decode($response));
     }
+
+    public function register_for_zoom()
+    {
+        $user_data = [
+            'first_name' => 'Medhani Prashad',
+            'last_name' => 'Dhungel',
+            'email' => "gau_sewa_medhanidhungele@siddhamahayog.org",
+            'auto_approve' => true
+        ];
+
+        $signature = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6InBVQmhpSkRqVFJXaG9XQWVuamttTFEiLCJleHAiOjE3MDM4ODA2NjAsImlhdCI6MTYzMDc4MDkxMn0.DVu6EE-uMT6stVcj--lEFOopcZOMgAP0BXHhVLOllMQ';
+        $curl_url = "https://api.zoom.us/v2/meetings/85272028219/registrants";
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $curl_url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POSTFIELDS => json_encode($user_data),
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_HTTPHEADER => array(
+                "authorization: Bearer {$signature}",
+                "content-type: application/json"
+            ),
+        ));
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+        if ($err) {
+            return false;
+        }
+        dd(json_decode($response));
+    }
 }

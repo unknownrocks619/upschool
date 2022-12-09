@@ -10,13 +10,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 <style type="text/css">
     p {
-        font-family: 'Inter', sans-serif !important;
+        font-family: 'Inter' !important;
     }
 
     .social-login {
-        font-family: 'Inter'sans-serif !important;
+        font-family: 'Inter' !important;
         font-weight: 600;
         color: #03014C !important
+    }
+
+    .btn-outline-secondary:hover {
+        background-color: #f7f7f7 !important;
+
     }
 
     label {
@@ -184,19 +189,22 @@
 
 @section("content")
 
-<div class="container border-start mb-11 mx-auto px-0">
+<div class="container mb-11 mx-auto px-0">
     <div class="row px-0 mx-auto">
         <!-- Row -->
-        <div class="col-md-8 pl-0 ml-0 mx-auto step-parent pb-5" style="padding-left:0px !important;">
+        <div class="col-md-8 pl-0 ml-0 mx-auto step-parent pb-4 bg-white" style="padding-left:0px !important;">
             <!-- Step Zero -->
             <?php
             $rateLimit = Illuminate\Support\Facades\RateLimiter::tooManyAttempts(request()->ip(), 3);
             ?>
             @if ( ! $rateLimit )
-            <div class="row ">
-                <div class="col-md-12">
-                    <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
-                        <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;">Log into your Upschool account!</h4>
+            <div class="row bg-white px-0 mx-0">
+                <div class="col-md-12 ps-2">
+                    <div class="bg-white pt-5 mt-3 ps-5 dynamic-padding" style="height:100%">
+                        <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;font-size:33px;font-family:'Lexend'">Welcome Back to Upschool.co</h4>
+                        <p class="mt-3" style="color:#242254 !important;font-family:'Inter' !important;font-size:18px">
+                            Sign in to continue to your account.
+                        </p>
 
                         <div class="row mb-3 me-5">
                             <div class="col-md-6 mt-4 col-sm-12 col-xs-12 col-lg-6 ">
@@ -225,18 +233,17 @@
                 <div class="row step-zero-row main">
                     <div class="col-md-12">
                         <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
-                            <x-alert></x-alert>
+                            <!-- <x-alert></x-alert> -->
                             @csrf
                             <div class="row me-5">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="email" class="mb-2">Your Login Email
-                                            <sup class="text-danger">*</sup>
-                                        </label>
-                                        <input value="{{ old('email') }}" type="text" name="email" class="py-4 form-control rounded-3 @error('email') border border-danger @enderror" id="email" placeholder="youremail@email.com" required />
+
                                         @error("email")
-                                        <div class="text-danger">{{ $message }}</div>
+                                        <div class="text-danger" style="font-weight:700;color:#B81242 !important;font-family:'Inter' !important;font-size:17px !important;">{{ $message }}</div>
                                         @enderror
+                                        <input value="{{ old('email') }}" type="text" name="email" class="py-4 form-control rounded-3 @error('email') border border-danger @enderror" id="email" placeholder="youremail@email.com" />
+
                                     </div>
                                 </div>
                             </div>
@@ -269,39 +276,39 @@
                             <div class="row mt-4 text-right me-5">
                                 <div class="col-md-12 text-right d-flex justify-content-end">
                                     <button class="w-100 btn btn-primary next py-3 px-5 login-button" type="submit">
-                                        Login to Continue
+                                        Sign In
                                     </button>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4">
+                                <div class="col-md-6" style="color:#03014C;font-size:17px; font-family:'Inter';font-weight:700">
+                                    <a style="color:#03014C !important;text-decoration:none" href="{{ route('password.request') }}">Forgot Password?</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </form>
-            <div class="row mt-5 ms-3">
-                <div class="col-md-8 mt-3 ps-5 ms-2">
-                    <p style="color:#03014C">
-                        Don’t have an Upschool account? <a href="{{ route('register') }}" class="text-danger">Sign up</a>
-                    </p>
-                </div>
-            </div>
-            @else
-            <div class="row" style="min-height: 100vh;">
-                <div class="col-md-12">
-                    <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
-                        <div class="alert alert-danger">
-                            Too many invalid attempt, Please try again after few minute.
-                        </div>
+        </div>
+        <!-- <div class="row mt-2"> -->
+        <div class="col-md-8 pl-0 dynamic-padding ml-0 mx-auto step-parent pb-5 bg-white" style="color:#03014C !important; font-weight:700">
+            Don’t have an Upschool account? <a href="{{ route('register') }}" class="text-danger" style="color:#D61A5F !important;text-decoration:none">Sign up</a>
+        </div>
+        <!-- </div> -->
+        @else
+        <div class="row me-5" style="min-height: 100vh;">
+            <div class="col-md-12">
+                <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
+                    <div class="alert alert-danger">
+                        ! Too many invalid attempt, Please try again after few minute.
                     </div>
                 </div>
             </div>
-            @endif
         </div>
-
-        <div class="col-md-4 d-none d-md-block mx-auto px-0 ps-5" style="background-color: #242254 !important;align-items:center;background-image:url({{ asset('images/upschool-fly.png') }});background-repeat:no-repeat;background-size:contain">
-        </div>
-
-
+        @endif
     </div>
+</div>
 </div>
 @endsection
 

@@ -1,11 +1,13 @@
-@extends("themes.frontend.master")
+@extends("themes.frontend.master-book-upload")
 
 @section("page_title")
 :: Upload your book
 @endsection
 
 @push("custom_css")
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+
 <style type="text/css">
     .dropzone {
         border: 2px dashed #E2E6EA;
@@ -17,6 +19,24 @@
         background: #F8F8F8;
         border-radius: 24px;
 
+    }
+
+    .image-3d {
+        -webkit-transition: 0.2s;
+    }
+
+    .image-3d:hover {
+        transform: perspective(400px) rotateY(-20deg);
+        box-shadow: 0px 3px 30px rgba(0, 0, 0.22);
+        transform-style: preserve-3d;
+        transition: .2s;
+        /* transition-timing-function: ease-in; */
+        -webkit-transition: 0.2s;
+    }
+
+    ._df_thumb {
+        box-shadow: none !important;
+        border: none !important;
     }
 </style>
 <style type="text/css">
@@ -189,28 +209,24 @@
         }
     }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
+<link rel="stylesheet" href="https://upschool.co/wp-content/plugins/3d-flipbook-dflip-lite/assets/css/dflip.min.css?ver=1.7.31">
+<link rel="stylesheet" href="https://upschool.co/wp-content/plugins/dearpdf-lite/assets/css/dearpdf.min.css?ver=1.2.61">
+
 @endpush
 
 
 @section("content")
-<div class="container-fluid border-start mb-11 mx-auto px-0">
-    <div class="row px-0 mx-auto">
+<div class="container mb-11 mx-auto px-0 bg-white">
+    <div class="row px-0 mx-auto step-parent-row">
         <!-- Row -->
-        <div class="col-md-9 pl-0 ml-0 mx-auto step-parent" style="padding-left:0px !important;">
-
-            @include("frontend.user.upload.ui.".$tab);
-
-            @if($tab != "book-upload")
-            @include('frontend.user.upload.ui.about-book')
-            @include('frontend.user.upload.ui.category')
-            @include('frontend.user.upload.ui.project')
-            @include('frontend.user.upload.ui.overview')
-            @endif
+        <div class="col-md-9 pl-0 ml-0 mx-auto step-parent step-parent-column" style="padding-left:0px !important;">
+            @include("frontend.user.upload.ui.".$tab)
         </div>
 
-        <div class="col-md-3 d-none d-md-block mx-auto" style="background-color: #242254 !important;align-items:center;background:url({{ asset('images/background.png') }});background-size:cover;">
+        <div class="col-md-3 d-none d-md-block mx-auto sidebar" style="background-color: #242254 !important;align-items:center;background:url({{ asset('images/background.png') }});background-size:cover;">
             <div class=" px-0 ps-5  ms-2">
-                <div class="row first mt-4">
+                <div class="sidebar_steps row first mt-4">
                     <div class="col-md-8">
                         <div class="information-circle-disabled active-circle" data-step='1' style="display:flex;justify-content:center;align-items:center">
                             <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
@@ -223,7 +239,7 @@
                     </div>
                 </div>
 
-                <div class="row second">
+                <div class="sidebar_steps row second">
                     <div class="col-md-8 ">
                         <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
                             <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
@@ -236,7 +252,7 @@
                     </div>
                 </div>
 
-                <div class="row third">
+                <div class="sidebar_steps row third">
                     <div class="col-md-8 ">
                         <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
                             <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
@@ -249,7 +265,7 @@
                     </div>
                 </div>
 
-                <div class="row fourth">
+                <div class="sidebar_steps row fourth">
                     <div class="col-md-8 ">
                         <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
                             <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
@@ -257,12 +273,12 @@
                         <div class="information-disabled">
                             Select a Project
                         </div>
-                        <div class="information-line-disabled active-line">
+                        <div class="information-line-disabled">
                         </div>
                     </div>
                 </div>
 
-                <div class="row five">
+                <div class="sidebar_steps row five">
                     <div class="col-md-8 ">
                         <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
                             <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
@@ -283,7 +299,7 @@
                     </div>
                     <div class="col-md-12 bar mt-2 ps-0">
                         <div class="progress w-75" style="background-color: #fff;">
-                            <div class="progress-bar" style="width: 2%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar progress-effect" style="width: 2%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>
@@ -296,7 +312,12 @@
 @endsection
 
 @push("custom_scripts")
+
 <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js" integrity="sha512-k2GFCTbp9rQU412BStrcD/rlwv1PYec9SNrkbQlo6RZCf75l6KcC3UwDY8H5n5hl4v77IDtIPwOk9Dqjs/mMBQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://upschool.co/wp-content/plugins/dearpdf-lite/assets/js/dearpdf-lite.min.js?ver=1.2.61"></script>
+<script src="https://upschool.co/wp-content/plugins/3d-flipbook-dflip-lite/assets/js/dflip.min.js?ver=1.7.31"></script>
+
 <script type="text/javascript">
     Dropzone.options.bookUploadDropzone = {
         paramName: "file", // The name that will be used to transfer the file
@@ -345,206 +366,75 @@
 </script>
 
 <script type="text/javascript">
-    $("button.step-back").click(function(event) {
+    $(document).on('click', 'button.step-back', function(event) {
         event.preventDefault();
+
         let currentButton = $(this);
-        // query select for all input field for currently selected 
-        const inputs = [...$(currentButton).closest(".main").find("input")];
-        if (!$(this).hasClass('next')) {
-            var allValid = true;
-        } else {
-            var allValid = inputs.every(input => input.reportValidity());
-        }
-        if (allValid) {
-            $(currentButton).closest(".main").fadeOut('fast', function() {
-                if (currentButton.data('step') == 1) {
-                    $('.step-one-row').fadeIn('fast').removeClass("d-none");
-                    $("div.first").find(".information-circle-disabled").addClass('active-circle')
-                    $("div.first").find(".current-image").removeClass('d-none')
-                    $("div.second").find(".information-circle-disabled").addClass('active-circle')
-                    $("div.second").find(".current-image").addClass('d-none')
-                    $("div.second").find(".information-disabled").addClass('active-text')
-                    $("div.third").find(".information-circle-disabled").removeClass('active-circle')
-                    $("div.third").find(".information-disabled").removeClass('active-text')
-
-                    $(".progress-bar").css("width", "20%")
-                    $(".percent-complete").text("80%")
-                    $(".step-count").text("2")
-                    $(".social-login-row").fadeOut();
-
-                }
-
-                if (currentButton.data('step') == 2) {
-                    $('.step-two-row').fadeIn("fast").removeClass("d-none");
-                    $("div.third").find(".information-circle-disabled").addClass('active-circle')
-                    $("div.third").find(".information-disabled").addClass('active-text')
-                    $("div.second").find(".current-image").removeClass('d-none')
-                    $("div.third").find(".current-image").addClass('d-none')
-
-                    $(".progress-bar").css("width", "40%")
-                    $(".percent-complete").text("60%")
-                    $(".step-count").text("3")
-                    $(".social-login-row").fadeOut();
-                    $("div.fourth").find(".information-circle-disabled").removeClass('active-circle')
-                    $("div.fourth").find(".information-disabled").removeClass('active-text')
-
-
-                }
-
-
-                if (currentButton.data('step') == 3) {
-                    $('.step-third-row').fadeIn("fast").removeClass("d-none");
-                    $("div.fourth").find(".information-circle-disabled").addClass('active-circle')
-                    $("div.fourth").find(".information-disabled").addClass('active-text')
-                    $("div.third").find(".current-image").removeClass('d-none')
-                    $("div.four").find(".current-image").addClass('d-none')
-
-                    $(".progress-bar").css("width", "80%")
-                    $(".percent-complete").text("40%")
-                    $(".step-count").text("4")
-                    $(".social-login-row").fadeOut();
-
-
-                }
-                if (currentButton.data('step') == 4) {
-                    $('.step-four-row').fadeIn("fast").removeClass("d-none");
-                    $("div.five").find(".information-circle-disabled").addClass('active-circle')
-                    $("div.five").find(".information-disabled").addClass('active-text')
-                    $("div.fourth").find(".current-image").removeClass('d-none')
-
-                    $(".progress-bar").css("width", "100%")
-                    $(".percent-complete").text("0%")
-                    $(".step-count").text("4")
-                    $(".social-login-row").fadeOut();
-
-
-                }
-
-                if (currentButton.data('step') == 0) {
-                    $(".step-zero-row").fadeIn('fast').removeClass("d-none");
-                    $("div.first").find(".information-circle-disabled").addClass('active-circle')
-                    $("div.first").find(".current-image").addClass('d-none')
-
-                    $("div.second").find(".information-circle-disabled").removeClass('active-circle')
-                    $("div.second").find(".current-image").addClass('d-none')
-                    $("div.second").find(".information-disabled").removeClass('active-text');
-                    $(".progress-bar").css("width", "2%")
-                    $(".percent-complete").text("100%")
-                    $(".step-count").text("1")
-                    $(".social-login-row").fadeIn();
-                }
-            }).addClass("d-none")
-
-        }
-
+        loadAjax(currentButton)
     })
-    var lastEmail = ""
-    $("input[type='email']").focusout(function(event) {
-
-        var inputEmail = $(this);
-        console.log('Last Email: ', lastEmail);
-        if (lastEmail == inputEmail) {
-            return;
-        }
-        lastEmail = inputEmail;
-        if ($("#email_error")) {
-            $("#email_error").remove();
-        }
-        const validateEmail = () => {
-            return String($(this).val())
-                .toLowerCase()
-                .match(
-                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-                );
-        };
-        if (!validateEmail()) {
-            $(inputEmail).addClass("border border-danger");
-        } else {
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                beforeSend: function() {
-                    $("form#registerForm").find('button').prop('disabled', true);
-                    $(inputEmail).attr("disabled", true);
-                    $processing = "<div style='font-family:Inter !important;color:#6076D1 !important' class='text-info' id='email_processing_text'>validating email...</div>"
-                    $(inputEmail).parent('div').append($processing);
-                },
-                complete: function() {
-                    $(inputEmail).removeAttr("disabled");
-                    $("#email_processing_text").remove();
-                },
-                method: "POST",
-                data: "email=" + $(inputEmail).val() + "&_token=" + $('meta[name="csrf-token"]').attr('content'),
-                url: "{{ route('email_verify') }}",
-                success: function(response) {
-                    if ($("#password").val() === $("#confirm_password").val()) {
-                        $("form#registerForm").find('button').prop('disabled', false);
-                    }
-                    if ($(inputEmail).hasClass("border-danger")) {
-                        $(inputEmail).removeClass("border-danger");
-                        $(inputEmail).addClass('border-success');
-                    }
-                },
-                error: function(response, status) {
-                    parseResponse = JSON.parse(response.responseText);
-                    if (response.status == 422) {
-                        let s_response_text = parseResponse.errors.email[0];
-                        $text = `<div id='email_error' class='text-danger'>${s_response_text}</div>`;
-                        $(inputEmail).parent("div").append($text);
-                    }
-                },
-                statusCode: {
-                    422: function(response) {
-                        console.log(response);
-                        if (!$(inputEmail).hasClass("border border-danger")) {
-                            $(inputEmail).addClass("border border-danger");
-                        }
-                    }
-                }
-            })
-        }
-
+    lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true
     })
+</script>
 
-    $("#confirm_password").focusout(function() {
-        if ($("#passwordText")) {
-            $("#passwordText").remove();
-        }
-        var password = $("#password");
-        if ($(password).val() !== $(this).val() || $(this).val() == "") {
-            $("form#registerForm").find('button').prop('disabled', true);
-            $(this).parent('div').append("<p id='passwordText' class='text-danger'>Confirm Password doesn't match</p>");
-        } else if (!$("input[type='email']").hasClass('border-danger')) {
-            $("form#registerForm").find('button').prop('disabled', false);
 
-        }
-    })
-
-    $("#canva").change(function(event) {
-        console.log($(this).val());
-        if ($(this).val() == "no") {
-            $(".canva-term").fadeOut("medium", function() {
-                $(this).find("input").attr("required", false)
-            });
-        } else {
-            if ($(this).val() == "yes") {
-                $('.canva-term').fadeIn('fast', function() {
-                    $(this).find("input").attr("required", true)
-                });
+<script type="text/javascript">
+    function loadAjax(element) {
+        $.ajax({
+            method: "get",
+            url: $(element).data('url'),
+            data: "partial=true",
+            success: function(response) {
+                $('.step-parent').empty().html(response);
             }
-        }
-    })
+        })
+    }
 
-    $(function() {
-        $('#search').on('keyup', function() {
-            var pattern = $(this).val();
-            $('.searchable-container .items').hide();
-            $('.searchable-container .items').filter(function() {
-                return $(this).text().match(new RegExp(pattern, 'i'));
-            }).show();
+    function handleError(errors) {
+
+        $.each(errors, function(index, element) {
+            if ($("#" + index + "_error").length != 0) {
+
+                $("#" + index + "_error").empty().html(element);
+
+            }
         });
-    });
+    }
+
+    function highlightProcess(currentStep, progressBar, percentage) {
+        var sidebarElements = $('.sidebar_steps');
+        console.log("lets see the content first", currentStep, progressBar, percentage);
+        console.log('lets see the elements', sidebarElements);
+        sidebarElements.each(function(index, element) {
+            if (index == (currentStep - 1)) {
+                $(element).find(".information-circle-disabled").addClass('active-circle')
+                $(element).find(".current-image").addClass('d-none')
+                $(element).find(".information-disabled").addClass('active-text')
+            }
+
+            if (index < (currentStep - 1)) {
+                $(element).find(".information-circle-disabled").addClass('active-circle')
+                $(element).find(".current-image").removeClass('d-none')
+                $(element).find(".information-disabled").addClass('active-text')
+            }
+
+            if (index > (currentStep - 1)) {
+                $(element).find(".information-circle-disabled").removeClass('active-circle')
+                $(element).find(".current-image").addClass('d-none')
+                $(element).find(".information-disabled").removeClass('active-text');
+
+            }
+
+            $(".progress-effect").css("width", progressBar)
+            $(".percent-complete").text(percentage)
+            $(".step-count").text(currentStep)
+            $(".social-login-row").fadeIn();
+        })
+
+    }
+
+    highlightProcess("{{ $instances['step'] }}", "{{ $instances['progressBar'] }}", "{{ $instances['percentage'] }}")
 </script>
 
 @endpush

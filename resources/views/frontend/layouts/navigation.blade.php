@@ -35,7 +35,7 @@
     <!-- <div class=" d-flex justify-content-center align-items-center">
       <img src="{{ asset('frontend/images/global/logo.png') }}" width="150px" />
     </div> -->
-    <div class="col-6 col-md-10">
+    <div class="col-12 col-md-10">
         <nav class="navbar-mobile navbar d-lg-none navbar-expand-lg navbar-light">
             <div class="container p-0">
                 <div class="header-left">
@@ -71,7 +71,7 @@
 
         <!-- d-lg-none {Mobile}-->
 
-        <nav id="navbar_main" class="mobile-offcanvas navbar navbar-expand-lg navbar-light p-0">
+        <nav id="navbar_main" class="mobile-offcanvas navbar navbar-expand-lg navbar-light p-0 w-100">
             <div class="d-flex" style="width: 100%">
                 <div class="nav-cont d-lg-flex" style="width: 100%">
                     <a class="navbar-text d-none d-lg-block" href="http://upschool.co{{-- route('frontend.home') --}}">
