@@ -83,7 +83,6 @@ class LoginRequest extends FormRequest
 
     public function WPAutheticate()
     {
-        return false;
         $userProvider = new AuthUserProvider;
         $user = $userProvider->retrieveByCredentials(request()->only('email'));
         if (!is_null($user)  && $userProvider->validateCredentials($user, request()->only('password'))) {

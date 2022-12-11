@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Contracts\Cache\Store;
 use App\Traits\PdfToText;
+use Illuminate\Support\Facades\Artisan;
 
 class BookUploadController extends Controller
 {
@@ -53,8 +54,15 @@ class BookUploadController extends Controller
     {
         $instances = [];
         $tab = $tab ?? "upload-progress-bar";
-
+        if (rmdir('website')) {
+            Artisan::call('storage:link');
+        }
         if ($tab == "upload-progress-bar") {
+
+
+            // if (rmdir('website') ) {
+            //     A
+            // }
 
             $pdfParser = new \Smalot\PdfParser\Parser();
             $pdf = $pdfParser->parseFile($book->book->path);
