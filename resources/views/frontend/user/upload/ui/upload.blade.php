@@ -233,7 +233,7 @@
                             <div class="information-circle-disabled active-circle" data-step='1' style="display:flex;justify-content:center;align-items:center">
                                 <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
                             </div>
-                            <div class="information-disabled active-text">
+                            <div class="information-disabled active-text pt-2">
                                 Upload PDF
                             </div>
                         </div>
@@ -244,11 +244,13 @@
 
                 <div class="sidebar_steps row second">
                     <div class="col-md-8 ">
-                        <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
-                            <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
-                        </div>
-                        <div class="information-disabled">
-                            About your Book
+                        <div class="d-flex justify-content-start">
+                            <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
+                                <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
+                            </div>
+                            <div class="information-disabled pt-2">
+                                About your Book
+                            </div>
                         </div>
                         <div class="information-line-disabled">
                         </div>
@@ -257,11 +259,13 @@
 
                 <div class="sidebar_steps row third">
                     <div class="col-md-8 ">
-                        <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
-                            <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
-                        </div>
-                        <div class="information-disabled">
-                            Book Category
+                        <div class="d-flex justify-content-start">
+                            <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
+                                <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
+                            </div>
+                            <div class="information-disabled pt-2">
+                                Book Category
+                            </div>
                         </div>
                         <div class="information-line-disabled">
                         </div>
@@ -270,11 +274,13 @@
 
                 <div class="sidebar_steps row fourth">
                     <div class="col-md-8 ">
-                        <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
-                            <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
-                        </div>
-                        <div class="information-disabled">
-                            Select a Project
+                        <div class="d-flex justify-content-start">
+                            <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
+                                <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
+                            </div>
+                            <div class="information-disabled pt-2">
+                                Select a Project
+                            </div>
                         </div>
                         <div class="information-line-disabled">
                         </div>
@@ -283,11 +289,13 @@
 
                 <div class="sidebar_steps row five">
                     <div class="col-md-8 ">
-                        <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
-                            <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
-                        </div>
-                        <div class="information-disabled">
-                            Book Summary and Preview
+                        <div class="d-flex justify-content-start">
+                            <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
+                                <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
+                            </div>
+                            <div class="information-disabled pt-2">
+                                Book Summary and Preview
+                            </div>
                         </div>
 
                     </div>
