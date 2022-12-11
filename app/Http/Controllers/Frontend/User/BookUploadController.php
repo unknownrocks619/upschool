@@ -42,9 +42,9 @@ class BookUploadController extends Controller
             $book = UserBookUpload::find($book);
         }
         $tab = $tab ?? "book-upload";
-        $instances['percentage'] = "100% to Complete";
-        $instances['step'] = 0;
-        $instances['progressBar'] = "20%";
+        $instances['percentage'] = "100%";
+        $instances['step'] = 1;
+        $instances['progressBar'] = "5%";
         $instances['active'] = true;
         return view("frontend.user.upload.ui.upload", compact('book', 'tab', 'instances'));
     }

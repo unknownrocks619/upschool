@@ -10,6 +10,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 <style type="text/css">
+    body {
+        background: #f4f4f4 !important
+    }
+
     p {
         font-family: 'Inter', sans-serif !important;
     }
@@ -52,6 +56,10 @@
         background: #242254 !important;
         color: #fff !important;
 
+    }
+
+    .progress-bar {
+        background: #B81242
     }
 
     /* .active-bar {
@@ -185,7 +193,7 @@
 
 @section("content")
 
-<div class="container border-start mb-11 mx-auto px-0">
+<div class="container border-start mb-11 mx-auto px-0 bg-white" style="margin-top:80px; margin-bottom:80px; bg-white">
     <div class="row px-0 mx-auto">
         <!-- Row -->
         <div class="col-md-8 pl-0 ml-0 mx-auto step-parent" style="padding-left:0px !important;">
@@ -504,10 +512,10 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-4 d-none d-md-block mx-auto" style="background-color: #242254 !important;align-items:center;background:url({{ asset('images/background.png') }});background-size:cover;">
+        <div class="col-md-4 d-none d-md-block mx-auto" style="background-color: #242254 !important;align-items:center;">
             <div class="row mx-auto">
                 <div class="col-md-12 text-center mt-5 pt-1">
-                    <img src="{{ asset('logo.png') }}" alt="" class="w-75">
+
                 </div>
             </div>
             <div class=" px-0 ps-5  ms-2">
@@ -553,7 +561,7 @@
                         <h5><span class="percent-complete">100%</span> to Complete</h5>
                     </div>
                     <div class="col-md-12 bar mt-2 ps-0">
-                        <div class="progress w-75" style="background-color: #B4C8E8;">
+                        <div class="progress w-75" style="background-color: #fff;">
                             <div class="progress-bar" style="width: 5%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>

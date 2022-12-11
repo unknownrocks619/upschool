@@ -8,7 +8,7 @@
     }
 </style>
 <!-- Start project -->
-<div class="row step-four-row">
+<div class="row step-four-row bg-white h-100">
     <div class="col-md-12 mt-4">
         <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
             <div class="row">

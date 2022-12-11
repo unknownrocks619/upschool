@@ -1,5 +1,5 @@
 <!-- Start project -->
-<div class="row step-third-row">
+<div class="row step-third-row bg-white h-100">
     <div class="col-md-12 mt-4">
         <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
             <div class="row">
@@ -25,33 +25,9 @@
                             <img src="https://upschool.co/wp-content/uploads/elementor/thumbs/Upschool-Charity-Projects-psgju87nr5soudwzo1zqs6lm5o8vksc0dcewgbufmo.png" class="img-fluid" />
                             @endif
                             <h1 class="mt-3 px-3 text-cemter" style="font-size:16px;">
-                                <a href="" style="color:#242254;line-height:1.3em;text-decoration:none">{{ $project->title }}</a>
+                                <a href="" style="color:#242254;line-height:1.3em;text-decoration:none;font-family:'Inter'">{{ $project->title }}</a>
                             </h1>
-                            <div class="mt-1  text-center" style="font-size:16px; color:#242254">
-                                {{ $project->organisation->name }}
-                            </div>
-                            <div class="card-footer bg-white mt-3 border-0">
-                                <form class="book_project_ajax_form" action="{{ route('frontend.auth_user.books.book.project.store', $book->id) }}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="project" value="{{ $project->getKey() }}">
-                                    <button type="submit" class="w-100 btn btn-primary rounded-3 py-3" style="background:#b81242" data-url="{{ route('frontend.book.edit.upload',[$book->id,'overview']) }}" data-step="1" data-step-attribute="overview">Continue With this project</a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 items">
-                        <div class="card">
-                            @if($project->image)
-                            <igm src="{{ asset($project->image->path) }}" class="img-fluid" />
-                            @else
-                            <img src="https://upschool.co/wp-content/uploads/elementor/thumbs/Upschool-Charity-Projects-psgju87nr5soudwzo1zqs6lm5o8vksc0dcewgbufmo.png" class="img-fluid" />
-                            @endif
-                            <h1 class="mt-3 px-3 text-cemter" style="font-size:16px;">
-                                <a href="#" style="color:#242254;line-height:1.3em;text-decoration:none">
-                                    Binod Giri is the name for the title
-                                </a>
-                            </h1>
-                            <div class="mt-1  text-center" style="font-size:16px; color:#242254">
+                            <div class="mt-1  text-center" style="font-size:16px; color:#242254;font-family:'Inter'">
                                 {{ $project->organisation->name }}
                             </div>
                             <div class="card-footer bg-white mt-3 border-0">

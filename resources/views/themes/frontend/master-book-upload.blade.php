@@ -23,6 +23,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500&family=Nunito:wght@200&display=swap" rel="stylesheet">
     <style>
+        body {
+            background: #f4f4f4 !important;
+
+        }
+
         p {
             font-family: 'Nunito', sans-serif !important;
         }

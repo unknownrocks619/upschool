@@ -1,5 +1,5 @@
  <!-- Step Zero -->
- <div class="row step-zero-row main">
+ <div class="row step-zero-row main bg-white py-3">
      <div class="col-md-12">
 
          <div class="row">

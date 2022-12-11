@@ -49,7 +49,7 @@
                 <div class="row">
                     <div style="font-size:24px;" class="col-md-10 {{ ($instances['book']['secondPageEmpty']) ? 'text-success' : 'text-danger' }}">
                         <table class="border-none">
-                            <tr>
+                            <tr style="font-size: 17px !important">
                                 <td>
                                     <i class="icon far fal {{ $instances['book']['secondPageEmpty'] ? 'fa-check-circle' : 'fa-times-circle' }}"></i>
                                 </td>
@@ -65,11 +65,11 @@
                 <div class="row">
                     <div style="font-size:24px;" class="col-md-10 {{ ! ($instances['book']['totalPage'] % 2) ? 'text-success' : 'text-danger' }}">
                         <table class="border-none">
-                            <tr>
+                            <tr style="font-size: 17px !important">
                                 <td>
                                     <i class="icon far fal {{ !($instances['book']['totalPage'] % 2) ?  'fa-check-circle' : 'fa-times-circle' }}"></i>
                                 </td>
-                                <td class="ps-3">
+                                <td class="ps-3" style="font-size: 17px !important">
                                     The total number of pages in my book is an even number. (12, 14, 16, 18, 20, ...)
 
                                 </td>
@@ -82,35 +82,41 @@
                 <div class="row">
                     <div style="font-size:24px;" class="col-md-10 text-success">
                         <table class="border-none">
-                            <tr>
+                            <tr style="font-size: 17px !important">
                                 <td>
                                     <i class="icon far fal fa-check-circle" style="width:22px;height:22px;"></i>
                                 </td>
-                                <td class="ps-3">
-                                    My text is in the Safe Zone and not near the edges of the page
-                                </td>
+                                <td class="ps-3" style="padding-left: 0.8rem !important">My text is in the Safe Zone and not near the edges of the page</td>
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 mt-4 pt-2">
+            <!-- <div class="col-md-12 mt-4 pt-2">
                 <div class="row">
-                    <div style="font-size:24px;" class="col-md-10 {{ ($instances['book']['totalPage'] >= 40) ? 'text-success' : 'text-danger' }}">
-                        <i class="icon far fal {{ ($instances['book']['totalPage'] >= 40) ?  'fa-check-circle' : 'fa-times-circle' }}" style="width:22px;height:22px;"></i>
+                    <div style="font-size:24px;" class="col-md-10 {{-- ($instances['book']['totalPage']>=40)?'text-success':'text-danger' --}}">
+                        <i class="icon far fal {{-- ($instances['book']['totalPage']>=40)?'fa-check-circle':'fa-times-circle' --}}" style="width:22px;height:22px;"></i>
                         <span class="ps-3">
                             My Book has minimum of 40 Page
                         </span>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-12 mt-4 pt-2">
                 <div class="row">
                     <div style="font-size:24px;" class="col-md-10 text-success">
-                        <i class="icon far fal fa-check-circle "></i>
-                        <span class="ps-3">
-                            My book is A4 size (270mm x 297mm)
-                        </span>
+                        <table class="border-none">
+                            <tr style="font-size: 17px !important">
+                                <td>
+                                    <i class="icon far fal fa-check-circle "></i>
+                                    <!-- <i class="icon far fal {{-- !($instances['book']['totalPage']%2)?'fa-check-circle':'fa-times-circle' --}}"></i> -->
+                                </td>
+                                <td class="ps-3" style="font-size: 17px !important">
+                                    My book is A4 size (270mm x 297mm)
+
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>

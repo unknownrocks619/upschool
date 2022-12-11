@@ -1,8 +1,8 @@
    <!-- About Your Book Section -->
 
-   <form action="{{ route('frontend.auth_user.books.book.meta.store', $book->id) }}" class="about-book-ajax-form" method="post">
-       @csrf
-       <div class="row step-one-row">
+   <div class="row step-one-row bg-white py-3">
+       <form action="{{ route('frontend.auth_user.books.book.meta.store', $book->id) }}" class="about-book-ajax-form" method="post">
+           @csrf
            <div class="col-md-12">
                <div class="bg-white pt-3 mt-4 ps-5 dynamic-padding" style="height:100%">
                    <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;font-size:28px;">
@@ -45,8 +45,8 @@
                    </div>
                </div>
            </div>
-       </div>
-   </form>
+       </form>
+   </div>
    <!-- / End About your book -->
 
    <script type="text/javascript">

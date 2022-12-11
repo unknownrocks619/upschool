@@ -1,5 +1,5 @@
 <!-- Start Caegory -->
-<div class="row step-two-row">
+<div class="row step-two-row bg-white h-100">
     <div class="col-md-12 mt-4">
         <form class="book_category_ajax_form" action="{{ route('frontend.auth_user.books.book.category.store', $book->id) }}" method="post">
             @csrf
@@ -20,7 +20,7 @@
                             <div>
                                 <input type="checkbox" @if ($book->categories && array_key_exists($category->id,$book->categories)) checked @endif value="{{ $category->id  }}" name="cat_id[{{$category->id}}]" class="checkmark" id="personal_detail" style="width:24px; height:24px;" />
                             </div>
-                            <div class="ms-2">
+                            <div class="ms-2" style="font-family: 'Inter';font-weight:400">
                                 {{ $category->category_name }}
                             </div>
                         </div>

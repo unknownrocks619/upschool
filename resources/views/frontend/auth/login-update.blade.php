@@ -9,6 +9,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 <style type="text/css">
+    body {
+        background-color: #f4f4f4 !important;
+    }
+
     p {
         font-family: 'Inter' !important;
     }
@@ -189,10 +193,10 @@
 
 @section("content")
 
-<div class="container mb-11 mx-auto px-0">
+<div class="container mb-11 mx-auto px-0" style="margin-top:80px; margin-bottom:80px;">
     <div class="row px-0 mx-auto">
         <!-- Row -->
-        <div class="col-md-8 pl-0 ml-0 mx-auto step-parent pb-4 bg-white" style="padding-left:0px !important;">
+        <div class="col-md-7 pl-0 ml-0 mx-auto step-parent pb-4 bg-white" style="padding-left:0px !important;">
             <!-- Step Zero -->
             <?php
             $rateLimit = Illuminate\Support\Facades\RateLimiter::tooManyAttempts(request()->ip(), 3);
@@ -206,25 +210,25 @@
                             Sign in to continue to your account.
                         </p>
 
-                        <div class="row mb-3 me-5">
+                        <!-- <div class="row mb-3 me-5">
                             <div class="col-md-6 mt-4 col-sm-12 col-xs-12 col-lg-6 ">
-                                <form action="{{ route('google-register') }}" method="post">
+                                <form action="{{-- route('google-register') --}}" method="post">
                                     @csrf
-                                    <button formaction="{{ route('google-register') }}" type="submit" class="btn btn-outline-secondary px-4 py-4 social-login w-100">
-                                        <img src="{{ asset('images/3.png') }}" style="width:25px; height: 25px;position:relative;top: -4px; left:-14px;" />
+                                    <button formaction="{{-- route('google-register') --}}" type="submit" class="btn btn-outline-secondary px-4 py-4 social-login w-100">
+                                        <img src="{{-- asset('images/3.png') --}}" style="width:25px; height: 25px;position:relative;top: -4px; left:-14px;" />
                                         Continue With Google
                                     </button>
                                 </form>
                             </div>
                             <div class="col-md-6 mt-4 col-lg-6 col-sm-12 col-xs-12">
-                                <form action="{{ route('facebook-register') }}" method="post">
+                                <form action="{{-- route('facebook-register') --}}" method="post">
                                     @csrf
-                                    <button formaction="{{ route('facebook-register') }}" type="submit" class="btn btn-outline-secondary px-4 py-4 w-100  social-login">
-                                        <img src="{{ asset('images/4.png') }}" style="width:25px; height: 25px;position:relative;top: -4px; left:-14px;" /> Continue with Facebook
+                                    <button formaction="{{-- route('facebook-register') --}}" type="submit" class="btn btn-outline-secondary px-4 py-4 w-100  social-login">
+                                        <img src="{{-- asset('images/4.png') --}}" style="width:25px; height: 25px;position:relative;top: -4px; left:-14px;" /> Continue with Facebook
                                     </button>
                                 </form>
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>
@@ -240,20 +244,17 @@
                                     <div class="form-group">
 
                                         @error("email")
-                                        <div class="text-danger" style="font-weight:700;color:#B81242 !important;font-family:'Inter' !important;font-size:17px !important;">{{ $message }}</div>
+                                        <div class="text-danger mb-2" style="font-weight:700;color:#B81242 !important;font-family:'Inter' !important;font-size:17px !important;">{{ $message }}</div>
                                         @enderror
-                                        <input value="{{ old('email') }}" type="text" name="email" class="py-4 form-control rounded-3 @error('email') border border-danger @enderror" id="email" placeholder="youremail@email.com" />
+                                        <input value="{{ old('email') }}" type="text" style="font-family:'Inter'" name="email" class="py-4 form-control rounded-3 @error('email') border border-danger @enderror" id="email" placeholder="youremail@email.com" />
 
                                     </div>
                                 </div>
                             </div>
                             <div class="row mt-4 me-5">
                                 <div class="col-md-12 mt-3">
-                                    <div class="form-group">
-                                        <label for="email" class="mb-2">Passsword
-                                            <sup class="text-danger">*</sup>
-                                        </label>
-                                        <input required type="password" value="{{ old('password') }}" name="password" placeholder="Enter your password" class="py-4 rounded-3 form-control @error('password') border border-danger @enderror" id="password" />
+                                    <div class="form-group mt-3">
+                                        <input required type="password" style="font-family:'Inter' !important" value="{{ old('password') }}" name="password" placeholder="Enter your password" class="py-4 rounded-3 form-control @error('password') border border-danger @enderror" id="password" />
                                         @error('password')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -266,7 +267,6 @@
                                         <input style="width:22px; height: 22px;" type="checkbox" name="remember" value="1" />
                                         <label for="password" class="mb-2">
                                             Keep me logged in until I log out
-                                            <sup class="text-danger">*</sup>
                                         </label>
 
                                     </div>
@@ -292,7 +292,7 @@
             </form>
         </div>
         <!-- <div class="row mt-2"> -->
-        <div class="col-md-8 pl-0 dynamic-padding ml-0 mx-auto step-parent pb-5 bg-white" style="color:#03014C !important; font-weight:700">
+        <div class="col-md-7 pl-0 dynamic-padding ml-0 mx-auto step-parent pb-5 bg-white" style="color:#03014C !important; font-weight:400">
             Don’t have an Upschool account? <a href="{{ route('register') }}" class="text-danger" style="color:#D61A5F !important;text-decoration:none">Sign up</a>
         </div>
         <!-- </div> -->

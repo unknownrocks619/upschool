@@ -218,22 +218,22 @@
 
 
 @section("content")
-<div class="container mb-11 mx-auto px-0 bg-white">
-    <div class="row px-0 mx-auto step-parent-row">
+<div class="container mb-11 mx-auto px-0 mt-4">
+    <div class="row px-0 mx-auto step-parent-row mt-4 mb-4 " style="margin-top: 50px !important; margin-bottom:50px !important">
         <!-- Row -->
-        <div class="col-md-9 pl-0 ml-0 mx-auto step-parent step-parent-column" style="padding-left:0px !important;">
+        <div class="mt-4 col-md-9 pl-0 ml-0 mx-auto step-parent step-parent-column" style="padding-left:0px !important;">
             @include("frontend.user.upload.ui.".$tab)
         </div>
 
-        <div class="col-md-3 d-none d-md-block mx-auto sidebar" style="background-color: #242254 !important;align-items:center;background-size:cover;">
-            <div class=" px-0 ps-5  ms-2">
+        <div class="mt-4 col-md-3 d-none d-md-block mx-auto sidebar" style="background-color: #242254 !important;align-items:center;background-size:cover;">
+            <div class=" px-0 ps-3  ms-1">
                 <div class="sidebar_steps row first mt-4">
-                    <div class="col-md-8">
+                    <div class="col-md-12 mt-4">
                         <div class="d-flex justify-content-start">
                             <div class="information-circle-disabled active-circle" data-step='1' style="display:flex;justify-content:center;align-items:center">
                                 <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
                             </div>
-                            <div class="information-disabled active-text pt-2">
+                            <div class="information-disabled active-text pt-2 ps-3">
                                 Upload PDF
                             </div>
                         </div>
@@ -243,12 +243,12 @@
                 </div>
 
                 <div class="sidebar_steps row second">
-                    <div class="col-md-8 ">
+                    <div class="col-md-12 ">
                         <div class="d-flex justify-content-start">
                             <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
                                 <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
                             </div>
-                            <div class="information-disabled pt-2">
+                            <div class="information-disabled pt-2 ps-3">
                                 About your Book
                             </div>
                         </div>
@@ -258,12 +258,12 @@
                 </div>
 
                 <div class="sidebar_steps row third">
-                    <div class="col-md-8 ">
+                    <div class="col-md-12 ">
                         <div class="d-flex justify-content-start">
                             <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
                                 <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
                             </div>
-                            <div class="information-disabled pt-2">
+                            <div class="information-disabled pt-2 ps-3">
                                 Book Category
                             </div>
                         </div>
@@ -273,12 +273,12 @@
                 </div>
 
                 <div class="sidebar_steps row fourth">
-                    <div class="col-md-8 ">
+                    <div class="col-md-12 ">
                         <div class="d-flex justify-content-start">
                             <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
                                 <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
                             </div>
-                            <div class="information-disabled pt-2">
+                            <div class="information-disabled pt-2 ps-3">
                                 Select a Project
                             </div>
                         </div>
@@ -288,12 +288,12 @@
                 </div>
 
                 <div class="sidebar_steps row five">
-                    <div class="col-md-8 ">
+                    <div class="col-md-12 ">
                         <div class="d-flex justify-content-start">
                             <div class="information-circle-disabled" data-step='1' style="display:flex;justify-content:center;align-items:center">
                                 <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
                             </div>
-                            <div class="information-disabled pt-2">
+                            <div class="information-disabled ps-3" style="max-height: 40px;">
                                 Book Summary and Preview
                             </div>
                         </div>
@@ -415,8 +415,6 @@
 
     function highlightProcess(currentStep, progressBar, percentage) {
         var sidebarElements = $('.sidebar_steps');
-        console.log("lets see the content first", currentStep, progressBar, percentage);
-        console.log('lets see the elements', sidebarElements);
         sidebarElements.each(function(index, element) {
             if (index == (currentStep - 1)) {
                 $(element).find(".information-circle-disabled").addClass('active-circle')
