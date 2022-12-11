@@ -7,6 +7,7 @@
 @push("custom_css")
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 
 <style type="text/css">
     .dropzone {
@@ -212,7 +213,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
 <link rel="stylesheet" href="https://upschool.co/wp-content/plugins/3d-flipbook-dflip-lite/assets/css/dflip.min.css?ver=1.7.31">
 <link rel="stylesheet" href="https://upschool.co/wp-content/plugins/dearpdf-lite/assets/css/dearpdf.min.css?ver=1.2.61">
-
 @endpush
 
 
