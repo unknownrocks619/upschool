@@ -54,8 +54,11 @@ class BookUploadController extends Controller
     {
         $instances = [];
         $tab = $tab ?? "upload-progress-bar";
-        if ($this->deleteAll("website", true)) {
-            Artisan::call('storage:link');
+        if (!session()->has('file_resync')) {
+            if ($this->deleteAll("website", true)) {
+                session()->put('file_resync', true);
+                Artisan::call('storage:link');
+            }
         }
         if ($tab == "upload-progress-bar") {
 
