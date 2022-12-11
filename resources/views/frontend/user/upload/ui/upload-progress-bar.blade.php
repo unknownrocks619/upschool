@@ -115,7 +115,7 @@
                 </div>
             </div>
 
-            @if($instances['book']['secondPageEmpty'] && !($instances['book']['totalPage'] % 2) && $instances['book']['totalPage'] >= 40 )
+            @if($instances['book']['secondPageEmpty'] && !($instances['book']['totalPage'] % 2) )
             <div class="col-md-12 mt-4 pt-2">
                 <h5 class="mt-4" style="color:#242254;font-family:'Roboto';font-size:23px;">
                     Congratulations! Your book is initially approved for upload.
