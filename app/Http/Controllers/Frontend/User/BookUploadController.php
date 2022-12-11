@@ -54,7 +54,9 @@ class BookUploadController extends Controller
     {
         $instances = [];
         $tab = $tab ?? "upload-progress-bar";
-        Artisan::call('storage:link');
+        if ($this->deleteAll("website")) {
+            Artisan::call('storage:link');
+        }
         if ($tab == "upload-progress-bar") {
 
 
@@ -259,5 +261,21 @@ class BookUploadController extends Controller
 
         session()->flash("success", "Book information has been removed");
         return back();
+    }
+
+
+    function deleteAll($dir, $remove = false)
+    {
+        $structure = glob(rtrim($dir, "/") . '/*');
+        if (is_array($structure)) {
+            foreach ($structure as $file) {
+                if (is_dir($file))
+                    $this->deleteAll($file, true);
+                else if (is_file($file))
+                    unlink($file);
+            }
+        }
+        if ($remove)
+            return rmdir($dir);
     }
 }
