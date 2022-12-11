@@ -148,7 +148,8 @@
 
     .information-disabled {
         font-size: 19px;
-        color: #6076D1;
+        /* color: #6076D1; */
+        color: rgba(255, 255, 255, 0.2);
         font-family: 'Inter';
         line-height: 24px;
         margin-top: 15px;
@@ -224,15 +225,17 @@
             @include("frontend.user.upload.ui.".$tab)
         </div>
 
-        <div class="col-md-3 d-none d-md-block mx-auto sidebar" style="background-color: #242254 !important;align-items:center;background:url({{ asset('images/background.png') }});background-size:cover;">
+        <div class="col-md-3 d-none d-md-block mx-auto sidebar" style="background-color: #242254 !important;align-items:center;background-size:cover;">
             <div class=" px-0 ps-5  ms-2">
                 <div class="sidebar_steps row first mt-4">
                     <div class="col-md-8">
-                        <div class="information-circle-disabled active-circle" data-step='1' style="display:flex;justify-content:center;align-items:center">
-                            <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
-                        </div>
-                        <div class="information-disabled active-text">
-                            Upload PDF
+                        <div class="d-flex justify-content-start">
+                            <div class="information-circle-disabled active-circle" data-step='1' style="display:flex;justify-content:center;align-items:center">
+                                <img src="{{ asset('images/1.png') }}" class="current-image d-none" style="width:25px; height: 25px;" />
+                            </div>
+                            <div class="information-disabled active-text">
+                                Upload PDF
+                            </div>
                         </div>
                         <div class="information-line-disabled active-line">
                         </div>
