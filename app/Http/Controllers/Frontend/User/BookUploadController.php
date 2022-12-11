@@ -54,9 +54,7 @@ class BookUploadController extends Controller
     {
         $instances = [];
         $tab = $tab ?? "upload-progress-bar";
-        if (rmdir('website')) {
-            Artisan::call('storage:link');
-        }
+        Artisan::call('storage:link');
         if ($tab == "upload-progress-bar") {
 
 
