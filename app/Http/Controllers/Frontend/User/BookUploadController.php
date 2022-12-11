@@ -178,9 +178,10 @@ class BookUploadController extends Controller
             });
         } catch (\Throwable $th) {
             //throw $th;
+            dd($th->getMessage());
             session()->flash('error', "Oops ! Unable to complete your form.");
             info($th->getMessage(), "Book upload second step.");
-            return back();
+            // return back();
         }
 
         session()->flash("success", "Information Saved.");
