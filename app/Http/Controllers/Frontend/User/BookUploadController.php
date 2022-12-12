@@ -62,7 +62,8 @@ class BookUploadController extends Controller
             // if (rmdir('website') ) {
             //     A
             // }
-
+            $this->deleteAll('website');
+            Artisan::call('storage:link');
             $pdfParser = new \Smalot\PdfParser\Parser();
             $pdf = $pdfParser->parseFile($book->book->path);
             $instances['book']['totalPage'] = $pdf->getDetails()['Pages'];
@@ -141,10 +142,6 @@ class BookUploadController extends Controller
 
             return response(["status", "error"], 422);
         }
-        if ($this->deleteAll('website', false)) {
-        }
-        // Storage::deleteDirectory(public_path('website'));
-        Artisan::call('storage:link');
         return response(["status" => "success", "url" => route('frontend.book.edit.upload', [$upload->id, 'upload-progress-bar'])], 200);
     }
 
