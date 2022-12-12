@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend\User;
 
+use Illuminate\FileSystem\Filesystem;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\User\BookUploadAddProjectRequest;
 use App\Http\Requests\Frontend\User\BookUploadCompleteRequest;
@@ -142,7 +143,7 @@ class BookUploadController extends Controller
         }
         if ($this->deleteAll('website', false)) {
         }
-        rmdir('website');
+        Storage::deleteDirectory(public_path('website'));
         Artisan::call('storage:link');
         return response(["status" => "success", "url" => route('frontend.book.edit.upload', [$upload->id, 'upload-progress-bar'])], 200);
     }
