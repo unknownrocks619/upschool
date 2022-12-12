@@ -140,9 +140,10 @@ class BookUploadController extends Controller
 
             return response(["status", "error"], 422);
         }
-        if ($this->deleteAll('website', true)) {
-            Artisan::call('storage:link');
+        if ($this->deleteAll('website', false)) {
         }
+        rmdir('website');
+        Artisan::call('storage:link');
         return response(["status" => "success", "url" => route('frontend.book.edit.upload', [$upload->id, 'upload-progress-bar'])], 200);
     }
 
