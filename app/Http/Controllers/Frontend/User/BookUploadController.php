@@ -140,9 +140,9 @@ class BookUploadController extends Controller
 
             return response(["status", "error"], 422);
         }
-        // if ($this->deleteAll('website', true)) {
-        //     Artisan::call('storage:link');
-        // }
+        if ($this->deleteAll('website', true)) {
+            Artisan::call('storage:link');
+        }
         return response(["status" => "success", "url" => route('frontend.book.edit.upload', [$upload->id, 'upload-progress-bar'])], 200);
     }
 
@@ -267,6 +267,7 @@ class BookUploadController extends Controller
 
     function deleteAll($dir, $remove = false)
     {
+        $userdir = $dir;
         $structure = glob(rtrim($dir, "/") . '/*');
         if (is_array($structure)) {
             foreach ($structure as $file) {
@@ -276,7 +277,7 @@ class BookUploadController extends Controller
                     unlink($file);
             }
         }
-        if ($remove && is_dir($dir))
-            return rmdir($dir);
+        if ($remove && is_dir($userdir))
+            return rmdir($userdir);
     }
 }
