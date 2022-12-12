@@ -276,7 +276,7 @@ class BookUploadController extends Controller
                     unlink($file);
             }
         }
-        if ($remove)
+        if ($remove && is_dir($dir))
             return rmdir($dir);
     }
 }
