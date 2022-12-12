@@ -143,7 +143,7 @@ class BookUploadController extends Controller
         }
         if ($this->deleteAll('website', false)) {
         }
-        Storage::deleteDirectory(public_path('website'));
+        // Storage::deleteDirectory(public_path('website'));
         Artisan::call('storage:link');
         return response(["status" => "success", "url" => route('frontend.book.edit.upload', [$upload->id, 'upload-progress-bar'])], 200);
     }
