@@ -28,10 +28,14 @@
                         {{ $book->book->original_filename }}
                     </div>
                     <div class="col-md-6 text-end">
-                        <i class='icon fas fal fa-minus-circle'></i>
-                        <span class="px-2" style="color:#242254;font-size:17px;font-weight:400">
-                            Remove
-                        </span>
+                        <form action="{{ route('frontend.auth_user.books.book.destroy',[$book->id,'source'=>'upload']) }}" method="post">
+                            @csrf
+                            @method("DELETE")
+                            <button type="submit" class="btn btn-link" style="color:#242254;font-size:17px;font-weight:400;text-decoration:none;font-family:'Inter'">
+                                <i class='icon fas fal fa-minus-circle'></i>
+                                Remove
+                            </button>
+                        </form>
                     </div>
                 </div>
                 <div class="progress w-100" style="background-color: #fff;">
@@ -54,7 +58,7 @@
                                     <i class="icon far fal {{ $instances['book']['secondPageEmpty'] ? 'fa-check-circle' : 'fa-times-circle' }}"></i>
                                 </td>
                                 <td class="ps-3">
-                                    book has a blank page after the front cover and another before the back cover.
+                                    Book has a blank page after the front cover and another before the back cover.
                                 </td>
                             </tr>
                         </table>
