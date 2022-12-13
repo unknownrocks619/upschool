@@ -251,7 +251,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mt-4 me-5">
+                            <div class="row mt-1 me-5">
                                 <div class="col-md-12 mt-3">
                                     <div class="form-group mt-3">
                                         <input required type="password" style="font-family:'Inter' !important" value="{{ old('password') }}" name="password" placeholder="password" class="py-4 rounded-3 form-control @error('password') border border-danger @enderror" id="password" />
