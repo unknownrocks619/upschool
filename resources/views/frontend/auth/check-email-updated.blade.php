@@ -246,7 +246,7 @@
 
             <div class="row signup-progress-bar ps-3 mb-5 pb-5">
                 <div class="col-md-12 steps p-0 m-0">
-                    <p class="p-0 m-0 text-left">3 to 3 Steps</p>
+                    <p class="p-0 m-0 text-left">3 of 3 Steps</p>
                 </div>
                 <div class="progress-title col-md-12">
                     <h5><span class="percent-complete">100%</span> Complete</h5>
@@ -259,7 +259,7 @@
                 </div>
 
                 <div class="col-md-12 already-exists ps-0 mb-5" style="color: #fff;margin-top: 30px;font-weight:400">
-                    <p>Already have an Account ? <a href="https://upschool.co/dashboard" class="text-white" style="text-decoration: none; font-weight:700;font-family:'Inter' !important">Login in Here</a></p>
+                    <p>Already have an Account ? <a href="https://upschool.co/dashboard" class="text-white" style="text-decoration: none; font-weight:700;font-family:'Inter' !important">Login Here</a></p>
                 </div>
             </div>
         </div>
