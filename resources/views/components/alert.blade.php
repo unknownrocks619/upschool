@@ -3,7 +3,7 @@
     @foreach ($errors->all() as $error)
     <div class='d-flex align-items-center' style="font-family: 'Inter' !important;">
         <i class="icon fas fa-exclamation"></i> &nbsp;
-        <span>{{ $error }}</span>
+        <span style="font-family: 'Inter' !important;">{{ $error }}</span>
     </div>
     @endforeach
 </div>
@@ -13,7 +13,7 @@
 <div class="alert alert-info alert-dismissible mb-2" role="alert">
     <div class='d-flex align-items-center' style="font-family: 'Inter' !important;">
         <i class="icon fas fa-exclamation"></i> &nbsp;
-        <span> {{ Session::get('info') }}</span>
+        <span style="font-family: 'Inter' !important;"> {{ Session::get('info') }}</span>
     </div>
 </div>
 
@@ -23,7 +23,7 @@
 <div class="alert alert-warning alert-dismissible mb-2" role="alert">
     <div class='d-flex align-items-center' style="font-family: 'Inter' !important;">
         <i class="icon fas fa-exclamation"></i> &nbsp;
-        <span> {{ Session::get('warning') }}</span>
+        <span style="font-family: 'Inter' !important;"> {{ Session::get('warning') }}</span>
     </div>
 </div>
 
