@@ -182,6 +182,10 @@
         background: #242254 !important;
     }
 
+    a {
+        font-family: 'Inter' !important;
+    }
+
     @media only screen and (max-width: 600px) {
         .dynamic-padding {
             padding-left: 10px !important;
