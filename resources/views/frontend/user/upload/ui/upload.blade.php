@@ -22,6 +22,10 @@
 
     }
 
+    .dz-filename {
+        display: none !important;
+    }
+
     .image-3d {
         -webkit-transition: 0.2s;
     }
