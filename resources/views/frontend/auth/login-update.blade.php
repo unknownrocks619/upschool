@@ -252,9 +252,9 @@
                                 </div>
                             </div>
                             <div class="row mt-1 me-5">
-                                <div class="col-md-12 mt-3">
+                                <div class="col-md-12 mt-1">
                                     <div class="form-group mt-3">
-                                        <input required type="password" style="font-family:'Inter' !important" value="{{ old('password') }}" name="password" placeholder="password" class="py-4 rounded-3 form-control @error('password') border border-danger @enderror" id="password" />
+                                        <input required type="password" style="font-family:'Inter' !important" value="{{ old('password') }}" name="password" placeholder="Password" class="py-4 rounded-3 form-control @error('password') border border-danger @enderror" id="password" />
                                         @error('password')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -262,14 +262,13 @@
                                 </div>
                             </div>
                             <div class="row mt-4 me-5">
-                                <div class="col-md-12">
-                                    <div class="form-group ">
-                                        <input style="width:22px; height: 22px;" type="checkbox" name="remember" value="1" />
-                                        <label for="password" class="mb-2">
-                                            Keep me logged in until I log out
-                                        </label>
-
-                                    </div>
+                                <div class="col-md-1">
+                                    <input style="width:22px; height: 22px;" type="checkbox" name="remember" value="1" />
+                                </div>
+                                <div class="col-md-11 ms-0 ps-0">
+                                    <label for="password" class="mb-2 pt-0">
+                                        Keep me logged in until I log out
+                                    </label>
                                 </div>
                                 @google_captcha()
                             </div>
