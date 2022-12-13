@@ -209,7 +209,7 @@
             <div class="row bg-white px-0 mx-0">
                 <div class="col-md-12 ps-2">
                     <div class="bg-white pt-5 mt-3 ps-5 dynamic-padding" style="height:100%">
-                        <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;font-size:33px;font-family:'Lexend'">Welcome Back to Upschool.co</h4>
+                        <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;font-size:25px;font-family:'Lexend'">Welcome Back to Upschool.co</h4>
                         <p class="mt-3" style="color:#242254 !important;font-family:'Inter' !important;font-size:18px">
                             Sign in to continue to your account.
                         </p>
