@@ -188,6 +188,10 @@
             /* padding-right: 10px !important; */
         }
     }
+
+    .text-danger {
+        font-family: 'Inter' !important;
+    }
 </style>
 @endpush
 
@@ -282,7 +286,7 @@
                                             Password
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <input required value="{{ old('password') }}" placeholder="Password" type="password" name="password" id="password" class="py-3 rounded-3 form-control @error('password') border border-danger @enderror" />
+                                        <input min="8" required value="{{ old('password') }}" placeholder="Password" type="password" name="password" id="password" class="py-3 rounded-3 form-control @error('password') border border-danger @enderror" />
                                         @error('password')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
