@@ -246,7 +246,7 @@
                                         @error("email")
                                         <div class="text-danger mb-2" style="font-weight:700;color:#B81242 !important;font-family:'Inter' !important;font-size:17px !important;">{{ $message }}</div>
                                         @enderror
-                                        <input value="{{ old('email') }}" type="text" style="font-family:'Inter'" name="email" class="py-4 form-control rounded-3 @error('email') border border-danger @enderror" id="email" placeholder="youremail@email.com" />
+                                        <input value="{{ old('email') }}" type="text" style="font-family:'Inter'" name="email" class="py-4 form-control rounded-3 @error('email') border border-danger @enderror" id="email" placeholder="Email Address" />
 
                                     </div>
                                 </div>
@@ -254,7 +254,7 @@
                             <div class="row mt-4 me-5">
                                 <div class="col-md-12 mt-3">
                                     <div class="form-group mt-3">
-                                        <input required type="password" style="font-family:'Inter' !important" value="{{ old('password') }}" name="password" placeholder="Enter your password" class="py-4 rounded-3 form-control @error('password') border border-danger @enderror" id="password" />
+                                        <input required type="password" style="font-family:'Inter' !important" value="{{ old('password') }}" name="password" placeholder="password" class="py-4 rounded-3 form-control @error('password') border border-danger @enderror" id="password" />
                                         @error('password')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
