@@ -286,7 +286,7 @@
                                             Password
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <input min="8" required value="{{ old('password') }}" placeholder="Password" type="password" name="password" id="password" class="py-3 rounded-3 form-control @error('password') border border-danger @enderror" />
+                                        <input minlength="8" required value="{{ old('password') }}" placeholder="Password" type="password" name="password" id="password" class="py-3 rounded-3 form-control @error('password') border border-danger @enderror" />
                                         @error('password')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -300,7 +300,7 @@
                                             Confirm Password
                                             <sup class="text-danger">*</sup>
                                         </label>
-                                        <input required placeholder="Confirm Password" type="password" value="{{ old('password_confirmation') }}" name="password_confirmation" class="py-3 rounded-3 form-control @error('password_confirmation') border border-danger @enderror" id="confirm_password" />
+                                        <input minlength="8" required placeholder="Confirm Password" type="password" value="{{ old('password_confirmation') }}" name="password_confirmation" class="py-3 rounded-3 form-control @error('password_confirmation') border border-danger @enderror" id="confirm_password" />
                                         @error('password_confirmation')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
