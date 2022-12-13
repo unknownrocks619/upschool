@@ -62,6 +62,14 @@
         background: #B81242
     }
 
+    .btn-primary:active {
+        background: #B81242 !important;
+    }
+
+    .btn-primary:disabled {
+        background: #B81242 !important;
+    }
+
     /* .active-bar {
         background: #fff;
         min-height: 40px;
