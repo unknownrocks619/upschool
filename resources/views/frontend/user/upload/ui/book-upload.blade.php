@@ -50,7 +50,7 @@
              </div>
              <div class="row mb-2 mt-5 text-right me-5">
                  <div class="col-md-12 mt-5 text-right d-flex justify-content-end">
-                     <button class="btn next py-3 px-5 step-back" data-step="0">
+                     <button class="btn next py-3 px-5 step-back disabled" data-step="0">
                          Next
                          <i class="fas fa-arrow-right"></i>
                      </button>
