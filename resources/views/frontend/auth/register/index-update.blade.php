@@ -470,7 +470,7 @@
 
                                             </div>
                                             <div class="col-md-10">
-                                                <label for="canva_free" class="mb-2 ms-2">I acknowledge that should I not wish to have my details visible to other users, I can instead sign up for free Canva basic <a href="https://canva.com" style="color:#242254;font-family:'Inter'" target="_blank">here</a>.
+                                                <label for="canva_free" class="mb-2">I acknowledge that should I not wish to have my details visible to other users, I can instead sign up for free Canva basic <a href="https://canva.com" style="color:#242254;font-family:'Inter'" target="_blank">here</a>.
                                                     <sup class="text-danger">*</sup>
                                                 </label>
 
@@ -492,7 +492,7 @@
 
                                             </div>
                                             <div class="col-md-10">
-                                                <label for="terms" class="mb-2 ms-2">I agree to Upschool’s <a href="https://upschool.co/terms-and-conditions/" style="color:#242254;font-family:'Inter'">Terms and Conditions</a> and <a href="https://upschool.co/privacy-policy/" style="color:#242254;font-family:'Inter'">Privacy Policy</a>.
+                                                <label for="terms" class="mb-2">I agree to Upschool’s <a href="https://upschool.co/terms-and-conditions/" style="color:#242254;font-family:'Inter'">Terms and Conditions</a> and <a href="https://upschool.co/privacy-policy/" style="color:#242254;font-family:'Inter'">Privacy Policy</a>.
                                                     <sup class="text-danger">*</sup>
                                                 </label>
 

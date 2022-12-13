@@ -266,11 +266,11 @@
                                 </div>
                             </div>
                             <div class="row mt-4 me-5">
-                                <div class="col-md-1">
-                                    <input style="width:22px; height: 22px;" type="checkbox" name="remember" value="1" />
-                                </div>
-                                <div class="col-md-11 ms-0 ps-0">
-                                    <label for="password" class="mb-2 pt-0">
+
+                                <div class="col-md-12  d-flex justify-content-start">
+                                    <input id="remember" style="width:22px; height: 22px;" type="checkbox" name="remember" value="1" />
+
+                                    <label for="remember" class="mb-2 ms-2 pt-0">
                                         Keep me logged in until I log out
                                     </label>
                                 </div>
