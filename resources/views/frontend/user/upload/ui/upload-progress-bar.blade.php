@@ -112,7 +112,19 @@
                         <table class="border-none">
                             <tr style="font-size: 17px !important">
                                 <td>
-                                    <i class="icon far fal fa-check-circle "></i>
+                                    <span class="loading" id="loading">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(255, 255, 255); display: block; shape-rendering: auto;" width="22px" height="22px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                                            <path d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#242254" stroke="none">
+                                                <animateTransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" keyTimes="0;1" values="0 50 51;360 50 51"></animateTransform>
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <span id="postLoadingSuccess" class="d-none">
+                                        <i class="icon far fal fa-check-circle "></i>
+                                    </span>
+                                    <span id="postLoadingFail" class="d-none text-danger">
+                                        <i class="icon far fal fa-times-circle "></i>
+                                    </span>
                                     <!-- <i class="icon far fal {{-- !($instances['book']['totalPage']%2)?'fa-check-circle':'fa-times-circle' --}}"></i> -->
                                 </td>
                                 <td class="ps-3" style="font-size: 17px !important">
@@ -135,8 +147,8 @@
                 </p>
             </div>
 
-            <div class="row mb-2 text-right me-5">
-                <div class="col-md-9 mt-5 text-right d-flex justify-content-end mb-4 pb-4">
+            <div class="row mb-2 text-right me-5 allowNext d-none">
+                <div class="col-md-12 mt-5 text-right d-flex justify-content-end mb-4 pb-4">
                     <button class="btn next py-3 px-5 step-back" data-url="{{ route('frontend.book.edit.upload',[$book->id,'tab' => 'about-book']) }}" data-step="1" data-step-attribute="about-book">
                         Next
                         <i class="fas fa-arrow-right"></i>
@@ -168,6 +180,59 @@
                 </div>
             </div>
             @endif
+            <div class="row mb-4 text-right me-5 allowReupload d-none">
+                <div class="col-md-12 mt-5 text-right d-flex justify-content-end mb-4 pb-4">
+                    <form action="{{ route('frontend.auth_user.books.book.destroy',[$book->id,'source'=>'upload']) }}" method="post">
+                        @csrf
+                        @method("DELETE")
+                        <button type="submit" class="btn next py-3 px-5" data-url="{{ route('frontend.book.edit.upload',[$book->id,'about-book']) }}" data-step="1" data-step-attribute="about-book">
+                            Re-upload
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.1.81/pdf.min.js"></script>
+<script>
+    var pdfData = "{{ asset($book->book->path) }}";
+
+    var pdfJs = window['pdfjs-dist/build/pdf'];
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.1.81/pdf.worker.min.js';
+
+    var loadingTask = pdfjsLib.getDocument(pdfData);
+
+    loadingTask.promise.then(function(pdf) {
+        console.log('Pdf Loaded. ');
+        // get first page 
+        var pageNumber = 1;
+        var scale = 1.78;
+
+        pdf.getPage(pageNumber).then(function(page) {
+            var viewPort = page.getViewport({
+                scale: scale
+            });
+            page.getTextContent().then(data => {
+                console.log(data)
+            });
+            if ((viewPort.height >= 1440 && viewPort.height <= 1443) && viewPort.width >= 2560 && viewPort.width <= 2565) {
+                $("#loading").fadeOut('medium', function() {
+                    $("#postLoadingSuccess").removeClass('d-none');
+                    $('.allowNext').removeClass('d-none')
+                });
+            } else {
+                $("#loading").fadeOut('medium', function() {
+
+                    $('.allowReupload').removeClass('d-none')
+                    $("#postLoadingFail").removeClass('d-none').addClass('text-danger');
+                    $(this).closest('tr').children('td:last').addClass('text-danger');
+                })
+            }
+        })
+
+
+    });
+</script>

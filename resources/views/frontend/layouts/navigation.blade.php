@@ -70,7 +70,6 @@
         </nav>
 
         <!-- d-lg-none {Mobile}-->
-
         <nav id="navbar_main" class="mobile-offcanvas navbar navbar-expand-lg navbar-light p-0 w-100">
             <div class="d-flex" style="width: 100%">
                 <div class="nav-cont d-lg-flex" style="width: 100%">

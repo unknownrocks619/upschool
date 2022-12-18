@@ -55,12 +55,10 @@ class BookUploadController extends Controller
     {
         $instances = [];
         $tab = $tab ?? "upload-progress-bar";
-
+        $pdfData = Storage::get($book->book->path);
         if ($tab == "upload-progress-bar") {
-
-
             $pdfParser = new \Smalot\PdfParser\Parser();
-            $pdf = $pdfParser->parseContent(Storage::get($book->book->path));
+            $pdf = $pdfParser->parseContent($pdfData);
             $instances['book']['totalPage'] = $pdf->getDetails()['Pages'];
             $instances['book']['secondPageEmpty'] = false;
             if ($instances['book']['totalPage'] > 2) {

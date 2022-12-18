@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Frontend\Course\CourseController;
-use App\Http\Controllers\Frontend\User\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Sms;
 /*
