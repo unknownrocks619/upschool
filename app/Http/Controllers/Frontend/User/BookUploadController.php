@@ -55,7 +55,9 @@ class BookUploadController extends Controller
     {
         $instances = [];
         $tab = $tab ?? "upload-progress-bar";
+
         $pdfData = Storage::get($book->book->path);
+
         if ($tab == "upload-progress-bar") {
             $pdfParser = new \Smalot\PdfParser\Parser();
             $pdf = $pdfParser->parseContent($pdfData);
@@ -107,7 +109,6 @@ class BookUploadController extends Controller
             $instances['active'] = true;
         }
 
-
         $projects = OrganisationProject::with(["organisation"])->latest()->get();
         $categories = Category::where('category_type', "book_upload_category")->get();
         if (request()->get('partial')) {
@@ -122,7 +123,7 @@ class BookUploadController extends Controller
     {
         $upload = new UserBookUpload;
         $this->set_access("file");
-        $this->set_upload_path("website/books");
+        $this->set_upload_path("books");
 
         $upload->user_id = auth()->id();
         $upload->book = $this->upload("file");
@@ -151,6 +152,7 @@ class BookUploadController extends Controller
         if ($request->post('project')) {
             $book->project_id;
         }
+
         $book->full_description = $request->book_description;
         $book->canva_link = $request->canva_book;
         $book->parent_email = $request->post('parent_email');
