@@ -215,9 +215,7 @@
             var viewPort = page.getViewport({
                 scale: scale
             });
-            page.getTextContent().then(data => {
-                console.log(data)
-            });
+            // page.getTextContent().then(data => {});
             if ((viewPort.height >= 1440 && viewPort.height <= 1443) && viewPort.width >= 2560 && viewPort.width <= 2565) {
                 $("#loading").fadeOut('medium', function() {
                     $("#postLoadingSuccess").removeClass('d-none');
