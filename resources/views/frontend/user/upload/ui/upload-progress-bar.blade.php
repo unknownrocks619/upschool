@@ -156,7 +156,7 @@
                 </div>
             </div>
             @else
-            <div class="col-md-12 mt-4 pt-2">
+            <div class="col-md-12 mt-4 pt-2 alreadyErrorUpload">
                 <h5 class="mt-4" style="color:#D61A5F !important;font-family:'Roboto';font-size:23px;">
                     Oh oh!
 
@@ -225,10 +225,11 @@
                 });
             } else {
                 $("#loading").fadeOut('medium', function() {
-
-                    $('.allowReupload').removeClass('d-none')
                     $("#postLoadingFail").removeClass('d-none').addClass('text-danger');
                     $(this).closest('tr').children('td:last').addClass('text-danger');
+                    if (!$(".alreadyErrorUpload").length) {
+                        $('.allowReupload').removeClass('d-none')
+                    }
                 })
             }
         })
