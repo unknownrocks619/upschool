@@ -1,4 +1,26 @@
 <!-- Start project -->
+<?php
+ini_set('max_execution_time', 90);
+?>
+<style>
+    .searchable-container::-webkit-scrollbar {
+        width: 0.3em;
+    }
+
+    .searchable-container::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+    }
+
+    .searchable-container::-webkit-scrollbar-thumb {
+        background: #242254;
+        border-radius: 30%;
+    }
+
+    .searchable-container::-webkit-scrollbar-thumb:hover {
+        background: #b81242;
+        border-radius: 30%;
+    }
+</style>
 <div class="row step-third-row bg-white h-100">
     <div class="col-md-12 mt-4">
         <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
@@ -14,21 +36,26 @@
                     <input type="text" name="search_project" id="search" placeholder="Search your project" class="form-control py-3 fs-5" style="border: 0.8px solid rgb(3 1 76 / 12%);border-radius:8.3px;">
                 </div>
             </div>
-            <div class="searchable-container">
+            <div class="searchable-container" style="max-height: 500px;overflow:hidden;overflow-y:scroll;">
                 <div class="row mt-4 me-5">
+                    <?php
+                    $projects = \App\Models\OrganisationProject::where('wp_post_id', '!=' , NULL)->with(['organisation'])->get();
+                    ?>
                     @foreach ($projects as $project)
                     <div class="col-md-4 items">
-                        <div class="card">
-                            @if($project->image)
-                            <igm src="{{ asset($project->image->path) }}" class="img-fluid" />
+                        <div class="card my-3">
+                            @if($project->images && $project->images->banner->fullPath)
+                            <img src="{{ (string) $project->images->banner->fullPath->attachment->guid }}" class="img-fluid" style="max-height:88px !important; " />
                             @else
                             <img src="https://upschool.co/wp-content/uploads/elementor/thumbs/Upschool-Charity-Projects-psgju87nr5soudwzo1zqs6lm5o8vksc0dcewgbufmo.png" class="img-fluid" />
                             @endif
                             <h1 class="mt-3 px-3 text-cemter" style="font-size:16px;">
-                                <a href="" style="color:#242254;line-height:1.3em;text-decoration:none;font-family:'Inter'">{{ $project->title }}</a>
+                                <a href="" style="color:#242254;line-height:1.3em;text-decoration:none;font-family:'Inter';font-weight:600">
+                                    {{ $project->title }}
+                                </a>
                             </h1>
                             <div class="mt-1  text-center" style="font-size:16px; color:#242254;font-family:'Inter'">
-                                {{ $project->organisation->name }}
+                                {{ $project->organisation->name ?? "" }}
                             </div>
                             <div class="card-footer bg-white mt-3 border-0">
                                 <form class="book_project_ajax_form" action="{{ route('frontend.auth_user.books.book.project.store', $book->id) }}" method="post">
@@ -53,6 +80,7 @@
         </div>
     </div>
 </div>
+
 <!-- /End project -->
 <script type="text/javascript">
     $("form.book_project_ajax_form").submit(function(event) {
@@ -61,6 +89,7 @@
         $(this).prop('disabled', true);
         let formElem = $(this);
         let buttonElem = $(formElem).find('button[type="submit"]')[0];
+        $(formElem).find('button').prop('disabled',true);
         $.ajax({
             method: "POST",
             url: $(this).attr('action'),

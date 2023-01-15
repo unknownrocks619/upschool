@@ -1,4 +1,4 @@
-@extends("themes.frontend.master")
+@extends("themes.frontend.learning-sequence-master")
 
 @section("page_title")
 :: Course
@@ -10,307 +10,120 @@
 @endpush
 
 @section("content")
-<div class="course_sidebar">
-    <a href="#" class="tutor_toggle"><i class="fas fa-chevron-circle-left"></i></a>
+<div class="container-fluid bg-white">
+    <div class="row">
 
-    <div class="course_heading_box">
-        <span class="heading_icon"><i class="fas fa-book-open"></i></span>
-        <div>Lesson List</div>
-    </div>
-    <div class="scrollbar_down">
-        @foreach ($course->chapters as $chapter)
-        <div class="topics_title">
-            <div class="topics-title-left">
-                <div>{{ $chapter->chapter_name }}</div>
+        <div class="col-md-12" id="videoContent">
+
+            <div class="row ContentHeader subheading py-4 border-top">
+                <div class="col-md-12 d-flex justify-content-between align-items-center">
+                    <div>
+                        Go to Course Home
+                        <i class="icon fas fa-home"></i>
+                    </div>
+                    <div>Learning Sequence 3</div>
+                    <div>Complete Lession</div>
+                </div>
             </div>
-            <div class="topics-title-right">
-                <div>
-                    1 /{{ $chapter->lession->count() }}
+
+            <div class="container">
+                <div class="row bg-light p-10">
+                    <div class="col-md-12 accordian">
+                        <div class="accordion accordion-flush bg-light" id="accordionFlushExample">
+                            <div class="accordion-item bg-light">
+                                <button class="accordion-button collapsed bg-light py-3" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    Accordion Item #1
+                                </button>
+                                <h2 class="accordion-header bg-primary" id="flush-headingOne py-3">
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                                </div>
+                            </div>
+                            <div class="accordion-item bg-light">
+                                <button class="accordion-button collapsed bg-light py-3" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                    Accordion Item #2
+                                </button>
+                                <h2 class="accordion-header bg-light" id="flush-headingTwo">
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <h4 style="color: #592277 mb-4">
+                            Getting Your Canva Pro Account Through Upschool - For Free
+                        </h4>
+                        <p class="mt-4">
+                            Important: Canva is an essential tool for this course. You will need to register for a canva account (instructions below) at least 24 hours prior to starting any designing in canva. We need this time to activate your canva pro account.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-        <ul class="topics_ul">
-            @foreach ($chapter->lession as $lession)
-            <li class="topics_li">
-                <a href="{{ route('frontend.course.lession',[$course->id,$lession->id]) }}" class="topic_a">
-                    <div class="inner_box">
-                        <div class="first_box">
-                            <span class="book"><i class="fa fa-file" aria-hidden="true"></i></span>
-                        </div>
-                        <div class="left_box">
-                            <span class="title_span">{{ $lession->lession_name }}</span>
-                        </div>
-                        <div class="right_box"><span class="check"><i class="fas fa-check-circle"></i></span></div>
-                    </div>
-                </a>
-            </li>
-            @endforeach
-        </ul>
-        @endforeach
-
-    </div>
-</div>
-
-<div id="videoLoad">
-    @include("frontend.courses.partials.video-section",[$course])
-</div>
-
-<div class="course_sidebar_mob">
-
-    <a href="#" class="tutor_toggle"><i class="fas fa-chevron-circle-left"></i></a>
-
-    <div class="course_heading_box">
-        <span class="heading_icon"><i class="fas fa-book-open"></i></span>
-        <div>Lesson List</div>
-    </div>
-    <div class="scrollbar_down">
-        <div class="topics_title">
-            <div class="topics-title-left">
-                <div>Lesson Resources</div>
-            </div>
-            <div class="topics-title-right">
-                <div>1/5</div>
-            </div>
-        </div>
-        <ul class="topics_ul">
-            <li class="topics_li">
-                <a href="#" class="topic_a">
-                    <div class="inner_box">
-                        <div class="first_box">
-                            <span class="book"><i class="fa fa-file" aria-hidden="true"></i></span>
-                        </div>
-                        <div class="left_box">
-                            <span class="title_span">Learning Sequence 1</span>
-                        </div>
-                        <div class="right_box"><span class="check"><i class="fas fa-check-circle"></i></span></div>
-                    </div>
-                </a>
-            </li>
-            <li class="topics_li">
-                <a href="#" class="topic_a">
-                    <div class="inner_box">
-                        <div class="first_box">
-                            <span class="book"><i class="fa fa-file" aria-hidden="true"></i></span>
-                        </div>
-                        <div class="left_box">
-                            <span class="title_span">Learning Sequence 2</span>
-                        </div>
-                        <div class="right_box"><span class="check"><i class="fas fa-check-circle"></i></span></div>
-                    </div>
-                </a>
-            </li>
-            <li class="topics_li">
-                <a href="#" class="topic_a">
-                    <div class="inner_box">
-                        <div class="first_box">
-                            <span class="book"><i class="fa fa-file" aria-hidden="true"></i></span>
-                        </div>
-                        <div class="left_box">
-                            <span class="title_span">Learning Sequence 3</span>
-                        </div>
-                        <div class="right_box"><span class="check"><i class="fas fa-check-circle"></i></span></div>
-                    </div>
-                </a>
-            </li>
-            <li class="topics_li">
-                <a href="#" class="topic_a">
-                    <div class="inner_box">
-                        <div class="first_box">
-                            <span class="book"><i class="fa fa-file" aria-hidden="true"></i></span>
-                        </div>
-                        <div class="left_box">
-                            <span class="title_span">Learning Sequence 4</span>
-                        </div>
-                        <div class="right_box"><span class="check"><i class="fas fa-check-circle"></i></span></div>
-                    </div>
-                </a>
-            </li>
-            <li class="topics_li">
-                <a href="#" class="topic_a">
-                    <div class="inner_box">
-                        <div class="first_box">
-                            <span class="book"><i class="fa fa-file" aria-hidden="true"></i></span>
-                        </div>
-                        <div class="left_box">
-                            <span class="title_span">Learning Sequence 5</span>
-                        </div>
-                        <div class="right_box"><span class="check"><i class="fas fa-check-circle"></i></span></div>
-                    </div>
-                </a>
-            </li>
-            <li class="topics_li">
-                <a href="#" class="topic_a">
-                    <div class="inner_box">
-                        <div class="first_box">
-                            <span class="book"><i class="fa fa-file" aria-hidden="true"></i></span>
-                        </div>
-                        <div class="left_box">
-                            <span class="title_span">Learning Sequence 6</span>
-                        </div>
-                        <div class="right_box"><span class="check"><i class="fas fa-check-circle"></i></span></div>
-                    </div>
-                </a>
-            </li>
-        </ul>
-        <div class="topics_title">
-            <div class="topics-title-left">
-                <div>Teacher Resources</div>
-            </div>
-            <div class="topics-title-right">
-                <div>0/5</div>
-            </div>
-        </div>
-        <ul class="topics_ul">
-            <li class="topics_li">
-                <a href="#" class="topic_a">
-                    <div class="inner_box">
-                        <div class="first_box">
-                            <span class="book"><i class="fa fa-file" aria-hidden="true"></i></span>
-                        </div>
-                        <div class="left_box">
-                            <span class="title_span">Teacher Resources</span>
-                        </div>
-                        <div class="right_box"><span class="check"><i class="fas fa-check-circle"></i></span></div>
-                    </div>
-                </a>
-            </li>
-            <li class="topics_li">
-                <a href="#" class="topic_a">
-                    <div class="inner_box">
-                        <div class="first_box">
-                            <span class="book"><i class="fa fa-file" aria-hidden="true"></i></span>
-                        </div>
-                        <div class="left_box">
-                            <span class="title_span">Using This Course With Younger Children</span>
-                        </div>
-                        <div class="right_box"><span class="check"><i class="fas fa-check-circle"></i></span></div>
-                    </div>
-                </a>
-            </li>
-            <li class="topics_li">
-                <a href="#" class="topic_a">
-                    <div class="inner_box">
-                        <div class="first_box">
-                            <span class="book"><i class="fa fa-file" aria-hidden="true"></i></span>
-                        </div>
-                        <div class="left_box">
-                            <span class="title_span">Resources for Schools to Share With Parents</span>
-                        </div>
-                        <div class="right_box"><span class="check"><i class="fas fa-check-circle"></i></span></div>
-                    </div>
-                </a>
-            </li>
-            <li class="topics_li">
-                <a href="#" class="topic_a">
-                    <div class="inner_box">
-                        <div class="first_box">
-                            <span class="book"><i class="fa fa-file" aria-hidden="true"></i></span>
-                        </div>
-                        <div class="left_box">
-                            <span class="title_span">Are These Your Glasses (Digital Version)</span>
-                        </div>
-                        <div class="right_box"><span class="check"><i class="fas fa-check-circle"></i></span></div>
-                    </div>
-                </a>
-            </li>
-            <li class="topics_li">
-                <a href="#" class="topic_a">
-                    <div class="inner_box">
-                        <div class="first_box">
-                            <span class="book"><i class="fa fa-file" aria-hidden="true"></i></span>
-                        </div>
-                        <div class="left_box">
-                            <span class="title_span">Feature Your Work and Inspire Others</span>
-                        </div>
-                        <div class="right_box"><span class="check"><i class="fas fa-check-circle"></i></span></div>
-                    </div>
-                </a>
-            </li>
-            <li class="topics_li">
-                <a href="#" class="topic_a">
-                    <div class="inner_box">
-                        <div class="first_box">
-                            <span class="book"><i class="fa fa-file" aria-hidden="true"></i></span>
-                        </div>
-                        <div class="left_box">
-                            <span class="title_span">Using This Course With Younger Children</span>
-                        </div>
-                        <div class="right_box"><span class="check"><i class="fas fa-check-circle"></i></span></div>
-                    </div>
-                </a>
-            </li>
-        </ul>
     </div>
 </div>
 @endsection
 
-@push("custom_scripts")
+
+@push('custom_css')
+<style type="text/css">
+    :root {
+        --theme-background: #eaf4f6;
+        --sidbear-color: #757783;
+        --incomplete-lession-check: #b91241;
+        --sidebar-subheading: #1e3050 !important;
+        --default-color: #fff;
+    }
+
+    .sidebar {
+        background: var(--theme-background);
+        color: var(--default-color);
+    }
+
+    .heading {
+        background-color: var(--incomplete-lession-check);
+        text-align: center;
+        color: var(--default-color) !important;
+    }
+
+    .subheading {
+        background-color: var(--sidebar-subheading);
+        color: var(--default-color);
+    }
+
+    .navigation {
+        color: var(--sidebar-subheading);
+        padding: 30px 0px;
+
+    }
+</style>
+@endpush
+
+@push('custom_scripts')
 <script>
-    $(document).ready(function() {
-        $("a.tutor_toggle").click(function() {
-            $(".course_sidebar").toggleClass("course_sidebar_left_actopn");
-            $(".tutor_back").toggleClass("tutor_back_vanish");
-            $("section.second").toggleClass("second_next");
-            $(".strech_content").toggleClass("strech_content_next");
-            $(".tutor_toggle").toggleClass("tutor_toggle_action");
-        });
-        $("a.tutor_back").click(function() {
-            $("section.second").removeClass("second_next");
-            $("#sidebar").removeClass("slide_right");
-            $(".course_sidebar").removeClass("course_sidebar_left_actopn");
-            $(".course_sidebar").addClass("course_sidebar_back_tab");
-            $(".strech_content").removeClass("strech_content_next");
-        });
+    $(function() {
 
-    });
-    $(document).ready(function() {
-        $(".topics_title").click(function() {
-            $(this).next(".topics_ul").slideToggle("slow");
-        });
-    });
+        // $(document).ready(function() {
+        //     let navHeight = $("nav");
+        //     let headerHeight = $('header');
+        //     let divHeight = 0;
+        //     if ($(navHeight).is(':visible')) {
+        //         divHeight += $(navHeight).height();
+        //     }
 
-    $(document).ready(function() {
-        var trigger = $('.hamburger'),
-            overlay = $('.overlay'),
-            isClosed = false;
-
-        trigger.click(function() {
-            hamburger_cross();
-        });
-
-        function hamburger_cross() {
-
-            if (isClosed == true) {
-                overlay.hide();
-                trigger.removeClass('is-open');
-                trigger.addClass('is-closed');
-                isClosed = false;
-            } else {
-                overlay.show();
-                trigger.removeClass('is-closed');
-                trigger.addClass('is-open');
-                isClosed = true;
-            }
-        }
-
-        $('[data-toggle="offcanvas"]').click(function() {
-            $('#wrapper').toggleClass('toggled');
-        });
-    });
-</script>
-<script>
-    $("a.topic_a").on('click', function(event) {
-        event.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: $(this).attr("href"),
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(response) {
-                $("#videoLoad").html(response);
-            }
-        })
+        //     if ($(headerHeight).is(":visible")) {
+        //         divHeight += $(navHeight).height();
+        //     }
+        //     let bodyHeight = $('body').height();
+        //     $(".sidebar").css('min-height', divHeight + "vh");
+        // });
     })
 </script>
 @endpush

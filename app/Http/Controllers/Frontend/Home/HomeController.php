@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend\Home;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Frontend\User\BookController;
 use App\Http\Controllers\Frontend\User\BookUploadController;
+use App\Models\Corcel\Post;
 use App\Models\Menu;
 use App\Models\Organisation;
 use App\Models\OrganisationProject;
@@ -40,6 +41,9 @@ class HomeController extends Controller
         }
 
         if ($menu->menu_type == "charity") {
+            $organisations = Organisation::where('active', true)->get();
+            $elementor = Post::where('post_type', 'page')->where('post_name', 'charities')->first();
+            return view("frontend.pages.charity.index", compact("menu", 'organisations', 'elementor'));
         }
 
 

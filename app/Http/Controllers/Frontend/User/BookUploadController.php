@@ -14,6 +14,12 @@ use App\Http\Requests\Frontend\User\BookUploadStoreRequest;
 use App\Http\Requests\Frontend\User\BookUploadStoreStepThreeRequest;
 use App\Http\Requests\Frontend\User\BookUploadStoreStepTwoRequest;
 use App\Models\Category;
+use App\Models\Corcel\BookDonationData;
+use App\Models\Corcel\Meta\WPMeta;
+use App\Models\Corcel\Post;
+use App\Models\Corcel\WPCategory;
+use App\Models\Corcel\WpUser;
+use App\Models\Organisation;
 use App\Models\OrganisationProject;
 use App\Models\UserBookUpload;
 use Illuminate\Http\Request;
@@ -24,6 +30,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Contracts\Cache\Store;
 use App\Traits\PdfToText;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Str;
 
 class BookUploadController extends Controller
 {
@@ -141,7 +148,7 @@ class BookUploadController extends Controller
 
     public function createUploadMetaInformation(BookUploadCreateStepTwoRequest $request, UserBookUpload $book)
     {
-
+        return view('frontend.user.upload.Test.projects');
         return view('frontend.user.upload.meta', compact('book'));
     }
 
@@ -158,6 +165,7 @@ class BookUploadController extends Controller
         $book->parent_email = $request->post('parent_email');
         $book->school = $request->college;
         $book->book_title = $request->book_title;
+
         $user = auth()->user();
         if ($request->date_of_birth) {
             $user->date_of_birth = $request->date_of_birth;
@@ -196,6 +204,13 @@ class BookUploadController extends Controller
         if ($book->status != "draft") {
             return view('frontend.user.upload.category-not-allowed', compact("book"));
         }
+        $wpCategory = WPCategory::where('taxonomy', 'book_category')->get();
+        $categoryName = [];
+
+        foreach ($wpCategory as $category) {
+            $categoryName[] = $category->name;
+        }
+
         $categories = Category::where('category_type', "book_upload_category")->get();
         return view('frontend.user.upload.category', compact("book", "categories"));
     }
@@ -222,7 +237,12 @@ class BookUploadController extends Controller
 
     public function storeBookProject(BookUploadAddProjectRequest $request, UserBookUpload $book)
     {
-        $book->project_id = $request->post('project');
+        // check if project exists in local env.
+        $project = OrganisationProject::find($request->post('project'));
+
+        // save project in db.
+        $book->wp_project_id = $project->wp_post_id;
+        $book->project_id = $project->getKey();
         $book->save();
     }
 
@@ -230,6 +250,74 @@ class BookUploadController extends Controller
     {
         $book->status = 'pending';
         $book->save();
+
+        // get wp user detail.
+        $wp_user = WpUser::where('user_email', auth()->user()->email)->first();
+        if ($wp_user) {
+            $wp_post = [
+                'post_author' => $wp_user->getKey(),
+                'post_date' => $book->updated_at,
+                'post_content' => $book->full_description,
+                'post_title' => $book->book_title,
+                'post_status' => 'pending',
+                'comment_status' => 'closed',
+                'ping_status' => 'closed',
+                'post_modified' => $book->updated_at,
+                'post_parent' => false,
+                'menu_order' => false,
+                'post_type' => 'pus_books',
+                'comment_count' => false,
+            ];
+
+
+            $userPost = new Post();
+            foreach ($wp_post as $key => $value) {
+                $userPost->$key = $value;
+            }
+            $book_object_array  = (array) $book->book;
+            $userPost->save();
+
+            $metaPost = [
+                [
+                    'post_id' => $userPost->getKey(),
+                    'meta_key' => 'school_name',
+                    'meta_value' => $book->school,
+                ],
+                [
+                    'post_id' => $userPost->getKey(),
+                    'meta_key' => 'canva_book_link',
+                    'meta_value' => $book->canva_link,
+                ],
+                [
+                    'post_id' => $userPost->getKey(),
+                    'meta_key' => 'pdf_id',
+                    'meta_value' => asset($book->book->path),
+                ],
+                [
+                    'post_id' => $userPost->getKey(),
+                    'meta_key' => '_wp_attached_file',
+                    'meta_value' => date("Y/m/") . '/' . $book->book->path,
+                ],
+                [
+                    'post_id' => $userPost->getKey(),
+                    'meta_key' => '_wp_attachment_metadata',
+                    'meta_value' => "{a:1:{s:8:'filesize';i:" . $book_object_array[0]->size . "}",
+                ],
+                [
+                    'post_id' => $userPost->getKey(),
+                    'meta_key' => 'book_description',
+                    'meta_value' => $book->full_description,
+                ],
+                [
+                    'post_id' => $userPost->getKey(),
+                    'meta_key' => 'pus_post_author',
+                    'meta_value' => $wp_user->getKey(),
+                ],
+            ];
+
+            $postMeta = WPMeta::insert($metaPost);
+        }
+        // also save this in wordpress.
     }
 
     public function index()

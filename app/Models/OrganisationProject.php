@@ -11,7 +11,8 @@ class OrganisationProject extends Model
 
     protected $casts = [
         "images" => "object",
-        "videos" => "object"
+        "videos" => "object",
+        'additional_blocks' => 'object'
     ];
 
     public function organisation()

@@ -117,7 +117,7 @@
     @endif
     @endguest
     @auth
-    <div class="col-6 col-md-3">
+    <div class=" col-md-2">
         <div class="d-flex align-items-center justify-content-end me-5 mt-3">
             <!-- <a href="#" class="control-search"><i class="fas fa-search"></i></a> -->
             <!-- <hr class="hr-1" /> -->

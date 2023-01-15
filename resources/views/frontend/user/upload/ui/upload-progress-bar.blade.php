@@ -207,20 +207,32 @@
 
     loadingTask.promise.then(function(pdf) {
         console.log('Pdf Loaded. ');
-        // get first page 
+        // get first page
         var pageNumber = 1;
-        var scale = 1.78;
+        var scale = 1.5;
+
 
         pdf.getPage(pageNumber).then(function(page) {
             var viewPort = page.getViewport({
                 scale: scale
             });
-            // page.getTextContent().then(data => {});
-            if ((viewPort.height >= 1440 && viewPort.height <= 1443) && viewPort.width >= 2560 && viewPort.width <= 2565) {
+
+            let height = viewPort.height;
+            let width = viewPort.width;
+            let allow = false;
+            let aspectRatio = height / width;
+            console.log(parseFloat(aspectRatio).toFixed(3));
+            // if (aspectRatio )
+            if (parseFloat(aspectRatio).toFixed(3) == 0.707 || parseFloat(aspectRatio).toFixed == 1.413) {
+                allow = true;
+            }
+            console.log('allow', allow);
+            if (allow === true) {
                 $("#loading").fadeOut('medium', function() {
                     $("#postLoadingSuccess").removeClass('d-none');
                     $('.allowNext').removeClass('d-none')
                 });
+                $(".allowReupload").remove();
             } else {
                 $("#loading").fadeOut('medium', function() {
                     $("#postLoadingFail").removeClass('d-none').addClass('text-danger');
@@ -229,6 +241,7 @@
                         $('.allowReupload').removeClass('d-none')
                     }
                 })
+                $('.allowNext').remove();
             }
         })
 

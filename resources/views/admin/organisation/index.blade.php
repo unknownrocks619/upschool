@@ -6,9 +6,17 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <a href="{{ route('admin.org.org.create') }}" class="btn btn-primary mb-3">
-                    <x-plus>Add New Organisation</x-plus>
-                </a>
+                <div class="d-flex justify-content-between">
+                    <a href="{{ route('admin.org.org.create') }}" class="btn btn-primary mb-3">
+                        <x-plus>Add New Organisation</x-plus>
+                    </a>
+                    <form action="{{route('admin.org.org_sync')}}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-info mb-3">
+                            Sync WP Organisation
+                        </button>
+                    </form>
+                </div>
                 <table class="table-bordered table-hover table">
                     <thead>
                         <tr>

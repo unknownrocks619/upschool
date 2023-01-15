@@ -5,6 +5,7 @@
 @endsection
 
 @section("content")
+
 <div class="container mb-11 mt-8">
     <div class="row gx-0 m-3 my-4 ">
         <div class="col-md-8 col-xl-7 mx-auto border my-4 rounded rounded-2">

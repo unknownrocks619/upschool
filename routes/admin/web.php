@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\User\UserController as Users;
 use App\Http\Controllers\Admin\WebSettingController;
 use App\Http\Controllers\Admin\WidgetController;
+use App\Models\Corcel\BookDonationData;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix("upschool/admin")
@@ -21,6 +22,10 @@ Route::prefix("upschool/admin")
     // ->middleware('auth')
     ->group(function () {
 
+
+        Route::get('/books', function () {
+            $books = BookDonationData::limit(10)->get();
+        });
 
         Route::get("dashboard", function () {
             return view("admin.dashboard");
@@ -93,6 +98,7 @@ Route::prefix("upschool/admin")
             ->name('org.')
             ->controller(OrganisationController::class)
             ->group(function () {
+                Route::post('sync/cat/', 'sync')->name('org_sync');
                 Route::get('modal/import-csv/{organisation}', "importUserModal")->name('modal_csv_upload');
                 Route::post('modal/import-csv/{organisation}', "importUser")->name('store_csv_upload');
                 Route::get('users/{organisation}', "orgUsers")->name('user');

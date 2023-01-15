@@ -25,7 +25,7 @@ class BookUploadAddProjectRequest extends FormRequest
     {
         return [
             //
-            'project' => "required|integer|exists:organisation_projects,id"
+            // 'project' => "required|integer|exists:organisation_projects,id"
         ];
     }
 

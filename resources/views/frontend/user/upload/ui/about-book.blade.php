@@ -66,13 +66,27 @@
                    'X-CSRF-TOKEN': $("meta[name='csrf-token']").attr("content")
                },
                success: function(response) {
+                   $(".loading").fadeOut('fast', function() {
+                       $(this).addClass('d-none')
+                   })
                    console.log('this is done, lets move forward with next tab to begin with.');
                    loadAjax(buttonElem);
                },
                error: function(response) {
+                   $(".loading").fadeOut('fast', function() {
+                       $(this).addClass('d-none')
+                   })
                    if (response.status == 422) {
                        return handleError(response.responseJSON.errors);
                    }
+               },
+               beforeSend: function() {
+                   $(".loading").removeClass('d-none')
+               },
+               complete: function() {
+                   $(".loading").fadeOut('fast', function() {
+                       $(this).addClass('d-none')
+                   })
                }
            })
        });

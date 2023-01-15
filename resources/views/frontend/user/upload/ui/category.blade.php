@@ -1,3 +1,9 @@
+<div style="position: absolute; width: 100%;top:50%;z-index:1;display:none" class="loading">
+    <div class="loading" style="height:100%; width:100%;display:flex;justify-content:center">
+        <img
+            src='https://upschool.co/wp-content/plugins/pdf_upload_and_sales1//asset/css/images/loader.gif' />
+    </div>
+</div>
 <!-- Start Caegory -->
 <div class="row step-two-row bg-white h-100">
     <div class="col-md-12 mt-4">
@@ -51,7 +57,7 @@
     $("form.book_category_ajax_form").submit(function(event) {
         event.preventDefault();
         clearAllErrors();
-        $(this).prop('disabled', true);
+        $(this).find('button.next').prop('disabled', true);
         let formElem = $(this);
         let buttonElem = $(formElem).find('button[type="submit"]')[0];
         $.ajax({
@@ -63,12 +69,23 @@
             },
             success: function(response) {
                 loadAjax(buttonElem);
+
             },
             error: function(response) {
                 if (response.status == 422) {
                     return handleError(response.responseJSON.errors);
                 }
-            }
+                if (response.stastus == 200) {
+                    $(".loading").fadeOut('fast', function() {
+                        $(this).addClass('d-none')
+                    })
+                }
+            },
+            beforeSend: function() {
+                $(".loading").fadeIn('fast', function() {
+                    $(this).removeClass('d-none');
+                });
+            },
         })
     })
 

@@ -20,7 +20,7 @@
                                 <i class="fas fa-trash"></i>
                                 Remove File</button>
                         </form>
-                        <a href="{{ route('frontend.auth_user.books.book.meta',[$book_upload->id]) }}"><i class='fas fa-pencil-alt'></i>Continue Edit</a>
+                        <a href="{{ route('frontend.book.edit.upload', [$book_upload->id, 'upload-progress-bar']) }}"><i class='fas fa-pencil-alt'></i>Continue Edit</a>
                     </div>
                 </div>
             </div>

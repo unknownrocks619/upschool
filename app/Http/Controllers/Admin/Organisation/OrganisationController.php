@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Organisation\OrganisationProjectStoreRequest;
 use App\Http\Requests\Admin\Organisation\OrganisationProjectUpdateRequest;
 use App\Http\Requests\Admin\Organisation\OrganisationStoreRequest;
+use App\Models\Corcel\Post;
 use App\Models\Organisation;
 use App\Models\OrganisationProject;
 use App\Models\OrganisationStudent;
 use App\Models\User;
 use App\Traits\VideoHandler;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -35,7 +38,7 @@ class OrganisationController extends Controller
 
     public function store(OrganisationStoreRequest $request)
     {
-        
+
         $organisation = new Organisation;
         $organisation->name = $request->organisation_name;
         $organisation->slug = Str::slug($request->organisation_name);
@@ -221,7 +224,7 @@ class OrganisationController extends Controller
                 }
                 // else {
                 //     $outer_array["created_at"] = \Carbon\Carbon::now()->format("Y-m-d H:i:s");
-                //     $outer_array["updated_at"] = \Carbon\Carbon::now()->format("Y-m-d H:i:s");        
+                //     $outer_array["updated_at"] = \Carbon\Carbon::now()->format("Y-m-d H:i:s");
                 // }
 
                 if (!isset($data[8])) {
@@ -411,12 +414,20 @@ class OrganisationController extends Controller
             $project->delete();
         } catch (\Throwable $th) {
             //throw $th;
-            
+
             session()->flash("error", "Error: " . $th->getMessage());
             return back();
         }
 
         session()->flash('success', "Project Deleted.");
+        return back();
+    }
+
+
+    public function sync()
+    {
+        Artisan::call('sync:wp:organisations');
+        session()->flash('success', 'Organisation Sync has been started. Process might take sometime, You can continue your work.');
         return back();
     }
 }

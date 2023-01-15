@@ -32,13 +32,13 @@ class BookUploadStoreStepTwoRequest extends FormRequest
             "parent_email" => "nullable|email",
         ];
 
-        if (!auth()->user()->date_of_birth) {
-            $rules["date_of_birth"] = "required|date";
-        }
+        // if (!auth()->user()->date_of_birth) {
+        //     $rules["date_of_birth"] = "required|date";
+        // }
 
-        if (!auth()->user()->email) {
-            $rules["email"] = "required|email";
-        }
+        // if (!auth()->user()->email) {
+        //     $rules["email"] = "required|email";
+        // }
 
         return $rules;
     }
