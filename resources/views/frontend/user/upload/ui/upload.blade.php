@@ -346,8 +346,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"
         integrity="sha512-k2GFCTbp9rQU412BStrcD/rlwv1PYec9SNrkbQlo6RZCf75l6KcC3UwDY8H5n5hl4v77IDtIPwOk9Dqjs/mMBQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://upschool.co/wp-content/plugins/dearpdf-lite/assets/js/dearpdf-lite.min.js?ver=1.2.61"></script>
-    <script src="https://upschool.co/wp-content/plugins/3d-flipbook-dflip-lite/assets/js/dflip.min.js?ver=1.7.31"></script>
+    {{-- <script src="{{ asset('js/dearpdf-lite.min.js') }}"></script>
+    <script src="{{ asset('js/dflip.min.js') }}"></script> --}}
 
     <script type="text/javascript">
         Dropzone.options.bookUploadDropzone = {

@@ -66,7 +66,7 @@
 
             <div class="row mt-3 me-5">
                 <div class="col-md-12 upschool-color">
-                    <div class="_df_thumb img-fluid" source="{{ asset($book->book->path) }}" tags="images">
+                    <div id='pdfContainer' tags="images">
                         <svg width="301" height="134" viewBox="0 0 301 134" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <rect width="301" height="134" rx="10" fill="url(#pattern0)" />
                             <defs>
@@ -96,6 +96,33 @@
     </div>
 </div>
 <!-- /End project -->
+<script src="{{ asset ('js/html2canvas.min.js') }}"></script>
+<script src="{{ asset ('js/three.min.js') }}"></script>
+<script src="{{ asset ('js/pdf.min.js') }}"></script>
+
+<script src="{{ asset ('js/3dflipbook.min.js') }}"></script>
+<script>
+
+// // Sample 0 {
+      $('#pdfContainer').FlipBook({
+        pdf: '{{ asset ($book->book->path) }}',
+        template: {
+          html: '{{ asset ("templates/default-book-view.html") }}',
+          styles: [
+            '{{ asset ("css/flipbook/short-black-book-view.css") }}'
+          ],
+          links: [
+            {
+              rel: 'stylesheet',
+              href: '{{ asset ("css/flipbook/font-awesome.min.css") }}'
+            }
+          ],
+          script: '{{ asset ("js/default-book-view.js") }}'
+        }
+      });
+      // // }
+
+</script>
 <script>
     highlightProcess("{{ $instances['step'] }}", "{{ $instances['progressBar'] }}", "{{ $instances['percentage'] }}");
 
