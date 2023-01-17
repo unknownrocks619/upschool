@@ -82,7 +82,19 @@
             color: #fff !important;
 
         }
-
+        .next:visited {
+            background: inherit !important;
+        }
+        .next:active {
+            background: inherit !important;
+        }
+        .next:disabled {
+            background: inherit !important;
+        }
+        input[type="checkbox"]:checked{
+        border-color: red;
+        background-color:red;
+    }
         /* .active-bar {
             background: #fff;
             min-height: 40px;
@@ -120,7 +132,7 @@
         .information-line {
             min-width: 1px;
             min-height: 32px;
-            background: #fff;
+            background: rgba(255, 255, 255, 0.2);
             max-width: 1px;
             margin-left: 19px;
             margin-top: 10px
@@ -131,7 +143,8 @@
             min-height: 40px;
             min-width: 40px;
             border-radius: 50%;
-            border: 2px solid #6076D1;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.2);
             max-width: 30px;
             margin-top: 15px;
         }
@@ -152,8 +165,8 @@
 
         .information-disabled {
             font-size: 19px;
-            color: #6076D1;
-            /* color: rgba(255, 255, 255, 0.2); */
+            /* color: #6076D1; */
+            color: rgba(255, 255, 255, 0.2);
             font-family: 'Inter';
             line-height: 24px;
             margin-top: 15px;
@@ -163,7 +176,8 @@
         .information-line-disabled {
             min-width: 1px;
             min-height: 32px;
-            background: #6076D1;
+            /* background: #6076D1; */
+            background: rgba(255, 255, 255, 0.2);
             max-width: 1px;
             margin-left: 19px;
             margin-top: 10px

@@ -1,5 +1,32 @@
    <!-- About Your Book Section -->
+<style>
+    .next {
+            background: #242254;
+            color: #fff;
+        }
 
+        .next:hover {
+            background: #242254 !important;
+            color: #fff !important;
+
+        }
+        .next:visited {
+            background: #242254 !important;
+        }
+        .next:active {
+            background: #242254 !important;
+        }
+        .next:disabled {
+            background: #242254 !important;
+        }
+        .next:focus {
+            background: #242254 !important;
+            outline:0px !important;
+        }
+        button:focus {
+            outline:0px !important;
+        }
+</style>
    <div class="row step-one-row bg-white py-3">
        <form action="{{ route('frontend.auth_user.books.book.meta.store', $book->id) }}" class="about-book-ajax-form" method="post">
            @csrf
@@ -22,7 +49,7 @@
                            <div class="text-danger input-error" id="canva_book_error"></div>
                        </div>
                        <div class="col-md-12 my-2 ps-4 mt-2">
-                           <a href="#" style="color:#03014C;font-style:normal;text-decoration: underline;font-size:18.34px;">View how to get the link from Canva</a>
+                           <a href="#" data-bs-toggle='modal' data-bs-target='#canvaTarget' style="color:#03014C;font-style:normal;text-decoration: underline;font-size:18.34px;">View how to get the link from Canva</a>
                        </div>
                        <div class="col-md-12 mt-3">
                            <input type="email" value="{{ $book->parent_email }}" name="parent_email" id="parent_email" placeholder="Parent/Guardian/Teacher email address" class="form-control py-3 fs-5" style="border: 0.8px solid rgb(3 1 76 / 12%);border-radius:8.3px;">
@@ -49,6 +76,19 @@
    </div>
    <!-- / End About your book -->
 
+    <x-modal modal='canvaTarget'>
+        <div style='position:relative'>
+            <button type="button" class="p-2 py-0" style="background:#b81242;position: absolute;right: -7px;border: none;top: -13px;border-radius: 50%;" data-bs-dismiss="modal" aria-label="Close">
+                <span class="fs-4 p-0 mt-0  text-white">
+    <i class="fas fa-times text-white" aria-hidden="true" style="
+    color: #fff !important;
+"></i></span>
+
+            </button>
+
+            <img src='https://upschool.co/wp-content/plugins/pdf_upload_and_sales1//asset/css/images/sharing_your_canva_link_with_upschool.png' class="img-fluid" />
+        </div>
+    </x-modal>
    <script type="text/javascript">
        highlightProcess("{{ $instances['step'] }}", "{{ $instances['progressBar'] }}", "{{ $instances['percentage'] }}");
 

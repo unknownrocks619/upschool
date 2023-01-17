@@ -1,3 +1,104 @@
+<style>
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #fff;
+  border: 2px black solid;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox-container:hover input ~ .checkmark {
+  background-color: transparent;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #242254;
+}
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:disabled ~ .checkmark {
+  background-color: #cfcfcf;
+  border-color:#cfcfcf;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+  left: 6px;
+  top: 3px;
+  width: 5px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(35deg);
+  -ms-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+
+.next {
+            background: #242254;
+            color: #fff;
+        }
+
+        .next:hover {
+            background: #242254 !important;
+            color: #fff !important;
+
+        }
+        .next:visited {
+            background: #242254 !important;
+        }
+        .next:active {
+            background: #242254 !important;
+        }
+        .next:disabled {
+            background: #242254 !important;
+        }
+        .next:focus {
+            background: #242254 !important;
+            border-color: transparent
+        }
+        button:focus{
+            outline: 0 !important;
+        }
+</style>
 <div style="position: absolute; width: 100%;top:50%;z-index:1;display:none" class="loading">
     <div class="loading" style="height:100%; width:100%;display:flex;justify-content:center">
         <img
@@ -23,9 +124,10 @@
                     @foreach ($categories as $category)
                     <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 mb-3 d-block">
                         <div class="d-flex">
-                            <div>
-                                <input type="checkbox" @if ($book->categories && array_key_exists($category->id,$book->categories)) checked @endif value="{{ $category->id  }}" name="cat_id[{{$category->id}}]" class="checkmark" id="personal_detail" style="width:24px; height:24px;" />
-                            </div>
+                            <label for="personal_detail_{{$category->getKey()}}" class="checkbox-container">
+                                <input type="checkbox" @if ($book->categories && array_key_exists($category->id,$book->categories)) checked @endif value="{{ $category->id  }}" name="cat_id[{{$category->id}}]" class="checkmark" id="personal_detail_{{$category->getKey()}}" style="width:24px; height:24px;" />
+                                <span class="checkmark"></span>
+                            </label>
                             <div class="ms-2" style="font-family: 'Inter';font-weight:400">
                                 {{ $category->category_name }}
                             </div>

@@ -31,7 +31,7 @@ ini_set('max_execution_time', 90);
                     </h4>
                 </div>
             </div>
-            <div class="row mt-4 me-5 mb-4">
+            <div class="row mt-4 me-5 mb-2">
                 <div class="col-md-12 mb-3">
                     <input type="text" name="search_project" id="search" placeholder="Search your project" class="form-control py-3 fs-5" style="border: 0.8px solid rgb(3 1 76 / 12%);border-radius:8.3px;">
                 </div>
@@ -50,7 +50,7 @@ ini_set('max_execution_time', 90);
                             <img src="https://upschool.co/wp-content/uploads/elementor/thumbs/Upschool-Charity-Projects-psgju87nr5soudwzo1zqs6lm5o8vksc0dcewgbufmo.png" class="img-fluid" />
                             @endif
                             <h1 class="mt-3 px-3 text-cemter" style="font-size:16px;color:#242254;line-height:1.3em;text-decoration:none;font-family:'Inter';font-weight:600">
-                                {{ excerptText($project->title,30) }}...
+                                {{ substr($project->title,0,45) }}...
                             </h1>
                             <div class="mt-1  text-center" style="font-size:16px; color:#242254;font-family:'Inter'">
                                 {{ $project->organisation->name ?? "" }}

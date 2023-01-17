@@ -182,6 +182,9 @@
         flex-direction: column;
         background: #F8F8F8;
     }
+    input[type='submit']:active {
+        background: inherit !important;
+    }
 </style>
 @endpush
 
