@@ -63,3 +63,14 @@ function formatBytes($size, $precision = 2)
         return $size;
     }
 }
+
+
+if (!function_exists('excerptText')) {
+    function excerptText($text, $length)
+    {
+        if (preg_match('/^.{1,' . $length . '}\b/su', $text, $match)) {
+            return $match[0];
+        } else
+            return $text;
+    }
+}

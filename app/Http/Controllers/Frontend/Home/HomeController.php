@@ -41,7 +41,7 @@ class HomeController extends Controller
         }
 
         if ($menu->menu_type == "charity") {
-            $organisations = Organisation::where('active', true)->get();
+            $organisations = Organisation::where('active', true)->orderBy('updated_at', 'DESC')->get();
             $elementor = Post::where('post_type', 'page')->where('post_name', 'charities')->first();
             return view("frontend.pages.charity.index", compact("menu", 'organisations', 'elementor'));
         }

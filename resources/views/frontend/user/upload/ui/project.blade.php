@@ -8,12 +8,12 @@ ini_set('max_execution_time', 90);
     }
 
     .searchable-container::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 5px grey;
+        /* box-shadow: inset 0 0 5px grey; */
     }
 
     .searchable-container::-webkit-scrollbar-thumb {
         background: #242254;
-        border-radius: 30%;
+        border-radius: 10%;
     }
 
     .searchable-container::-webkit-scrollbar-thumb:hover {
@@ -24,15 +24,15 @@ ini_set('max_execution_time', 90);
 <div class="row step-third-row bg-white h-100">
     <div class="col-md-12 mt-4">
         <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
-            <div class="row">
-                <div class="col-md-12">
+            <div class="row mb-3">
+                <div class="col-md-12 mb-2">
                     <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;font-size:34px;">
                         Select Your Project
                     </h4>
                 </div>
             </div>
-            <div class="row mt-4 me-5">
-                <div class="col-md-12">
+            <div class="row mt-4 me-5 mb-4">
+                <div class="col-md-12 mb-3">
                     <input type="text" name="search_project" id="search" placeholder="Search your project" class="form-control py-3 fs-5" style="border: 0.8px solid rgb(3 1 76 / 12%);border-radius:8.3px;">
                 </div>
             </div>
@@ -49,10 +49,8 @@ ini_set('max_execution_time', 90);
                             @else
                             <img src="https://upschool.co/wp-content/uploads/elementor/thumbs/Upschool-Charity-Projects-psgju87nr5soudwzo1zqs6lm5o8vksc0dcewgbufmo.png" class="img-fluid" />
                             @endif
-                            <h1 class="mt-3 px-3 text-cemter" style="font-size:16px;">
-                                <a href="" style="color:#242254;line-height:1.3em;text-decoration:none;font-family:'Inter';font-weight:600">
-                                    {{ $project->title }}
-                                </a>
+                            <h1 class="mt-3 px-3 text-cemter" style="font-size:16px;color:#242254;line-height:1.3em;text-decoration:none;font-family:'Inter';font-weight:600">
+                                {{ excerptText($project->title,30) }}...
                             </h1>
                             <div class="mt-1  text-center" style="font-size:16px; color:#242254;font-family:'Inter'">
                                 {{ $project->organisation->name ?? "" }}
@@ -61,7 +59,7 @@ ini_set('max_execution_time', 90);
                                 <form class="book_project_ajax_form" action="{{ route('frontend.auth_user.books.book.project.store', $book->id) }}" method="post">
                                     @csrf
                                     <input type="hidden" name="project" value="{{ $project->getKey() }}">
-                                    <button type="submit" class="w-100 btn btn-primary rounded-3 py-3" style="background:#b81242" data-url="{{ route('frontend.book.edit.upload',[$book->id,'overview']) }}" data-step="1" data-step-attribute="overview">Continue With this project</a>
+                                    <button type="submit" class="w-100 btn btn-primary rounded-3 py-2" style="background:#b81242;border:none !important" data-url="{{ route('frontend.book.edit.upload',[$book->id,'overview']) }}" data-step="1" data-step-attribute="overview">Select Project</a>
                                 </form>
                             </div>
                         </div>
@@ -69,8 +67,8 @@ ini_set('max_execution_time', 90);
                     @endforeach
                 </div>
             </div>
-            <div class="row mt-4 pt-4 text-right me-5">
-                <div class="col text-start pt-3">
+            <div class="row pt-4 text-right me-5">
+                <div class="col text-start pt-1">
                     <button class="step-back btn bnt-link mt-2 pt-1" data-url="{{ route('frontend.book.edit.upload',[$book->id,'category']) }}" data-step="1" data-step-attribute="category" style="color:#242254;font-weight:400;text-decoration:underline;font-size:18px;line-height:25.42px;font-family:'Inter'">
                         <i class=" fas fa-arrow-left"></i>
                         Go back

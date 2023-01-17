@@ -89,7 +89,32 @@
         })
     })
 
+    function checkmark() {
+        let counter = 0;
+        $(".checkmark").each(function(){
+            if($(this).is(':checked') ) {
+                counter++;
+            }
+        });
+        if (counter >= 5) {
+            $(".checkmark").prop('disabled',true);
+        } else {
+            $('.checkmark').prop('disabled',false);
+        }
+        $(".checkmark").each(function(){
+            if($(this).is(':checked') ) {
+                $(this).prop('disabled',false);
+            }
+        });
 
+    }
+
+    $('.checkmark').change(function(event) {
+        checkmark();
+
+    })
+
+    checkmark();
     function clearAllErrors() {
         let allElements = $(".input-error");
         allElements.each(function(index, element) {

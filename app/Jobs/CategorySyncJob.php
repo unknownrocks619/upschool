@@ -45,6 +45,6 @@ class CategorySyncJob implements ShouldQueue
                 $localCategory->saveQuietly();
             }
         }
-        echo "Category Sync Success full.";
+        echo "Category Sync Successfull." . PHP_EOL;
     }
 }

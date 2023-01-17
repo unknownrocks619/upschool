@@ -54,18 +54,18 @@ class OrganisationSyncJob implements ShouldQueue
                     'original_filename' => '',
                     'path' => '',
                     'source' => 'wp',
-                    'fullPath' => $post->thumbnail
+                    'fullPath' => (string) $post->thumbnail
                 ],
             ];
             $logo = [
                 'original_filename' => '',
                 'path' => '',
                 'source' => 'wp',
-                'fullPath' => $post->logo
+                'fullPath' => (string) $post->logo
             ];
             $organisation->logo = $logo;
             // echo $post->thumbnail;
-            $organisation->logo = $imageProperty;
+            $organisation->featured_image = $imageProperty;
             $organisation->wp_id = $post->getKey();
 
             $social = [
@@ -185,6 +185,6 @@ class OrganisationSyncJob implements ShouldQueue
             }
         }
 
-        echo "Organisation and Projects Sync was successful.";
+        echo "Organisation and Projects Sync was successful." . PHP_EOL;
     }
 }

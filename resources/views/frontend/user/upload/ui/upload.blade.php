@@ -152,8 +152,8 @@
 
         .information-disabled {
             font-size: 19px;
-            /* color: #6076D1; */
-            color: rgba(255, 255, 255, 0.2);
+            color: #6076D1;
+            /* color: rgba(255, 255, 255, 0.2); */
             font-family: 'Inter';
             line-height: 24px;
             margin-top: 15px;

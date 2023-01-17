@@ -128,7 +128,7 @@
                                     <!-- <i class="icon far fal {{-- !($instances['book']['totalPage']%2)?'fa-check-circle':'fa-times-circle' --}}"></i> -->
                                 </td>
                                 <td class="ps-3" style="font-size: 17px !important">
-                                    My book is A4 size (270mm x 297mm)
+                                    My book is A4 size (210mm x 297mm)
 
                                 </td>
                             </tr>
