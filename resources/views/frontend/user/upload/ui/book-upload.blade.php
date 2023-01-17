@@ -1,5 +1,5 @@
  <style>
-    
+
  </style>
  <!-- Step Zero -->
  <div class="row step-zero-row main bg-white py-3 h-100">
@@ -53,10 +53,10 @@
              </div>
              <div class="row mb-2 mt-5 text-right me-5">
                  <div class="col-md-12 mt-5 text-right d-flex justify-content-end">
-                     <button class="btn next py-3 px-5 step-back disabled" data-step="0">
+                     {{-- <button class="btn next py-3 px-5 step-back disabled" data-step="0">
                          Next
                          <i class="fas fa-arrow-right"></i>
-                     </button>
+                     </button> --}}
                  </div>
              </div>
          </div>

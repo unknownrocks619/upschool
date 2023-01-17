@@ -227,6 +227,19 @@
                 padding-left: 10px !important;
                 /* padding-right: 10px !important; */
             }
+            .pe-5{
+                padding-right: 0px !important;
+            }
+            .me-1{
+                margin-right: 0px !important;
+            }
+            .me-5{
+                margin-right: 0px !important;
+            }
+            .w-100
+            {
+                width:98% !important;
+            }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">

@@ -20,7 +20,7 @@
             </div>
             <div class="row mt-4 pt-4 me-5 mb-3 pb-2">
                 <div class="col-md-12 upschool-color" style="font-family: 'Roboto' !important;font-size:19px;">
-                    Your book is uploaded to the Upschool Library. To manage this book, please go to your dashboard by clicking on the “Go To Dashboad” button. If you would like to upload a new book, click on the “Upload a New Book” button below.
+                    Thank you so much for uploading your book to the Upschool Library. Your book has now been submitted for review and will appear in the Upschool Library Shortly.
                 </div>
             </div>
         </div>

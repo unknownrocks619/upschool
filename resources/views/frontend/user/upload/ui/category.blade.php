@@ -98,6 +98,7 @@
         button:focus{
             outline: 0 !important;
         }
+
 </style>
 <div style="position: absolute; width: 100%;top:50%;z-index:1;display:none" class="loading">
     <div class="loading" style="height:100%; width:100%;display:flex;justify-content:center">
@@ -135,14 +136,14 @@
                     </div>
                     @endforeach
                 </div>
-                <div class="row mt-4 pt-4 text-right me-5">
+                <div class="row mt-4 pt-4 text-right me-5 d-flex justify-content-between">
                     <div class="col text-start pt-3">
                         <button class="step-back btn bnt-link mt-2 pt-1" data-url="{{ route('frontend.book.edit.upload',[$book->id,'about-book']) }}" data-step="1" data-step-attribute="about-book" style="color:#242254;font-weight:400;text-decoration:underline;font-size:18px;line-height:25.42px;font-family:'Inter'">
                             <i class=" fas fa-arrow-left"></i>
                             Go back
                         </button>
                     </div>
-                    <div class="col mt-3 text-right d-flex justify-content-end mb-5">
+                    <div class="col mt-3 text-right">
                         <button type="submit" class="btn btn-primary next py-3 px-5 " data-url="{{ route('frontend.book.edit.upload',[$book->id,'project']) }}" data-step="1" data-step-attribute="project">
                             Next
                             <i class="fas fa-arrow-right"></i>
