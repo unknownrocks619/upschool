@@ -311,6 +311,37 @@ class BookUploadController extends Controller
                     'meta_key' => 'pus_post_author',
                     'meta_value' => $wp_user->getKey(),
                 ],
+                [
+                    'meta_value' => $book->project->wp_post_id,
+                    'meta_key' => 'select_project_category',
+                    'post_id' => $userPost->getKey()
+                ],
+                [
+                    'post_id' => $userPost->getKey(),
+                    'meta_key' => 'user_email',
+                    'meta_value' =>  auth()->user()->email
+                ],
+                [
+                    'post_id' => $userPost->getKey(),
+                    'meta_key' => 'first_name',
+                    'meta_value' => auth()->user()->first_name,
+                ],
+                [
+                    'post_id' => $userPost->getKey(),
+                    'meta_key' => 'middle_name',
+                    'meta_value' => auth()->user()->middle_name,
+                ],
+                [
+                    'post_id' => $userPost->getKey(),
+                    'meta_key' => 'last_name',
+                    'meta_value' => auth()->user()->first_name,
+                ],
+                [
+                    'post_id' => $userPost->getKey(),
+                    'meta_key' => 'your_age',
+                    'meta_value' => '',
+                ],
+
             ];
 
             $postMeta = WPMeta::insert($metaPost);
