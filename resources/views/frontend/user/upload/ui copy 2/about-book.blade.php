@@ -31,7 +31,7 @@
        <form action="{{ route('frontend.auth_user.books.book.meta.store', $book->id) }}" class="about-book-ajax-form" method="post">
            @csrf
            <div class="col-md-12">
-               <div class="bg-white pt-3 mt-4 ps-3 ">
+               <div class="bg-white pt-3 mt-4 ps-5 dynamic-padding" style="height:100%">
                    <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;font-size:28px;">
                        About Your Book
                    </h4>
@@ -56,9 +56,8 @@
                            <div class="text-danger input-error" id="parent_email_error"></div>
                        </div>
                    </div>
-
-                   <div class="row d-flex justify-content-between mb-4">
-                       <div class="col-5 text-start pt-4 mt-3 ms-0 ps-0 d-flex justify-content-start">
+                   <div class="row mt-4 pt-4 text-right me-5">
+                       <div class="col text-start pt-4 mt-3">
                            <button data-url="{{ route('frontend.book.edit.upload',[$book->id,'upload-progress-bar']) }}" data-step="1" data-step-attribute="upload-progress-bar" class="step-back btn btn-link mt-2 pt-1" style="color:#242254;font-weight:400;text-decoration:underline;font-size:18px;line-height:25.42px;font-family:'Inter'">
                                <i class=" fas fa-arrow-left"></i>
                                Go back
@@ -80,10 +79,13 @@
     <x-modal modal='canvaTarget'>
         <div style='position:relative'>
             <button type="button" class="p-2 py-0" style="background:#b81242;position: absolute;right: -7px;border: none;top: -13px;border-radius: 50%;" data-bs-dismiss="modal" aria-label="Close">
-                <span class="fs-4 p-0 mt-0 text-white">
-                    <i class="fas fa-times text-white" aria-hidden="true" style="color: #fff !important;"></i>
-                </span>
+                <span class="fs-4 p-0 mt-0  text-white">
+    <i class="fas fa-times text-white" aria-hidden="true" style="
+    color: #fff !important;
+"></i></span>
+
             </button>
+
             <img src='https://upschool.co/wp-content/plugins/pdf_upload_and_sales1//asset/css/images/sharing_your_canva_link_with_upschool.png' class="img-fluid" />
         </div>
     </x-modal>

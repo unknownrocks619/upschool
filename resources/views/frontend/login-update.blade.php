@@ -3,9 +3,7 @@
 @section("page_title")
 ::Register
 @endsection
-<?php
-    $rateLimit = Illuminate\Support\Facades\RateLimiter::tooManyAttempts(request()->ip(), 3);
-?>
+
 @push("custom_css")
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -202,31 +200,58 @@
 <div class="container mb-11 mx-auto px-0" style="margin-top:80px; margin-bottom:80px;">
     <div class="row px-0 mx-auto">
         <!-- Row -->
-        <div class="col-md-7  ml-0 mx-auto pb-4 bg-white" style="padding-left:0px !important;">
+        <div class="col-md-7 pl-0 ml-0 mx-auto step-parent pb-4 bg-white" style="padding-left:0px !important;">
             <!-- Step Zero -->
+            <?php
+            $rateLimit = Illuminate\Support\Facades\RateLimiter::tooManyAttempts(request()->ip(), 3);
+            ?>
             @if ( ! $rateLimit )
-            <div class="row mt-4 pt-2"></div>
-            <div class="row bg-white ms-4 ps-3">
-                <div class="col-md-12 ps-4 bg-white">
+            <div class="row bg-white px-0 mx-0">
+                <div class="col-md-12 ps-2">
+                    <div class="bg-white pt-5 mt-3 ps-5 dynamic-padding" style="height:100%">
                         <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;font-size:25px;font-family:'Lexend'">Welcome Back to Upschool.co</h4>
                         <p class="mt-3" style="color:#242254 !important;font-family:'Inter' !important;font-size:18px">
                             Sign in to continue to your account.
                         </p>
+
+                        <!-- <div class="row mb-3 me-5">
+                            <div class="col-md-6 mt-4 col-sm-12 col-xs-12 col-lg-6 ">
+                                <form action="{{-- route('google-register') --}}" method="post">
+                                    @csrf
+                                    <button formaction="{{-- route('google-register') --}}" type="submit" class="btn btn-outline-secondary px-4 py-4 social-login w-100">
+                                        <img src="{{-- asset('images/3.png') --}}" style="width:25px; height: 25px;position:relative;top: -4px; left:-14px;" />
+                                        Continue With Google
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col-md-6 mt-4 col-lg-6 col-sm-12 col-xs-12">
+                                <form action="{{-- route('facebook-register') --}}" method="post">
+                                    @csrf
+                                    <button formaction="{{-- route('facebook-register') --}}" type="submit" class="btn btn-outline-secondary px-4 py-4 w-100  social-login">
+                                        <img src="{{-- asset('images/4.png') --}}" style="width:25px; height: 25px;position:relative;top: -4px; left:-14px;" /> Continue with Facebook
+                                    </button>
+                                </form>
+                            </div>
+                        </div> -->
+
+                    </div>
                 </div>
             </div>
-            <div class="row ms-4 ps-4">
-                <div class="col-md-12">
-                    <form method="POST" id="loginForm" action="{{ route('login') }}">
-                        <div class="bg-white pt-3" style="height:100%">
+            <form method="POST" id="loginForm" action="{{ route('login') }}">
+                <div class="row step-zero-row main">
+                    <div class="col-md-12">
+                        <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
                             <!-- <x-alert></x-alert> -->
                             @csrf
                             <div class="row me-5">
                                 <div class="col-md-12">
                                     <div class="form-group">
+
                                         @error("email")
                                         <div class="text-danger mb-2" style="font-weight:700;color:#B81242 !important;font-family:'Inter' !important;font-size:17px !important;">{{ $message }}</div>
                                         @enderror
                                         <input value="{{ old('email') }}" type="text" style="font-family:'Inter'" name="email" class="py-4 form-control rounded-3 @error('email') border border-danger @enderror w-100" id="email" placeholder="Email Address" />
+
                                     </div>
                                 </div>
                             </div>
@@ -241,8 +266,10 @@
                                 </div>
                             </div>
                             <div class="row mt-4 me-5">
+
                                 <div class="col-md-12  d-flex justify-content-start">
                                     <input id="remember" style="width:22px; height: 22px;" type="checkbox" name="remember" value="1" />
+
                                     <label for="remember" class="mb-2 ms-2 pt-0">
                                         Keep me logged in until I log out
                                     </label>
@@ -256,23 +283,22 @@
                                     </button>
                                 </div>
                             </div>
+
                             <div class="row mt-4">
                                 <div class="col-md-6" style="color:#03014C;font-size:17px; font-family:'Inter';font-weight:700">
                                     <a style="color:#03014C !important;text-decoration:none" href="{{ route('password.request') }}">Forgot Password?</a>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
-            <div class="row ms-4 ps-4">
-                <div class="col-md-12 mt-2">
-                    <div class="pl-0 ml-0 mx-auto step-parent pb-5 bg-white" style="color:#03014C !important; font-weight:400">
-                        Don’t have an Upschool account ? <a href="{{ route('register') }}" class="text-danger" style="color:#D61A5F !important;text-decoration:none">Sign up</a>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
+        <!-- <div class="row mt-2"> -->
+        <div class="col-md-7 pl-0 dynamic-padding ml-0 mx-auto step-parent pb-5 bg-white" style="color:#03014C !important; font-weight:400">
+            Don’t have an Upschool account? <a href="{{ route('register') }}" class="text-danger" style="color:#D61A5F !important;text-decoration:none">Sign up</a>
+        </div>
+        <!-- </div> -->
         @else
         <div class="row me-5" style="min-height: 100vh;">
             <div class="col-md-12">

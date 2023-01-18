@@ -73,31 +73,31 @@
 }
 
 .next {
-        background: #242254;
-        color: #fff;
-    }
+            background: #242254;
+            color: #fff;
+        }
 
-    .next:hover {
-        background: #242254 !important;
-        color: #fff !important;
+        .next:hover {
+            background: #242254 !important;
+            color: #fff !important;
 
-    }
-    .next:visited {
-        background: #242254 !important;
-    }
-    .next:active {
-        background: #242254 !important;
-    }
-    .next:disabled {
-        background: #242254 !important;
-    }
-    .next:focus {
-        background: #242254 !important;
-        border-color: transparent
-    }
-    button:focus{
-        outline: 0 !important;
-    }
+        }
+        .next:visited {
+            background: #242254 !important;
+        }
+        .next:active {
+            background: #242254 !important;
+        }
+        .next:disabled {
+            background: #242254 !important;
+        }
+        .next:focus {
+            background: #242254 !important;
+            border-color: transparent
+        }
+        button:focus{
+            outline: 0 !important;
+        }
 
 </style>
 <div style="position: absolute; width: 100%;top:50%;z-index:1;display:none" class="loading">
@@ -111,7 +111,7 @@
     <div class="col-md-12 mt-4">
         <form class="book_category_ajax_form" action="{{ route('frontend.auth_user.books.book.category.store', $book->id) }}" method="post">
             @csrf
-            <div class="bg-white pt-3 ps-3" style="height:100%">
+            <div class="bg-white pt-3 ps-5 dynamic-padding" style="height:100%">
                 <div class="row">
                     <div class="col-md-12">
                         <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;font-size:34px;">
@@ -136,14 +136,14 @@
                     </div>
                     @endforeach
                 </div>
-                <div class="row d-flex justify-content-between mb-4">
-                    <div class="col text-start pt-3 ms-0 ps-0 d-flex justify-content-start">
+                <div class="row mt-4 pt-4 text-right me-5 d-flex justify-content-between">
+                    <div class="col text-start pt-3">
                         <button class="step-back btn bnt-link mt-2 pt-1" data-url="{{ route('frontend.book.edit.upload',[$book->id,'about-book']) }}" data-step="1" data-step-attribute="about-book" style="color:#242254;font-weight:400;text-decoration:underline;font-size:18px;line-height:25.42px;font-family:'Inter'">
                             <i class=" fas fa-arrow-left"></i>
                             Go back
                         </button>
                     </div>
-                    <div class="col mt-3 text-right d-flex justify-content-end">
+                    <div class="col mt-3 text-right">
                         <button type="submit" class="btn btn-primary next py-3 px-5 " data-url="{{ route('frontend.book.edit.upload',[$book->id,'project']) }}" data-step="1" data-step-attribute="project">
                             Next
                             <i class="fas fa-arrow-right"></i>

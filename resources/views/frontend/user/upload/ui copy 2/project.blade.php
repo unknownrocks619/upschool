@@ -43,14 +43,14 @@ ini_set('max_execution_time', 90);
                     ?>
                     @foreach ($projects as $project)
                     <div class="col-md-4 items">
-                        <div class="card my-3" style="box-shadow: none">
+                        <div class="card my-3">
                             @if($project->images && $project->images->banner->fullPath)
                             <img src="{{ (string) $project->images->banner->fullPath->attachment->guid }}" class="img-fluid" style="max-height:88px !important; " />
                             @else
                             <img src="https://upschool.co/wp-content/uploads/elementor/thumbs/Upschool-Charity-Projects-psgju87nr5soudwzo1zqs6lm5o8vksc0dcewgbufmo.png" class="img-fluid" />
                             @endif
                             <h1 class="mt-3 px-3 text-cemter" style="font-size:16px;color:#242254;line-height:1.3em;text-decoration:none;font-family:'Inter';font-weight:600">
-                                {{ substr($project->title,0,40) }}...
+                                {{ substr($project->title,0,45) }}...
                             </h1>
                             <div class="mt-1  text-center" style="font-size:16px; color:#242254;font-family:'Inter'">
                                 {{ $project->organisation->name ?? "" }}
@@ -67,7 +67,7 @@ ini_set('max_execution_time', 90);
                     @endforeach
                 </div>
             </div>
-            <div class="row pt-2 text-right me-5 mb-3">
+            <div class="row pt-4 text-right me-5">
                 <div class="col text-start pt-1">
                     <button class="step-back btn bnt-link mt-2 pt-1" data-url="{{ route('frontend.book.edit.upload',[$book->id,'category']) }}" data-step="1" data-step-attribute="category" style="color:#242254;font-weight:400;text-decoration:underline;font-size:18px;line-height:25.42px;font-family:'Inter'">
                         <i class=" fas fa-arrow-left"></i>

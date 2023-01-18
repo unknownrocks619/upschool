@@ -94,7 +94,7 @@
         input[type="checkbox"]:checked{
         border-color: red;
         background-color:red;
-        }
+    }
         /* .active-bar {
             background: #fff;
             min-height: 40px;
