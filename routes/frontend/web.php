@@ -118,6 +118,14 @@ Route::name('frontend.')->group(function () {
     // Route::get("/", [RegisteredUserController::class, 'create'])->name("home");
     // Route::get("/", [RegisteredUserController::class, 'create'])->name("view");
     Route::get("/", [HomeController::class, "index"])->name("home");
+
+    Route::prefix('charity')
+        ->name('charity.')->group(function () {
+            Route::get('/', [HomeController::class, 'charity'])->name('list');
+            Route::get('/project/{slug}', [HomeController::class, 'project'])->name('project');
+            Route::get('/{charity_name}', [HomeController::class, 'charity_detail'])->name('name');
+        });
+
     Route::get("/book/{slug}", [BookController::class, "show"])->name("book.show");
     Route::get("/book/upload/book/{tab?}", [BookUploadController::class, "uploadCreate"])->name("book.upload");
     Route::get("/book/upload/{book}/{tab?}", [BookUploadController::class, "uploadEdit"])->name("book.edit.upload");

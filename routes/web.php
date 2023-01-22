@@ -21,6 +21,7 @@ Route::get('/zoom/register/', [Sms::class, "register_for_zoom"]);
 // Route::name('frontend.')->group(function () {
 //     Route::get("/", fn () => view("welcome"));
 // });
+
 Route::get("/course/{course:alias_title}", [CourseController::class, "show"])->name("course.show");
 require __DIR__ . "/admin/web.php";
 require __DIR__ . '/auth.php';

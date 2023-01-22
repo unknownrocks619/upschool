@@ -1,8 +1,7 @@
 @extends('themes.frontend.master')
 
 @section("page_title")
-{{ $menu->menu_name }}
-
+Charities | Upschool.co
 @endsection
 
 @section("content")
@@ -46,12 +45,21 @@ $textTransform =$typeSettings->typography_text_transform;
                         <img src="{{ $org->logo->fullPath }}" class="img-fluid" style="max-height: 53px; max-width:53px;"/>
                     </div>
                     <div class="mt-4" style="padding:10px;">
-                        <h2 class="card-title" style="font-size:18px;">
+                        <h2 class="card-title">
                             {{$org->name}}
                         </h2>
                         <div class="description">
 
-                            {{ excerptText($org->short_description,135) }}
+                            {{ excerptText($org->short_description,135) }}...
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-none mb-3">
+                        <div class="row mt-2">
+                            <div class="col-md-12 ps-1">
+                                <a href="{{route('frontend.charity.name',[$org->slug])}}" class="href btn btn-danger btn-upschool-primary btn-float-animation">
+                                    Learn More
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -65,11 +73,50 @@ $textTransform =$typeSettings->typography_text_transform;
 
 @push('custom_css')
 <style type="text/css">
+    h2.card-title {
+        font-size: 18px;
+        font-family: "Lexend", Sans-serif;
+        line-height: 1.2em;
+        letter-spacing: 0.5px;
+        color:#242254;
+        font-weight: 700
+    }
+    .card-footer {
+        border-top: none !important;
+    }
+    .btn-upschool-primary{
+        background: #B81242  !important;
+        font-family: "Nunito Sans", Sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        fill: #fff;
+        color: #fff;
+        /* background-color: var(--e-global-color-f678250 ); */
+        border-radius: 28px 28px 28px 28px;
+        padding: 12px 24px;
+        line-height: 1;
+    }
+    .btn-upschool-primary:hover{
+        transition: all 0.35s;
+    }
+
+    .btn-float-animation {
+
+    transition-duration: .3s;
+    transition-property: transform;
+    transition-timing-function: ease-out;
+
+    }
+    .btn-float-animation:hover {
+        transform: translateY(-8px);
+    }
     .description {
         font-size: 13px;
-        font-weight:300;
+        font-weight:400;
         color : #242254;
-        font-family: 'Nunito Sans'
+        font-family: 'Nunito Sans';
+        line-height: 29px
 
     }
     .headerBanner {
@@ -79,7 +126,11 @@ $textTransform =$typeSettings->typography_text_transform;
     }
 
     .card-img {
+        min-height: 234px !important;
         max-height: 234px !important;
+    }
+    .card {
+        box-shadow: none !important;
     }
     /* next size - tablet */
     @media (max-width: 768px) {

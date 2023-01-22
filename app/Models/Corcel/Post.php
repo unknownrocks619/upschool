@@ -68,7 +68,10 @@ class Post extends CModel
     public function postImageDescription()
     {
         return $this->hasOne(ThumbnailMeta::class, 'post_id')
-            ->where('meta_key', 'description_1');
+            ->where(function ($query) {
+                return $query->where('meta_key', 'description_1')
+                    ->orWhere('meta_key', 'desc_1');
+            });
     }
 
     public function postImageTwo()
@@ -79,19 +82,25 @@ class Post extends CModel
     public function postImageDescriptionTwo()
     {
         return $this->hasOne(ThumbnailMeta::class, 'post_id')
-            ->where('meta_key', 'description_2');
+            ->where(function ($query) {
+                return $query->where('meta_key', 'description_2')
+                    ->orWhere('meta_key', 'desc_2');
+            });
     }
 
     public function postImageThree()
     {
         return $this->hasOne(ThumbnailMeta::class, 'post_id')
-            ->where('meta_key', 'description_1');
+            ->where('meta_key', 'image_3');
     }
 
     public function postImageDescriptionThree()
     {
         return $this->hasOne(ThumbnailMeta::class, 'post_id')
-            ->where('meta_key', 'description_3');
+            ->where(function ($query) {
+                return $query->where('meta_key', 'description_3')
+                    ->orWhere('meta_key', 'desc_3');
+            });
     }
 
     public function postImageFour()
@@ -103,7 +112,10 @@ class Post extends CModel
     public function postImageDescriptionFour()
     {
         return $this->hasOne(ThumbnailMeta::class, 'post_id')
-            ->where('meta_key', 'description_4');
+            ->where(function ($query) {
+                return $query->where('meta_key', 'description_4')
+                    ->orWhere('meta_key', 'desc_4');
+            });
     }
 
     public function postImageFive()
@@ -114,6 +126,9 @@ class Post extends CModel
     public function postImageDescriptionFive()
     {
         return $this->hasOne(ThumbnailMeta::class, 'post_id')
-            ->where('meta_key', 'description_5');
+            ->where(function ($query) {
+                return $query->where('meta_key', 'description_5')
+                    ->orWhere('meta_key', 'desc_5');
+            });
     }
 }

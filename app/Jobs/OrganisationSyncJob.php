@@ -104,48 +104,46 @@ class OrganisationSyncJob implements ShouldQueue
                 $org_project->dontaion = (float) $charity->funds_raised;
                 $org_project->wp_post_id = $charity->getKey();
                 $org_project->genre = $charity->genre;
-
                 $images = [
                     'banner' => [
                         'original_filename' => '',
                         'path' => '',
                         'source' => 'wp',
-                        'fullPath' => $charity->thumbnail
+                        'fullPath' => (string) $charity->thumbnail
                     ]
                 ];
-
                 $images['images'] = [
                     'image_one' => [
                         'original_filename' => '',
                         'path' => 'wp',
-                        'source' => $charity->imageOne
+                        'source' => ($charity->imageOne->meta_value) ? (string) $charity->imageOne : ''
                     ],
                     'image_two' => [
                         'original_filename' => '',
                         'path' => 'wp',
-                        'source' => $charity->imageTwo
+                        'source' => ($charity->imageTwo->meta_value) ? (string) $charity->imageTwo : ''
                     ],
                     'image_three' => [
                         'original_filename' => '',
                         'path' => 'wp',
-                        'source' => $charity->imageThree
+                        'source' => ($charity->imageThree->meta_value) ? (string) $charity->imageThree : ''
                     ],
                     'image_four' => [
                         'original_filename' => '',
                         'path' => 'wp',
-                        'source' => $charity->imageFour
+                        'source' => ($charity->imageFour->meta_value) ? (string) $charity->imageFour : ''
 
                     ],
                     'image_five' => [
                         'original_filename' => '',
                         'path' => 'wp',
-                        'source' => $charity->imageFive
+                        'source' => ($charity->imageFive->meta_value) ? (string) $charity->imageFive : ''
                     ],
                 ];
-
                 $additonalBlocks = [
                     'maps' => [
-                        'location' => $charity->town_city,
+                        'city' => $charity->town_city,
+                        'location' => $charity->location
                     ],
                     'topBlock' => [
                         [
@@ -155,26 +153,26 @@ class OrganisationSyncJob implements ShouldQueue
                     ],
                     'blocks' => [
                         [
-                            'image' => $charity->postImageOne,
+                            'image' => ($charity->postImageOne && $charity->postImageOne->meta_value) ? (string) $charity->postImageOne : '',
                             'post' => $charity->postImageDescription
                         ],
                         [
-                            'image' => $charity->postImageTwo,
+                            'image' => ($charity->postImageTwo && $charity->postImageTwo->meta_value) ? (string) $charity->postImageTwo : '',
                             'post' => $charity->postImageDescriptionTwo
                         ],
                         [
-                            'image' => $charity->postImageThree,
+                            'image' => ($charity->postImageThree && $charity->postImageThree->meta_value) ? (string) $charity->postImageThree : '',
                             'post' => $charity->postImageDescriptionThree
                         ],
                         [
-                            'image' => $charity->postImageFour,
+                            'image' => ($charity->postImageFour && $charity->postImageFour->meta_value) ? (string) $charity->postImageFour : '',
                             'post' => $charity->postImageDescriptionFour
                         ],
                         [
-                            'image' => $charity->postImageFour,
-                            'post' => $charity->postImageDescriptionFour
+                            'image' => ($charity->postImageFive && $charity->postImageFive->meta_value) ? (string) $charity->postImageFive : '',
+                            'post' => $charity->postImageDescriptionFive
                         ]
-                    ],
+                    ]
                 ];
 
                 $org_project->organisations_id = $organisation->getKey();

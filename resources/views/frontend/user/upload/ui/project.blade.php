@@ -45,11 +45,11 @@ ini_set('max_execution_time', 90);
                     <div class="col-md-4 items">
                         <div class="card my-3" style="box-shadow: none">
                             @if($project->images && $project->images->banner->fullPath)
-                            <img src="{{ (string) $project->images->banner->fullPath->attachment->guid }}" class="img-fluid" style="max-height:88px !important; " />
+                            <img src="{{ $project->images->banner->fullPath }}" class="img-fluid" style="max-height:88px !important; " />
                             @else
                             <img src="https://upschool.co/wp-content/uploads/elementor/thumbs/Upschool-Charity-Projects-psgju87nr5soudwzo1zqs6lm5o8vksc0dcewgbufmo.png" class="img-fluid" />
                             @endif
-                            <h1 class="mt-3 px-3 text-cemter" style="font-size:16px;color:#242254;line-height:1.3em;text-decoration:none;font-family:'Inter';font-weight:600">
+                            <h1 class="mt-3 px-3 text-cemter" style="max-height:40px; overflow:hidden ;font-size:16px;color:#242254;line-height:1.3em;text-decoration:none;font-family:'Inter';font-weight:600">
                                 {{ substr($project->title,0,40) }}...
                             </h1>
                             <div class="mt-1  text-center" style="font-size:16px; color:#242254;font-family:'Inter'">

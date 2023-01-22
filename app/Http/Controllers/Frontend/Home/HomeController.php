@@ -28,6 +28,7 @@ class HomeController extends Controller
 
     public function detail($slug, $type = null)
     {
+        // dd($slug)
         $menu = Menu::where('slug', $slug)->first();
         if ($menu->menu_type == "book-upload-form") {
             $user = new BookUploadController;
@@ -40,13 +41,6 @@ class HomeController extends Controller
             return view("frontend.pages.projects.index", compact("menu", "orgs", "projects"));
         }
 
-        if ($menu->menu_type == "charity") {
-            $organisations = Organisation::where('active', true)->orderBy('updated_at', 'DESC')->get();
-            $elementor = Post::where('post_type', 'page')->where('post_name', 'charities')->first();
-            return view("frontend.pages.charity.index", compact("menu", 'organisations', 'elementor'));
-        }
-
-
         if ($menu->menu_type == "book-list") {
             $book = new BookController;
             return $book->index($menu);
@@ -57,5 +51,24 @@ class HomeController extends Controller
         $pages = ($menu->menu_type == "page") ? $menu->load("pages") : null;
         $posts = ($menu->menu_type == "post") ? $menu->load("posts") : null;
         return view('frontend.detail', compact("menu", "category", "courses", "pages", "posts"));
+    }
+
+    public function charity()
+    {
+        $organisations = Organisation::where('active', true)->orderBy('updated_at', 'DESC')->get();
+        $elementor = Post::where('post_type', 'page')->where('post_name', 'charities')->first();
+        return view("frontend.pages.charity.index", compact('organisations', 'elementor'));
+    }
+
+    public function charity_detail($slug, $type = null)
+    {
+        $organisation = Organisation::where('slug', (string) $slug)->firstOrFail();
+        return view("frontend.pages.charity.charity-detail", compact('organisation'));
+    }
+
+    public function project($slug)
+    {
+        $project = OrganisationProject::where('slug', $slug)->first();
+        return view("frontend.pages.charity.project", compact('project'));
     }
 }
