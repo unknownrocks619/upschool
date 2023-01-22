@@ -1,7 +1,7 @@
 @extends('themes.frontend.master-book-upload')
 
 @section('page_title')
-    :: Upload your book
+ | Upload your book
 @endsection
 
 @push('custom_css')
@@ -43,6 +43,18 @@
             box-shadow: none !important;
             border: none !important;
         }
+        @media (max-width: 768px) {
+        .responsive-img {
+            max-height: auto;
+        }
+    }
+
+    /** next size - mobile */
+    @media (max-width: 480px) {
+        .responsive-img {
+            max-height: auto;
+        }
+    }
     </style>
     <style type="text/css">
         p {
@@ -222,6 +234,10 @@
             font-family: "Inter";
         }
 
+        .responsive-img {
+            max-height:88px;
+        }
+
         @media only screen and (max-width: 600px) {
             .dynamic-padding {
                 padding-left: 10px !important;
@@ -239,6 +255,10 @@
             .w-100
             {
                 width:98% !important;
+            }
+
+            .responsive-img {
+                max-height: inherit !important;
             }
         }
     </style>

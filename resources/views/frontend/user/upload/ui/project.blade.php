@@ -45,7 +45,7 @@ ini_set('max_execution_time', 90);
                     <div class="col-md-4 items">
                         <div class="card my-3" style="box-shadow: none">
                             @if($project->images && $project->images->banner->fullPath)
-                            <img src="{{ $project->images->banner->fullPath }}" class="img-fluid" style="max-height:88px !important; " />
+                            <img src="{{ $project->images->banner->fullPath }}" class="img-fluid responsive-img" />
                             @else
                             <img src="https://upschool.co/wp-content/uploads/elementor/thumbs/Upschool-Charity-Projects-psgju87nr5soudwzo1zqs6lm5o8vksc0dcewgbufmo.png" class="img-fluid" />
                             @endif

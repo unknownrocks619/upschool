@@ -132,6 +132,7 @@ $textTransform =$typeSettings->typography_text_transform;
     .card {
         box-shadow: none !important;
     }
+    
     /* next size - tablet */
     @media (max-width: 768px) {
         .headerBanner {

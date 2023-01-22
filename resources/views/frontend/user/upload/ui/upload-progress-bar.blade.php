@@ -6,7 +6,7 @@
 </style>
 <div class="row bg-white">
     <div class="col-md-12">
-        <div class="bg-white pt-4 mt-3 pb-3 ps-5">
+        <div class="bg-white pt-4 mt-3 pb-3 px-2">
             <div class="row me-5 social-login-row">
                 <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;font-size:33.34px">
                     Upload Your Book!
@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <div class="row pe-5 mt-3 ps-5">
+        <div class="row  mt-3 px-2">
             <div class="col-md-10 bar mt-2 ps-0 mx-3 mt-4">
                 <div class="row d-flex justicy-content-between my-2">
                     <div class="col pt-2 text-start" style="color:#242634;font-size:18px;">

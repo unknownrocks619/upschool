@@ -4,7 +4,7 @@
  <!-- Step Zero -->
  <div class="row step-zero-row main bg-white py-3 h-100">
      <div class="col-md-12">
-        <div class="bg-white pt-4 mt-3 pb-3 ps-5 ">
+        <div class="bg-white pt-4 mt-3 pb-3 ps-4 ">
             <div class="row me-5 social-login-row">
                 <h4 class="mb-0" style="color: #03014C !important;font-weight:700;line-height:42px;font-size:33.34px">
                     Upload Your Book!
@@ -12,7 +12,7 @@
             </div>
         </div>
 
-         <div class="row ps-5 pe-5">
+         <div class="row ps-3 pe-5">
              <div class="col-md-12">
                  <div class="card border-0" style="border-radius: 24px;box-shadow:none">
                      <div class="card-header border-0 bg-white text-center px-5 py-3">
@@ -22,7 +22,7 @@
                      </div>
                      <div class="card-body bg-light rounded-0">
                          <div class="row">
-                             <div class="col-md-12 px-5">
+                             <div class="col-md-12 px-1">
                                  <form action="{{ route('frontend.auth_user.books.store-book-upload') }}" class="dropzone w-100" id="book-upload-dropzone">
                                      <div class="dz-message">
                                          <div class="row">
