@@ -52,6 +52,7 @@
 
         .nav-text {
             padding: 13px 19px !important;
+
         }
 
     </style> <!-- Link Swiper's CSS -->
@@ -66,7 +67,7 @@
     <title>Upschool @yield('page_title')</title>
 </head>
 
-<body>
+<body style="width:100%; overflow-x:hidden">
 
     <!-- navbar -->
     @include("frontend.layouts.navigation")

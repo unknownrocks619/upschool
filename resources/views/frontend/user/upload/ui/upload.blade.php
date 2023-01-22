@@ -271,7 +271,7 @@
 @section('content')
     <div class="container mb-11 mx-auto px-0 mt-4">
         <div class="row px-0 mx-auto step-parent-row mt-4 mb-4 "
-            style="margin-top: 50px !important; margin-bottom:50px !important">
+            style="margin-bottom:50px !important">
             <!-- Row -->
             <div class="mt-4 col-md-9 pl-0 ml-0 mx-auto step-parent step-parent-column"
                 style="padding-left:0px !important;position:relative">
