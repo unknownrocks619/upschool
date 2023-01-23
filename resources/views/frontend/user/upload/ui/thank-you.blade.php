@@ -27,11 +27,13 @@
     </div>
 </div>
 
-<div class="row mt-4 " style="background-color: #F4F4F4 !important;">
-    <div class="col-md-12 d-flex justify-content-center">
+<div class="row mt-4 mx-auto d-block d-md-flex d-lg-flex justify-content-center" style="background-color: #F4F4F4 !important;">
+    <div class="mb-2 col-md-6 col-sm-12 col-lg-6 col-xs-12 d-lg-flex d-md-flex justify-content-end d-block">
         <a href="{{ route('frontend.dashboard') }}" class="btn text-white py-3 px-5 mx-3" style="background-color: #D61A5F !important;font-family:'Inter';font-size: 21px;">
             Go To Dashboard
         </a>
+    </div>
+    <div class="mb-2 col-md-6 col-sm-12 col-lg-6 col-xs-12 d-lg-flex d-md-flex justify-content-start d-block">
         <a href="{{ route('frontend.book.upload') }}" class="btn text-white py-3 px-5 mx-3" style="background-color: #D61A5F !important;font-family:'Inter';font-size: 21px;">
             Upload a New Book
         </a>

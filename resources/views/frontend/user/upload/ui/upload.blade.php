@@ -472,10 +472,9 @@
         function handleError(errors) {
 
             $.each(errors, function(index, element) {
+                console.log('erors', errors);
                 if ($("#" + index + "_error").length != 0) {
-
                     $("#" + index + "_error").empty().html(element);
-
                 }
             });
         }

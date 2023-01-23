@@ -175,6 +175,10 @@
 
             },
             error: function(response) {
+                $(".loading").fadeOut('fast', function() {
+                        $(this).addClass('d-none')
+                    })
+                $(formElem).find('button').prop('disabled',false);
                 if (response.status == 422) {
                     return handleError(response.responseJSON.errors);
                 }

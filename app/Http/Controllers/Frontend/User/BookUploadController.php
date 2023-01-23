@@ -42,7 +42,7 @@ class BookUploadController extends Controller
         if (!auth()->check()) {
             return view("frontend.user.upload.auth");
         }
-        return $this->uploadCreate($book);
+        return $this->uploadCreate('book-upload', $book);
     }
 
     public function uploadCreate($tab = "book-upload", int $book = null, $instances = [])
