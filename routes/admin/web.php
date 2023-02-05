@@ -111,9 +111,10 @@ Route::prefix("upschool/admin")
                 Route::get("projects/{organisation}/", "projects")->name('org.project.list');
                 Route::get('/projects/edit/{project}', "projectEdit")->name('org.project.edit');
                 Route::get('/projects/create/{organisation}', "projectsCreate")->name('org.project.create');
-
                 Route::post('/projects/create/{organisation}', "projectStore")->name('org.project.store');
                 Route::put('/projects/edit/{project}', "projectUpdate")->name('org.project.update');
+                Route::post('project/donation/{project}', 'projectUpdateDonation')->name('org.project.donation.update');
+                Route::get('project/donation/{status}/{project}', 'projectBuyBreaks')->name('org.project.donation.status');
                 Route::delete('/projects/delete/{project}', "projectDelete")->name('org.project.delete');
                 Route::resource("org", OrganisationController::class);
             });

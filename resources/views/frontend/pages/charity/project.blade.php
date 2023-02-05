@@ -12,9 +12,12 @@ $backgroundMobile = "";
 $overlaybackground = "";
 $textTransform = "";
 $fontSize = "";
+$donation = $project->dontaion;
 ?>
 
 @section("content")
+<form action="{{route('frontend.frontend.checkout.list',[auth()->check() ? 'user': 'guest'])}}" method="post">
+
 <div class="container-fluid bg-white">
     <div class="row headerBanner" style="position: relative">
         <div class="backgroundOverlay logoPosition" style="position: absolute;z-index:1;    right: 116px;
@@ -40,8 +43,10 @@ $fontSize = "";
                             <h2 class="mb-3">
                                 Fund this Project
                             </h2>
-                            <i aria-hidden="true" class="fas fa-info-circle text-lg" style="font-size:50px;color:#242254;"></i>
 
+
+                            @if( ! $donation)
+                            <i aria-hidden="true" class="fas fa-info-circle text-lg" style="font-size:50px;color:#242254;"></i>
                             <div class="mt-3">
                                 <h5>
                                     The Donate Function Is Coming Soon
@@ -50,10 +55,53 @@ $fontSize = "";
                             <div class="description mt-3">
                                     You will be able to donate to projects in early 2023.
                             </div>
-
                             <div class="button btn-upschool-pink mt-4" style="">
-                                Donate (Coming Soon)
+
                             </div>
+                            @else
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-12 text-center p-2" style="background: #e7e7e7">
+                                            <p class="fw-600 mb-0 pb-0">
+                                                Total Funds Raised For this Project:
+                                            </p>
+                                            <p class="text-danger fs-3 mt-0 pt-0">
+                                                AU $0.00
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-4 donation_amount_selection">
+                                            <input type="radio" name="amount" value="5" class="d-none">
+                                            <div class="border p-2 text-center">
+                                                AU $5
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 donation_amount_selection">
+                                            <input type="radio" name="amount" value="20" checked class="d-none">
+                                            <div class="border p-2 text-center">
+                                                AU $20
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 donation_amount_selection">
+                                            <input type="radio" name="amount" value="50" class="d-none">
+                                            <div class="border p-2 text-center">
+                                                AU $50
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-8">
+                                            <input type="number" placeholder="Custom Amount" name="custom_amount" id="" class="form-control w-100">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button type="button" class="btn btn-upschool-rectange submit-button">
+                                                Donate
+                                            </button>
+                                        </div>
+                                    </div>
+
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -154,8 +202,162 @@ $fontSize = "";
     </div>
 
 </div>
+<div class="modal fade" id="donateOption" tabindex="-1" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content" id="modal-content">
+            <div class="modal-body">
+                <div class="description">
+                    Your Support is Appreciated.
+                </div>
+                <h2 class="mb-1 pb-1">Donation: <span class="donation-modal-text"></span></h2>
+                <div class="description">
+                    Less Credit card processing fees (2.9% + AU  $0.30)
+                </div>
 
+                <h4 class="mt-4">
+                    TIP UPSCHOOL PLATFORM
+                </h4>
+                <div class="description">
+                    Upschool does not take a commission on donations - but we do have significat expenses to operate and maintain this platform. Giving us a tip will allow us to continue to develop the platform. Thank you!
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-2">
+                        AU $0
+                    </div>
+                    <div class="col-md-8">
+                        <input type="range" min="0" max="20" value="3" class="form-range" style="box-shadow: none" id="customRange1">
+                    </div>
+                    <div class="col-md-2">
+                        AU $20
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <h3>Tip: AU $ <span class="textTip">3.00</span></h3>
+                    </div>
+                </div>
+
+                <div class="row mt-3 d-flex justify-content-between border-bottom">
+                    <div class="col-md-4">
+                        Donation
+                    </div>
+                    <div class="col-md-8 d-flex justify-content-end">
+                        AU $ <span class="text-donation-bar"></span>
+                    </div>
+                    <div class="col-md-4">
+                        Tip
+                    </div>
+                    <div class="col-md-8  d-flex justify-content-end">
+                        AU $<span class="textTip">3.00</span>
+                    </div>
+                    <div class="col-md-6 mt-1">
+                        Credit Card/Bank Processing Fee
+                    </div>
+                    <div class="col-md-6 mt-2  d-flex justify-content-end">
+                        AU $0.53
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-between">
+                        <h4>
+                            Total Donation
+                        </h4>
+                        <h4>
+                            AU $ <span class="total_check"></span>
+                        </h4>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn  btn-upschool-rectange w-100">
+                            Continue to Checkout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
 @endsection
+
+
+@push('custom_scripts')
+    <script type='text/javascript'>
+        $(document).on('click','.donation_amount_selection', function (event) {
+            event.preventDefault();
+            $('.donation_amount_selection').find('input').attr('checked',false);
+            $('.donation_amount_selection').find('div').removeClass('border-primary');
+            $("input[name=custom_amount]").val('').attr('placeholder','Custom Amount').attr('required',false);
+            $(this).find('input').attr('checked',true);
+            $(this).find('div').addClass('border-primary')
+            $('.donation-modal-text').data('amount',0);
+
+            let donationAmount = $(this).find('input').val();
+            if (donationAmount > 0 ) {
+                $("#donateOption").modal('show');
+                donationText(donationAmount);
+            }
+        });
+
+        $('input[type=range]').change( function (event) {
+            event.preventDefault();
+            let tip = $('.textTip').html(parseFloat($(this).val()).toFixed(2));
+            donationAmount = parseFloat($('.donation-modal-text').data('amount'));
+            let totalAmount = parseFloat($(this).val()) + donationAmount + 0.53;
+
+            $('.total_check').empty().html(parseFloat(totalAmount).toFixed(2));
+
+        })
+
+        function donationText(amount) {
+            $('.textTip').html(parseFloat(3).toFixed(2));
+            $(".donation-modal-text").html('AU $' + parseFloat(amount).toFixed(2)).data('amount',parseFloat(amount).toFixed(2));
+            $(".text-donation-bar").html(parseFloat(amount).toFixed(2));
+            $('.total_check').html(parseFloat(amount) + 3.0 + 0.53);
+
+        }
+
+        $(document).on('click','input[name=custom_amount]', function (event) {
+            $('.donation_amount_selection').find('input').attr('checked',false);
+            $('.donation_amount_selection').find('div').removeClass('border-primary');
+            $(this).attr('required',true);
+        })
+
+        $(document).on('click', '.submit-button', function (event) {
+
+
+            let donationAmount = 0;
+            // check if input has default value.
+            if ($('input[name=custom_amount]').val() && $('input[name=custom_amount]').val() > 0 ) {
+                donationAmount = $('input[name=custom_amount]').val();
+            } else {
+                $.each ($('.donation_amount_selection') , function (index, element) {
+                    if ( $(element).find('input').is(':checked') ) {
+                        donationAmount = $(element).find('input').val();
+                    }
+                })
+            }
+
+            if (donationAmount > 0 ) {
+                $(".modal-backdrop").remove();
+                $(this).attr('data-bs-target','#donateOption')
+                        .attr('data-bs-toggle','modal')
+                        .attr('data-bs-backdrop',"static");
+                $('#donateOption').modal('toggle');
+                donationText(donationAmount);
+            } else {
+                $(this).removeAttr('data-bs-target')
+                        .removeAttr('data-bs-toggle')
+                        .removeAttr('data-bs-backdrop');
+            }
+        })
+
+    </script>
+@endpush
 
 
 @push('custom_css')
@@ -163,6 +365,9 @@ $fontSize = "";
 <link rel='stylesheet' id='f_font_googleapisCSS-css' href='https://fonts.googleapis.com/css2?family=Roboto%3Awght%40400%3B700&#038;display=swap&#038;ver=1' type='text/css' media='all' />
 
 <style type="text/css">
+    .donation_amount_selection {
+        cursor: pointer;
+    }
     ul {
         list-style: none
     }
@@ -174,7 +379,11 @@ $fontSize = "";
         color: #242254;
         font-weight: 700
     }
+    input[type=number] {
+        box-shadow: none;
+        font-family: "Nunito Sans", Sans-serif;
 
+    }
     .card-footer {
         border-top: none !important;
     }
@@ -193,6 +402,21 @@ $fontSize = "";
         border-radius: 28px 28px 28px 28px;
         padding: 12px 24px;
         line-height: 1;
+    }
+    .btn-upschool-rectange {
+        background: #B81242 !important;
+        font-family: "Nunito Sans", Sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        fill: #fff;
+        color: #fff;
+        border-radius: 4px;
+        padding: 12px 12px;
+        line-height: 1;
+    }
+    .btn-upschool-rectange:hover {
+        color: #fff;
     }
     .btn-upschool-secondary {
         background: #242254 !important;

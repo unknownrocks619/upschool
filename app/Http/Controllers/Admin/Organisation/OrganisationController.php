@@ -13,6 +13,7 @@ use App\Models\OrganisationStudent;
 use App\Models\User;
 use App\Traits\VideoHandler;
 use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Hash;
@@ -423,11 +424,62 @@ class OrganisationController extends Controller
         return back();
     }
 
-
     public function sync()
     {
         Artisan::call('sync:wp:organisations');
         session()->flash('success', 'Organisation Sync has been started. Process might take sometime, You can continue your work.');
         return back();
+    }
+
+    /**
+     *
+     * @param string $string
+     * @param OrganisationProject $project
+     * @return View
+     */
+    public function projectBuyBreaks(string $string, OrganisationProject $project): View
+    {
+        return view('admin.organisation.projects.breaks.add', compact('project'));
+    }
+
+
+    /**
+     * Update Project donation stat
+     * @param Request $request
+     * @param OrganisationProject $project
+     * @return \Illuminate\Http\RedirectResponse|mixed
+     */
+    public function projectUpdateDonation(Request $request, OrganisationProject $project)
+    {
+        $request->validate([
+            'status' => 'required|boolean',
+            'milestone' => 'required_if:status,1',
+        ]);
+
+
+        $project->dontaion = $request->status;
+        $donation = [
+            'milestone' => $request->milestone,
+        ];
+        $array = [];
+        foreach ($request->amount as $key => $value) {
+            $innerArray = [];
+            $innerArray[$value] = $request->post('description')[$key];
+            $array[] = $innerArray;
+        }
+
+        $donation['breaks'] = $array;
+        $project->donations = $donation;
+        try {
+            $project->save();
+        } catch (\Throwable $th) {
+            //throw $th;
+            dd($th->getMessage());
+            session()->flash('error', 'Unable to make changes to the request.');
+            return redirect()->route('admin.org.org.project.list', [$project->organisations_id]);
+        }
+
+        session()->flash('success', "Donation Status Updated.");
+        return redirect()->route('admin.org.org.project.list', [$project->organisations_id]);
     }
 }

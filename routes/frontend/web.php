@@ -130,4 +130,9 @@ Route::name('frontend.')->group(function () {
     Route::get("/book/upload/book/{tab?}", [BookUploadController::class, "uploadCreate"])->name("book.upload");
     Route::get("/book/upload/{book}/{tab?}", [BookUploadController::class, "uploadEdit"])->name("book.edit.upload");
     Route::get("/{slug}/{model?}", [HomeController::class, "detail"])->name('view');
+
+    /**
+     * @info checkout
+     */
+    include(__DIR__ . '/checkout.php');
 });
